@@ -1,0 +1,23 @@
+Use this folder for GitHub Pages publishing.
+
+Safe public files included:
+- index.html
+- devotion.html
+- prayer.html
+- comfort.html
+- assets/css/app.css
+- assets/js/app.js
+- assets/js/data.js
+
+Do not publish:
+- gallery-admin.html
+- travel-admin.html
+- assets/js/travel-admin.js
+
+Reason:
+The admin password is stored in the admin JavaScript for local-only use. If you publish those admin files, the public could inspect the code and see it.
+
+Recommended workflow:
+1. Keep your admin pages only on your own PC.
+2. Publish only this github-public folder to GitHub Pages.
+3. If you later want a real secure admin area online, move to a hosted backend with server-side login.

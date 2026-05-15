@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Comfort &amp; Grief | Life's Moments, God's Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#b8935a;--gold-light:#d4aa70;--gold-pale:#faf3e8;
+  --deep:#1c2e24;--green:#2f5d42;
+  --cream:#fdf8f0;--text:#2a2a2a;--text-soft:#5a5a5a;--border:#e0d0b0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--text);line-height:1.75;overflow-x:hidden}
+header{position:sticky;top:0;z-index:200;background:rgba(253,248,240,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--deep);letter-spacing:.04em;text-decoration:none}
+.logo span{color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+nav ul li a{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.08em;text-decoration:none;color:var(--text-soft);transition:color .2s}
+nav ul li a:hover{color:var(--gold)}
+.hero{min-height:44vh;background:linear-gradient(160deg,rgba(28,46,36,.96) 0%,rgba(28,46,36,.80) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 56px}
+.hero-badge{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold-light);text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,82px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--gold-light);display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(255,255,255,.72);max-width:600px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:60px 28px}
+.section-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:10px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:600;color:var(--deep);text-align:center;margin-bottom:14px}
+.section-intro{font-size:17px;color:var(--text-soft);text-align:center;max-width:680px;margin:0 auto 48px;font-style:italic;line-height:1.75}
+footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
+footer p{font-size:14px;line-height:2.1}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-light)}
+.footer-esv{font-size:11px;color:rgba(255,255,255,.28);margin-top:16px;line-height:1.7}
+
+    .dv-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:13px}
+    .dv-tabs{display:flex;border-bottom:1px solid var(--border)}
+    .dv-tab{flex:1;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;
+      padding:8px 0;cursor:pointer;border:none;background:#f9f5ee;color:var(--text-soft);
+      transition:background .2s,color .2s;text-align:center}
+    .dv-tab.active{background:var(--deep);color:var(--gold-light)}
+    .dv-content{display:none;padding:15px 18px;background:var(--gold-pale)}
+    .dv-content.active{display:block}
+    .dv-content p.vt{font-family:'Cormorant Garamond',serif;font-size:17px;
+      font-style:italic;color:var(--deep);line-height:1.55;margin-bottom:7px}
+    .dv-content cite{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold)}
+
+
+    .comfort-band{background:var(--deep);border-radius:8px;padding:38px 42px;text-align:center;margin-bottom:50px}
+    .comfort-band p.lead{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,26px);color:rgba(255,255,255,.72);font-style:italic;line-height:1.7;max-width:680px;margin:0 auto 24px}
+    .verse-panel-grid{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:48px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .vp{display:grid;grid-template-columns:auto 1fr;align-items:start;border-bottom:1px solid var(--border)}
+    .vp:last-child{border-bottom:none}
+    .vp-num{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.08em;color:var(--gold);background:var(--gold-pale);padding:22px 20px;border-right:1px solid var(--border);min-width:52px;text-align:center}
+    .vp-body{padding:20px 24px;background:#fff}
+    .vp-body blockquote{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--deep);line-height:1.55;margin-bottom:10px}
+    .vp-body cite{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold)}
+    .section-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:30px 32px;margin-bottom:28px}
+    .section-card h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--deep);margin-bottom:10px}
+    .section-card .note{font-size:15px;color:var(--text-soft);font-style:italic;line-height:1.7;margin-bottom:22px}
+    .psalm23-box{background:var(--deep);border-radius:8px;padding:36px 42px;text-align:center;margin-bottom:48px}
+    .psalm23-box h3{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.14em;color:var(--gold-light);margin-bottom:22px;text-transform:uppercase}
+    .psalm23-box p{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,24px);font-style:italic;color:#fff;line-height:2;margin-bottom:16px}
+    .psalm23-box cite{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;color:var(--gold-light)}
+    .closing-prayer{background:var(--gold-pale);border:1px solid var(--border);border-radius:8px;padding:32px 38px;margin-top:16px}
+
+    :root{--sidebar-w:230px;--sidebar-bg:#141f18;--sidebar-border:rgba(184,147,90,.18)}
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);display:flex;flex-direction:column;z-index:400;overflow-y:auto}
+    .sb-brand{padding:28px 20px 22px;border-bottom:1px solid var(--sidebar-border)}
+    .sb-brand-name{font-family:'Cinzel',serif;font-size:13.5px;font-weight:600;color:#fff;letter-spacing:.04em;line-height:1.3;text-decoration:none;display:block}
+    .sb-brand-name span{color:var(--gold);display:block;margin-top:1px}
+    .sb-brand-sub{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.35);margin-top:8px;line-height:1.5}
+    .sb-group{padding:16px 0 4px;flex:1}
+    .sb-group-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.28em;color:rgba(255,255,255,.25);text-transform:uppercase;padding:0 20px 8px;display:block}
+    .sb-link{display:flex;align-items:center;gap:11px;padding:10px 20px;font-family:'EB Garamond',serif;font-size:15.5px;color:rgba(255,255,255,.62);text-decoration:none;transition:background .18s,color .18s;position:relative}
+    .sb-link::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2.5px;background:var(--gold);border-radius:0 2px 2px 0;transform:scaleY(0);transition:transform .2s}
+    .sb-link:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.9)}
+    .sb-link:hover::before,.sb-link.active::before{transform:scaleY(1)}
+    .sb-link.active{color:var(--gold-light);background:rgba(184,147,90,.1)}
+    .sb-icon{font-size:16px;width:22px;text-align:center;flex-shrink:0;opacity:.85}
+    .sb-divider{height:1px;background:var(--sidebar-border);margin:10px 20px}
+    .sb-footer{padding:16px 20px;border-top:1px solid var(--sidebar-border)}
+    .sb-footer-verse{font-family:'Cormorant Garamond',serif;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.32);line-height:1.65}
+    .sb-footer-ref{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:rgba(184,147,90,.5);display:block;margin-top:5px}
+    .main-content{margin-left:var(--sidebar-w);min-width:0}
+    .sb-toggle{display:none;position:fixed;top:12px;left:12px;z-index:450;background:var(--deep);border:1px solid var(--gold);border-radius:6px;padding:8px 10px;cursor:pointer;color:var(--gold);font-size:18px;line-height:1}
+    .sb-overlay{display:none}
+    @media(min-width:769px){header{display:none}}
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%);transition:transform .28s ease;box-shadow:4px 0 24px rgba(0,0,0,.4)}
+      .sidebar.open{transform:translateX(0)}
+      .main-content{margin-left:0}
+      .sb-toggle{display:block}
+      header{display:block;padding-left:52px}
+      .sb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:390}
+      .sb-overlay.open{display:block}
+    }
+@media(max-width:640px){.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
+</style>
+</head>
+<body>
+<div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" aria-label="Open menu">&#9776;</button>
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <a href="index.html" class="sb-brand-name">Life&rsquo;s Moments<span>God&rsquo;s Word</span></a>
+    <p class="sb-brand-sub">Bible verses for every season of life.</p>
+  </div>
+  <div class="sb-group">
+    <span class="sb-group-label">Explore</span>
+    <a class="sb-link" href="index.html" onclick="closeSidebar()"><span class="sb-icon">&#8962;</span> Home</a>
+    <a class="sb-link" href="index.html#emotions" onclick="closeSidebar()"><span class="sb-icon">&#9825;</span> Emotions</a>
+    <a class="sb-link" href="index.html#situations" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> Situations</a>
+    <a class="sb-link" href="index.html#topics" onclick="closeSidebar()"><span class="sb-icon">&#128214;</span> Topics</a>
+    <a class="sb-link" href="index.html#seniors" onclick="closeSidebar()"><span class="sb-icon">&#10010;</span> Seniors</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">My Journey</span>
+    <a class="sb-link" href="index.html#gallery" onclick="closeSidebar()"><span class="sb-icon">&#128247;</span> Gallery</a>
+    <a class="sb-link" href="index.html#ai-summary" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> AI Search</a>
+    <a class="sb-link" href="index.html#living-word" onclick="closeSidebar()"><span class="sb-icon">&#127908;</span> Living the Word</a>
+    <a class="sb-link" href="index.html#fellowship" onclick="closeSidebar()"><span class="sb-icon">&#128172;</span> Fellowship Corner</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">More</span>
+    <a class="sb-link" href="devotion.html" onclick="closeSidebar()"><span class="sb-icon">&#9998;</span> Devotion</a>
+    <a class="sb-link" href="prayer.html" onclick="closeSidebar()"><span class="sb-icon">&#10013;</span> Prayer</a>
+    <a class="sb-link active" href="comfort.html" onclick="closeSidebar()"><span class="sb-icon">&#10047;</span> Comfort</a>
+  </div>
+  <div class="sb-footer">
+    <p class="sb-footer-verse">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo;</p>
+    <span class="sb-footer-ref">Psalm 119:105</span>
+  </div>
+</aside>
+<div class="main-content">
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Life&rsquo;s Moments, <span>God&rsquo;s Word</span></a>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#emotions">Emotions</a></li>
+      <li><a href="index.html#situations">Situations</a></li>
+      <li><a href="index.html#topics">Topics</a></li>
+      <li><a href="index.html#living-word">Living the Word</a></li>
+      <li><a href="index.html#fellowship">Fellowship Corner</a></li>
+      <li><a href="devotion.html">Devotion</a></li>
+      <li><a href="prayer.html">Prayer</a></li>
+      <li><a href="comfort.html">Comfort</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="hero-badge">&#10022; Scripture for Grief &amp; Loss &#10022;</p>
+  <h1>When Words<br><em>Fail Us</em></h1>
+  <p class="hero-sub">God&rsquo;s Word holds comfort for every kind of loss &mdash; at funerals, at bedsides, and in the quiet of grief.</p>
+</section>
+
+<div class="wrap">
+
+  <!-- OPENING -->
+  <div class="comfort-band">
+    <p class="section-lbl" style="color:var(--gold-light)">&#10022; A Word of Comfort &#10022;</p>
+    <p class="lead">Grief is one of the most honest places a human being can stand. When we lose someone we love, we are brought to the edge of what we can bear &mdash; and that is exactly where God meets us.</p>
+    <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v1k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v1e')">ESV</button></div><div class="dv-content active" id="v1k"><p class="vt">&ldquo;The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.&rdquo;</p><cite>Psalm 34:18</cite></div><div class="dv-content" id="v1e" style="display:none"><p class="vt">&ldquo;The Lord is near to the brokenhearted and saves the crushed in spirit.&rdquo;</p><cite>Psalm 34:18 (ESV)</cite></div></div>
+  </div>
+
+  <!-- PSALM 23 -->
+  <div class="psalm23-box">
+    <h3>&#10022; The Shepherd&rsquo;s Psalm &#10022;</h3>
+    <p>&ldquo;The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He leads me in paths of righteousness for his name&rsquo;s sake. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.&rdquo;</p>
+    <cite>Psalm 23:1&ndash;4 (ESV)</cite>
+  </div>
+
+  <!-- GOD IS NEAR IN GRIEF -->
+  <div class="section-card">
+    <h3>God Does Not Stand at a Distance from Our Pain</h3>
+    <p class="note">He draws near &mdash; specifically to the broken, the crushed, the grieving. These verses remind us that grief is not a sign of weak faith, but an invitation into deeper trust.</p>
+    <div class="verse-panel-grid">
+      
+      <div class="vp">
+        <div class="vp-num">I</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v2k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v2e')">ESV</button></div><div class="dv-content active" id="v2k"><p class="vt">&ldquo;The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.&rdquo;</p><cite>Psalm 34:18</cite></div><div class="dv-content" id="v2e" style="display:none"><p class="vt">&ldquo;The Lord is near to the brokenhearted and saves the crushed in spirit.&rdquo;</p><cite>Psalm 34:18 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">II</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v3k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v3e')">ESV</button></div><div class="dv-content active" id="v3k"><p class="vt">&ldquo;Blessed are they that mourn: for they shall be comforted.&rdquo;</p><cite>Matthew 5:4</cite></div><div class="dv-content" id="v3e" style="display:none"><p class="vt">&ldquo;Blessed are those who mourn, for they shall be comforted.&rdquo;</p><cite>Matthew 5:4 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">III</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v4k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v4e')">ESV</button></div><div class="dv-content active" id="v4k"><p class="vt">&ldquo;Jesus wept.&rdquo;</p><cite>John 11:35</cite></div><div class="dv-content" id="v4e" style="display:none"><p class="vt">&ldquo;Jesus wept.&rdquo;</p><cite>John 11:35 (ESV)</cite></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE RESURRECTION -->
+  <div class="section-card">
+    <h3>The Resurrection Hope</h3>
+    <p class="note">For the believer, death is not the end &mdash; it is the doorway. These are the words of Jesus Himself, and the promise of what awaits those who are in Him.</p>
+    <div class="verse-panel-grid">
+      
+      <div class="vp">
+        <div class="vp-num">I</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v5k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v5e')">ESV</button></div><div class="dv-content active" id="v5k"><p class="vt">&ldquo;Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live.&rdquo;</p><cite>John 11:25</cite></div><div class="dv-content" id="v5e" style="display:none"><p class="vt">&ldquo;Jesus said to her, 'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.'&rdquo;</p><cite>John 11:25 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">II</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v6k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v6e')">ESV</button></div><div class="dv-content active" id="v6k"><p class="vt">&ldquo;For to me to live is Christ, and to die is gain.&rdquo;</p><cite>Philippians 1:21</cite></div><div class="dv-content" id="v6e" style="display:none"><p class="vt">&ldquo;For to me to live is Christ, and to die is gain.&rdquo;</p><cite>Philippians 1:21 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">III</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v7k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v7e')">ESV</button></div><div class="dv-content active" id="v7k"><p class="vt">&ldquo;We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord.&rdquo;</p><cite>2 Corinthians 5:8</cite></div><div class="dv-content" id="v7e" style="display:none"><p class="vt">&ldquo;We would rather be away from the body and at home with the Lord.&rdquo;</p><cite>2 Corinthians 5:8 (ESV)</cite></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ETERNAL HOPE -->
+  <div class="section-card">
+    <h3>The Promise of Heaven</h3>
+    <p class="note">God&rsquo;s final word over death is not sorrow &mdash; it is glory. These verses look ahead to the world that is coming, where every tear will be wiped away.</p>
+    <div class="verse-panel-grid">
+      
+      <div class="vp">
+        <div class="vp-num">I</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v8k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v8e')">ESV</button></div><div class="dv-content active" id="v8k"><p class="vt">&ldquo;And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.&rdquo;</p><cite>Revelation 21:4</cite></div><div class="dv-content" id="v8e" style="display:none"><p class="vt">&ldquo;He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.&rdquo;</p><cite>Revelation 21:4 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">II</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v9k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v9e')">ESV</button></div><div class="dv-content active" id="v9k"><p class="vt">&ldquo;In my Father's house are many mansions: if it were not so, I would have told you. I go to prepare a place for you.&rdquo;</p><cite>John 14:2</cite></div><div class="dv-content" id="v9e" style="display:none"><p class="vt">&ldquo;In my Father’s house are many rooms. If it were not so, would I have told you that I go to prepare a place for you?&rdquo;</p><cite>John 14:2 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">III</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v10k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v10e')">ESV</button></div><div class="dv-content active" id="v10k"><p class="vt">&ldquo;For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.&rdquo;</p><cite>Romans 8:38–39</cite></div><div class="dv-content" id="v10e" style="display:none"><p class="vt">&ldquo;For I am sure that neither death nor life, nor angels nor rulers, nor things present nor things to come, nor powers, nor height nor depth, nor anything else in all creation, will be able to separate us from the love of God in Christ Jesus our Lord.&rdquo;</p><cite>Romans 8:38–39 (ESV)</cite></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMFORT FOR THE GRIEVING -->
+  <div class="section-card">
+    <h3>Comfort for Those Left Behind</h3>
+    <p class="note">Grief does not end at the graveside. For those who remain, these verses carry the promise that God does not abandon us in our mourning.</p>
+    <div class="verse-panel-grid">
+      
+      <div class="vp">
+        <div class="vp-num">I</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v11k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v11e')">ESV</button></div><div class="dv-content active" id="v11k"><p class="vt">&ldquo;LORD, thou hast been our dwelling place in all generations.&rdquo;</p><cite>Psalm 90:1</cite></div><div class="dv-content" id="v11e" style="display:none"><p class="vt">&ldquo;Lord, you have been our dwelling place in all generations.&rdquo;</p><cite>Psalm 90:1 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">II</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v12k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v12e')">ESV</button></div><div class="dv-content active" id="v12k"><p class="vt">&ldquo;Weeping may endure for a night, but joy cometh in the morning.&rdquo;</p><cite>Psalm 30:5</cite></div><div class="dv-content" id="v12e" style="display:none"><p class="vt">&ldquo;Weeping may tarry for the night, but joy comes with the morning.&rdquo;</p><cite>Psalm 30:5 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">III</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v13k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v13e')">ESV</button></div><div class="dv-content active" id="v13k"><p class="vt">&ldquo;It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.&rdquo;</p><cite>Lamentations 3:22–23</cite></div><div class="dv-content" id="v13e" style="display:none"><p class="vt">&ldquo;The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.&rdquo;</p><cite>Lamentations 3:22–23 (ESV)</cite></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOR THE DEAD IN CHRIST -->
+  <div class="section-card">
+    <h3>For Those Who Died in Christ</h3>
+    <p class="note">The Christian hope for the dead is not silence &mdash; it is resurrection. The dead in Christ will rise.</p>
+    <div class="verse-panel-grid">
+      
+      <div class="vp">
+        <div class="vp-num">I</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v14k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v14e')">ESV</button></div><div class="dv-content active" id="v14k"><p class="vt">&ldquo;For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first.&rdquo;</p><cite>1 Thessalonians 4:16</cite></div><div class="dv-content" id="v14e" style="display:none"><p class="vt">&ldquo;For the Lord himself will descend from heaven with a cry of command, with the voice of an archangel, and with the sound of the trumpet of God. And the dead in Christ will rise first.&rdquo;</p><cite>1 Thessalonians 4:16 (ESV)</cite></div></div>
+        </div>
+      </div>
+      
+      <div class="vp">
+        <div class="vp-num">II</div>
+        <div class="vp-body">
+          <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v15k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v15e')">ESV</button></div><div class="dv-content active" id="v15k"><p class="vt">&ldquo;Into thine hand I commit my spirit: thou hast redeemed me, O LORD God of truth.&rdquo;</p><cite>Psalm 31:5</cite></div><div class="dv-content" id="v15e" style="display:none"><p class="vt">&ldquo;Into your hand I commit my spirit; you have redeemed me, O Lord, faithful God.&rdquo;</p><cite>Psalm 31:5 (ESV)</cite></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING PRAYER -->
+  <div class="closing-prayer">
+    <p class="section-lbl" style="text-align:left;margin-bottom:16px">Closing Prayer</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--deep);line-height:1.85">Lord God, we stand in the shadow of loss. We do not always have words &mdash; but You hear the grief that goes beyond words. You are the resurrection and the life. You are the one who wipes away every tear. Comfort those who mourn. Hold those who are broken. And remind us: this is not the end. Because of Jesus, the grave does not have the final word. We trust You. Amen.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">Life&rsquo;s Moments, God&rsquo;s Word</span>
+  <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#emotions">Emotions</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#gallery">Gallery</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#ai-summary">AI Search</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#living-word">Living the Word</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#fellowship">Fellowship Corner</a> &nbsp;&middot;&nbsp;
+    <a href="devotion.html">Devotion</a> &nbsp;&middot;&nbsp;
+    <a href="prayer.html">Prayer</a> &nbsp;&middot;&nbsp;
+    <a href="comfort.html">Comfort</a></p>
+  <p class="footer-esv">All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.</p>
+  <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.58);font-style:normal;">Created by Tea Park</p>
+  <p style="margin-top:16px;font-size:12px">&copy; 2026 Life&rsquo;s Moments, God&rsquo;s Word. All Rights Reserved.</p>
+</footer>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sb-overlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('open');
+}
+
+function switchTab(btn, contentId) {
+  var tabs = btn.parentNode;
+  var wrapper = tabs.parentNode;
+  var btns = tabs.querySelectorAll('button');
+  btns.forEach(function(b){ b.classList.remove('active','on'); });
+  var children = wrapper.children;
+  for(var i=0;i<children.length;i++){
+    var el=children[i];
+    if(el.classList&&(el.classList.contains('dv-content')||el.classList.contains('dv-pane'))){
+      el.style.display='none';
+      el.classList.remove('active','on');
+    }
+  }
+  btn.classList.add('active');
+  var target=document.getElementById(contentId);
+  if(target){ target.style.display='block'; target.classList.add('active'); }
+}
+function dst(b,p){switchTab(b,p);}
+
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daily Devotion | Life's Moments, God's Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#b8935a;--gold-light:#d4aa70;--gold-pale:#faf3e8;
+  --deep:#1c2e24;--green:#2f5d42;
+  --cream:#fdf8f0;--text:#2a2a2a;--text-soft:#5a5a5a;--border:#e0d0b0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--text);line-height:1.75;overflow-x:hidden}
+header{position:sticky;top:0;z-index:200;background:rgba(253,248,240,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--deep);letter-spacing:.04em;text-decoration:none}
+.logo span{color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+nav ul li a{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.08em;text-decoration:none;color:var(--text-soft);transition:color .2s}
+nav ul li a:hover{color:var(--gold)}
+.hero{min-height:44vh;background:linear-gradient(160deg,rgba(28,46,36,.96) 0%,rgba(28,46,36,.80) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 56px}
+.hero-badge{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold-light);text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,82px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--gold-light);display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(255,255,255,.72);max-width:600px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:60px 28px}
+.section-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:10px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:600;color:var(--deep);text-align:center;margin-bottom:14px}
+.section-intro{font-size:17px;color:var(--text-soft);text-align:center;max-width:680px;margin:0 auto 48px;font-style:italic;line-height:1.75}
+footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
+footer p{font-size:14px;line-height:2.1}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-light)}
+.footer-esv{font-size:11px;color:rgba(255,255,255,.28);margin-top:16px;line-height:1.7}
+
+    .dv-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:13px}
+    .dv-tabs{display:flex;border-bottom:1px solid var(--border)}
+    .dv-tab{flex:1;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;
+      padding:8px 0;cursor:pointer;border:none;background:#f9f5ee;color:var(--text-soft);
+      transition:background .2s,color .2s;text-align:center}
+    .dv-tab.active{background:var(--deep);color:var(--gold-light)}
+    .dv-content{display:none;padding:15px 18px;background:var(--gold-pale)}
+    .dv-content.active{display:block}
+    .dv-content p.vt{font-family:'Cormorant Garamond',serif;font-size:17px;
+      font-style:italic;color:var(--deep);line-height:1.55;margin-bottom:7px}
+    .dv-content cite{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold)}
+
+
+    .day-band{background:var(--deep);color:#fff;border-radius:8px;padding:36px 40px;margin-bottom:50px;text-align:center}
+    .day-label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:var(--gold-light);margin-bottom:14px}
+    .day-verse{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,36px);font-style:italic;color:#fff;line-height:1.45;margin-bottom:14px}
+    .day-ref{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.14em;color:var(--gold-light);margin-bottom:16px}
+    .day-note{font-size:16px;color:rgba(255,255,255,.65);font-style:italic;line-height:1.8;max-width:600px;margin:0 auto}
+    .reading-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px 32px;margin-bottom:32px}
+    .reading-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .reading-ref{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--deep);margin-bottom:18px}
+    .reading-note{font-size:16px;color:var(--text-soft);font-style:italic;line-height:1.7;margin-bottom:22px}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
+    .related-card{background:var(--gold-pale);border:1px solid var(--border);border-radius:6px;padding:20px}
+    .r-tag{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+    .week-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:36px}
+    .week-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px 14px;text-align:center;cursor:default}
+    .week-card.active{border-color:var(--gold);background:var(--gold-pale)}
+    .wc-day{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .wc-theme{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--deep);font-style:italic}
+    .prayer-box{background:var(--deep);border-radius:8px;padding:30px 36px;margin-top:36px;color:#fff}
+    .prayer-box h4{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.18em;color:var(--gold-light);margin-bottom:16px;text-transform:uppercase}
+    .prayer-box p{font-size:16px;line-height:1.9;color:rgba(255,255,255,.8)}
+
+    :root{--sidebar-w:230px;--sidebar-bg:#141f18;--sidebar-border:rgba(184,147,90,.18)}
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);display:flex;flex-direction:column;z-index:400;overflow-y:auto}
+    .sb-brand{padding:28px 20px 22px;border-bottom:1px solid var(--sidebar-border)}
+    .sb-brand-name{font-family:'Cinzel',serif;font-size:13.5px;font-weight:600;color:#fff;letter-spacing:.04em;line-height:1.3;text-decoration:none;display:block}
+    .sb-brand-name span{color:var(--gold);display:block;margin-top:1px}
+    .sb-brand-sub{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.35);margin-top:8px;line-height:1.5}
+    .sb-group{padding:16px 0 4px;flex:1}
+    .sb-group-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.28em;color:rgba(255,255,255,.25);text-transform:uppercase;padding:0 20px 8px;display:block}
+    .sb-link{display:flex;align-items:center;gap:11px;padding:10px 20px;font-family:'EB Garamond',serif;font-size:15.5px;color:rgba(255,255,255,.62);text-decoration:none;transition:background .18s,color .18s;position:relative}
+    .sb-link::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2.5px;background:var(--gold);border-radius:0 2px 2px 0;transform:scaleY(0);transition:transform .2s}
+    .sb-link:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.9)}
+    .sb-link:hover::before,.sb-link.active::before{transform:scaleY(1)}
+    .sb-link.active{color:var(--gold-light);background:rgba(184,147,90,.1)}
+    .sb-icon{font-size:16px;width:22px;text-align:center;flex-shrink:0;opacity:.85}
+    .sb-divider{height:1px;background:var(--sidebar-border);margin:10px 20px}
+    .sb-footer{padding:16px 20px;border-top:1px solid var(--sidebar-border)}
+    .sb-footer-verse{font-family:'Cormorant Garamond',serif;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.32);line-height:1.65}
+    .sb-footer-ref{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:rgba(184,147,90,.5);display:block;margin-top:5px}
+    .main-content{margin-left:var(--sidebar-w);min-width:0}
+    .sb-toggle{display:none;position:fixed;top:12px;left:12px;z-index:450;background:var(--deep);border:1px solid var(--gold);border-radius:6px;padding:8px 10px;cursor:pointer;color:var(--gold);font-size:18px;line-height:1}
+    .sb-overlay{display:none}
+    @media(min-width:769px){header{display:none}}
+
+@media(max-width:768px){
+  .sidebar{transform:translateX(-100%);transition:transform .28s ease;box-shadow:4px 0 24px rgba(0,0,0,.4)}
+  .sidebar.open{transform:translateX(0)}
+  .main-content{margin-left:0}
+  .sb-toggle{display:block}
+  header{display:block;padding-left:52px}
+  .sb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:390}
+  .sb-overlay.open{display:block}
+}
+@media(max-width:640px){.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
+</style>
+</head>
+<body>
+<div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" aria-label="Open menu">&#9776;</button>
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <a href="index.html" class="sb-brand-name">Life&rsquo;s Moments<span>God&rsquo;s Word</span></a>
+    <p class="sb-brand-sub">Bible verses for every season of life.</p>
+  </div>
+  <div class="sb-group">
+    <span class="sb-group-label">Explore</span>
+    <a class="sb-link" href="index.html" onclick="closeSidebar()"><span class="sb-icon">&#8962;</span> Home</a>
+    <a class="sb-link" href="index.html#emotions" onclick="closeSidebar()"><span class="sb-icon">&#9825;</span> Emotions</a>
+    <a class="sb-link" href="index.html#situations" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> Situations</a>
+    <a class="sb-link" href="index.html#topics" onclick="closeSidebar()"><span class="sb-icon">&#128214;</span> Topics</a>
+    <a class="sb-link" href="index.html#seniors" onclick="closeSidebar()"><span class="sb-icon">&#10010;</span> Seniors</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">My Journey</span>
+    <a class="sb-link" href="index.html#gallery" onclick="closeSidebar()"><span class="sb-icon">&#128247;</span> Gallery</a>
+    <a class="sb-link" href="index.html#ai-summary" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> AI Search</a>
+    <a class="sb-link" href="index.html#living-word" onclick="closeSidebar()"><span class="sb-icon">&#127908;</span> Living the Word</a>
+    <a class="sb-link" href="index.html#fellowship" onclick="closeSidebar()"><span class="sb-icon">&#128172;</span> Fellowship Corner</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">More</span>
+    <a class="sb-link active" href="devotion.html" onclick="closeSidebar()"><span class="sb-icon">&#9998;</span> Devotion</a>
+    <a class="sb-link" href="prayer.html" onclick="closeSidebar()"><span class="sb-icon">&#10013;</span> Prayer</a>
+    <a class="sb-link" href="comfort.html" onclick="closeSidebar()"><span class="sb-icon">&#10047;</span> Comfort</a>
+  </div>
+  <div class="sb-footer">
+    <p class="sb-footer-verse">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo;</p>
+    <span class="sb-footer-ref">Psalm 119:105</span>
+  </div>
+</aside>
+<div class="main-content">
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Life&rsquo;s Moments, <span>God&rsquo;s Word</span></a>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#emotions">Emotions</a></li>
+      <li><a href="index.html#situations">Situations</a></li>
+      <li><a href="index.html#topics">Topics</a></li>
+      <li><a href="index.html#living-word">Living the Word</a></li>
+      <li><a href="index.html#fellowship">Fellowship Corner</a></li>
+      <li><a href="devotion.html">Devotion</a></li>
+      <li><a href="prayer.html">Prayer</a></li>
+      <li><a href="comfort.html">Comfort</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="hero-badge">&#10022; Daily Devotion &#10022;</p>
+  <h1>Begin Each Day<br><em>in God&rsquo;s Word</em></h1>
+  <p class="hero-sub">A short Scripture reading, reflection, and prayer &mdash; for every morning of the week.</p>
+</section>
+
+<div class="wrap">
+
+  <!-- WEEK PLAN -->
+  <p class="section-lbl">This Week&rsquo;s Plan</p>
+  <h2 class="section-title">Seven Days, Seven Themes</h2>
+  <div class="week-grid">
+    <div class="week-card active" data-day="1"><p class="wc-day">Monday</p><p class="wc-theme">Strength in Weakness</p></div>
+    <div class="week-card" data-day="2"><p class="wc-day">Tuesday</p><p class="wc-theme">God&rsquo;s Peace</p></div>
+    <div class="week-card" data-day="3"><p class="wc-day">Wednesday</p><p class="wc-theme">Forgiveness</p></div>
+    <div class="week-card" data-day="4"><p class="wc-day">Thursday</p><p class="wc-theme">Hope &amp; Future</p></div>
+    <div class="week-card" data-day="5"><p class="wc-day">Friday</p><p class="wc-theme">God&rsquo;s Presence</p></div>
+    <div class="week-card" data-day="6"><p class="wc-day">Saturday</p><p class="wc-theme">Gratitude</p></div>
+    <div class="week-card" data-day="0"><p class="wc-day">Sunday</p><p class="wc-theme">Eternal Life</p></div>
+  </div>
+
+  <!-- MONDAY -->
+  <div style="margin-top:56px">
+    <div class="day-band">
+      <p class="day-label" id="day-label">&#10022; Monday &bull; Today&rsquo;s Key Verse &#10022;</p>
+      <p class="day-verse" id="day-verse">&ldquo;He gives power to the faint, and to him who has no might he increases strength.&rdquo;</p>
+      <p class="day-ref" id="day-ref">Isaiah 40:29</p>
+      <p class="day-note" id="day-note">When we feel most empty and depleted, God is not finished with us. His strength flows into our weakness like water into a dry vessel.</p>
+    </div>
+
+    <div class="reading-box">
+      <p class="reading-label">&#10022; Reading</p>
+      <p class="reading-ref" id="reading-ref">Isaiah 40:28&ndash;31 &mdash; Strength for the Weary</p>
+      <p class="reading-note" id="reading-note">Isaiah reminds us that the Creator of the universe does not grow tired. He sees our exhaustion, He knows our limits &mdash; and He offers something the world cannot: renewed strength for those who wait on Him.</p>
+      <p id="reading-body" style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--deep);line-height:1.65;margin-bottom:18px">
+        &ldquo;Have you not known? Have you not heard? The Lord is the everlasting God, the Creator of the ends of the earth. He does not faint or grow weary; his understanding is unsearchable. He gives power to the faint, and to him who has no might he increases strength. Even youths shall faint and be weary, and young men shall fall exhausted; but they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.&rdquo;
+      </p>
+      <p id="reading-cite" style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold)">Isaiah 40:28&ndash;31 (ESV)</p>
+    </div>
+
+    <!-- Related Verses with KJV/ESV -->
+    <p class="section-lbl" style="margin-bottom:18px">Related Verses</p>
+    <div class="related-grid" id="related-grid">
+      <div class="related-card">
+        <p class="r-tag">Strength in Weakness</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v1k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v1e')">ESV</button></div><div class="dv-content active" id="v1k"><p class="vt">&ldquo;And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.&rdquo;</p><cite>2 Corinthians 12:9</cite></div><div class="dv-content" id="v1e" style="display:none"><p class="vt">&ldquo;My grace is sufficient for you, for my power is made perfect in weakness.&rdquo;</p><cite>2 Corinthians 12:9 (ESV)</cite></div></div>
+      </div>
+      <div class="related-card">
+        <p class="r-tag">I Can Do All Things</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v2k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v2e')">ESV</button></div><div class="dv-content active" id="v2k"><p class="vt">&ldquo;I can do all things through Christ which strengtheneth me.&rdquo;</p><cite>Philippians 4:13</cite></div><div class="dv-content" id="v2e" style="display:none"><p class="vt">&ldquo;I can do all things through him who strengthens me.&rdquo;</p><cite>Philippians 4:13 (ESV)</cite></div></div>
+      </div>
+      <div class="related-card">
+        <p class="r-tag">God&rsquo;s Presence</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v3k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v3e')">ESV</button></div><div class="dv-content active" id="v3k"><p class="vt">&ldquo;Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee.&rdquo;</p><cite>Isaiah 41:10</cite></div><div class="dv-content" id="v3e" style="display:none"><p class="vt">&ldquo;Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you.&rdquo;</p><cite>Isaiah 41:10 (ESV)</cite></div></div>
+      </div>
+      <div class="related-card">
+        <p class="r-tag">Wait on the Lord</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v4k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v4e')">ESV</button></div><div class="dv-content active" id="v4k"><p class="vt">&ldquo;But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.&rdquo;</p><cite>Isaiah 40:31</cite></div><div class="dv-content" id="v4e" style="display:none"><p class="vt">&ldquo;But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.&rdquo;</p><cite>Isaiah 40:31 (ESV)</cite></div></div>
+      </div>
+      <div class="related-card">
+        <p class="r-tag">Renewed Day by Day</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v5k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v5e')">ESV</button></div><div class="dv-content active" id="v5k"><p class="vt">&ldquo;For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day.&rdquo;</p><cite>2 Corinthians 4:16</cite></div><div class="dv-content" id="v5e" style="display:none"><p class="vt">&ldquo;So we do not lose heart. Though our outer self is wasting away, our inner self is being renewed day by day.&rdquo;</p><cite>2 Corinthians 4:16 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    <!-- Prayer -->
+    <div class="prayer-box">
+      <h4>&#10022; Morning Prayer</h4>
+      <p id="morning-prayer">Lord, I come to you this morning with empty hands. I do not have the strength for today on my own. But you are the everlasting God &mdash; you do not grow weary, and you promise to carry those who wait on you. Renew my strength. Let me mount up like eagles. Let me walk and not faint. I trust you with this day. Amen.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">Life&rsquo;s Moments, God&rsquo;s Word</span>
+  <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#emotions">Emotions</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#gallery">Gallery</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#ai-summary">AI Search</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#living-word">Living the Word</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#fellowship">Fellowship Corner</a> &nbsp;&middot;&nbsp;
+    <a href="devotion.html">Devotion</a> &nbsp;&middot;&nbsp;
+    <a href="prayer.html">Prayer</a> &nbsp;&middot;&nbsp;
+    <a href="comfort.html">Comfort</a></p>
+  <p class="footer-esv">All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.</p>
+  <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.58);font-style:normal;">Created by Tea Park</p>
+  <p style="margin-top:16px;font-size:12px">&copy; 2026 Life&rsquo;s Moments, God&rsquo;s Word. All Rights Reserved.</p>
+</footer>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sb-overlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('open');
+}
+
+const dailyVerses={
+  0:{day:'Sunday',theme:'Eternal Life',verse:'“Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live.”',ref:'John 11:25',note:'Sunday reminds us that Christ has overcome the grave. Our hope is secure because it rests on His risen life.'},
+  1:{day:'Monday',theme:'Strength in Weakness',verse:'“He gives power to the faint, and to him who has no might he increases strength.”',ref:'Isaiah 40:29',note:'When we feel empty and depleted, God is not finished with us. His strength flows into our weakness.'},
+  2:{day:'Tuesday',theme:'God’s Peace',verse:'“Peace I leave with you, my peace I give unto you.”',ref:'John 14:27',note:'Christ gives a peace the world cannot manufacture. His presence steadies the heart in restless times.'},
+  3:{day:'Wednesday',theme:'Forgiveness',verse:'“If we confess our sins, he is faithful and just to forgive us our sins.”',ref:'1 John 1:9',note:'Midweek is a good time to come back to grace. God is faithful to forgive and cleanse.'},
+  4:{day:'Thursday',theme:'Hope & Future',verse:'“For I know the plans I have for you, saith the LORD... to give you an expected end.”',ref:'Jeremiah 29:11',note:'God’s purposes extend beyond what we can see today. He holds both the present and the future.'},
+  5:{day:'Friday',theme:'God’s Presence',verse:'“Draw nigh to God, and he will draw nigh to you.”',ref:'James 4:8',note:'The Lord is not far away. He welcomes all who draw near to Him in truth.'},
+  6:{day:'Saturday',theme:'Gratitude',verse:'“In every thing give thanks: for this is the will of God in Christ Jesus concerning you.”',ref:'1 Thessalonians 5:18',note:'Gratitude reshapes the heart before a new week begins. Thankfulness helps us see God’s goodness clearly.'}
+};
+
+function setDailyDevotion(){
+  var today=new Date().getDay();
+  var d=dailyVerses[today];
+  if(!d)return;
+  document.getElementById('day-label').innerHTML='&#10022; '+d.day+' &bull; Today&rsquo;s Key Verse &#10022;';
+  document.getElementById('day-verse').innerHTML='&ldquo;'+d.verse.replace(/^“|”$/g,'')+'&rdquo;';
+  document.getElementById('day-ref').textContent=d.ref;
+  document.getElementById('day-note').textContent=d.note;
+  document.querySelectorAll('.week-card').forEach(function(card){
+    card.classList.toggle('active',card.getAttribute('data-day')===String(today));
+  });
+}
+
+function switchTab(btn, contentId) {
+  var tabs = btn.parentNode;
+  var wrapper = tabs.parentNode;
+  var btns = tabs.querySelectorAll('button');
+  btns.forEach(function(b){ b.classList.remove('active','on'); });
+  var children = wrapper.children;
+  for(var i=0;i<children.length;i++){
+    var el=children[i];
+    if(el.classList&&(el.classList.contains('dv-content')||el.classList.contains('dv-pane'))){
+      el.style.display='none';
+      el.classList.remove('active','on');
+    }
+  }
+  btn.classList.add('active');
+  var target=document.getElementById(contentId);
+  if(target){ target.style.display='block'; target.classList.add('active'); }
+}
+function dst(b,p){switchTab(b,p);}
+setDailyDevotion();
+
+</script>
+</div>
+</body>
+</html>

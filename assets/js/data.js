@@ -1,0 +1,163 @@
+// ═══════════════════════════════════════
+// EMOTION DATA (for modal)
+// ═══════════════════════════════════════
+const EMOTIONS={
+  Joy:{icon:'☀️',note:'True joy rests on God\'s unchanging presence, not changing circumstances.',verses:[
+    {kjv:'Thou wilt shew me the path of life: in thy presence is fulness of joy.',esv:'You make known to me the path of life; in your presence there is fullness of joy.',r:'Psalm 16:11'},
+    {kjv:'Rejoice in the Lord alway: and again I say, Rejoice.',esv:'Rejoice in the Lord always; again I will say, rejoice.',r:'Philippians 4:4'},
+    {kjv:'These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.',esv:'These things I have spoken to you, that my joy may be in you, and that your joy may be full.',r:'John 15:11'}]},
+  Sorrow:{icon:'🌧️',note:'God does not ignore our tears. He draws near to the brokenhearted.',verses:[
+    {kjv:'The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.',esv:'The Lord is near to the brokenhearted and saves the crushed in spirit.',r:'Psalm 34:18'},
+    {kjv:'Blessed are they that mourn: for they shall be comforted.',esv:'Blessed are those who mourn, for they shall be comforted.',r:'Matthew 5:4'},
+    {kjv:'Jesus wept.',esv:'Jesus wept.',r:'John 11:35'}]},
+  Peace:{icon:'🕊️',note:'The peace God gives guards the heart within the storm, not just outside it.',verses:[
+    {kjv:'And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.',esv:'And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.',r:'Philippians 4:7'},
+    {kjv:'Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you.',esv:'Peace I leave with you; my peace I give to you. Not as the world gives do I give to you.',r:'John 14:27'},
+    {kjv:'Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.',esv:'You keep him in perfect peace whose mind is stayed on you, because he trusts in you.',r:'Isaiah 26:3'}]},
+  Hope:{icon:'🌿',note:'Biblical hope is confident expectation rooted in God\'s unbreakable promises.',verses:[
+    {kjv:'Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.',esv:'May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope.',r:'Romans 15:13'},
+    {kjv:'For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.',esv:'For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.',r:'Jeremiah 29:11'},
+    {kjv:'Blessed be the God and Father of our Lord Jesus Christ, which according to his abundant mercy hath begotten us again unto a lively hope by the resurrection of Jesus Christ from the dead.',esv:'He has caused us to be born again to a living hope through the resurrection of Jesus Christ from the dead.',r:'1 Peter 1:3'}]},
+  Fear:{icon:'🌑',note:'Fear loses its grip when we remember God is with us — not as observer, but as helper.',verses:[
+    {kjv:'Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.',esv:'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.',r:'Isaiah 41:10'},
+    {kjv:'Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.',esv:'Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.',r:'Psalm 23:4'},
+    {kjv:'For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.',esv:'For God gave us a spirit not of fear but of power and love and self-control.',r:'2 Timothy 1:7'}]},
+  Anxiety:{icon:'😰',note:'Anxiety invites us to cast our worries on the One who is never overwhelmed.',verses:[
+    {kjv:'Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.',esv:'Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.',r:'Philippians 4:6'},
+    {kjv:'Casting all your care upon him; for he careth for you.',esv:'Cast all your anxieties on him, because he cares for you.',r:'1 Peter 5:7'},
+    {kjv:'Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself.',esv:'Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself.',r:'Matthew 6:34'}]},
+  Loneliness:{icon:'🤍',note:'God\'s presence is not limited by distance or isolation. He is always near.',verses:[
+    {kjv:'I will never leave thee, nor forsake thee.',esv:'I will never leave you nor forsake you.',r:'Hebrews 13:5'},
+    {kjv:'Whither shall I go from thy spirit? or whither shall I flee from thy presence?',esv:'Where shall I go from your Spirit? Or where shall I flee from your presence?',r:'Psalm 139:7'},
+    {kjv:'Lo, I am with you alway, even unto the end of the world.',esv:'And behold, I am with you always, to the end of the age.',r:'Matthew 28:20'}]},
+  Anger:{icon:'⚡',note:'Anger must be surrendered to God before it becomes sin and causes harm.',verses:[
+    {kjv:'Be ye angry, and sin not: let not the sun go down upon your wrath.',esv:'Be angry and do not sin; do not let the sun go down on your anger.',r:'Ephesians 4:26'},
+    {kjv:'Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath.',esv:'Let every person be quick to hear, slow to speak, slow to anger.',r:'James 1:19–20'},
+    {kjv:'A soft answer turneth away wrath: but grievous words stir up anger.',esv:'A soft answer turns away wrath, but a harsh word stirs up anger.',r:'Proverbs 15:1'}]},
+  Gratitude:{icon:'🌱',note:'Gratitude is not a feeling we wait for — it is a practice that reshapes how we see everything.',verses:[
+    {kjv:'In every thing give thanks: for this is the will of God in Christ Jesus concerning you.',esv:'Give thanks in all circumstances; for this is the will of God in Christ Jesus for you.',r:'1 Thessalonians 5:18'},
+    {kjv:'Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.',esv:'Enter his gates with thanksgiving, and his courts with praise! Give thanks to him; bless his name!',r:'Psalm 100:4'},
+    {kjv:'And let the peace of God rule in your hearts... and be ye thankful.',esv:'And let the peace of Christ rule in your hearts… and be thankful.',r:'Colossians 3:15'}]},
+  Guilt:{icon:'💔',note:'Guilt points us to the cross — where God\'s forgiveness is complete and permanent.',verses:[
+    {kjv:'If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.',esv:'If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.',r:'1 John 1:9'},
+    {kjv:'As far as the east is from the west, so far hath he removed our transgressions from us.',esv:'As far as the east is from the west, so far does he remove our transgressions from us.',r:'Psalm 103:12'},
+    {kjv:'It is of the LORD\'s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.',esv:'The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.',r:'Lamentations 3:22–23'}]},
+  Love:{icon:'❤️',note:'God\'s love is the foundation of all love — it came to us first, before we deserved it.',verses:[
+    {kjv:'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.',esv:'For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.',r:'John 3:16'},
+    {kjv:'Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up.',esv:'Love is patient and kind; love does not envy or boast; it is not arrogant or rude.',r:'1 Corinthians 13:4'},
+    {kjv:'We love him, because he first loved us.',esv:'We love because he first loved us.',r:'1 John 4:19'}]},
+  Discouragement:{icon:'😔',note:'When we are at our lowest, God is not far — He renews those who wait on Him.',verses:[
+    {kjv:'But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.',esv:'But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint.',r:'Isaiah 40:31'},
+    {kjv:'Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him.',esv:'Why are you cast down, O my soul? Hope in God; for I shall again praise him.',r:'Psalm 42:11'},
+    {kjv:'Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.',esv:'Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.',r:'Joshua 1:9'}]}
+};
+
+// ═══════════════════════════════════════
+// SEARCH DATABASE
+// ═══════════════════════════════════════
+const DB=[
+  {name:'Joy',cat:'Emotions',keys:'joy rejoice happy happiness delight glad praise celebrate',note:'True joy rests on God\'s unchanging presence, not changing circumstances.',verses:[
+    {kjv:'Thou wilt shew me the path of life: in thy presence is fulness of joy.',esv:'You make known to me the path of life; in your presence there is fullness of joy.',r:'Psalm 16:11'},
+    {kjv:'Rejoice in the Lord alway: and again I say, Rejoice.',esv:'Rejoice in the Lord always; again I will say, rejoice.',r:'Philippians 4:4'},
+    {kjv:'These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.',esv:'These things I have spoken to you, that my joy may be in you, and that your joy may be full.',r:'John 15:11'}]},
+  {name:'Sorrow & Grief',cat:'Emotions',keys:'sorrow sad sadness grief grieve mourning cry weep tears heartbreak loss lost devastated mourn',note:'God draws near to the brokenhearted and does not ignore our tears.',verses:[
+    {kjv:'The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.',esv:'The Lord is near to the brokenhearted and saves the crushed in spirit.',r:'Psalm 34:18'},
+    {kjv:'Blessed are they that mourn: for they shall be comforted.',esv:'Blessed are those who mourn, for they shall be comforted.',r:'Matthew 5:4'},
+    {kjv:'Jesus wept.',esv:'Jesus wept.',r:'John 11:35'}]},
+  {name:'Peace',cat:'Emotions',keys:'peace calm rest still quiet tranquil troubled storm chaos restless serene',note:'The peace God gives guards the heart within the storm.',verses:[
+    {kjv:'And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.',esv:'And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.',r:'Philippians 4:7'},
+    {kjv:'Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you.',esv:'Peace I leave with you; my peace I give to you. Not as the world gives do I give to you.',r:'John 14:27'},
+    {kjv:'Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.',esv:'You keep him in perfect peace whose mind is stayed on you, because he trusts in you.',r:'Isaiah 26:3'}]},
+  {name:'Hope',cat:'Emotions',keys:'hope hopeful hopeless future promise promises expectation better days bright light',note:'Biblical hope is confident expectation rooted in God\'s promises.',verses:[
+    {kjv:'Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost.',esv:'May the God of hope fill you with all joy and peace in believing.',r:'Romans 15:13'},
+    {kjv:'For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.',esv:'For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.',r:'Jeremiah 29:11'},
+    {kjv:'Blessed be the God and Father of our Lord Jesus Christ, which according to his abundant mercy hath begotten us again unto a lively hope by the resurrection of Jesus Christ from the dead.',esv:'He has caused us to be born again to a living hope through the resurrection of Jesus Christ.',r:'1 Peter 1:3'}]},
+  {name:'Fear',cat:'Emotions',keys:'fear afraid scared terrified frightened dread panic fearful danger unsafe',note:'Fear loses its grip when we remember God is with us as our helper.',verses:[
+    {kjv:'Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.',esv:'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you.',r:'Isaiah 41:10'},
+    {kjv:'Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.',esv:'Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.',r:'Psalm 23:4'},
+    {kjv:'For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.',esv:'For God gave us a spirit not of fear but of power and love and self-control.',r:'2 Timothy 1:7'}]},
+  {name:'Anxiety & Worry',cat:'Emotions',keys:'anxiety anxious worry worrying stress stressed overwhelmed nervous overthinking restless uneasy burden apprehensive',note:'Anxiety is an invitation to cast our worries on the God who cares.',verses:[
+    {kjv:'Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.',esv:'Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.',r:'Philippians 4:6'},
+    {kjv:'Casting all your care upon him; for he careth for you.',esv:'Cast all your anxieties on him, because he cares for you.',r:'1 Peter 5:7'},
+    {kjv:'Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself.',esv:'Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself.',r:'Matthew 6:34'}]},
+  {name:'Loneliness',cat:'Emotions',keys:'lonely loneliness alone isolated isolation abandoned rejected forgotten friendless solitude no one',note:'God\'s presence is not limited by distance or isolation.',verses:[
+    {kjv:'I will never leave thee, nor forsake thee.',esv:'I will never leave you nor forsake you.',r:'Hebrews 13:5'},
+    {kjv:'Whither shall I go from thy spirit? or whither shall I flee from thy presence?',esv:'Where shall I go from your Spirit? Or where shall I flee from your presence?',r:'Psalm 139:7'},
+    {kjv:'Lo, I am with you alway, even unto the end of the world.',esv:'And behold, I am with you always, to the end of the age.',r:'Matthew 28:20'}]},
+  {name:'Anger',cat:'Emotions',keys:'anger angry rage frustrated frustration wrath temper bitter bitterness upset hostile',note:'Anger must be surrendered to God before it becomes sin.',verses:[
+    {kjv:'Be ye angry, and sin not: let not the sun go down upon your wrath.',esv:'Be angry and do not sin; do not let the sun go down on your anger.',r:'Ephesians 4:26'},
+    {kjv:'Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath.',esv:'Let every person be quick to hear, slow to speak, slow to anger.',r:'James 1:19'},
+    {kjv:'A soft answer turneth away wrath: but grievous words stir up anger.',esv:'A soft answer turns away wrath, but a harsh word stirs up anger.',r:'Proverbs 15:1'}]},
+  {name:'Gratitude',cat:'Emotions',keys:'gratitude grateful thankful thanksgiving thank appreciate blessing blessings content contentment',note:'Gratitude is a practice that reshapes how we see everything.',verses:[
+    {kjv:'In every thing give thanks: for this is the will of God in Christ Jesus concerning you.',esv:'Give thanks in all circumstances; for this is the will of God in Christ Jesus for you.',r:'1 Thessalonians 5:18'},
+    {kjv:'Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.',esv:'Enter his gates with thanksgiving, and his courts with praise! Give thanks to him; bless his name!',r:'Psalm 100:4'},
+    {kjv:'And let the peace of God rule in your hearts... and be ye thankful.',esv:'And let the peace of Christ rule in your hearts… and be thankful.',r:'Colossians 3:15'}]},
+  {name:'Guilt & Regret',cat:'Emotions',keys:'guilt guilty shame ashamed regret mistakes past sin confess remorse unworthy failure',note:'Guilt points us to the cross — where forgiveness is complete.',verses:[
+    {kjv:'If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.',esv:'If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.',r:'1 John 1:9'},
+    {kjv:'As far as the east is from the west, so far hath he removed our transgressions from us.',esv:'As far as the east is from the west, so far does he remove our transgressions from us.',r:'Psalm 103:12'},
+    {kjv:'It is of the LORD\'s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.',esv:'The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness.',r:'Lamentations 3:22–23'}]},
+  {name:'Discouragement',cat:'Emotions',keys:'discouraged discouragement hopeless give up defeated despair exhausted tired weary burnout depleted strength',note:'God renews those who wait on Him with fresh strength.',verses:[
+    {kjv:'But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.',esv:'But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles.',r:'Isaiah 40:31'},
+    {kjv:'Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him.',esv:'Why are you cast down, O my soul? Hope in God; for I shall again praise him.',r:'Psalm 42:11'},
+    {kjv:'Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.',esv:'Be strong and courageous. Do not be frightened, for the Lord your God is with you wherever you go.',r:'Joshua 1:9'}]},
+  {name:'Suffering & Trials',cat:'Life Issues',keys:'suffering suffer trial trials hardship pain trouble difficult difficulty test testing struggle',note:'Suffering is not wasted in God\'s hands.',verses:[
+    {kjv:'And we know that all things work together for good to them that love God, to them who are the called according to his purpose.',esv:'And we know that for those who love God all things work together for good.',r:'Romans 8:28'},
+    {kjv:'My brethren, count it all joy when ye fall into divers temptations; knowing this, that the trying of your faith worketh patience.',esv:'Count it all joy, my brothers, when you meet trials of various kinds.',r:'James 1:2–3'},
+    {kjv:'For I reckon that the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us.',esv:'The sufferings of this present time are not worth comparing with the glory to be revealed to us.',r:'Romans 8:18'}]},
+  {name:'Illness & Sickness',cat:'Life Issues',keys:'sick sickness ill illness disease hospital healing heal pain weak weakness chronic cancer disability injured health',note:'In sickness, God is not absent. He sustains and is present.',verses:[
+    {kjv:'He healeth the broken in heart, and bindeth up their wounds.',esv:'He heals the brokenhearted and binds up their wounds.',r:'Psalm 147:3'},
+    {kjv:'The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness.',esv:'The Lord sustains him on his sickbed; in his illness you restore him to full health.',r:'Psalm 41:3'},
+    {kjv:'And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.',esv:'My grace is sufficient for you, for my power is made perfect in weakness.',r:'2 Corinthians 12:9'}]},
+  {name:'Death & Dying',cat:'Life Issues',keys:'death dying die dead terminal end of life passing passed away mortality afterlife eternity grave',note:'For the believer, death is the doorway into God\'s presence.',verses:[
+    {kjv:'For to me to live is Christ, and to die is gain.',esv:'For to me to live is Christ, and to die is gain.',r:'Philippians 1:21'},
+    {kjv:'Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live.',esv:'I am the resurrection and the life. Whoever believes in me, though he die, yet shall he live.',r:'John 11:25'},
+    {kjv:'We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord.',esv:'We would rather be away from the body and at home with the Lord.',r:'2 Corinthians 5:8'}]},
+  {name:'Grief & Funeral Comfort',cat:'Life Issues',keys:'funeral memorial burial bereavement mourning loss lost someone died widow widower gone',note:'At a funeral we grieve — and hold onto the hope that does not disappoint.',verses:[
+    {kjv:'Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.',esv:'Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.',r:'Psalm 23:4'},
+    {kjv:'And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain.',esv:'He will wipe away every tear from their eyes, and death shall be no more.',r:'Revelation 21:4'},
+    {kjv:'Weeping may endure for a night, but joy cometh in the morning.',esv:'Weeping may tarry for the night, but joy comes with the morning.',r:'Psalm 30:5'}]},
+  {name:'Forgiveness',cat:'Life Issues',keys:'forgive forgiveness forgiving resentment offended hurt betrayed betrayal grudge bitter unforgiveness reconcile',note:'Forgiveness releases you from the burden of carrying the wrong.',verses:[
+    {kjv:'And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ\'s sake hath forgiven you.',esv:'Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.',r:'Ephesians 4:32'},
+    {kjv:'Forbearing one another, and forgiving one another... even as Christ forgave you, so also do ye.',esv:'As the Lord has forgiven you, so you also must forgive.',r:'Colossians 3:13'},
+    {kjv:'For if ye forgive men their trespasses, your heavenly Father will also forgive you.',esv:'For if you forgive others their trespasses, your heavenly Father will also forgive you.',r:'Matthew 6:14'}]},
+  {name:'Marriage & Family',cat:'Life Issues',keys:'marriage married husband wife spouse couple relationship wedding divorce marital family partner',note:'Marriage reflects Christ\'s own self-giving love for His church.',verses:[
+    {kjv:'Husbands, love your wives, even as Christ also loved the church, and gave himself for it.',esv:'Husbands, love your wives, as Christ loved the church and gave himself up for her.',r:'Ephesians 5:25'},
+    {kjv:'Whoso findeth a wife findeth a good thing, and obtaineth favour of the LORD.',esv:'He who finds a wife finds a good thing and obtains favor from the Lord.',r:'Proverbs 18:22'},
+    {kjv:'Two are better than one; because they have a good reward for their labour.',esv:'Two are better than one, because they have a good reward for their toil.',r:'Ecclesiastes 4:9'}]},
+  {name:'Money & Financial Worry',cat:'Life Issues',keys:'money financial debt poor poverty broke income bills budget provision rich wealth greed afford bankrupt',note:'God calls us to seek His kingdom first — and promises His provision.',verses:[
+    {kjv:'But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.',esv:'But seek first the kingdom of God and his righteousness, and all these things will be added to you.',r:'Matthew 6:33'},
+    {kjv:'But my God shall supply all your need according to his riches in glory by Christ Jesus.',esv:'My God will supply every need of yours according to his riches in glory in Christ Jesus.',r:'Philippians 4:19'},
+    {kjv:'Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.',esv:'Keep your life free from love of money, and be content with what you have.',r:'Hebrews 13:5'}]},
+  {name:'Decision-Making & Wisdom',cat:'Life Issues',keys:'decision decisions wisdom wise guidance guide direction crossroads choice confused uncertain unsure next step planning discernment',note:'At every crossroads, stop leaning on your own understanding.',verses:[
+    {kjv:'Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.',esv:'Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.',r:'Proverbs 3:5–6'},
+    {kjv:'If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.',esv:'If any of you lacks wisdom, let him ask God, who gives generously to all without reproach.',r:'James 1:5'},
+    {kjv:'Thy word is a lamp unto my feet, and a light unto my path.',esv:'Your word is a lamp to my feet and a light to my path.',r:'Psalm 119:105'}]},
+  {name:'Faith & Trust',cat:'Spiritual Themes',keys:'faith trust believe belief doubt doubting unbelief assurance confidence conviction',note:'Faith is trust that holds on even when we cannot see.',verses:[
+    {kjv:'Now faith is the substance of things hoped for, the evidence of things not seen.',esv:'Now faith is the assurance of things hoped for, the conviction of things not seen.',r:'Hebrews 11:1'},
+    {kjv:'Lord, I believe; help thou mine unbelief.',esv:'I believe; help my unbelief!',r:'Mark 9:24'},
+    {kjv:'For we walk by faith, not by sight.',esv:'For we walk by faith, not by sight.',r:'2 Corinthians 5:7'}]},
+  {name:'Prayer',cat:'Spiritual Themes',keys:'prayer pray praying intercession intercede petition request talk to God seek God devotion quiet time asking God',note:'Prayer is the simplest and most profound act of faith.',verses:[
+    {kjv:'Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.',esv:'Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.',r:'Philippians 4:6'},
+    {kjv:'Pray without ceasing.',esv:'Pray without ceasing.',r:'1 Thessalonians 5:17'},
+    {kjv:'The effectual fervent prayer of a righteous man availeth much.',esv:'The prayer of a righteous person has great power as it is working.',r:'James 5:16'}]},
+  {name:'Grace & Mercy',cat:'Spiritual Themes',keys:'grace mercy undeserved gift forgiven unmerited compassion kindness free redemption new life second chance',note:'Grace is God giving us what we do not deserve.',verses:[
+    {kjv:'For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.',esv:'For by grace you have been saved through faith. And this is not your own doing; it is the gift of God.',r:'Ephesians 2:8'},
+    {kjv:'And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness.',esv:'My grace is sufficient for you, for my power is made perfect in weakness.',r:'2 Corinthians 12:9'},
+    {kjv:'And of his fulness have all we received, and grace for grace.',esv:'For from his fullness we have all received, grace upon grace.',r:'John 1:16'}]},
+  {name:'Salvation',cat:'Spiritual Themes',keys:'salvation saved save eternal life heaven born again repent believe Jesus gospel redemption cross atonement',note:'Salvation is entirely God\'s gift, received through faith in Christ alone.',verses:[
+    {kjv:'For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.',esv:'For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.',r:'John 3:16'},
+    {kjv:'That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved.',esv:'If you confess with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved.',r:'Romans 10:9'},
+    {kjv:'For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.',esv:'For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.',r:'Romans 6:23'}]},
+  {name:'Heaven & Eternity',cat:'Spiritual Themes',keys:'heaven eternity eternal paradise resurrection afterlife future glory end times reunion forever home',note:'Heaven is real — where God will dwell with His people forever.',verses:[
+    {kjv:'And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain.',esv:'He will wipe away every tear from their eyes, and death shall be no more.',r:'Revelation 21:4'},
+    {kjv:'In my Father\'s house are many mansions... I go to prepare a place for you.',esv:'In my Father\'s house are many rooms. I go to prepare a place for you.',r:'John 14:2'},
+    {kjv:'For our conversation is in heaven; from whence also we look for the Saviour, the Lord Jesus Christ.',esv:'Our citizenship is in heaven, and from it we await a Savior, the Lord Jesus Christ.',r:'Philippians 3:20'}]},
+  {name:'Strength',cat:'Spiritual Themes',keys:'strength strong strengthen weakness weak power ability endure overcome victorious courage courageous',note:'God gives power to the faint and increases strength to those who have none.',verses:[
+    {kjv:'He giveth power to the faint; and to them that have no might he increaseth strength.',esv:'He gives power to the faint, and to him who has no might he increases strength.',r:'Isaiah 40:29'},
+    {kjv:'I can do all things through Christ which strengtheneth me.',esv:'I can do all things through him who strengthens me.',r:'Philippians 4:13'},
+    {kjv:'Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee.',esv:'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you.',r:'Isaiah 41:10'}]},
+  {name:"God's Presence",cat:'Spiritual Themes',keys:'presence near close with me Emmanuel God here not alone feel God draw near seek comfort always',note:"God's presence is not limited to a building — He is always near.",verses:[
+    {kjv:'Whither shall I go from thy spirit? or whither shall I flee from thy presence? If I ascend up into heaven, thou art there.',esv:'Where shall I go from your Spirit? Or where shall I flee from your presence? If I ascend to heaven, you are there!',r:'Psalm 139:7–8'},
+    {kjv:'Draw nigh to God, and he will draw nigh to you.',esv:'Draw near to God, and he will draw near to you.',r:'James 4:8'},
+    {kjv:'The LORD is nigh unto all them that call upon him, to all that call upon him in truth.',esv:'The Lord is near to all who call on him, to all who call on him in truth.',r:'Psalm 145:18'}]}
+];

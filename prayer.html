@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Prayer | Life's Moments, God's Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#b8935a;--gold-light:#d4aa70;--gold-pale:#faf3e8;
+  --deep:#1c2e24;--green:#2f5d42;
+  --cream:#fdf8f0;--text:#2a2a2a;--text-soft:#5a5a5a;--border:#e0d0b0;
+}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--cream);color:var(--text);line-height:1.75;overflow-x:hidden}
+header{position:sticky;top:0;z-index:200;background:rgba(253,248,240,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-family:'Cinzel',serif;font-size:17px;font-weight:600;color:var(--deep);letter-spacing:.04em;text-decoration:none}
+.logo span{color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
+nav ul li a{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.08em;text-decoration:none;color:var(--text-soft);transition:color .2s}
+nav ul li a:hover{color:var(--gold)}
+.hero{min-height:44vh;background:linear-gradient(160deg,rgba(28,46,36,.96) 0%,rgba(28,46,36,.80) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 56px}
+.hero-badge{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold-light);text-transform:uppercase;margin-bottom:22px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,82px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--gold-light);display:block}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(255,255,255,.72);max-width:600px;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:60px 28px}
+.section-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:10px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:600;color:var(--deep);text-align:center;margin-bottom:14px}
+.section-intro{font-size:17px;color:var(--text-soft);text-align:center;max-width:680px;margin:0 auto 48px;font-style:italic;line-height:1.75}
+footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
+footer p{font-size:14px;line-height:2.1}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{color:var(--gold-light)}
+.footer-esv{font-size:11px;color:rgba(255,255,255,.28);margin-top:16px;line-height:1.7}
+
+    .dv-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:13px}
+    .dv-tabs{display:flex;border-bottom:1px solid var(--border)}
+    .dv-tab{flex:1;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;
+      padding:8px 0;cursor:pointer;border:none;background:#f9f5ee;color:var(--text-soft);
+      transition:background .2s,color .2s;text-align:center}
+    .dv-tab.active{background:var(--deep);color:var(--gold-light)}
+    .dv-content{display:none;padding:15px 18px;background:var(--gold-pale)}
+    .dv-content.active{display:block}
+    .dv-content p.vt{font-family:'Cormorant Garamond',serif;font-size:17px;
+      font-style:italic;color:var(--deep);line-height:1.55;margin-bottom:7px}
+    .dv-content cite{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold)}
+
+
+    .prayer-banner{background:var(--deep);border-radius:8px;padding:40px;text-align:center;margin-bottom:52px}
+    .prayer-banner .section-lbl{color:var(--gold-light)}
+    .prayer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:56px}
+    .pc{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .pc-head{background:var(--deep);padding:20px 24px}
+    .pc-tag{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:var(--gold-light);text-transform:uppercase;margin-bottom:8px}
+    .pc-head h3{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.08em;color:#fff}
+    .pc-body{padding:22px 24px}
+    .pc-body p{font-size:15px;color:var(--text-soft);line-height:1.7;margin-bottom:18px;font-style:italic}
+    .pc-prayer{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--deep);line-height:1.8;margin-bottom:20px;font-style:italic}
+    .lords-prayer{display:none}
+
+    :root{--sidebar-w:230px;--sidebar-bg:#141f18;--sidebar-border:rgba(184,147,90,.18)}
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);display:flex;flex-direction:column;z-index:400;overflow-y:auto}
+    .sb-brand{padding:28px 20px 22px;border-bottom:1px solid var(--sidebar-border)}
+    .sb-brand-name{font-family:'Cinzel',serif;font-size:13.5px;font-weight:600;color:#fff;letter-spacing:.04em;line-height:1.3;text-decoration:none;display:block}
+    .sb-brand-name span{color:var(--gold);display:block;margin-top:1px}
+    .sb-brand-sub{font-family:'EB Garamond',serif;font-size:11px;font-style:italic;color:rgba(255,255,255,.35);margin-top:8px;line-height:1.5}
+    .sb-group{padding:16px 0 4px;flex:1}
+    .sb-group-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.28em;color:rgba(255,255,255,.25);text-transform:uppercase;padding:0 20px 8px;display:block}
+    .sb-link{display:flex;align-items:center;gap:11px;padding:10px 20px;font-family:'EB Garamond',serif;font-size:15.5px;color:rgba(255,255,255,.62);text-decoration:none;transition:background .18s,color .18s;position:relative}
+    .sb-link::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2.5px;background:var(--gold);border-radius:0 2px 2px 0;transform:scaleY(0);transition:transform .2s}
+    .sb-link:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.9)}
+    .sb-link:hover::before,.sb-link.active::before{transform:scaleY(1)}
+    .sb-link.active{color:var(--gold-light);background:rgba(184,147,90,.1)}
+    .sb-icon{font-size:16px;width:22px;text-align:center;flex-shrink:0;opacity:.85}
+    .sb-divider{height:1px;background:var(--sidebar-border);margin:10px 20px}
+    .sb-footer{padding:16px 20px;border-top:1px solid var(--sidebar-border)}
+    .sb-footer-verse{font-family:'Cormorant Garamond',serif;font-size:12.5px;font-style:italic;color:rgba(255,255,255,.32);line-height:1.65}
+    .sb-footer-ref{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.12em;color:rgba(184,147,90,.5);display:block;margin-top:5px}
+    .main-content{margin-left:var(--sidebar-w);min-width:0}
+    .sb-toggle{display:none;position:fixed;top:12px;left:12px;z-index:450;background:var(--deep);border:1px solid var(--gold);border-radius:6px;padding:8px 10px;cursor:pointer;color:var(--gold);font-size:18px;line-height:1}
+    .sb-overlay{display:none}
+    @media(min-width:769px){header{display:none}}
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%);transition:transform .28s ease;box-shadow:4px 0 24px rgba(0,0,0,.4)}
+      .sidebar.open{transform:translateX(0)}
+      .main-content{margin-left:0}
+      .sb-toggle{display:block}
+      header{display:block;padding-left:52px}
+      .sb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:390}
+      .sb-overlay.open{display:block}
+    }
+@media(max-width:640px){.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
+</style>
+</head>
+<body>
+<div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
+<button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" aria-label="Open menu">&#9776;</button>
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand">
+    <a href="index.html" class="sb-brand-name">Life&rsquo;s Moments<span>God&rsquo;s Word</span></a>
+    <p class="sb-brand-sub">Bible verses for every season of life.</p>
+  </div>
+  <div class="sb-group">
+    <span class="sb-group-label">Explore</span>
+    <a class="sb-link" href="index.html" onclick="closeSidebar()"><span class="sb-icon">&#8962;</span> Home</a>
+    <a class="sb-link" href="index.html#emotions" onclick="closeSidebar()"><span class="sb-icon">&#9825;</span> Emotions</a>
+    <a class="sb-link" href="index.html#situations" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> Situations</a>
+    <a class="sb-link" href="index.html#topics" onclick="closeSidebar()"><span class="sb-icon">&#128214;</span> Topics</a>
+    <a class="sb-link" href="index.html#seniors" onclick="closeSidebar()"><span class="sb-icon">&#10010;</span> Seniors</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">My Journey</span>
+    <a class="sb-link" href="index.html#gallery" onclick="closeSidebar()"><span class="sb-icon">&#128247;</span> Gallery</a>
+    <a class="sb-link" href="index.html#ai-summary" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> AI Search</a>
+    <a class="sb-link" href="index.html#living-word" onclick="closeSidebar()"><span class="sb-icon">&#127908;</span> Living the Word</a>
+    <a class="sb-link" href="index.html#fellowship" onclick="closeSidebar()"><span class="sb-icon">&#128172;</span> Fellowship Corner</a>
+    <div class="sb-divider"></div>
+    <span class="sb-group-label">More</span>
+    <a class="sb-link" href="devotion.html" onclick="closeSidebar()"><span class="sb-icon">&#9998;</span> Devotion</a>
+    <a class="sb-link active" href="prayer.html" onclick="closeSidebar()"><span class="sb-icon">&#10013;</span> Prayer</a>
+    <a class="sb-link" href="comfort.html" onclick="closeSidebar()"><span class="sb-icon">&#10047;</span> Comfort</a>
+  </div>
+  <div class="sb-footer">
+    <p class="sb-footer-verse">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo;</p>
+    <span class="sb-footer-ref">Psalm 119:105</span>
+  </div>
+</aside>
+<div class="main-content">
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Life&rsquo;s Moments, <span>God&rsquo;s Word</span></a>
+    <nav><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#emotions">Emotions</a></li>
+      <li><a href="index.html#situations">Situations</a></li>
+      <li><a href="index.html#topics">Topics</a></li>
+      <li><a href="index.html#living-word">Living the Word</a></li>
+      <li><a href="index.html#fellowship">Fellowship Corner</a></li>
+      <li><a href="devotion.html">Devotion</a></li>
+      <li><a href="prayer.html">Prayer</a></li>
+      <li><a href="comfort.html">Comfort</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="hero-badge">&#10022; Prayers for Every Need &#10022;</p>
+  <h1>Speak to God<br><em>in Every Moment</em></h1>
+  <p class="hero-sub">Guided prayers rooted in Scripture &mdash; for illness, grief, fear, thanksgiving, and daily life.</p>
+</section>
+
+<div class="wrap">
+
+  <!-- BANNER VERSE -->
+  <div class="prayer-banner">
+    <p class="section-lbl">&#10022; Foundation Verse &#10022;</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3.5vw,34px);font-style:italic;color:#fff;line-height:1.5;margin-bottom:18px">&ldquo;Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.&rdquo;</p>
+    <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v1k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v1e')">ESV</button></div><div class="dv-content active" id="v1k"><p class="vt">&ldquo;Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.&rdquo;</p><cite>Philippians 4:6–7</cite></div><div class="dv-content" id="v1e" style="display:none"><p class="vt">&ldquo;Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God. And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.&rdquo;</p><cite>Philippians 4:6–7 (ESV)</cite></div></div>
+  </div>
+
+  <!-- LORD'S PRAYER -->
+  <div class="lords-prayer">
+    <h3>&#10022; The Lord&rsquo;s Prayer &#10022;</h3>
+    <p>&ldquo;Our Father which art in heaven, Hallowed be thy name. Thy kingdom come, Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we forgive our debtors. And lead us not into temptation, but deliver us from evil.&rdquo;</p>
+    <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v2k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v2e')">ESV</button></div><div class="dv-content active" id="v2k"><p class="vt">&ldquo;Our Father which art in heaven, Hallowed be thy name. Thy kingdom come, Thy will be done in earth, as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we forgive our debtors. And lead us not into temptation, but deliver us from evil.&rdquo;</p><cite>Matthew 6:9–13</cite></div><div class="dv-content" id="v2e" style="display:none"><p class="vt">&ldquo;Our Father in heaven, hallowed be your name. Your kingdom come, your will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from evil.&rdquo;</p><cite>Matthew 6:9–13 (ESV)</cite></div></div>
+  </div>
+
+  <!-- PRAYER CARDS -->
+  <p class="section-lbl">Guided Prayers</p>
+  <h2 class="section-title">Prayers for Every Situation</h2>
+  <p class="section-intro">Each prayer is rooted in Scripture. Read it aloud, or let it guide your own words to God.</p>
+
+  <div class="prayer-grid">
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Morning</p>
+        <h3>A Prayer to Begin the Day</h3>
+      </div>
+      <div class="pc-body">
+        <p>Before the day fills with noise, offer it back to God. Ask Him to guide your steps and guard your words.</p>
+        <p class="pc-prayer">&ldquo;Lord, this day is a gift I did not earn. Before it fills with demands, I offer it back to You. Guide my steps. Guard my words. Let everything I do today be done for Your glory. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v3k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v3e')">ESV</button></div><div class="dv-content active" id="v3k"><p class="vt">&ldquo;This is the day which the LORD hath made; we will rejoice and be glad in it.&rdquo;</p><cite>Psalm 118:24</cite></div><div class="dv-content" id="v3e" style="display:none"><p class="vt">&ldquo;This is the day that the Lord has made; let us rejoice and be glad in it.&rdquo;</p><cite>Psalm 118:24 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Illness</p>
+        <h3>Prayer for Healing & Strength</h3>
+      </div>
+      <div class="pc-body">
+        <p>When sickness weakens the body, God&rsquo;s grace sustains the spirit. Bring your illness honestly before Him.</p>
+        <p class="pc-prayer">&ldquo;Father, my body is weak and I am tired. But You are the Lord who sustains me. Be my strength when I have none. Whether You restore my health or carry me through, I trust You. Your grace is sufficient for me today. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v4k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v4e')">ESV</button></div><div class="dv-content active" id="v4k"><p class="vt">&ldquo;The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness.&rdquo;</p><cite>Psalm 41:3</cite></div><div class="dv-content" id="v4e" style="display:none"><p class="vt">&ldquo;The Lord sustains him on his sickbed; in his illness you restore him to full health.&rdquo;</p><cite>Psalm 41:3 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Grief</p>
+        <h3>Prayer in a Season of Loss</h3>
+      </div>
+      <div class="pc-body">
+        <p>Grief is one of the most honest places we can stand before God. He is near to the brokenhearted.</p>
+        <p class="pc-prayer">&ldquo;Lord, I am broken. I did not know pain could be this heavy. But You said You are near to those whose hearts are crushed &mdash; so I come to You now. Hold me when I cannot hold on. Remind me that weeping endures for a night, but joy comes in the morning. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v5k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v5e')">ESV</button></div><div class="dv-content active" id="v5k"><p class="vt">&ldquo;The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.&rdquo;</p><cite>Psalm 34:18</cite></div><div class="dv-content" id="v5e" style="display:none"><p class="vt">&ldquo;The Lord is near to the brokenhearted and saves the crushed in spirit.&rdquo;</p><cite>Psalm 34:18 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Fear & Anxiety</p>
+        <h3>Prayer Against Fear</h3>
+      </div>
+      <div class="pc-body">
+        <p>When fear overwhelms, this prayer anchors the heart in God&rsquo;s promise to be with us.</p>
+        <p class="pc-prayer">&ldquo;God, I am afraid. I know You said &lsquo;fear not&rsquo; &mdash; but I need Your help to believe it. I cast this anxiety on You. Replace my fear with Your peace that passes all understanding. Guard my heart. Guard my mind. Be with me now. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v6k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v6e')">ESV</button></div><div class="dv-content active" id="v6k"><p class="vt">&ldquo;Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee.&rdquo;</p><cite>Isaiah 41:10</cite></div><div class="dv-content" id="v6e" style="display:none"><p class="vt">&ldquo;Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you.&rdquo;</p><cite>Isaiah 41:10 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Forgiveness</p>
+        <h3>A Prayer of Confession</h3>
+      </div>
+      <div class="pc-body">
+        <p>God promises to forgive every sin that is brought honestly to Him. Nothing is too great for His grace.</p>
+        <p class="pc-prayer">&ldquo;Father, I come with the weight of something I have done &mdash; or something done to me that I am struggling to release. You are faithful and just to forgive. Cleanse me. And give me the grace to extend that forgiveness to others, as You have forgiven me. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v7k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v7e')">ESV</button></div><div class="dv-content active" id="v7k"><p class="vt">&ldquo;If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.&rdquo;</p><cite>1 John 1:9</cite></div><div class="dv-content" id="v7e" style="display:none"><p class="vt">&ldquo;If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.&rdquo;</p><cite>1 John 1:9 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Guidance & Decisions</p>
+        <h3>Prayer at a Crossroads</h3>
+      </div>
+      <div class="pc-body">
+        <p>When facing an important decision, surrender your understanding to God and ask for His direction.</p>
+        <p class="pc-prayer">&ldquo;Lord, I am at a crossroads and I do not know the way forward. I lay down my own plans, my own reasoning, my own will. I ask You to direct my path &mdash; clearly, unmistakably. Give me wisdom. Give me ears to hear Your voice. I choose to trust You. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v8k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v8e')">ESV</button></div><div class="dv-content active" id="v8k"><p class="vt">&ldquo;Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.&rdquo;</p><cite>Proverbs 3:5–6</cite></div><div class="dv-content" id="v8e" style="display:none"><p class="vt">&ldquo;Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.&rdquo;</p><cite>Proverbs 3:5–6 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">For Seniors</p>
+        <h3>A Prayer for the Later Years</h3>
+      </div>
+      <div class="pc-body">
+        <p>For those in the autumn of life &mdash; God&rsquo;s promise does not expire with age.</p>
+        <p class="pc-prayer">&ldquo;Father, the years have brought changes I did not always choose. But You said that even to old age, You will carry me. I am not forgotten. I am not finished. Still use me. Still fill me with Your presence. Let my later years be full of Your faithfulness. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v9k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v9e')">ESV</button></div><div class="dv-content active" id="v9k"><p class="vt">&ldquo;And even to your old age I am he; and even to hoar hairs will I carry you: I have made, and I will bear; even I will carry, and will deliver you.&rdquo;</p><cite>Isaiah 46:4</cite></div><div class="dv-content" id="v9e" style="display:none"><p class="vt">&ldquo;Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.&rdquo;</p><cite>Isaiah 46:4 (ESV)</cite></div></div>
+      </div>
+    </div>
+
+    
+    <div class="pc">
+      <div class="pc-head">
+        <p class="pc-tag">Thanksgiving</p>
+        <h3>A Prayer of Gratitude</h3>
+      </div>
+      <div class="pc-body">
+        <p>Gratitude reshapes the heart. This prayer turns our attention from what we lack to what God has given.</p>
+        <p class="pc-prayer">&ldquo;Lord, today I choose gratitude. Not because everything is easy &mdash; but because You are good, and Your mercies are new every morning. Thank You for life. For breath. For grace. For the people You have placed in my path. For a future and a hope. I worship You. Amen.&rdquo;</p>
+        <div class="dv-wrap"><div class="dv-tabs"><button class="dv-tab active" onclick="switchTab(this,'v10k')">KJV</button><button class="dv-tab" onclick="switchTab(this,'v10e')">ESV</button></div><div class="dv-content active" id="v10k"><p class="vt">&ldquo;This is the day which the LORD hath made; we will rejoice and be glad in it.&rdquo;</p><cite>Psalm 118:24</cite></div><div class="dv-content" id="v10e" style="display:none"><p class="vt">&ldquo;This is the day that the Lord has made; let us rejoice and be glad in it.&rdquo;</p><cite>Psalm 118:24 (ESV)</cite></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTS GUIDE -->
+  <div style="background:var(--gold-pale);border:1px solid var(--border);border-radius:8px;padding:32px 36px;margin-top:16px">
+    <p class="section-lbl" style="text-align:left;margin-bottom:14px">How to Pray</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--deep);margin-bottom:20px">The A.C.T.S. Method</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px">
+      <div><p style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:8px">A &mdash; ADORATION</p><p style="font-size:15px;color:var(--text-soft);line-height:1.7">Begin by praising God for who He is &mdash; not for what He&rsquo;s done, but simply for His nature and character.</p></div>
+      <div><p style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:8px">C &mdash; CONFESSION</p><p style="font-size:15px;color:var(--text-soft);line-height:1.7">Bring your sins honestly before God. He already knows them &mdash; confession is for your freedom, not His information.</p></div>
+      <div><p style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:8px">T &mdash; THANKSGIVING</p><p style="font-size:15px;color:var(--text-soft);line-height:1.7">Thank God for specific blessings. Let gratitude redirect your heart from what you lack to what you have been given.</p></div>
+      <div><p style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:.1em;margin-bottom:8px">S &mdash; SUPPLICATION</p><p style="font-size:15px;color:var(--text-soft);line-height:1.7">Now bring your requests &mdash; for yourself and for others. God invites you to ask. He loves to give.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">Life&rsquo;s Moments, God&rsquo;s Word</span>
+  <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#emotions">Emotions</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#gallery">Gallery</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#ai-summary">AI Search</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#living-word">Living the Word</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#fellowship">Fellowship Corner</a> &nbsp;&middot;&nbsp;
+    <a href="devotion.html">Devotion</a> &nbsp;&middot;&nbsp;
+    <a href="prayer.html">Prayer</a> &nbsp;&middot;&nbsp;
+    <a href="comfort.html">Comfort</a></p>
+  <p class="footer-esv">All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.</p>
+  <p style="margin-top:10px;font-size:13px;color:rgba(255,255,255,.58);font-style:normal;">Created by Tea Park</p>
+  <p style="margin-top:16px;font-size:12px">&copy; 2026 Life&rsquo;s Moments, God&rsquo;s Word. All Rights Reserved.</p>
+</footer>
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sb-overlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('open');
+}
+
+function switchTab(btn, contentId) {
+  var tabs = btn.parentNode;
+  var wrapper = tabs.parentNode;
+  var btns = tabs.querySelectorAll('button');
+  btns.forEach(function(b){ b.classList.remove('active','on'); });
+  var children = wrapper.children;
+  for(var i=0;i<children.length;i++){
+    var el=children[i];
+    if(el.classList&&(el.classList.contains('dv-content')||el.classList.contains('dv-pane'))){
+      el.style.display='none';
+      el.classList.remove('active','on');
+    }
+  }
+  btn.classList.add('active');
+  var target=document.getElementById(contentId);
+  if(target){ target.style.display='block'; target.classList.add('active'); }
+}
+function dst(b,p){switchTab(b,p);}
+
+</script>
+</div>
+</body>
+</html>
