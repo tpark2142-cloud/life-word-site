@@ -18,6 +18,10 @@
 
 <!-- Hamburger (mobile only) -->
 <button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" aria-label="Open menu">&#9776;</button>
+<div class="lang-switcher" aria-label="Language switcher">
+  <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+  <button class="lang-btn" type="button" data-lang-btn="ko">한국어</button>
+</div>
 
 <!-- LEFT SIDEBAR -->
 <aside class="sidebar" id="sidebar">
@@ -46,7 +50,7 @@
       <span class="sb-icon">&#128214;</span> Topics
     </a>
     <a class="sb-link" href="#seniors">
-      <span class="sb-icon">&#10010;</span> Seniors
+      <span class="sb-icon">&#10010;</span> Twilight Season
     </a>
 
     <div class="sb-divider"></div>
@@ -79,8 +83,8 @@
 
   <!-- Sidebar footer verse -->
   <div class="sb-footer">
-    <p class="sb-footer-verse">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo;</p>
-    <span class="sb-footer-ref">Psalm 119:105</span>
+    <p class="sb-footer-verse">주의 말씀은 내 발에 등이요 내 길에 빛이니이다.</p>
+    <span class="sb-footer-ref">시편 119:105</span>
   </div>
 </aside>
 
@@ -111,7 +115,7 @@
       <li><a href="#emotions">Emotions</a></li>
       <li><a href="#situations">Situations</a></li>
       <li><a href="#topics">Topics</a></li>
-      <li><a href="#seniors">Seniors</a></li>
+      <li><a href="#seniors">Twilight Season</a></li>
       <li><a href="devotion.html">Devotion</a></li>
       <li><a href="prayer.html">Prayer</a></li>
       <li><a href="comfort.html">Comfort</a></li>
@@ -655,7 +659,7 @@
 <div class="senior-section" id="seniors">
   <div class="senior-inner">
     <p class="s-lbl" style="text-align:center;">For Our Beloved Seniors</p>
-    <h2 class="s-title">Scripture for Every Season of Aging</h2>
+    <h2 class="s-title">Scripture for the Twilight Season of Life</h2>
     <div class="senior-verse-box">
       <p>&ldquo;Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.&rdquo;</p>
       <cite>Isaiah 46:4 (ESV)</cite>
@@ -678,7 +682,7 @@
   <div class="about-grid">
     <div class="about-card"><h3>Why We Exist</h3><p>Many people do not know where to begin in the Bible when they are hurting, afraid, grieving, or searching for hope. This website meets you exactly where you are &mdash; with the Word of God.</p></div>
     <div class="about-card"><h3>Bible Translation</h3><p>All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.</p></div>
-    <div class="about-card"><h3>Created By</h3><p>Tea Park B.A.<br>English Language & Literature<br>Interpreter</p><p>Serving the Alberta Provincial Court and WCB with professional Korean interpretation. 27yrs Agent Allstate Insurance Co of Canada</p></div>
+    <div class="about-card"><h3>Created By</h3><p>Tea Park, B.A.<br>Eng Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court &amp; WCB<br>NAIT</p><p>27yrs Agent Allstate Ins Co of Canada</p></div>
     <div class="about-card"><h3>Faith &amp; Community</h3><p>Dedicated to Church Ministry since 1970 and a proud Recreation Volunteer at St. Joseph&rsquo;s Auxiliary Hospital.</p></div>
   </div>
 </section>
@@ -709,12 +713,15 @@
   <div class="ai-inner">
     <p class="s-lbl">Helpful Tools</p>
     <h2 class="s-title">AI Search</h2>
-    <p class="s-intro">Open the dropdown to see recommended AI search tools for everyday questions, study, and online research. Each search opens in a new tab so your Home page stays open.</p>
+    <p class="s-intro">Explore recommended AI search tools for everyday questions, study, and online research. Each link opens in a new tab so your Home page remains easy to return to.</p>
     <div class="ai-card">
       <div class="ai-card-head">
+        <div class="ai-head-icon">
+          <img src="assets/img/ai-search-icon.jpg" alt="AI Search icon">
+        </div>
         <div class="ai-head-text">
-          <h3>Recommended AI Search Engines</h3>
-          <p>Simple options to help visitors ask questions, compare answers, and then come back to your curated Bible-centered resources.</p>
+          <h3>Recommended AI Search Tools</h3>
+          <p>Helpful tools for asking questions, comparing answers, and returning again to your Bible-centered resources.</p>
         </div>
       </div>
       <div class="ai-card-body">
@@ -722,27 +729,35 @@
           <summary class="ai-submit" style="list-style:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;">
             Open AI Search Menu
           </summary>
-          <div class="ai-result-label" style="margin-top:18px;">Top Free Picks</div>
+          <div class="ai-result-label" style="margin-top:18px;">Top Picks</div>
           <div class="ai-result-verses" style="display:block;padding-top:10px;">
             <div class="ai-verse-card" style="margin-bottom:12px;">
-              <div class="ai-verse-topic"><a href="https://chatgpt.com/search" target="_blank" rel="noopener noreferrer">1. ChatGPT Search</a></div>
-              <p class="ai-verse-text">Best for natural conversation, follow-up questions, and quick explanations.</p>
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">1. ChatGPT Search</a></div>
+              <p class="ai-verse-text ai-tool-desc">Helpful for natural-language searching, quick summaries, and easy follow-up questions in one place.</p>
             </div>
             <div class="ai-verse-card" style="margin-bottom:12px;">
-              <div class="ai-verse-topic"><a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">2. Perplexity</a></div>
-              <p class="ai-verse-text">Strong for research-style searching with clear source links.</p>
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">2. Perplexity</a></div>
+              <p class="ai-verse-text ai-tool-desc">Useful for research-style searching with clear source links and organized answers.</p>
             </div>
             <div class="ai-verse-card" style="margin-bottom:12px;">
-              <div class="ai-verse-topic"><a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">3. Google AI Mode</a></div>
-              <p class="ai-verse-text">Useful if you want Google-style search together with AI summaries.</p>
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">3. Google Gemini</a></div>
+              <p class="ai-verse-text ai-tool-desc">Good for broad question-and-answer searching with quick summaries and practical next steps.</p>
             </div>
             <div class="ai-verse-card" style="margin-bottom:12px;">
-              <div class="ai-verse-topic"><a href="https://www.bing.com/copilotsearch" target="_blank" rel="noopener noreferrer">4. Bing Copilot Search</a></div>
-              <p class="ai-verse-text">A good free option if you like Microsoft tools and a classic search layout.</p>
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://www.bing.com/copilotsearch" target="_blank" rel="noopener noreferrer">4. Bing Copilot Search</a></div>
+              <p class="ai-verse-text ai-tool-desc">A helpful option if you prefer Microsoft tools and a familiar search layout.</p>
+            </div>
+            <div class="ai-verse-card" style="margin-bottom:12px;">
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://search.brave.com/" target="_blank" rel="noopener noreferrer">5. Brave Search / Ask Brave</a></div>
+              <p class="ai-verse-text ai-tool-desc">A privacy-focused option that combines AI-style answers with standard search results.</p>
+            </div>
+            <div class="ai-verse-card" style="margin-bottom:12px;">
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://www.genspark.ai/" target="_blank" rel="noopener noreferrer">6. Genspark</a></div>
+              <p class="ai-verse-text ai-tool-desc">A multi-tool AI workspace that can combine chat, search, and content tools in one place.</p>
             </div>
             <div class="ai-verse-card">
-              <div class="ai-verse-topic"><a href="https://search.brave.com/" target="_blank" rel="noopener noreferrer">5. Brave Search / Ask Brave</a></div>
-              <p class="ai-verse-text">A privacy-focused option with AI answers and standard search results.</p>
+              <div class="ai-verse-topic"><a class="ai-tool-name" href="https://felo.ai/" target="_blank" rel="noopener noreferrer">7. Felo AI</a></div>
+              <p class="ai-verse-text ai-tool-desc">A useful AI search option for fast summaries, source-based browsing, and multilingual research.</p>
             </div>
           </div>
         </details>
@@ -795,7 +810,7 @@
     <a href="#emotions">Emotions</a> &nbsp;&middot;&nbsp;
     <a href="#situations">Situations</a> &nbsp;&middot;&nbsp;
     <a href="#topics">Topics</a> &nbsp;&middot;&nbsp;
-    <a href="#seniors">Seniors</a> &nbsp;&middot;&nbsp;
+    <a href="#seniors">Twilight Season</a> &nbsp;&middot;&nbsp;
     <a href="#gallery">Gallery</a> &nbsp;&middot;&nbsp;
     <a href="#ai-summary">AI Search</a> &nbsp;&middot;&nbsp;
     <a href="#living-word">Living the Word</a> &nbsp;&middot;&nbsp;
@@ -813,6 +828,230 @@
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
+<script>
+window.applyPageLanguage=function(lang){
+  const q=(selector)=>document.querySelector(selector);
+  const qa=(selector)=>Array.from(document.querySelectorAll(selector));
+  const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};
+  const setHTML=(selector,value)=>{const el=q(selector); if(el) el.innerHTML=value;};
+  const setPlaceholder=(selector,value)=>{const el=q(selector); if(el) el.setAttribute('placeholder',value);};
+  const setList=(selector,values)=>{qa(selector).forEach((el,index)=>{ if(values[index]!==undefined) el.textContent=values[index]; });};
+  const setSidebarLinks=(values)=>{
+    qa('.sidebar .sb-link').forEach((link,index)=>{
+      if(values[index]===undefined) return;
+      const icon=link.querySelector('.sb-icon');
+      Array.from(link.childNodes).forEach((node)=>{
+        if(node.nodeType===Node.TEXT_NODE) node.remove();
+      });
+      if(icon){
+        link.appendChild(document.createTextNode(' ' + values[index]));
+      } else {
+        link.textContent=values[index];
+      }
+    });
+  };
+
+  const text=lang==='ko'
+    ? {
+        sidebarGroups:['성경 검색','갤러리','더 보기'],
+        sidebarLinks:['성경 검색','감정','상황','주제','황혼의 계절','갤러리','AI 검색','말씀대로 살기','펠로우십 코너','묵상','기도','위로'],
+        sidebarVerse:'“주의 말씀은 내 발에 등이요 내 길에 빛이니이다.”',
+        sidebarRef:'시편 119:105',
+        nav:['감정','상황','주제','황혼 시절','묵상','기도','위로'],
+        heroEyebrow:'✦ 삶의 모든 계절을 위한 성경 말씀 ✦',
+        pageTitle:'삶의 순간들 하나님의 말씀 | 삶의 모든 계절을 위한 성경 말씀',
+        heroTitle:'삶의 순간들<br><em>하나님의 말씀</em>',
+        heroLead:'어떤 감정이든, 어떤 고민이든, 어떤 삶의 상황이든 검색해 보세요. 지금 당신의 마음에 꼭 필요한 성경 구절을 찾도록 도와드립니다.',
+        heroPlaceholder:'검색: grief, fear, sick, hope, forgive, marriage…',
+        heroButton:'성경 검색',
+        chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
+        emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
+        emotionCardTitles:['기쁨','슬픔','평안','소망','두려움','불안','외로움','분노','감사','죄책감과 후회','사랑','낙심'],
+        emotionHints:['“주 안에서 항상 기뻐하라 내가 다시 말하노니 기뻐하라.”','“여호와는 마음이 상한 자에게 가까이 하시고.”','“하나님의 평강이 너희 마음을 지키시리라.”','“소망의 하나님이 모든 기쁨과 평강을 너희에게 충만하게 하시기를.”','“두려워하지 말라 내가 너와 함께함이니라.”','“너희 염려를 다 주께 맡기라 이는 그가 너희를 돌보심이라.”','“내가 결코 너를 떠나지 아니하고 버리지 아니하리라.”','“분을 내어도 죄를 짓지 말며 해가 지도록 분을 품지 말라.”','“범사에 감사하라.”','“만일 우리가 우리 죄를 자백하면 그는 미쁘시고 의로우사 사하시며.”','“하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니.”','“오직 여호와를 앙망하는 자는 새 힘을 얻으리니.”'],
+        emotionTap:'전체 말씀 보기',
+        votd:['✦ 오늘의 말씀 ✦','“내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라.”','빌립보서 4:13 (ESV)','하나님은 우리 혼자 짐을 지고 가라고 하지 않으십니다. 우리의 연약함 가운데서도 주님의 힘은 온전하게 나타나며, 하루의 걸음마다 꼭 필요한 은혜를 공급해 주십니다.'],
+        situations:['현실의 삶, 실제의 성경','상황별 검색','병상, 결혼, 재정적 걱정, 상실과 같은 삶의 현실 속에서 맞는 성경 구절을 만나보세요.'],
+        situationTags:['질병과 건강','상실과 슬픔','관계','고립','힘','지혜','믿음','재정 걱정','장례의 위로'],
+        situationTitles:['치유가 필요할 때','슬픔 가운데 있을 때','용서가 필요할 때','혼자라고 느껴질 때','감당하기 벅찰 때','인도하심이 필요할 때','믿음이 약해질 때','돈이 무거운 짐처럼 느껴질 때','슬픔과 장례를 위한 말씀'],
+        situationDescs:['질병과 만성 통증 가운데서도 몸의 연약함 속에 임하시는 하나님의 평안을 위한 말씀입니다.','애도와 장례의 시간 속에서도 부활의 산 소망을 붙들도록 돕는 말씀입니다.','쓴 마음을 내려놓고 용서를 통해 자유를 누리도록 이끄는 말씀입니다.','지금 느끼는 것보다 더 가까이 계신 하나님의 임재를 기억하게 하는 말씀입니다.','정서적 탈진과 번아웃 속에서 하나님의 돌보심 안에 쉼을 찾도록 돕는 말씀입니다.','결정의 갈림길에서 하나님의 인도하심을 신뢰하도록 돕는 말씀입니다.','의심의 계절 속에서도 하나님의 넉넉한 은혜를 의지하도록 돕는 말씀입니다.','모든 필요를 아시는 하나님을 바라보며 먼저 그의 나라를 구하도록 이끄는 말씀입니다.','함께 슬퍼하고 기억하는 이들을 위한 영원한 소망의 말씀입니다.'],
+        promise:['붙드는 약속의 말씀','먼저 그의 나라를 구하라','“그런즉 너희는 먼저 그의 나라와 그의 의를 구하라. 그리하면 이 모든 것을 너희에게 더하시리라.”','마태복음 6:33 (ESV)','이 말씀은 50년이 넘는 시간 동안 Tea Park의 삶을 붙들어 준 말씀입니다. 이민의 시간에도, 교회 개척에도, 사역의 자리에도, 중요한 결정을 내릴 때마다 언제나 하나님의 나라가 먼저였습니다. 늘 그렇습니다.'],
+        topics:['성경 주제 검색','모든 성경 주제 보기','삶의 주제를 눌러 펼치고 KJV/ESV 말씀을 함께 살펴보세요.'],
+        topicColHeads:['감정','삶의 문제','영적 주제'],
+        topicButtons:['기쁨과 즐거움','분노와 답답함','슬픔','두려움','불안','외로움','평안','감사와 고마움','사랑과 긍휼','죄책감과 후회','낙심','자족과 만족','고난과 시련','질병과 아픔','죽음과 임종','용서','결혼과 가정','양육과 자녀','일과 부르심','재정과 돈 걱정','실패와 실망','결정과 지혜','노년과 시니어의 삶','새로운 시작과 변화','믿음과 신뢰','소망','기도와 중보','은혜와 자비','구원과 속량','순종과 내려놓음','거룩함과 성화','성령님','예배와 찬양','전도와 증언','천국과 영원','하나님의 임재와 위로'],
+        topicNotes:['참된 기쁨은 상황이 아니라 하나님의 임재 안에 뿌리를 둡니다.','분노가 죄가 되기 전에 하나님께 맡겨질 때 다스려집니다.','하나님은 상한 마음에 가까이 오시며 우리의 눈물을 외면하지 않으십니다.','하나님이 우리의 도움이심을 기억할 때 두려움은 힘을 잃습니다.','불안은 우리를 돌보시는 하나님께 염려를 맡기라는 초대입니다.','하나님의 임재는 거리와 질병과 고립으로 제한되지 않습니다.','하나님이 주시는 평안은 폭풍 속에서도 마음을 지켜 줍니다.','감사는 세상을 바라보는 시선을 새롭게 빚어 가는 훈련입니다.','하나님의 사랑은 모든 사랑의 기초이며, 그 사랑이 먼저 우리에게 왔습니다.','죄책감은 우리를 십자가로 이끌며, 거기에서 용서는 완전해집니다.','가장 낮은 자리에서도 하나님은 주를 기다리는 자에게 새 힘을 주십니다.','자족은 타고나는 성격이 아니라 배워 가는 영적 훈련입니다.','고난은 하나님의 손 안에서 헛되지 않으며, 하나님은 그것을 통해 일하십니다.','병 가운데서도 하나님은 멀리 계시지 않고 붙드시며 함께하십니다.','믿는 이에게 죽음은 끝이 아니라 하나님께로 들어가는 문입니다.','용서는 잘못을 붙들고 살아가는 무거운 짐에서 우리를 놓아줍니다.','결혼은 그리스도께서 교회를 사랑하신 자기희생적 사랑을 비춥니다.','자녀는 하나님께서 주신 기업이며, 양육은 그들을 하나님께 인도하는 일입니다.','일은 우리가 날마다 하나님을 섬기고 영화롭게 하는 자리 중 하나입니다.','하나님은 먼저 그의 나라를 구하라고 부르시며 필요한 공급을 약속하십니다.','실패는 하나님의 이야기에서 마지막 결론이 아닙니다. 하나님은 넘어지는 자를 붙드십니다.','갈림길마다 자신의 명철만 의지하지 말고 멈추어 하나님을 바라보십시오.','하나님은 모든 계절을 지나도록 자기 백성을 품으시며, 특히 노년의 때에도 함께하십니다.','당신이 들어서는 새로운 장에도 하나님은 이미 먼저 가 계십니다.','믿음은 길이 보이지 않아도 하나님을 붙드는 신뢰입니다.','성경적 소망은 하나님의 약속에 뿌리내린 확신 있는 기다림입니다.','기도는 가장 단순하면서도 가장 깊은 믿음의 행위입니다.','은혜는 받을 자격이 없는 우리에게 하나님이 베푸시는 선물이며 믿음의 기초입니다.','구원은 전적으로 하나님의 선물이며 오직 그리스도를 믿는 믿음으로 받습니다.','순종은 하나님의 사랑으로 변화된 마음에서 자연스럽게 흘러나오는 열매입니다.','거룩함은 하나님께 구별되어 날마다 그리스도를 닮아 가는 삶입니다.','성령님은 우리 안에 거하시는 하나님으로서 인도하시고 능력을 주십니다.','예배는 하나님의 영광 앞에 삶 전체를 드리는 자세입니다.','복음을 전하는 일은 우리가 받은 것을 다른 이에게 나누는 기쁜 특권입니다.','천국은 실제이며, 하나님께서 자기 백성과 영원히 함께하시는 곳입니다.','하나님의 임재는 건물에 제한되지 않으며 언제나 우리 가까이에 있습니다.'],
+        topicCta:'모든 성경 주제 찾기 →',
+        seniors:['우리의 사랑하는 시니어를 위하여','황혼의 계절을 위한 말씀','“너희가 늙을 때에도 내가 그리하겠고 백발이 될 때에도 내가 너희를 품을 것이라. 내가 지었은즉 내가 업을 것이요 내가 품고 구하여 내리라.”','이사야 46:4 (ESV)','질병과 함께 살아갈 때','“여호와는 나의 목자시니 내게 부족함이 없으리로다. 그가 나를 푸른 초장에 누이시며.”','시편 23:1-2 (ESV)','긴 생명의 선물','“백발은 영화의 면류관이라 공의로운 길에서 얻으리라.”','잠언 16:31 (ESV)','삶의 끝에서 붙드는 소망','“이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.”','빌립보서 1:21 (ESV)','날마다 드리는 기도와 쉼','“아무 것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희 구할 것을 하나님께 아뢰라.”','빌립보서 4:6 (ESV)'],
+        about:['우리의 비젼','Created By','Tea Park, B.A.<br>Eng Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court &amp; WCB<br>NAIT','27yrs Agent Allstate Ins Co of Canada'],
+        gallery:['함께한 순간들','갤러리','창조와 역사 속에서 믿음이 깊어졌던 장소들을 담은 기록입니다.','아직 게시된 갤러리 사진이 없습니다.'],
+        ai:['도움이 되는 도구','AI 검색','일상 질문, 공부, 온라인 리서치를 위해 추천되는 AI 검색 도구를 살펴보세요. 각 링크는 새 탭에서 열리므로 홈 페이지로 쉽게 돌아올 수 있습니다.','추천 AI 검색 도구','질문을 하고 답을 비교한 뒤, 다시 성경 중심의 자료로 돌아오도록 돕는 유용한 도구들입니다.','AI 검색 메뉴 열기','추천 목록'],
+        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Bing Copilot Search','5. Brave Search / Ask Brave','6. Genspark','7. Felo AI'],
+        aiToolDescs:['자연어 질문, 빠른 요약, 이어지는 질문을 한곳에서 하기에 유용합니다.','출처가 보이는 리서치형 검색과 정리된 답변에 유용합니다.','넓은 범위의 질문에 대해 빠른 요약과 다음 단계를 얻기에 좋습니다.','마이크로소프트 도구와 익숙한 검색 화면을 선호할 때 유용합니다.','AI 스타일 답변과 일반 검색 결과를 함께 보는 프라이버시 중심 옵션입니다.','채팅, 검색, 콘텐츠 도구를 한곳에서 함께 쓰기 좋은 올인원 AI 워크스페이스입니다.','빠른 요약, 출처 기반 탐색, 다국어 리서치에 유용한 AI 검색 도구입니다.'],
+        living:['원본 가르침 콘텐츠','말씀대로 살기','팟캐스트, 글, 파워포인트 강의, 묵상 글을 통해 믿음 안에서 계속 자라가도록 돕는 공개 자료실입니다.','아직 게시된 Living the Word 글이 없습니다.'],
+        fellowship:['공동체','펠로우십 코너','격려, 간증, 기도 제목, 하나님께서 어떻게 만나 주셨는지에 대한 생각을 남길 수 있는 간단한 방명록입니다.','메모 남기기','이름','메시지','예: 은혜를 많이 받았습니다. 감사합니다.','메시지 남기기','아직 방명록 메시지가 없습니다. 첫 번째 메시지를 남겨 보세요.'],
+        footerLinks:['감정','상황','주제','황혼의 계절','갤러리','AI 검색','말씀대로 살기','펠로우십 코너','묵상','기도','위로'],
+        footerEsv:'모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고, 읽기 쉽고 품위 있는 번역으로 널리 사용됩니다.',
+        createdBy:'Created by Tea Park',
+        copyright:'© 2026 Life’s Moments, God’s Word. All Rights Reserved.'
+      }
+    : {
+        sidebarGroups:['Bible Search','Gallery','More'],
+        sidebarLinks:['Search Verses','Emotions','Situations','Topics','Twilight Season','Gallery','AI Search','Living the Word','Fellowship Corner','Devotion','Prayer','Comfort'],
+        sidebarVerse:'“Thy word is a lamp unto my feet, and a light unto my path.”',
+        sidebarRef:'Psalm 119:105',
+        nav:['Emotions','Situations','Topics','Twilight Season','Devotion','Prayer','Comfort'],
+        heroEyebrow:'✦ Bible Verses for Every Season of Life ✦',
+        pageTitle:'Life\'s Moments, God\'s Word | Bible Verses for Every Season',
+        heroTitle:'Life&rsquo;s Moments,<br><em>God&rsquo;s Word</em>',
+        heroLead:'Search any emotion, struggle, or life situation — and find the exact Bible verse that speaks to your heart right now.',
+        heroPlaceholder:'Search: grief, fear, sick, hope, forgive, marriage…',
+        heroButton:'Search Bible',
+        chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
+        emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
+        emotionCardTitles:['Joy','Sorrow','Peace','Hope','Fear','Anxiety','Loneliness','Anger','Gratitude','Guilt & Regret','Love','Discouragement'],
+        emotionHints:['“Rejoice in the Lord always; again I will say, rejoice.”','“The Lord is near to the brokenhearted.”','“The peace of God will guard your hearts.”','“The God of hope fill you with joy and peace.”','“Fear not, for I am with you; I am your God.”','“Cast all your anxieties on him, because he cares.”','“I will never leave you nor forsake you.”','“Be angry and do not sin; do not let the sun go down.”','“Give thanks in all circumstances.”','“If we confess our sins, he is faithful to forgive.”','“God so loved the world that he gave his only Son.”','“They who wait for the Lord shall renew their strength.”'],
+        emotionTap:'Tap for full verses',
+        votd:['✦ Verse of the Day ✦','“I can do all things through him who strengthens me.”','Philippians 4:13 (ESV)','God does not call us to carry our burdens alone. His strength is made perfect in our weakness, and He provides exactly what we need for each day’s journey.'],
+        situations:['Real Life. Real Scripture.','Find by Life Situation','Open a life situation to discover Bible verses that speak into sickness, grief, family, money, and more.'],
+        situationTags:['Illness & Health','Loss & Grief','Relationships','Isolation','Strength','Wisdom','Faith','Financial Worry','Comfort at a Funeral'],
+        situationTitles:['When You Need Healing','When You Are Grieving','When You Need to Forgive','When You Feel Alone','When You Feel Overwhelmed','When You Need Guidance','When Your Faith Is Weak','When Money Is a Burden','Words for Grief & Burial'],
+        situationDescs:['For sickness, chronic pain, and finding God’s peace through the body’s weakness.','For mourning, funerals, and the living hope of resurrection.','For releasing bitterness and finding freedom through forgiveness.','God’s presence is closer than you feel right now.','For emotional exhaustion, burnout, and finding rest in God’s care.','For decisions, crossroads, and trusting God’s direction.','For seasons of doubt and learning to depend on God’s sufficient grace.','God knows your every need. He calls you to seek His kingdom first.','Eternal hope for those gathered to grieve and remember.'],
+        promise:['A Promise to Stand On','Seek First His Kingdom','“But seek first the kingdom of God and his righteousness, and all these things will be added to you.”','Matthew 6:33 (ESV)','This is the verse that has anchored our founder Tea Park’s life for over 50 years — through immigration, church planting, ministry, and every decision that mattered. God’s kingdom first. Always.'],
+        topics:['Bible Topic Search','Browse Every Topic','Open a topic to explore Scripture in both KJV and ESV for the questions people search most often.'],
+        topicColHeads:['Emotions','Life Issues','Spiritual Themes'],
+        topicButtons:['Joy & Delight','Anger & Frustration','Grief','Fear','Anxiety','Loneliness','Peace','Gratitude & Thankfulness','Love & Compassion','Guilt & Regret','Discouragement','Contentment & Satisfaction','Suffering & Trials','Illness & Sickness','Death & Dying','Forgiveness','Marriage & Family','Parenting & Children','Work & Calling','Money & Financial Worry','Failure & Disappointment','Decision-Making & Wisdom','Aging & Senior Life','New Beginnings & Change','Faith & Trust','Hope','Prayer & Intercession','Grace & Mercy','Salvation & Redemption','Obedience & Surrender','Holiness & Sanctification','The Holy Spirit','Worship & Praise','Evangelism & Witness','Heaven & Eternity','God’s Presence & Comfort'],
+        topicNotes:['True joy rests on God’s presence, not our circumstances.','Anger surrendered to God before it becomes sin.','God draws near to the broken and does not ignore our tears.','Fear loses its grip when we remember God is with us as our helper.','Anxiety is an invitation to cast our worries on the God who cares.','God’s presence is not limited by distance, illness, or isolation.','The peace God gives guards the heart within the storm.','Gratitude is a practice that reshapes how we see everything.','God’s love is the foundation of all love — it came to us first.','Guilt points us to the cross — where forgiveness is complete.','When we are at our lowest, God renews those who wait on Him.','Contentment is a learned discipline, not a personality type.','Suffering is not wasted in God’s hands — He works through it.','In sickness, God is not absent. He sustains and is present.','For the believer, death is not the end — it is the doorway to God.','Forgiveness releases you from the burden of carrying the wrong.','Marriage reflects Christ’s own self-giving love for His church.','Children are a heritage from God — parenting points them toward Him.','Work is one of the places we serve and glorify God each day.','God calls us to seek His kingdom first — and promises His provision.','Failure is not final in God’s story. He upholds those who stumble.','At every crossroads, stop leaning on your own understanding.','God carries His people through every season — especially the later years.','God is already in the new chapter you are stepping into.','Faith is trust that holds on even when we cannot see the way.','Biblical hope is confident expectation rooted in God’s promises.','Prayer is the simplest and most profound act of faith.','Grace is God giving us what we do not deserve — the foundation of faith.','Salvation is entirely God’s gift, received through faith in Christ alone.','Obedience is the natural overflow of a heart changed by God’s love.','Holiness is being set apart for God, shaped daily into Christ’s likeness.','The Holy Spirit is God dwelling within us — guiding and empowering.','Worship is the posture of a whole life surrendered to God’s glory.','Sharing the Gospel is a joy — offering to others what we ourselves received.','Heaven is real — where God will dwell with His people forever.','God’s presence is not limited to a building — He is always near.'],
+        topicCta:'Search All Bible Topics →',
+        seniors:['For Our Beloved Seniors','Scripture for the Twilight Season of Life','“Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.”','Isaiah 46:4 (ESV)','Living with Illness','“The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.”','Psalm 23:1-2 (ESV)','The Gift of Long Life','“Gray hair is a crown of glory; it is gained in a righteous life.”','Proverbs 16:31 (ESV)','End-of-Life Hope','“For to me to live is Christ, and to die is gain.”','Philippians 1:21 (ESV)','Daily Prayer & Rest','“Do not be anxious about anything, but in everything by prayer let your requests be made known to God.”','Philippians 4:6 (ESV)'],
+        about:['Our Vision','Created By','Tea Park, B.A.<br>Eng Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court &amp; WCB<br>NAIT','27yrs Agent Allstate Ins Co of Canada'],
+        gallery:['Shared Moments','Gallery','A visual record of places where faith deepened and God’s glory was seen in creation and history.','No gallery photos have been published yet.'],
+        ai:['Helpful Tools','AI Search','Explore recommended AI search tools for everyday questions, study, and online research. Each link opens in a new tab so your Home page remains easy to return to.','Recommended AI Search Tools','Helpful tools for asking questions, comparing answers, and returning again to your Bible-centered resources.','Open AI Search Menu','Top Picks'],
+        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Bing Copilot Search','5. Brave Search / Ask Brave','6. Genspark','7. Felo AI'],
+        aiToolDescs:['Helpful for natural-language searching, quick summaries, and easy follow-up questions in one place.','Useful for research-style searching with clear source links and organized answers.','Good for broad question-and-answer searching with quick summaries and practical next steps.','A helpful option if you prefer Microsoft tools and a familiar search layout.','A privacy-focused option that combines AI-style answers with standard search results.','A multi-tool AI workspace that can combine chat, search, and content tools in one place.','A useful AI search option for fast summaries, source-based browsing, and multilingual research.'],
+        living:['Original Teaching Content','Living the Word','A public library for your podcasts, articles, PowerPoint teachings, and journal writing so people can keep growing in faith through your original content.','No Living the Word posts are published yet.'],
+        fellowship:['Community','Fellowship Corner','A simple guestbook where people can leave encouragement, testimonies, prayer thoughts, or reflections about how God has met them.','Leave a Note','Name','Message','e.g. Thank you for this peaceful place to reflect on God’s Word.','Post Message','No guestbook messages yet. Be the first to leave a note.'],
+        footerLinks:['Emotions','Situations','Topics','Twilight Season','Gallery','AI Search','Living the Word','Fellowship Corner','Devotion','Prayer','Comfort'],
+        footerEsv:'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
+        createdBy:'Created by Tea Park',
+        copyright:'© 2026 Life’s Moments, God’s Word. All Rights Reserved.'
+      };
+
+  setList('.sb-group-label', text.sidebarGroups);
+  setSidebarLinks(text.sidebarLinks);
+  setText('.sb-footer-verse', text.sidebarVerse);
+  setText('.sb-footer-ref', text.sidebarRef);
+  setList('header nav ul li a', text.nav);
+  document.title=text.pageTitle;
+  setHTML('.hero-eyebrow', text.heroEyebrow);
+  setHTML('.hero h1', text.heroTitle);
+  setText('.hero-lead', text.heroLead);
+  setPlaceholder('#hero-input', text.heroPlaceholder);
+  setText('.search-wrap button.go', text.heroButton);
+  setList('.chip-row .chip', text.chips);
+  setText('#emotions .s-lbl', text.emotions[0]);
+  setText('#emotions .s-title', text.emotions[1]);
+  setText('#emotions .s-intro', text.emotions[2]);
+  setList('#emotions .ec h3', text.emotionCardTitles);
+  setList('#emotions .ec-hint', text.emotionHints);
+  setList('#emotions .ec-tap', new Array(qa('#emotions .ec-tap').length).fill(text.emotionTap));
+  setText('.votd-lbl', text.votd[0]);
+  setText('.votd-q', text.votd[1]);
+  setText('.votd-ref', text.votd[2]);
+  setText('.votd-note', text.votd[3]);
+  setText('#situations .s-lbl', text.situations[0]);
+  setText('#situations .s-title', text.situations[1]);
+  setText('#situations .s-intro', text.situations[2]);
+  setList('#situations .sit-tag', text.situationTags);
+  setList('#situations .sit-card h3', text.situationTitles);
+  setList('#situations .sit-desc', text.situationDescs);
+  setText('.promise-band .s-lbl', text.promise[0]);
+  setText('.promise-band .s-title', text.promise[1]);
+  setText('.promise-q', text.promise[2]);
+  setText('.promise-ref', text.promise[3]);
+  setText('.promise-note', text.promise[4]);
+  setText('#topics .s-lbl', text.topics[0]);
+  setText('#topics .s-title', text.topics[1]);
+  setText('#topics .s-intro', text.topics[2]);
+  setList('#topics .tc-head h3', text.topicColHeads);
+  qa('#topics .topic-btn').forEach((button,index)=>{
+    if(text.topicButtons[index] === undefined) return;
+    const icon=button.querySelector('.t-icon');
+    if(button.firstChild && button.firstChild.nodeType === Node.TEXT_NODE){
+      button.firstChild.nodeValue = text.topicButtons[index] + ' ';
+    } else {
+      button.insertBefore(document.createTextNode(text.topicButtons[index] + ' '), button.firstChild);
+    }
+    if(icon) icon.textContent = button.classList.contains('open') ? '−' : '+';
+  });
+  setList('#topics .tp-note', text.topicNotes);
+  const topicCta=q('#topics a[href="#topics"]');
+  if(topicCta) topicCta.textContent=text.topicCta;
+  setText('#seniors .s-lbl', text.seniors[0]);
+  setText('#seniors .s-title', text.seniors[1]);
+  setText('#seniors .senior-verse-box p', text.seniors[2]);
+  setText('#seniors .senior-verse-box cite', text.seniors[3]);
+  const seniorCards=qa('#seniors .sc');
+  if(seniorCards[0]){
+    setText('#seniors .sc:nth-of-type(1) h4', text.seniors[4]);
+    setText('#seniors .sc:nth-of-type(1) .sc-verse', text.seniors[5]);
+    setText('#seniors .sc:nth-of-type(1) .sc-ref', text.seniors[6]);
+  }
+  if(seniorCards[1]){
+    setText('#seniors .sc:nth-of-type(2) h4', text.seniors[7]);
+    setText('#seniors .sc:nth-of-type(2) .sc-verse', text.seniors[8]);
+    setText('#seniors .sc:nth-of-type(2) .sc-ref', text.seniors[9]);
+  }
+  if(seniorCards[2]){
+    setText('#seniors .sc:nth-of-type(3) h4', text.seniors[10]);
+    setText('#seniors .sc:nth-of-type(3) .sc-verse', text.seniors[11]);
+    setText('#seniors .sc:nth-of-type(3) .sc-ref', text.seniors[12]);
+  }
+  if(seniorCards[3]){
+    setText('#seniors .sc:nth-of-type(4) h4', text.seniors[13]);
+    setText('#seniors .sc:nth-of-type(4) .sc-verse', text.seniors[14]);
+    setText('#seniors .sc:nth-of-type(4) .sc-ref', text.seniors[15]);
+  }
+  setText('#about .s-title', text.about[0]);
+  const aboutCards=qa('#about .about-card');
+  if(aboutCards[2]){
+    const aboutHeading=aboutCards[2].querySelector('h3');
+    const aboutParagraphs=aboutCards[2].querySelectorAll('p');
+    if(aboutHeading) aboutHeading.textContent=text.about[1];
+    if(aboutParagraphs[0]) aboutParagraphs[0].innerHTML=text.about[2];
+    if(aboutParagraphs[1]) aboutParagraphs[1].innerHTML=text.about[3];
+  }
+  setText('#gallery .g-kicker', text.gallery[0]);
+  setText('#gallery .g-title', text.gallery[1]);
+  setText('#gallery .g-copy', text.gallery[2]);
+  setText('#gallery-empty', text.gallery[3]);
+  setText('#ai-summary .s-lbl', text.ai[0]);
+  setText('#ai-summary .s-title', text.ai[1]);
+  setText('#ai-summary .s-intro', text.ai[2]);
+  setText('#ai-summary .ai-card-head h3', text.ai[3]);
+  setText('#ai-summary .ai-card-head p', text.ai[4]);
+  setText('#ai-summary details summary', text.ai[5]);
+  setText('#ai-summary .ai-result-label', text.ai[6]);
+  setList('#ai-summary .ai-tool-name', text.aiToolNames);
+  setList('#ai-summary .ai-tool-desc', text.aiToolDescs);
+  setText('#living-word .s-lbl', text.living[0]);
+  setText('#living-word .s-title', text.living[1]);
+  setText('#living-word .s-intro', text.living[2]);
+  setText('#living-word-empty', text.living[3]);
+  setText('#fellowship .s-lbl', text.fellowship[0]);
+  setText('#fellowship .s-title', text.fellowship[1]);
+  setText('#fellowship .s-intro', text.fellowship[2]);
+  setText('#fellowship .guestbook-kicker', text.fellowship[3]);
+  setText('label[for="guestbook-name"]', text.fellowship[4]);
+  setText('label[for="guestbook-message"]', text.fellowship[5]);
+  setPlaceholder('#guestbook-message', text.fellowship[6]);
+  setText('#fellowship button[onclick="submitGuestbookEntry()"]', text.fellowship[7]);
+  setText('#guestbook-empty', text.fellowship[8]);
+  setList('footer p a', text.footerLinks);
+  setText('.footer-esv', text.footerEsv);
+  setText('footer p[style*="font-size:13px"]', text.createdBy);
+  setText('footer p[style*="font-size:12px"]', text.copyright);
+};
+</script>
+<script src="assets/js/lang.js"></script>
 
 </body>
 </html>

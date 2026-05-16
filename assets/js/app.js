@@ -1,12 +1,66 @@
 // ═══════════════════════════════════════
 // MODAL (for emotion cards)
 // ═══════════════════════════════════════
+const EMOTION_MODAL_KO = {
+  Joy: { title:'기쁨', note:'참된 기쁨은 변하는 환경이 아니라 변함없는 하나님의 임재 안에 있습니다.' },
+  Sorrow: { title:'슬픔', note:'하나님은 우리의 눈물을 외면하지 않으시며 상한 마음에 가까이 오십니다.' },
+  Peace: { title:'평안', note:'하나님이 주시는 평안은 폭풍이 지난 뒤에만이 아니라 폭풍 한가운데서도 마음을 지켜 줍니다.' },
+  Hope: { title:'소망', note:'성경적 소망은 하나님의 깨뜨려지지 않는 약속 위에 서 있는 확신입니다.' },
+  Fear: { title:'두려움', note:'하나님이 우리와 함께하시는 분이심을 기억할 때 두려움은 힘을 잃습니다.' },
+  Anxiety: { title:'불안', note:'불안은 우리를 돌보시는 하나님께 모든 염려를 맡기라는 초대입니다.' },
+  Loneliness: { title:'외로움', note:'하나님의 임재는 거리나 고립으로 제한되지 않습니다.' },
+  Anger: { title:'분노', note:'분노는 죄가 되기 전에 하나님께 맡겨져야 합니다.' },
+  Gratitude: { title:'감사', note:'감사는 우리가 모든 것을 바라보는 시선을 새롭게 빚어 가는 훈련입니다.' },
+  Guilt: { title:'죄책감과 후회', note:'죄책감은 우리를 십자가로 이끌며, 그곳에서 용서는 완전해집니다.' },
+  Love: { title:'사랑', note:'하나님의 사랑은 모든 사랑의 기초이며, 그 사랑이 먼저 우리에게 왔습니다.' },
+  Discouragement: { title:'낙심', note:'주를 기다리는 자에게 하나님은 새 힘을 주십니다.' }
+};
+
+const TOPIC_RESULT_KO = {
+  'Joy': { name:'기쁨', cat:'감정', note:'참된 기쁨은 상황이 아니라 하나님의 임재 안에 뿌리를 둡니다.' },
+  'Sorrow & Grief': { name:'슬픔', cat:'감정', note:'하나님은 상한 마음에 가까이 오시며 우리의 눈물을 외면하지 않으십니다.' },
+  'Peace': { name:'평안', cat:'감정', note:'하나님이 주시는 평안은 폭풍 속에서도 마음을 지켜 줍니다.' },
+  'Hope': { name:'소망', cat:'감정', note:'성경적 소망은 하나님의 약속에 뿌리내린 확신 있는 기다림입니다.' },
+  'Fear': { name:'두려움', cat:'감정', note:'하나님이 우리의 도움이심을 기억할 때 두려움은 힘을 잃습니다.' },
+  'Anxiety & Worry': { name:'불안', cat:'감정', note:'불안은 우리를 돌보시는 하나님께 염려를 맡기라는 초대입니다.' },
+  'Loneliness': { name:'외로움', cat:'감정', note:'하나님의 임재는 거리와 질병과 고립으로 제한되지 않습니다.' },
+  'Anger': { name:'분노', cat:'감정', note:'분노가 죄가 되기 전에 하나님께 맡겨질 때 다스려집니다.' },
+  'Gratitude': { name:'감사', cat:'감정', note:'감사는 세상을 바라보는 시선을 새롭게 빚어 가는 훈련입니다.' },
+  'Guilt & Regret': { name:'죄책감과 후회', cat:'감정', note:'죄책감은 우리를 십자가로 이끌며, 거기에서 용서는 완전해집니다.' },
+  'Love': { name:'사랑', cat:'감정', note:'하나님의 사랑은 모든 사랑의 기초이며, 그 사랑이 먼저 우리에게 왔습니다.' },
+  'Discouragement': { name:'낙심', cat:'감정', note:'가장 낮은 자리에서도 하나님은 주를 기다리는 자에게 새 힘을 주십니다.' },
+  'Suffering & Trials': { name:'고난과 시련', cat:'삶의 문제', note:'고난은 하나님의 손 안에서 헛되지 않으며, 하나님은 그것을 통해 일하십니다.' },
+  'Illness & Sickness': { name:'질병과 아픔', cat:'삶의 문제', note:'병 가운데서도 하나님은 멀리 계시지 않고 붙드시며 함께하십니다.' },
+  'Death & Dying': { name:'죽음과 임종', cat:'삶의 문제', note:'믿는 이에게 죽음은 끝이 아니라 하나님께로 들어가는 문입니다.' },
+  'Grief & Funeral Comfort': { name:'슬픔과 장례의 위로', cat:'삶의 문제', note:'함께 슬퍼하고 기억하는 이들을 위한 영원한 소망의 말씀입니다.' },
+  'Forgiveness': { name:'용서', cat:'삶의 문제', note:'용서는 잘못을 붙들고 살아가는 무거운 짐에서 우리를 놓아줍니다.' },
+  'Marriage & Family': { name:'결혼과 가정', cat:'삶의 문제', note:'결혼은 그리스도께서 교회를 사랑하신 자기희생적 사랑을 비춥니다.' },
+  'Money & Financial Worry': { name:'재정과 돈 걱정', cat:'삶의 문제', note:'하나님은 먼저 그의 나라를 구하라고 부르시며 필요한 공급을 약속하십니다.' },
+  'Decision-Making & Wisdom': { name:'결정과 지혜', cat:'삶의 문제', note:'갈림길마다 자신의 명철만 의지하지 말고 멈추어 하나님을 바라보십시오.' },
+  'Faith & Trust': { name:'믿음과 신뢰', cat:'영적 주제', note:'믿음은 길이 보이지 않아도 하나님을 붙드는 신뢰입니다.' },
+  'Prayer': { name:'기도와 중보', cat:'영적 주제', note:'기도는 가장 단순하면서도 가장 깊은 믿음의 행위입니다.' },
+  'Grace & Mercy': { name:'은혜와 자비', cat:'영적 주제', note:'은혜는 받을 자격이 없는 우리에게 하나님이 베푸시는 선물이며 믿음의 기초입니다.' },
+  'Salvation': { name:'구원과 속량', cat:'영적 주제', note:'구원은 전적으로 하나님의 선물이며 오직 그리스도를 믿는 믿음으로 받습니다.' },
+  'Heaven & Eternity': { name:'천국과 영원', cat:'영적 주제', note:'천국은 실제이며, 하나님께서 자기 백성과 영원히 함께하시는 곳입니다.' },
+  'Strength': { name:'힘', cat:'영적 주제', note:'하나님은 피곤한 자에게 능력을 주시며 무능한 자에게 힘을 더하십니다.' },
+  "God's Presence": { name:'하나님의 임재와 위로', cat:'영적 주제', note:'하나님의 임재는 건물에 제한되지 않으며 언제나 우리 가까이에 있습니다.' }
+};
+
+function getLocalizedTopicResult(topic, lang){
+  if(lang !== 'ko') return topic;
+  const localized = TOPIC_RESULT_KO[topic.name];
+  if(!localized) return topic;
+  return Object.assign({}, topic, localized);
+}
+
 function openEmotion(name){
   const d=EMOTIONS[name];if(!d)return;
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const localized=lang==='ko' ? (EMOTION_MODAL_KO[name] || null) : null;
   document.getElementById('m-icon').textContent=d.icon;
-  document.getElementById('m-cat').textContent='Emotion';
-  document.getElementById('m-title').textContent=name;
-  document.getElementById('m-note').textContent=d.note;
+  document.getElementById('m-cat').textContent=lang==='ko'?'감정':'Emotion';
+  document.getElementById('m-title').textContent=localized?localized.title:name;
+  document.getElementById('m-note').textContent=localized?localized.note:d.note;
   let dvIdx = 1000;
   document.getElementById('m-verses').innerHTML=d.verses.map(v=>{
     if(v.kjv !== undefined){
@@ -63,33 +117,111 @@ const rc=document.getElementById('res-count');
 // globally unique ID counter for search result verse tabs
 let _resIdx = 0;
 
+const EXACT_TOPIC_QUERY_MAP = {
+  grief:'Sorrow & Grief',
+  sorrow:'Sorrow & Grief',
+  sadness:'Sorrow & Grief',
+  fear:'Fear',
+  hope:'Hope',
+  strength:'Strength',
+  peace:'Peace',
+  forgiveness:'Forgiveness',
+  forgive:'Forgiveness',
+  money:'Money & Financial Worry',
+  financial:'Money & Financial Worry',
+  finance:'Money & Financial Worry',
+  anxiety:'Anxiety & Worry',
+  worry:'Anxiety & Worry',
+  lonely:'Loneliness',
+  loneliness:'Loneliness',
+  sick:'Illness & Sickness',
+  illness:'Illness & Sickness',
+  sickness:'Illness & Sickness',
+  marriage:'Marriage & Family',
+  family:'Marriage & Family',
+  faith:'Faith & Trust',
+  trust:'Faith & Trust',
+  prayer:'Prayer',
+  salvation:'Salvation',
+  heaven:'Heaven & Eternity',
+  eternity:'Heaven & Eternity',
+  presence:"God's Presence",
+  comfort:'Grief & Funeral Comfort',
+  funeral:'Grief & Funeral Comfort',
+  death:'Death & Dying',
+  dying:'Death & Dying',
+  슬픔:'Sorrow & Grief',
+  두려움:'Fear',
+  소망:'Hope',
+  힘:'Strength',
+  평안:'Peace',
+  용서:'Forgiveness',
+  재정:'Money & Financial Worry',
+  돈:'Money & Financial Worry',
+  불안:'Anxiety & Worry',
+  외로움:'Loneliness',
+  질병:'Illness & Sickness',
+  아픔:'Illness & Sickness',
+  결혼:'Marriage & Family',
+  가정:'Marriage & Family',
+  믿음:'Faith & Trust',
+  신뢰:'Faith & Trust',
+  기도:'Prayer',
+  구원:'Salvation',
+  천국:'Heaven & Eternity',
+  영원:'Heaven & Eternity',
+  임재:"God's Presence",
+  위로:'Grief & Funeral Comfort',
+  장례:'Grief & Funeral Comfort',
+  죽음:'Death & Dying',
+  임종:'Death & Dying'
+};
+
 function doHeroSearch(){
   const q=inp.value.trim().toLowerCase();
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   if(!q){clearHeroSearch();return;}
   cb.style.display='block';
   const words=typeof normalizeWords==='function'
     ? normalizeWords(q)
     : q.split(/\s+/).filter(w=>w.length>1);
-  const matched=DB
-    .map(t=>{
-      const hay=(t.name+' '+t.keys+' '+t.note+' '+t.verses.map(v=>(v.t||v.esv||'')+' '+(v.kjv||'')+' '+v.r).join(' ')).toLowerCase();
-      const score=words.reduce((sum,w)=>sum+(hay.includes(w)?1:0),0);
-      return {topic:t,score};
-    })
-    .filter(item=>item.score>0)
-    .sort((a,b)=>b.score-a.score)
-    .map(item=>item.topic);
+  const exactTopicName = EXACT_TOPIC_QUERY_MAP[q];
+  const matched=exactTopicName
+    ? DB.filter(t=>t.name===exactTopicName)
+    : DB
+      .map(t=>{
+        const hay=(t.name+' '+t.keys+' '+t.note+' '+t.verses.map(v=>(v.t||v.esv||'')+' '+(v.kjv||'')+' '+v.r).join(' ')).toLowerCase();
+        const score=words.reduce((sum,w)=>sum+(hay.includes(w)?1:0),0);
+        return {topic:t,score};
+      })
+      .filter(item=>item.score>0)
+      .sort((a,b)=>b.score-a.score)
+      .map(item=>item.topic);
   rs.style.display='block';
   rg.innerHTML='';nr.style.display='none';
   _resIdx = 0; // reset counter for each new search (IDs unique within this search)
-  if(matched.length===0){nr.style.display='block';rt.textContent='No Bible verses found for "'+inp.value+'"';rc.textContent='';}
+  if(matched.length===0){
+    nr.style.display='block';
+    rt.textContent=lang==='ko'
+      ? '"'+inp.value+'"에 대한 성경 구절을 찾지 못했습니다'
+      : 'No Bible verses found for "'+inp.value+'"';
+    rc.textContent='';
+  }
   else{
-    rt.textContent='Bible Verses for "'+inp.value+'"';
-    rc.textContent=matched.length+' topic'+(matched.length!==1?'s':'')+' found';
+    const displayQuery = lang==='ko'
+      ? getLocalizedTopicResult(matched[0], 'ko').name
+      : inp.value;
+    rt.textContent=lang==='ko'
+      ? '"'+displayQuery+'"에 대한 성경 구절'
+      : 'Bible Verses for "'+displayQuery+'"';
+    rc.textContent=lang==='ko'
+      ? matched.length+'개 주제 찾음'
+      : matched.length+' topic'+(matched.length!==1?'s':'')+' found';
     matched.forEach((t,i)=>{
+      const displayTopic=getLocalizedTopicResult(t, lang);
       const c=document.createElement('div');c.className='res-card';c.style.animationDelay=(i*.06)+'s';
-      c.innerHTML='<div class="res-card-head"><h3>'+hl(t.name,words)+'</h3><span class="res-cat">'+t.cat+'</span></div>'
-        +'<div class="res-card-body"><p class="res-ref-note">'+hl(t.note,words)+'</p>'
+      c.innerHTML='<div class="res-card-head"><h3>'+hl(displayTopic.name,words)+'</h3><span class="res-cat">'+displayTopic.cat+'</span></div>'
+        +'<div class="res-card-body"><p class="res-ref-note">'+hl(displayTopic.note,words)+'</p>'
         +t.verses.map(v=>{
           if(v.kjv){
             const rid='rs'+(++_resIdx); // globally unique per search
@@ -135,9 +267,9 @@ function hl(text,words){
 function clearHeroSearch(){inp.value='';rs.style.display='none';cb.style.display='none';rg.innerHTML='';nr.style.display='none';inp.focus();}
 const AI_WORKSPACE_TOOLS={
   chatgpt:{
-    name:'ChatGPT',
-    summary:'Best for conversational searching, follow-up questions, and turning a life situation into a clear spiritual question.',
-    promptLead:'Give me a clear, compassionate answer with Bible-centered guidance for:'
+    name:'ChatGPT Search',
+    summary:'Best for natural-language searching when someone wants a quick answer and easy follow-up questions.',
+    promptLead:'Answer this question clearly, then suggest helpful next questions to explore:'
   },
   perplexity:{
     name:'Perplexity',
@@ -762,7 +894,7 @@ function deletePhoto(id){
 }
 function updateGalleryCount(){
   const el=document.getElementById('gallery-count');
-  if(el)el.textContent=galleryItems.length+' photo'+(galleryItems.length!==1?'s':'');
+  if(el)el.textContent=getLocalizedPhotoCount(galleryItems.length);
 }
 function checkGalleryEmpty(){
   const empty=document.getElementById('gallery-empty');
@@ -828,6 +960,7 @@ const HOMEPAGE_VISIT_SESSION_KEY='lifeword.homepageVisit.session';
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
     id:'lw1',
+    language:'en',
     type:'Podcast',
     title:'Walking by Faith in Ordinary Days',
     summary:'A short audio encouragement about trusting God faithfully in everyday life, even when the path ahead is unclear.',
@@ -836,6 +969,7 @@ const DEFAULT_LIVING_WORD_ITEMS=[
   },
   {
     id:'lw2',
+    language:'en',
     type:'Article',
     title:'When Prayer Feels Quiet',
     summary:'A reflective article for believers who feel spiritually tired and need gentle encouragement to keep drawing near to the Lord.',
@@ -844,24 +978,26 @@ const DEFAULT_LIVING_WORD_ITEMS=[
   }
 ];
 
-let livingWordItems=loadStoredItems(LIVING_WORD_STORAGE,DEFAULT_LIVING_WORD_ITEMS);
+let livingWordItems=normalizeLivingWordItems(loadStoredItems(LIVING_WORD_STORAGE,DEFAULT_LIVING_WORD_ITEMS));
 
 recordHomepageVisit();
 
 function renderLivingWord(){
   const grid=document.getElementById('living-word-grid');
   const empty=document.getElementById('living-word-empty');
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const visibleItems=livingWordItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
   if(!grid||!empty)return;
-  if(!livingWordItems.length){
+  if(!visibleItems.length){
     grid.innerHTML='';
     empty.style.display='block';
     return;
   }
   empty.style.display='none';
-  grid.innerHTML=livingWordItems.map(item=>{
+  grid.innerHTML=visibleItems.map(item=>{
     const media=getLivingWordMediaMarkup(item);
     const link=item.link&&item.link.trim()
-      ? `<div class="living-word-actions"><a class="btn ghost" href="${escapeAttr(item.link.trim())}" target="_blank" rel="noopener noreferrer">${getLivingWordLinkLabel(item.type)}</a></div>`
+      ? `<div class="living-word-actions"><a class="living-word-link-btn" href="${escapeAttr(item.link.trim())}" target="_blank" rel="noopener noreferrer">${getLivingWordLinkLabel(item.type)}</a></div>`
       : '';
     return '<article class="living-word-card">'
       +'<p class="living-word-type">'+escapeHtml(item.type||'Article')+'</p>'
@@ -881,8 +1017,22 @@ function getLivingWordMediaMarkup(item){
   return '<audio class="living-word-media" controls preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></audio>';
 }
 
+function normalizeLivingWordItems(items){
+  return (Array.isArray(items) ? items : []).map(item => ({
+    ...item,
+    language: item && item.language === 'ko' ? 'ko' : 'en'
+  }));
+}
+
 function getLivingWordLinkLabel(type){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const normalized=(type||'').toLowerCase();
+  if(lang==='ko'){
+    if(normalized==='podcast')return '듣기';
+    if(normalized==='powerpoint')return '강의 열기';
+    if(normalized==='journal')return '묵상 읽기';
+    return '글 읽기';
+  }
   if(normalized==='podcast')return 'Listen';
   if(normalized==='powerpoint')return 'Open Lesson';
   if(normalized==='journal')return 'Read Journal';
@@ -891,8 +1041,15 @@ function getLivingWordLinkLabel(type){
 
 function recordHomepageVisit(){
   const stats=loadVisitStats();
+  const nowIso=new Date().toISOString();
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
   stats.totalViews=(stats.totalViews||0)+1;
-  stats.lastVisitedAt=new Date().toISOString();
+  stats.lastVisitedAt=nowIso;
+  stats.history=Array.isArray(stats.history)?stats.history:[];
+  stats.history.push({at:nowIso,lang:lang==='ko'?'ko':'en'});
+  if(stats.history.length>5000){
+    stats.history=stats.history.slice(-5000);
+  }
   if(!sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY)){
     stats.browserSessions=(stats.browserSessions||0)+1;
     sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
@@ -900,8 +1057,24 @@ function recordHomepageVisit(){
   saveVisitStats(stats);
 }
 
+// Keep Living the Word link labels readable in both English and Korean.
+function getLivingWordLinkLabel(type){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const normalized=(type||'').toLowerCase();
+  if(lang==='ko'){
+    if(normalized==='podcast') return '오디오 듣기';
+    if(normalized==='powerpoint') return '강의 열기';
+    if(normalized==='journal') return '묵상 읽기';
+    return '글 읽기';
+  }
+  if(normalized==='podcast') return 'Listen Now';
+  if(normalized==='powerpoint') return 'Open Lesson';
+  if(normalized==='journal') return 'Read Journal';
+  return 'Read Article';
+}
+
 function loadVisitStats(){
-  const fallback={totalViews:0,browserSessions:0,lastVisitedAt:''};
+  const fallback={totalViews:0,browserSessions:0,lastVisitedAt:'',history:[]};
   try{
     const raw=localStorage.getItem(HOMEPAGE_VISITS_STORAGE);
     if(!raw)return fallback;
@@ -909,7 +1082,16 @@ function loadVisitStats(){
     return {
       totalViews:Number(parsed.totalViews||0),
       browserSessions:Number(parsed.browserSessions||0),
-      lastVisitedAt:parsed.lastVisitedAt||''
+      lastVisitedAt:parsed.lastVisitedAt||'',
+      history:Array.isArray(parsed.history)
+        ? parsed.history
+            .map(item=>{
+              if(typeof item==='string') return {at:item,lang:'en'};
+              if(item&&typeof item.at==='string') return {at:item.at,lang:item.lang==='ko'?'ko':'en'};
+              return null;
+            })
+            .filter(Boolean)
+        : []
     };
   }catch(_error){
     return fallback;
@@ -937,6 +1119,7 @@ let guestbookEntries=loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES
 function renderGuestbook(){
   const list=document.getElementById('guestbook-list');
   const empty=document.getElementById('guestbook-empty');
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   if(!list||!empty)return;
   if(!guestbookEntries.length){
     list.innerHTML='';
@@ -947,7 +1130,7 @@ function renderGuestbook(){
   list.innerHTML=guestbookEntries.map(entry=>{
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
-      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||'Guest')+'</div>'
+      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'방문자':'Guest'))+'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
       +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
@@ -958,11 +1141,12 @@ function renderGuestbook(){
 function submitGuestbookEntry(){
   const nameInput=document.getElementById('guestbook-name');
   const messageInput=document.getElementById('guestbook-message');
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   if(!nameInput||!messageInput)return;
   const name=(nameInput.value||'').trim();
   const message=(messageInput.value||'').trim();
   if(!name||!message){
-    alert('Please enter both your name and your message.');
+    alert(lang==='ko'?'이름과 메시지를 모두 입력해 주세요.':'Please enter both your name and your message.');
     return;
   }
   guestbookEntries.unshift({
@@ -978,10 +1162,114 @@ function submitGuestbookEntry(){
 }
 
 function formatGuestbookDate(value){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const date=value?new Date(value):new Date();
-  if(Number.isNaN(date.getTime()))return 'Recent Message';
-  return date.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+  if(Number.isNaN(date.getTime()))return lang==='ko'?'최근 메시지':'Recent Message';
+  return date.toLocaleDateString(lang==='ko'?'ko-KR':undefined,{year:'numeric',month:'short',day:'numeric'});
 }
+
+function getLocalizedPhotoCount(count){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  if(lang==='ko')return count+'개의 사진';
+  return count+' photo'+(count!==1?'s':'');
+}
+
+function normalizeGalleryItems(items){
+  return (Array.isArray(items) ? items : []).map(item => ({
+    ...item,
+    language: item && item.language === 'ko' ? 'ko' : 'en'
+  }));
+}
+
+function normalizeGuestbookEntries(items){
+  return (Array.isArray(items) ? items : []).map(item => ({
+    ...item,
+    language: item && item.language === 'ko' ? 'ko' : 'en'
+  }));
+}
+
+galleryItems = normalizeGalleryItems(galleryItems);
+guestbookEntries = normalizeGuestbookEntries(guestbookEntries);
+
+function renderGallery(){
+  const grid=document.getElementById('gallery-grid');
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const visibleItems=galleryItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
+  if(!grid)return;
+  grid.classList.toggle('gallery-editing',galleryEditMode);
+  grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
+    <img src="${escapeAttr(item.src)}" alt="${escapeAttr(item.caption)}" loading="lazy" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr(item.caption)}')">
+    <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
+  </div>`).join('');
+  updateGalleryCount(visibleItems.length);
+  checkGalleryEmpty(visibleItems.length);
+  updateGalleryEditButton();
+}
+
+function updateGalleryCount(countOverride){
+  const el=document.getElementById('gallery-count');
+  const count=typeof countOverride==='number' ? countOverride : galleryItems.length;
+  if(el)el.textContent=getLocalizedPhotoCount(count);
+}
+
+function checkGalleryEmpty(countOverride){
+  const empty=document.getElementById('gallery-empty');
+  const count=typeof countOverride==='number' ? countOverride : galleryItems.length;
+  if(empty)empty.style.display=count===0?'block':'none';
+}
+
+function renderGuestbook(){
+  const list=document.getElementById('guestbook-list');
+  const empty=document.getElementById('guestbook-empty');
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
+  if(!list||!empty)return;
+  if(!visibleEntries.length){
+    list.innerHTML='';
+    empty.style.display='block';
+    return;
+  }
+  empty.style.display='none';
+  list.innerHTML=visibleEntries.map(entry=>{
+    return '<article class="guestbook-entry">'
+      +'<div class="guestbook-entry-head">'
+      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'방문자':'Guest'))+'</div>'
+      +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
+      +'</div>'
+      +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
+      +'</article>';
+  }).join('');
+}
+
+function submitGuestbookEntry(){
+  const nameInput=document.getElementById('guestbook-name');
+  const messageInput=document.getElementById('guestbook-message');
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  if(!nameInput||!messageInput)return;
+  const name=(nameInput.value||'').trim();
+  const message=(messageInput.value||'').trim();
+  if(!name||!message){
+    alert(lang==='ko'?'이름과 메시지를 모두 입력해 주세요.':'Please enter both your name and your message.');
+    return;
+  }
+  guestbookEntries.unshift({
+    id:makeId('gb'),
+    language:lang === 'ko' ? 'ko' : 'en',
+    name:name.slice(0,50),
+    message:message.slice(0,500),
+    createdAt:new Date().toISOString()
+  });
+  saveStoredItems(GUESTBOOK_STORAGE,guestbookEntries);
+  nameInput.value='';
+  messageInput.value='';
+  renderGuestbook();
+}
+
+window.refreshPublicLanguage=function(){
+  renderGallery();
+  renderLivingWord();
+  renderGuestbook();
+};
 
 renderLivingWord();
 renderGuestbook();

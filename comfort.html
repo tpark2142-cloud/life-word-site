@@ -22,16 +22,28 @@ header{position:sticky;top:0;z-index:200;background:rgba(253,248,240,.97);backdr
 nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
 nav ul li a{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.08em;text-decoration:none;color:var(--text-soft);transition:color .2s}
 nav ul li a:hover{color:var(--gold)}
+.lang-switcher{position:fixed;top:14px;right:14px;z-index:500;display:flex;gap:3px;padding:3px;border-radius:999px;background:rgba(253,248,240,.9);border:1px solid rgba(184,147,90,.24);backdrop-filter:blur(10px);box-shadow:0 6px 16px rgba(28,46,36,.08)}
+.lang-btn{border:none;border-radius:999px;padding:4px 9px;font-family:'Cinzel',serif;font-size:8.2px;letter-spacing:.12em;background:transparent;color:var(--text-soft);cursor:pointer;min-width:46px}
+.lang-btn.active{background:var(--deep);color:var(--gold-light)}
 .hero{min-height:44vh;background:linear-gradient(160deg,rgba(28,46,36,.96) 0%,rgba(28,46,36,.80) 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 56px}
 .hero-badge{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.28em;color:var(--gold-light);text-transform:uppercase;margin-bottom:22px}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,82px);font-weight:600;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,56px);font-weight:600;color:#fff;line-height:1.11;margin-bottom:16px}
 .hero h1 em{font-style:italic;color:var(--gold-light);display:block}
+.hero-title-icon{display:inline-block;font-size:.53em;vertical-align:.11em;margin-right:.11em}
 .hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(255,255,255,.72);max-width:600px;line-height:1.6}
 .wrap{max-width:900px;margin:0 auto;padding:60px 28px}
 .section-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;text-align:center;margin-bottom:10px}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,48px);font-weight:600;color:var(--deep);text-align:center;margin-bottom:14px}
 .section-intro{font-size:17px;color:var(--text-soft);text-align:center;max-width:680px;margin:0 auto 48px;font-style:italic;line-height:1.75}
+.section-card h3,.psalm23-box h3{display:flex;align-items:center;justify-content:flex-start;gap:.42em}
+.section-card h3::before,.psalm23-box h3::before{line-height:1}
+.psalm23-box h3::before{content:'🐑';font-size:.78em}
+.section-card:nth-of-type(1) h3::before{content:'🤍';}
+.section-card:nth-of-type(2) h3::before{content:'🌄';}
+.section-card:nth-of-type(3) h3::before{content:'☁️';}
+.section-card:nth-of-type(4) h3::before{content:'🤲';}
+.section-card:nth-of-type(5) h3::before{content:'✝️';}
 footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
 .footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
 footer p{font-size:14px;line-height:2.1}
@@ -101,12 +113,16 @@ footer a:hover{color:var(--gold-light)}
       .sb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:390}
       .sb-overlay.open{display:block}
     }
-@media(max-width:640px){.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
+@media(max-width:640px){.lang-switcher{top:12px;right:12px}.lang-btn{padding:4px 8px;font-size:7.8px;min-width:42px}.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
 </style>
 </head>
 <body>
 <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
 <button class="sb-toggle" id="sb-toggle" onclick="toggleSidebar()" aria-label="Open menu">&#9776;</button>
+<div class="lang-switcher" aria-label="Language switcher">
+  <button class="lang-btn active" type="button" data-lang-btn="en">EN</button>
+  <button class="lang-btn" type="button" data-lang-btn="ko">한국어</button>
+</div>
 <aside class="sidebar" id="sidebar">
   <div class="sb-brand">
     <a href="index.html" class="sb-brand-name">Life&rsquo;s Moments<span>God&rsquo;s Word</span></a>
@@ -118,7 +134,7 @@ footer a:hover{color:var(--gold-light)}
     <a class="sb-link" href="index.html#emotions" onclick="closeSidebar()"><span class="sb-icon">&#9825;</span> Emotions</a>
     <a class="sb-link" href="index.html#situations" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> Situations</a>
     <a class="sb-link" href="index.html#topics" onclick="closeSidebar()"><span class="sb-icon">&#128214;</span> Topics</a>
-    <a class="sb-link" href="index.html#seniors" onclick="closeSidebar()"><span class="sb-icon">&#10010;</span> Seniors</a>
+    <a class="sb-link" href="index.html#seniors" onclick="closeSidebar()"><span class="sb-icon">&#10010;</span> Twilight Season</a>
     <div class="sb-divider"></div>
     <span class="sb-group-label">My Journey</span>
     <a class="sb-link" href="index.html#gallery" onclick="closeSidebar()"><span class="sb-icon">&#128247;</span> Gallery</a>
@@ -132,8 +148,8 @@ footer a:hover{color:var(--gold-light)}
     <a class="sb-link active" href="comfort.html" onclick="closeSidebar()"><span class="sb-icon">&#10047;</span> Comfort</a>
   </div>
   <div class="sb-footer">
-    <p class="sb-footer-verse">&ldquo;Thy word is a lamp unto my feet, and a light unto my path.&rdquo;</p>
-    <span class="sb-footer-ref">Psalm 119:105</span>
+    <p class="sb-footer-verse">주의 말씀은 내 발에 등이요 내 길에 빛이니이다.</p>
+    <span class="sb-footer-ref">시편 119:105</span>
   </div>
 </aside>
 <div class="main-content">
@@ -156,7 +172,7 @@ footer a:hover{color:var(--gold-light)}
 
 <section class="hero">
   <p class="hero-badge">&#10022; Scripture for Grief &amp; Loss &#10022;</p>
-  <h1>When Words<br><em>Fail Us</em></h1>
+  <h1><span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em></h1>
   <p class="hero-sub">God&rsquo;s Word holds comfort for every kind of loss &mdash; at funerals, at bedsides, and in the quiet of grief.</p>
 </section>
 
@@ -171,7 +187,7 @@ footer a:hover{color:var(--gold-light)}
 
   <!-- PSALM 23 -->
   <div class="psalm23-box">
-    <h3>&#10022; The Shepherd&rsquo;s Psalm &#10022;</h3>
+    <h3>🐑 The Shepherd&rsquo;s Psalm</h3>
     <p>&ldquo;The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He leads me in paths of righteousness for his name&rsquo;s sake. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.&rdquo;</p>
     <cite>Psalm 23:1&ndash;4 (ESV)</cite>
   </div>
@@ -367,6 +383,94 @@ function switchTab(btn, contentId) {
 function dst(b,p){switchTab(b,p);}
 
 </script>
+<script>
+window.applyPageLanguage=function(lang){
+  const q=(selector)=>document.querySelector(selector);
+  const qa=(selector)=>Array.from(document.querySelectorAll(selector));
+  const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};
+  const setHTML=(selector,value)=>{const el=q(selector); if(el) el.innerHTML=value;};
+  const setList=(selector,values)=>{qa(selector).forEach((el,index)=>{ if(values[index]!==undefined) el.textContent=values[index]; });};
+  const setSidebarLinks=(values)=>{
+    qa('.sidebar .sb-link').forEach((link,index)=>{
+      if(values[index]===undefined) return;
+      const icon=link.querySelector('.sb-icon');
+      Array.from(link.childNodes).forEach((node)=>{
+        if(node.nodeType===Node.TEXT_NODE) node.remove();
+      });
+      if(icon){
+        link.appendChild(document.createTextNode(' ' + values[index]));
+      } else {
+        link.textContent=values[index];
+      }
+    });
+  };
+  const t=lang==='ko'
+    ? {
+        sidebarGroups:['탐색','나의 여정','더 보기'],
+        sidebarLinks:['홈','감정','상황','주제','황혼의 계절','갤러리','AI 검색','말씀대로 살기','펠로우십 코너','묵상','기도','위로'],
+        nav:['홈','감정','상황','주제','말씀대로 살기','펠로우십 코너','묵상','기도','위로'],
+        heroBadge:'✦ 슬픔과 상실을 위한 말씀 ✦',
+        heroTitle:'<span class="hero-title-icon">🤍</span>힘들때에도<br><em>하나님은 위로 하십니다</em>',
+        heroSub:'장례식에서, 병상에서, 그리고 조용한 슬픔의 시간 속에서도 하나님의 말씀은 위로를 줍니다.',
+        comfortLabel:'✦ 위로의 말씀 ✦',
+        comfortPrayer:'마치는 기도',
+        footerLinks:['홈','감정','갤러리','AI 검색','말씀대로 살기','펠로우십 코너','묵상','기도','위로'],
+        footerEsv:'모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고, 읽기 쉽고 품위 있는 번역으로 널리 사용됩니다.',
+        created:'Created by Tea Park'
+      }
+    : {
+        sidebarGroups:['Explore','My Journey','More'],
+        sidebarLinks:['Home','Emotions','Situations','Topics','Twilight Season','Gallery','AI Search','Living the Word','Fellowship Corner','Devotion','Prayer','Comfort'],
+        nav:['Home','Emotions','Situations','Topics','Living the Word','Fellowship Corner','Devotion','Prayer','Comfort'],
+        heroBadge:'✦ Scripture for Grief & Loss ✦',
+        heroTitle:'<span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em>',
+        heroSub:'God’s Word holds comfort for every kind of loss — at funerals, at bedsides, and in the quiet of grief.',
+        comfortLabel:'✦ A Word of Comfort ✦',
+        comfortPrayer:'Closing Prayer',
+        footerLinks:['Home','Emotions','Gallery','AI Search','Living the Word','Fellowship Corner','Devotion','Prayer','Comfort'],
+        footerEsv:'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
+        created:'Created by Tea Park'
+      };
+  setList('.sb-group-label', t.sidebarGroups);
+  setSidebarLinks(t.sidebarLinks);
+  setHTML('.sb-brand-name', lang==='ko'
+    ? '삶의 순간들<span>하나님의 말씀</span>'
+    : 'Life&rsquo;s Moments<span>God&rsquo;s Word</span>');
+  setText('.sb-brand-sub', lang==='ko'
+    ? '삶의 모든 계절을 위한 성경 말씀'
+    : 'Bible verses for every season of life.');
+  setText('.sb-footer-verse', lang==='ko'?'주의 말씀은 내 발에 등이요 내 길에 빛이니이다.':'Thy word is a lamp unto my feet, and a light unto my path.');
+  setText('.sb-footer-ref', lang==='ko'?'시편 119:105':'Psalm 119:105');
+  setList('header nav ul li a', t.nav);
+  setText('.hero-badge', t.heroBadge);
+  setHTML('.hero h1', t.heroTitle);
+  setText('.hero-sub', t.heroSub);
+  setText('.comfort-band .section-lbl', t.comfortLabel);
+  if(lang==='ko'){
+    setText('.comfort-band .lead','슬픔은 사람이 설 수 있는 가장 정직한 자리 중 하나입니다. 사랑하는 이를 잃을 때 우리는 감당할 수 있는 한계 끝에 서게 됩니다. 바로 그 자리에서 하나님은 우리를 만나 주십니다.');
+    setText('.psalm23-box h3','목자의 시편');
+    setText('.psalm23-box p','“여호와는 나의 목자시니 내게 부족함이 없으리로다. 그가 나를 푸른 초장에 누이시며 쉴 만한 물가로 인도하시는도다. 내 영혼을 소생시키시고 자기 이름을 위하여 의의 길로 인도하시는도다. 내가 사망의 음침한 골짜기로 다닐지라도 해를 두려워하지 않을 것은 주께서 나와 함께하심이라. 주의 지팡이와 막대기가 나를 안위하시나이다.”');
+    setText('.psalm23-box cite','시편 23:1–4 (ESV)');
+    const sectionTitles=['하나님은 우리의 아픔에서 멀리 서 계시지 않습니다','부활의 소망','천국의 약속','남겨진 이들을 위한 위로','그리스도 안에서 잠든 이들을 위하여'];
+    const sectionNotes=[
+      '하나님은 특별히 상한 마음과 짓눌린 영혼 가까이 오십니다. 이 말씀들은 슬픔이 믿음이 약하다는 증거가 아니라, 더 깊이 하나님을 신뢰하도록 초대하시는 자리임을 일깨워 줍니다.',
+      '믿는 자에게 죽음은 끝이 아니라 문입니다. 이것은 예수님께서 친히 하신 말씀이며, 주 안에 있는 자들을 기다리는 약속입니다.',
+      '죽음에 대한 하나님의 마지막 선언은 슬픔이 아니라 영광입니다. 이 말씀들은 모든 눈물을 닦아 주실 장차 올 세상을 바라보게 합니다.',
+      '슬픔은 무덤가에서 끝나지 않습니다. 남겨진 이들에게도 하나님은 애통하는 가운데 버리지 않으신다는 약속을 주십니다.',
+      '그리스도인에게 죽은 자에 대한 소망은 침묵이 아니라 부활입니다. 그리스도 안에서 죽은 자들이 다시 일어날 것입니다.'
+    ];
+    setList('.section-card h3',sectionTitles);
+    setList('.section-card .note',sectionNotes);
+    setText('.closing-prayer p:last-child','주 하나님, 우리는 상실의 그늘 아래 서 있습니다. 때로는 할 말을 찾지 못하지만, 주님은 말로 다할 수 없는 슬픔까지도 들으십니다. 주님은 부활이요 생명이시며, 모든 눈물을 닦아 주시는 분이십니다. 애통하는 자들을 위로하시고, 상한 마음을 붙들어 주시며, 이것이 끝이 아님을 다시 깨닫게 하소서. 예수님 때문에 무덤은 마지막 말을 하지 못합니다. 우리가 주님을 신뢰합니다. 아멘.');
+  }
+  const closing=q('.closing-prayer .section-lbl');
+  if(closing) closing.textContent=t.comfortPrayer;
+  setList('footer p a', t.footerLinks);
+  setText('.footer-esv', t.footerEsv);
+  setText('footer p[style*="font-size:13px"]', t.created);
+};
+</script>
+<script src="assets/js/lang.js"></script>
 </div>
 </body>
 </html>
