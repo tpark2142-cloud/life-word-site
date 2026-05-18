@@ -1408,7 +1408,7 @@ loadLivingWordItems();
 
 async function loadGalleryItems(){
   if(!supabaseClient){
-    galleryItems=normalizeGalleryItems(loadStoredItems(GALLERY_STORAGE,DEFAULT_GALLERY_ITEMS));
+    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS));
     renderGallery();
     return;
   }
@@ -1427,7 +1427,7 @@ async function loadGalleryItems(){
     })));
     renderGallery();
   }catch(_error){
-    galleryItems=normalizeGalleryItems(loadStoredItems(GALLERY_STORAGE,DEFAULT_GALLERY_ITEMS));
+    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS));
     renderGallery();
   }
 }
