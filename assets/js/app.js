@@ -1363,3 +1363,46 @@ async function submitGuestbookEntry(){
 
 loadGuestbookEntries();
 
+function normalizeLivingWordTypeForDisplay(type){
+  const normalized=(type||'article').toLowerCase();
+  if(normalized==='podcast')return 'Podcast';
+  if(normalized==='journal')return 'Journal';
+  if(normalized==='powerpoint')return 'PowerPoint';
+  return 'Article';
+}
+
+async function loadLivingWordItems(){
+  if(!supabaseClient){
+    livingWordItems=normalizeLivingWordItems(loadStoredItems(LIVING_WORD_STORAGE,DEFAULT_LIVING_WORD_ITEMS));
+    renderLivingWord();
+    return;
+  }
+  try{
+    const {data,error}=await supabaseClient
+      .from('living_word_posts')
+      .select('id,language,content_type,title,summary,link_url,media_url,is_visible,created_at')
+      .eq('is_visible',true)
+      .order('created_at',{ascending:false});
+    if(error)throw error;
+    livingWordItems=normalizeLivingWordItems((data||[]).map(item=>({
+      id:'lw-'+String(item.id),
+      language:item.language==='ko'?'ko':'en',
+      type:normalizeLivingWordTypeForDisplay(item.content_type),
+      title:item.title||'',
+      summary:item.summary||'',
+      link:(item.link_url||'').trim(),
+      mediaSrc:(item.media_url||'').trim(),
+      mediaKind:'',
+      mediaMime:'',
+      mediaName:'',
+      createdAt:item.created_at||new Date().toISOString()
+    })));
+    renderLivingWord();
+  }catch(_error){
+    livingWordItems=normalizeLivingWordItems(loadStoredItems(LIVING_WORD_STORAGE,DEFAULT_LIVING_WORD_ITEMS));
+    renderLivingWord();
+  }
+}
+
+loadLivingWordItems();
+
