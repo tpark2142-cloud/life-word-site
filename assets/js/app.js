@@ -1406,3 +1406,31 @@ async function loadLivingWordItems(){
 
 loadLivingWordItems();
 
+async function loadGalleryItems(){
+  if(!supabaseClient){
+    galleryItems=normalizeGalleryItems(loadStoredItems(GALLERY_STORAGE,DEFAULT_GALLERY_ITEMS));
+    renderGallery();
+    return;
+  }
+  try{
+    const {data,error}=await supabaseClient
+      .from('gallery_items')
+      .select('id,language,title,caption,image_url,is_visible,created_at')
+      .eq('is_visible',true)
+      .order('created_at',{ascending:false});
+    if(error)throw error;
+    galleryItems=normalizeGalleryItems((data||[]).map(item=>({
+      id:'g-'+String(item.id),
+      language:item.language==='ko'?'ko':'en',
+      src:(item.image_url||'').trim(),
+      caption:(item.caption||item.title||'Untitled Photo').trim()
+    })));
+    renderGallery();
+  }catch(_error){
+    galleryItems=normalizeGalleryItems(loadStoredItems(GALLERY_STORAGE,DEFAULT_GALLERY_ITEMS));
+    renderGallery();
+  }
+}
+
+loadGalleryItems();
+
