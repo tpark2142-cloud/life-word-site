@@ -1105,16 +1105,51 @@ function saveVisitStats(stats){
 }
 
 const GUESTBOOK_STORAGE='lifeword.guestbook.v1';
+const SUPABASE_PROJECT_URL='https://ytfjmlhfkgvdoifhknxq.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_LBT8442LBjSc0ZOvaUxkFg_MIIBacTw';
 const DEFAULT_GUESTBOOK_ENTRIES=[
   {
     id:'gb1',
     name:'A grateful visitor',
     message:'Thank you for creating a peaceful place to find Bible verses and encouragement.',
+    language:'en',
     createdAt:'2026-05-14T09:00:00.000Z'
   }
 ];
 
+const supabaseClient=window.supabase && SUPABASE_PROJECT_URL && SUPABASE_PUBLISHABLE_KEY
+  ? window.supabase.createClient(SUPABASE_PROJECT_URL,SUPABASE_PUBLISHABLE_KEY)
+  : null;
 let guestbookEntries=loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES);
+let guestbookUsesSupabase=Boolean(supabaseClient);
+
+async function loadGuestbookEntries(){
+  if(!supabaseClient){
+    guestbookEntries=normalizeGuestbookEntries(loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES));
+    renderGuestbook();
+    return;
+  }
+  try{
+    const {data,error}=await supabaseClient
+      .from('guestbook_entries')
+      .select('id,name,message,language,created_at,is_visible')
+      .eq('is_visible',true)
+      .order('created_at',{ascending:false});
+    if(error)throw error;
+    guestbookEntries=normalizeGuestbookEntries((data||[]).map(entry=>({
+      id:'gb-'+String(entry.id),
+      name:entry.name||'',
+      message:entry.message||'',
+      language:entry.language==='ko'?'ko':'en',
+      createdAt:entry.created_at||new Date().toISOString()
+    })));
+    renderGuestbook();
+  }catch(_error){
+    guestbookUsesSupabase=false;
+    guestbookEntries=normalizeGuestbookEntries(loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES));
+    renderGuestbook();
+  }
+}
 
 function renderGuestbook(){
   const list=document.getElementById('guestbook-list');
@@ -1273,4 +1308,58 @@ window.refreshPublicLanguage=function(){
 
 renderLivingWord();
 renderGuestbook();
+
+async function submitGuestbookEntry(){
+  const nameInput=document.getElementById('guestbook-name');
+  const messageInput=document.getElementById('guestbook-message');
+  const button=document.querySelector('#fellowship button[onclick="submitGuestbookEntry()"]');
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  if(!nameInput||!messageInput)return;
+  const name=(nameInput.value||'').trim();
+  const message=(messageInput.value||'').trim();
+  if(!name||!message){
+    alert(lang==='ko'?'ì´ë¦„ê³¼ ë©”ì‹œì§€ë¥¼ ëª¨ë‘ ìž…ë ¥í•´ ì£¼ì„¸ìš”.':'Please enter both your name and your message.');
+    return;
+  }
+  const entry={
+    language:lang === 'ko' ? 'ko' : 'en',
+    name:name.slice(0,50),
+    message:message.slice(0,500),
+    createdAt:new Date().toISOString()
+  };
+  if(button)button.disabled=true;
+  if(supabaseClient && guestbookUsesSupabase){
+    try{
+      const {error}=await supabaseClient
+        .from('guestbook_entries')
+        .insert({
+          name:entry.name,
+          message:entry.message,
+          language:entry.language
+        });
+      if(error)throw error;
+      nameInput.value='';
+      messageInput.value='';
+      await loadGuestbookEntries();
+      if(button)button.disabled=false;
+      return;
+    }catch(_error){
+      guestbookUsesSupabase=false;
+    }
+  }
+  guestbookEntries.unshift({
+    id:makeId('gb'),
+    language:entry.language,
+    name:entry.name,
+    message:entry.message,
+    createdAt:entry.createdAt
+  });
+  saveStoredItems(GUESTBOOK_STORAGE,guestbookEntries);
+  nameInput.value='';
+  messageInput.value='';
+  renderGuestbook();
+  if(button)button.disabled=false;
+}
+
+loadGuestbookEntries();
 

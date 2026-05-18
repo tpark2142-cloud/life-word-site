@@ -382,12 +382,12 @@ footer a:hover{color:var(--gold-light)}
 }
 .sb-link {
   display: grid;
-  grid-template-columns: 24px minmax(0,1fr);
+  grid-template-columns: 20px minmax(0,1fr);
   align-items: center;
-  column-gap: 12px;
-  padding: 10px 20px;
+  column-gap: 10px;
+  padding: 9px 20px;
   font-family: 'EB Garamond', serif;
-  font-size: 15.5px;
+  font-size: 14px;
   color: rgba(255,255,255,.62);
   text-decoration: none;
   transition: background .18s, color .18s;
@@ -413,9 +413,9 @@ footer a:hover{color:var(--gold-light)}
 .sb-link.active { color: var(--gold-light); background: rgba(184,147,90,.1); }
 .sb-link.active::before { transform: scaleY(1); }
 .sb-icon {
-  font-size: 16px;
-  width: 24px;
-  min-width: 24px;
+  font-size: 14px;
+  width: 20px;
+  min-width: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
