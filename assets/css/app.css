@@ -441,15 +441,16 @@ footer a:hover{color:var(--gold-light)}
   font-family: 'Cormorant Garamond', serif;
   font-size: 12.5px;
   font-style: italic;
-  color: rgba(255,255,255,.32);
+  color: #f2cc78;
   line-height: 1.65;
+  text-shadow: 0 0 10px rgba(242,204,120,.08);
 }
 
 .sb-footer-ref {
   font-family: 'Cinzel', serif;
   font-size: 9px;
   letter-spacing: .12em;
-  color: rgba(184,147,90,.5);
+  color: #d7ae63;
   display: block;
   margin-top: 5px;
 }
