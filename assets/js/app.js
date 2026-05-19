@@ -415,20 +415,36 @@ function openTopicPanelByLabel(label){
   return true;
 }
 function heroChip(term){
-  const chipTopicMap={
-    grief:'Grief',
-    fear:'Fear',
-    lonely:'Loneliness',
-    sick:'Illness & Sickness',
-    anxiety:'Anxiety',
-    forgive:'Forgiveness',
-    hope:'Hope',
-    strength:'Discouragement',
-    money:'Money & Financial Worry',
-    peace:'Peace',
-    marriage:'Marriage & Family',
-    death:'Death & Dying'
-  };
+  const isKorean=document.documentElement.lang==='ko';
+  const chipTopicMap=isKorean
+    ? {
+        grief:'슬픔',
+        fear:'두려움',
+        lonely:'외로움',
+        sick:'질병과 아픔',
+        anxiety:'불안',
+        forgive:'용서',
+        hope:'소망',
+        strength:'낙심',
+        money:'재정과 돈 걱정',
+        peace:'평안',
+        marriage:'결혼과 가정',
+        death:'죽음과 임종'
+      }
+    : {
+        grief:'Grief',
+        fear:'Fear',
+        lonely:'Loneliness',
+        sick:'Illness & Sickness',
+        anxiety:'Anxiety',
+        forgive:'Forgiveness',
+        hope:'Hope',
+        strength:'Discouragement',
+        money:'Money & Financial Worry',
+        peace:'Peace',
+        marriage:'Marriage & Family',
+        death:'Death & Dying'
+      };
   inp.value=term;
   if(openTopicPanelByLabel(chipTopicMap[term]||term))return;
   doHeroSearch();

@@ -705,6 +705,17 @@ footer a:hover{color:var(--gold-light)}
   color: #d8c9a0;
   white-space: pre-line;
 }
+html[lang="ko"] .gallery-copy-title{
+  font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-size:20px;
+  line-height:1.42;
+  word-break:keep-all;
+}
+html[lang="ko"] .gallery-copy-summary{
+  font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  line-height:1.72;
+  word-break:keep-all;
+}
 .gallery-card-actions {
   position: absolute;
   top: 10px;
