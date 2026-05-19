@@ -270,6 +270,8 @@ footer a:hover{color:var(--gold-light)}
   #results-grid{grid-template-columns:1fr}
   .modal-body{padding:20px}
   .modal-v blockquote{font-size:17px}
+  .living-word-media-shell{padding:12px 10px;border-radius:18px}
+  .living-word-media{min-height:66px}
 }
 
     /* ── DUAL TRANSLATION VERSES ── */
@@ -949,7 +951,30 @@ html[lang="ko"] .gallery-copy-summary{
 .living-word-type{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
 .living-word-card h3{font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1.05;color:var(--deep)}
 .living-word-card p{font-size:16px;line-height:1.75;color:var(--text-soft)}
-.living-word-media{width:100%;margin-top:4px;border-radius:14px;background:#efe4cf}
+.living-word-media-shell{
+  margin-top:4px;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:linear-gradient(180deg,#fffdf8 0%,#f7efde 100%);
+  box-shadow:0 8px 20px rgba(28,46,36,.06),inset 0 1px 0 rgba(255,255,255,.85);
+}
+.living-word-media{
+  display:block;
+  width:100%;
+  min-height:60px;
+  margin:0;
+  border-radius:12px;
+  background:#fff8ed;
+  accent-color:var(--gold);
+}
+audio.living-word-media{
+  filter:saturate(1.15) contrast(1.08);
+}
+audio.living-word-media::-webkit-media-controls-panel,
+audio.living-word-media::-webkit-media-controls-enclosure{
+  background:#fff8ed;
+}
 .living-word-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
 .living-word-link-btn{
   display:inline-flex;

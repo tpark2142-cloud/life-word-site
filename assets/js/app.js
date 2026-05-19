@@ -1047,9 +1047,9 @@ function renderLivingWord(){
 function getLivingWordMediaMarkup(item){
   if(!item||!item.mediaSrc||!item.mediaKind)return '';
   if(item.mediaKind==='video'){
-    return '<video class="living-word-media" controls playsinline preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></video>';
+    return '<div class="living-word-media-shell"><video class="living-word-media" controls playsinline preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></video></div>';
   }
-  return '<audio class="living-word-media" controls preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></audio>';
+  return '<div class="living-word-media-shell living-word-audio-shell"><audio class="living-word-media" controls preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></audio></div>';
 }
 
 function normalizeLivingWordItems(items){
