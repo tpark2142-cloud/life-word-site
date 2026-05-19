@@ -482,17 +482,36 @@ function closeSidebar(){
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sb-overlay').classList.remove('open');
 }
-// Active sidebar link on scroll
+// Active sidebar link based on hash and current view
 const sbLinks=document.querySelectorAll('.sb-link[href^="#"]');
 const sections=document.querySelectorAll('section[id],div[id]');
-window.addEventListener('scroll',()=>{
+function setActiveSidebarLink(targetHash){
+  sbLinks.forEach(link=>{
+    const href=link.getAttribute('href')||'';
+    const isHomeLink=href==='#' || href==='';
+    const shouldActivate=targetHash ? href===targetHash : isHomeLink;
+    link.classList.toggle('active',shouldActivate);
+  });
+}
+function updateSidebarActiveLinkFromView(){
+  const currentHash=window.location.hash||'';
+  if(currentHash){
+    setActiveSidebarLink(currentHash);
+    return;
+  }
   let cur='';
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
-  sbLinks.forEach(l=>{
-    l.classList.remove('active');
-    if(l.getAttribute('href')==='#'+cur)l.classList.add('active');
+  setActiveSidebarLink(cur?('#'+cur):'');
+}
+sbLinks.forEach(link=>{
+  link.addEventListener('click',()=>{
+    const href=link.getAttribute('href')||'';
+    setActiveSidebarLink(href==='#'?'':href);
   });
-},{passive:true});
+});
+window.addEventListener('hashchange',updateSidebarActiveLinkFromView);
+window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true});
+updateSidebarActiveLinkFromView();
 
 // ═══════════════════════════════════════
 // TRAVEL GALLERY — LIGHTBOX

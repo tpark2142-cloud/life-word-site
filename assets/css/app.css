@@ -249,7 +249,7 @@ mark{background:rgba(184,147,90,.28);color:inherit;border-radius:2px;padding:0 2
 /* ── FOOTER ── */
 footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
 .footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
-.footer-logo span{color:var(--gold-light)}
+.footer-logo span{color:#f2d37f;text-shadow:0 0 10px rgba(242,211,127,.14)}
 footer p{font-size:14px;line-height:2.1}
 footer a{color:var(--gold);text-decoration:none}
 footer a:hover{color:var(--gold-light)}
