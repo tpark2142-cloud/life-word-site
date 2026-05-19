@@ -696,12 +696,14 @@ footer a:hover{color:var(--gold-light)}
   font-size: 24px;
   color: #f6e8c0;
   line-height: 1.1;
+  white-space: pre-line;
 }
 .gallery-copy-summary{
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
   color: #d8c9a0;
+  white-space: pre-line;
 }
 .gallery-card-actions {
   position: absolute;

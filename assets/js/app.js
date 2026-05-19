@@ -1251,11 +1251,13 @@ function normalizeGuestbookEntries(items){
   function buildGalleryCaptionHtml(item){
     const title=(item.title||'').trim();
     const summary=(item.summary||item.caption||'').trim();
+    const displayTitle=item.language==='ko' ? title.replace(/ 자전거 여행$/,'\n자전거 여행') : title;
+    const displaySummary=item.language==='ko' ? summary.replace(/ 자전거 여행$/,'\n자전거 여행') : summary;
     const showTitle=title && title!==summary;
-    if(!showTitle && !summary)return '';
+    if(!showTitle && !displaySummary)return '';
     return `<div class="gallery-copy">
-      ${showTitle?`<h3 class="gallery-copy-title">${escapeHtml(title)}</h3>`:''}
-      ${summary?`<p class="gallery-copy-summary">${escapeHtml(summary)}</p>`:''}
+      ${showTitle?`<h3 class="gallery-copy-title">${escapeHtml(displayTitle)}</h3>`:''}
+      ${displaySummary?`<p class="gallery-copy-summary">${escapeHtml(displaySummary)}</p>`:''}
     </div>`;
   }
   
