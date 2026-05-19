@@ -1389,6 +1389,14 @@ function normalizeLivingWordTypeForDisplay(type){
   if(normalized==='powerpoint')return 'PowerPoint';
   return 'Article';
 }
+function inferLivingWordMediaKind(url, type){
+  const normalizedType=(type||'').toLowerCase();
+  if(normalizedType==='podcast') return 'audio';
+  const value=(url||'').toLowerCase();
+  if(/\.(mp4|webm|mov|m4v)(\?|#|$)/.test(value)) return 'video';
+  if(/\.(mp3|m4a|wav|ogg|aac)(\?|#|$)/.test(value)) return 'audio';
+  return '';
+}
 
 async function loadLivingWordItems(){
   if(!supabaseClient){
@@ -1411,7 +1419,7 @@ async function loadLivingWordItems(){
       summary:item.summary||'',
       link:(item.link_url||'').trim(),
       mediaSrc:(item.media_url||'').trim(),
-      mediaKind:'',
+      mediaKind:inferLivingWordMediaKind((item.media_url||'').trim(), item.content_type),
       mediaMime:'',
       mediaName:'',
       createdAt:item.created_at||new Date().toISOString()

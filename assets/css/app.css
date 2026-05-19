@@ -439,20 +439,21 @@ footer a:hover{color:var(--gold-light)}
 }
 .sb-footer-verse {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 12.5px;
+  font-size: 15.5px;
   font-style: italic;
-  color: #f2cc78;
+  color: #f4d889;
   line-height: 1.65;
-  text-shadow: 0 0 10px rgba(242,204,120,.08);
+  text-shadow: 0 0 14px rgba(244,216,137,.16);
 }
 
 .sb-footer-ref {
   font-family: 'Cinzel', serif;
-  font-size: 9px;
+  font-size: 10.5px;
   letter-spacing: .12em;
-  color: #d7ae63;
+  color: #e7c978;
   display: block;
   margin-top: 5px;
+  text-shadow: 0 0 10px rgba(231,201,120,.12);
 }
 
 /* MAIN CONTENT shifts right */
