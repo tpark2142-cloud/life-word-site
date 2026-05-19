@@ -685,6 +685,24 @@ footer a:hover{color:var(--gold-light)}
   color: var(--gold-light);
   flex: 1;
 }
+.gallery-copy{
+  background: rgba(13,26,20,.92);
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(222,189,116,.18);
+}
+.gallery-copy-title{
+  margin: 0 0 6px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: #f6e8c0;
+  line-height: 1.1;
+}
+.gallery-copy-summary{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #d8c9a0;
+}
 .gallery-card-actions {
   position: absolute;
   top: 10px;

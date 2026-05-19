@@ -1229,11 +1229,14 @@ function getLocalizedPhotoCount(count){
 }
 
 function normalizeGalleryItems(items){
-  return (Array.isArray(items) ? items : []).map(item => ({
-    ...item,
-    language: item && item.language === 'ko' ? 'ko' : 'en'
-  }));
-}
+    return (Array.isArray(items) ? items : []).map(item => ({
+      ...item,
+      language: item && item.language === 'ko' ? 'ko' : 'en',
+      title: (item && item.title ? String(item.title) : '').trim(),
+      summary: (item && (item.summary || item.caption) ? String(item.summary || item.caption) : '').trim(),
+      caption: (item && item.caption ? String(item.caption) : '').trim()
+    }));
+  }
 
 function normalizeGuestbookEntries(items){
   return (Array.isArray(items) ? items : []).map(item => ({
@@ -1242,22 +1245,34 @@ function normalizeGuestbookEntries(items){
   }));
 }
 
-galleryItems = normalizeGalleryItems(galleryItems);
-guestbookEntries = normalizeGuestbookEntries(guestbookEntries);
+  galleryItems = normalizeGalleryItems(galleryItems);
+  guestbookEntries = normalizeGuestbookEntries(guestbookEntries);
 
+  function buildGalleryCaptionHtml(item){
+    const title=(item.title||'').trim();
+    const summary=(item.summary||item.caption||'').trim();
+    const showTitle=title && title!==summary;
+    if(!showTitle && !summary)return '';
+    return `<div class="gallery-copy">
+      ${showTitle?`<h3 class="gallery-copy-title">${escapeHtml(title)}</h3>`:''}
+      ${summary?`<p class="gallery-copy-summary">${escapeHtml(summary)}</p>`:''}
+    </div>`;
+  }
+  
 function renderGallery(){
-  const grid=document.getElementById('gallery-grid');
-  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
-  const visibleItems=galleryItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
-  if(!grid)return;
-  grid.classList.toggle('gallery-editing',galleryEditMode);
-  grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-    <img src="${escapeAttr(item.src)}" alt="${escapeAttr(item.caption)}" loading="lazy" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr(item.caption)}')">
-    <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
-  </div>`).join('');
-  updateGalleryCount(visibleItems.length);
-  checkGalleryEmpty(visibleItems.length);
-  updateGalleryEditButton();
+    const grid=document.getElementById('gallery-grid');
+    const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+    const visibleItems=galleryItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
+    if(!grid)return;
+    grid.classList.toggle('gallery-editing',galleryEditMode);
+    grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
+      <img src="${escapeAttr(item.src)}" alt="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" loading="lazy" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}')">
+      <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
+      ${buildGalleryCaptionHtml(item)}
+    </div>`).join('');
+    updateGalleryCount(visibleItems.length);
+    checkGalleryEmpty(visibleItems.length);
+    updateGalleryEditButton();
 }
 
 function updateGalleryCount(countOverride){
@@ -1446,13 +1461,15 @@ async function loadGalleryItems(){
       .eq('is_visible',true)
       .order('created_at',{ascending:false});
     if(error)throw error;
-    galleryItems=normalizeGalleryItems((data||[]).map(item=>({
-      id:'g-'+String(item.id),
-      language:item.language==='ko'?'ko':'en',
-      src:(item.image_url||'').trim(),
-      caption:(item.caption||item.title||'Untitled Photo').trim()
-    })));
-    renderGallery();
+      galleryItems=normalizeGalleryItems((data||[]).map(item=>({
+        id:'g-'+String(item.id),
+        language:item.language==='ko'?'ko':'en',
+        title:(item.title||'').trim(),
+        src:(item.image_url||'').trim(),
+        caption:(item.caption||item.title||'Untitled Photo').trim(),
+        summary:(item.caption||item.title||'Untitled Photo').trim()
+      })));
+      renderGallery();
   }catch(_error){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS));
     renderGallery();
