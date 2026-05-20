@@ -1031,9 +1031,7 @@ function renderLivingWord(){
   empty.style.display='none';
   grid.innerHTML=visibleItems.map(item=>{
     const media=getLivingWordMediaMarkup(item);
-    const link=item.link&&item.link.trim()
-      ? `<div class="living-word-actions"><a class="living-word-link-btn" href="${escapeAttr(item.link.trim())}" target="_blank" rel="noopener noreferrer">${getLivingWordLinkLabel(item.type)}</a></div>`
-      : '';
+    const link=getLivingWordActionMarkup(item);
     return '<article class="living-word-card">'
       +'<p class="living-word-type">'+escapeHtml(item.type||'Article')+'</p>'
       +'<h3>'+escapeHtml(item.title||'Untitled Entry')+'</h3>'
@@ -1050,6 +1048,21 @@ function getLivingWordMediaMarkup(item){
     return '<div class="living-word-media-shell"><video class="living-word-media" controls playsinline preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></video></div>';
   }
   return '<div class="living-word-media-shell living-word-audio-shell"><audio class="living-word-media" controls preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></audio></div>';
+}
+
+function getLivingWordActionMarkup(item){
+  if(!item)return '';
+  const actions=[];
+  const primaryLink=(item.link||'').trim();
+  const mediaLink=(item.mediaSrc||'').trim();
+  if(primaryLink){
+    actions.push(`<a class="living-word-link-btn" href="${escapeAttr(primaryLink)}" target="_blank" rel="noopener noreferrer">${getLivingWordLinkLabel(item.type)}</a>`);
+  }
+  if((item.type||'').toLowerCase()==='podcast' && mediaLink){
+    actions.push(`<a class="living-word-link-btn living-word-link-btn-secondary" href="${escapeAttr(mediaLink)}" target="_blank" rel="noopener noreferrer">${getLivingWordOpenAudioLabel()}</a>`);
+  }
+  if(!actions.length)return '';
+  return `<div class="living-word-actions">${actions.join('')}</div>`;
 }
 
 function normalizeLivingWordItems(items){
@@ -1106,6 +1119,11 @@ function getLivingWordLinkLabel(type){
   if(normalized==='powerpoint') return 'Open Lesson';
   if(normalized==='journal') return 'Read Journal';
   return 'Read Article';
+}
+
+function getLivingWordOpenAudioLabel(){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  return lang==='ko' ? '오디오 직접 열기' : 'Open Audio';
 }
 
 function loadVisitStats(){

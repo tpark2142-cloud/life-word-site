@@ -999,6 +999,16 @@ audio.living-word-media::-webkit-media-controls-enclosure{
   color:#fff;
   transform:translateY(-1px);
 }
+.living-word-link-btn-secondary{
+  background:#fff;
+  border-color:var(--border);
+  color:var(--green);
+}
+.living-word-link-btn-secondary:hover{
+  background:var(--deep);
+  border-color:var(--deep);
+  color:#fff5d0;
+}
 
 /* Mode tabs */
 .ai-modes {
