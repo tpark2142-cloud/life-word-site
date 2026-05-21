@@ -937,16 +937,26 @@ html[lang="ko"] .gallery-copy-summary{
 .guestbook-field input,.guestbook-field textarea{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--cream);color:var(--deep);font-family:'EB Garamond',serif;font-size:18px}
 .guestbook-field textarea{min-height:140px;resize:vertical;line-height:1.7}
 .guestbook-field input:focus,.guestbook-field textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+.guestbook-emoji-tools{display:grid;gap:10px;margin:-2px 0 16px}
+.guestbook-emoji-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.guestbook-emoji-row{display:flex;gap:10px;flex-wrap:wrap}
+.guestbook-emoji-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 10px;border-radius:999px;border:1px solid rgba(184,147,90,.24);background:#fff;color:var(--deep);font-size:22px;cursor:pointer;box-shadow:0 6px 14px rgba(28,46,36,.06);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.guestbook-emoji-btn:hover{transform:translateY(-1px);border-color:rgba(184,147,90,.46);box-shadow:0 10px 16px rgba(28,46,36,.1)}
 .guestbook-actions{display:flex;justify-content:flex-start}
 .guestbook-note{font-size:14px;line-height:1.7;color:var(--text-soft);font-style:italic;margin-top:14px}
 .guestbook-list{display:grid;gap:14px}
 .guestbook-empty{padding:18px;border:1px dashed var(--border);border-radius:12px;background:var(--gold-pale);font-size:16px;line-height:1.7;color:var(--text-soft);font-style:italic}
 .guestbook-entry{background:var(--gold-pale);border:1px solid var(--border);border-radius:14px;padding:18px}
 .guestbook-entry-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap}
+.guestbook-entry-topline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .guestbook-entry-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--deep);line-height:1}
 html[lang="ko"] .guestbook-entry-name{font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:-.01em}
 .guestbook-entry-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+.guestbook-entry-reaction{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;background:#fff;border:1px solid rgba(184,147,90,.26);font-size:18px;box-shadow:0 8px 16px rgba(28,46,36,.07)}
 .guestbook-entry-message{font-size:17px;line-height:1.8;color:var(--text);white-space:pre-wrap}
+.guestbook-entry-reply{margin-top:14px;padding:15px 18px;border-radius:14px;background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);border:1px solid rgba(184,147,90,.18);border-left:4px solid rgba(184,147,90,.78);box-shadow:0 12px 24px rgba(28,46,36,.06)}
+.guestbook-entry-reply-label{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a8742f;text-shadow:0 1px 0 rgba(255,255,255,.75);margin-bottom:10px}
+.guestbook-entry-reply-text{font-size:16px;line-height:1.85;color:var(--deep);white-space:pre-wrap;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
 .living-word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:30px}
 .living-word-empty{display:none;padding:24px;border:1px dashed var(--border);border-radius:14px;background:var(--gold-pale);font-size:17px;line-height:1.7;color:var(--text-soft);font-style:italic;text-align:center}
 .living-word-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}

@@ -1166,6 +1166,8 @@ const DEFAULT_GUESTBOOK_ENTRIES=[
     name:'A grateful visitor',
     message:'Thank you for creating a peaceful place to find Bible verses and encouragement.',
     language:'en',
+    reactionEmoji:'',
+    replyText:'',
     createdAt:'2026-05-14T09:00:00.000Z'
   }
 ];
@@ -1183,17 +1185,28 @@ async function loadGuestbookEntries(){
     return;
   }
   try{
-    const {data,error}=await supabaseClient
+    let data=null;
+    let error=null;
+    ({data,error}=await supabaseClient
       .from('guestbook_entries')
-      .select('id,name,message,language,created_at,is_visible')
+      .select('id,name,message,language,created_at,is_visible,reaction_emoji,reply_text')
       .eq('is_visible',true)
-      .order('created_at',{ascending:false});
+      .order('created_at',{ascending:false}));
+    if(error){
+      ({data,error}=await supabaseClient
+        .from('guestbook_entries')
+        .select('id,name,message,language,created_at,is_visible')
+        .eq('is_visible',true)
+        .order('created_at',{ascending:false}));
+    }
     if(error)throw error;
     guestbookEntries=normalizeGuestbookEntries((data||[]).map(entry=>({
       id:'gb-'+String(entry.id),
       name:entry.name||'',
       message:entry.message||'',
       language:entry.language==='ko'?'ko':'en',
+      reactionEmoji:entry.reaction_emoji||'',
+      replyText:entry.reply_text||'',
       createdAt:entry.created_at||new Date().toISOString()
     })));
     renderGuestbook();
@@ -1275,7 +1288,9 @@ function normalizeGalleryItems(items){
 function normalizeGuestbookEntries(items){
   return (Array.isArray(items) ? items : []).map(item => ({
     ...item,
-    language: item && item.language === 'ko' ? 'ko' : 'en'
+    language: item && item.language === 'ko' ? 'ko' : 'en',
+    reactionEmoji: item && item.reactionEmoji ? String(item.reactionEmoji) : '',
+    replyText: item && item.replyText ? String(item.replyText) : ''
   }));
 }
 
@@ -1328,6 +1343,7 @@ function renderGuestbook(){
   const empty=document.getElementById('guestbook-empty');
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
+  const replyLabel=lang==='ko'?'운영자 답글':'Reply from Admin';
   if(!list||!empty)return;
   if(!visibleEntries.length){
     list.innerHTML='';
@@ -1338,13 +1354,25 @@ function renderGuestbook(){
   list.innerHTML=visibleEntries.map(entry=>{
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
+      +'<div class="guestbook-entry-topline">'
       +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'방문자':'Guest'))+'</div>'
+      +(entry.reactionEmoji?'<div class="guestbook-entry-reaction" aria-label="Guestbook reaction">'+escapeHtml(entry.reactionEmoji)+'</div>':'')
+      +'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
       +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
+      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text">'+escapeHtml(entry.replyText)+'</div></div>':'')
       +'</article>';
   }).join('');
 }
+
+window.appendGuestbookEmoji=function(emoji){
+  const messageInput=document.getElementById('guestbook-message');
+  if(!messageInput||!emoji)return;
+  const current=messageInput.value||'';
+  messageInput.value=current ? `${current} ${emoji}` : emoji;
+  messageInput.focus();
+};
 
 function submitGuestbookEntry(){
   const nameInput=document.getElementById('guestbook-name');
@@ -1395,6 +1423,8 @@ async function submitGuestbookEntry(){
     language:lang === 'ko' ? 'ko' : 'en',
     name:name.slice(0,50),
     message:message.slice(0,500),
+    reactionEmoji:'',
+    replyText:'',
     createdAt:new Date().toISOString()
   };
   if(button)button.disabled=true;
@@ -1422,6 +1452,8 @@ async function submitGuestbookEntry(){
     language:entry.language,
     name:entry.name,
     message:entry.message,
+    reactionEmoji:'',
+    replyText:'',
     createdAt:entry.createdAt
   });
   saveStoredItems(GUESTBOOK_STORAGE,guestbookEntries);
