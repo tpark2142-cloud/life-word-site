@@ -992,6 +992,7 @@ renderGallery();
 const LIVING_WORD_STORAGE='lifeword.livingWord.v1';
 const HOMEPAGE_VISITS_STORAGE='lifeword.homepageVisits.v1';
 const HOMEPAGE_VISIT_SESSION_KEY='lifeword.homepageVisit.session';
+const SITE_LANGUAGE_STORAGE='lifeword.siteLang';
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
     id:'lw1',
@@ -1090,7 +1091,7 @@ function getLivingWordLinkLabel(type){
 function recordHomepageVisit(){
   const stats=loadVisitStats();
   const nowIso=new Date().toISOString();
-  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const lang=getHomepageVisitLanguage();
   stats.totalViews=(stats.totalViews||0)+1;
   stats.lastVisitedAt=nowIso;
   stats.history=Array.isArray(stats.history)?stats.history:[];
@@ -1103,6 +1104,17 @@ function recordHomepageVisit(){
     sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
   }
   saveVisitStats(stats);
+}
+
+function getHomepageVisitLanguage(){
+  if(typeof window.getSiteLanguage==='function'){
+    return window.getSiteLanguage()==='ko' ? 'ko' : 'en';
+  }
+  try{
+    return localStorage.getItem(SITE_LANGUAGE_STORAGE)==='ko' ? 'ko' : 'en';
+  }catch(_error){
+    return 'en';
+  }
 }
 
 // Keep Living the Word link labels readable in both English and Korean.
