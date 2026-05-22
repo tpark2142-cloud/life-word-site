@@ -28,6 +28,7 @@
     const next = normalizeLanguage(lang);
     document.documentElement.lang = next;
     updateButtons(next);
+    window.dispatchEvent(new CustomEvent('lifeword:languagechange', { detail: { lang: next } }));
     if(typeof window.applyPageLanguage === 'function'){
       window.applyPageLanguage(next);
     }
