@@ -1490,6 +1490,9 @@ async function submitGuestbookEntry(){
       return;
     }catch(_error){
       guestbookUsesSupabase=false;
+      alert(lang==='ko'
+        ? '이 글은 온라인 Supabase에 저장되지 못했고, 현재 브라우저에만 임시 저장됩니다. 그래서 관리자 페이지에는 보이지 않을 수 있습니다.'
+        : 'This message could not be saved to online Supabase and is being stored only in this browser for now. That is why it may not appear on the admin page.');
     }
   }
   guestbookEntries.unshift({
