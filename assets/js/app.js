@@ -2,48 +2,48 @@
 // MODAL (for emotion cards)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const EMOTION_MODAL_KO = {
-  Joy: { title:'ê¸°ì¨', note:'ì°¸ëœ ê¸°ì¨ì€ ë³€í•˜ëŠ” í™˜ê²½ì´ ì•„ë‹ˆë¼ ë³€í•¨ì—†ëŠ” í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ ì•ˆì— ìžˆìŠµë‹ˆë‹¤.' },
-  Sorrow: { title:'ìŠ¬í””', note:'í•˜ë‚˜ë‹˜ì€ ìš°ë¦¬ì˜ ëˆˆë¬¼ì„ ì™¸ë©´í•˜ì§€ ì•Šìœ¼ì‹œë©° ìƒí•œ ë§ˆìŒì— ê°€ê¹Œì´ ì˜¤ì‹­ë‹ˆë‹¤.' },
-  Peace: { title:'í‰ì•ˆ', note:'í•˜ë‚˜ë‹˜ì´ ì£¼ì‹œëŠ” í‰ì•ˆì€ í­í’ì´ ì§€ë‚œ ë’¤ì—ë§Œì´ ì•„ë‹ˆë¼ í­í’ í•œê°€ìš´ë°ì„œë„ ë§ˆìŒì„ ì§€ì¼œ ì¤ë‹ˆë‹¤.' },
-  Hope: { title:'ì†Œë§', note:'ì„±ê²½ì  ì†Œë§ì€ í•˜ë‚˜ë‹˜ì˜ ê¹¨ëœ¨ë ¤ì§€ì§€ ì•ŠëŠ” ì•½ì† ìœ„ì— ì„œ ìžˆëŠ” í™•ì‹ ìž…ë‹ˆë‹¤.' },
-  Fear: { title:'ë‘ë ¤ì›€', note:'í•˜ë‚˜ë‹˜ì´ ìš°ë¦¬ì™€ í•¨ê»˜í•˜ì‹œëŠ” ë¶„ì´ì‹¬ì„ ê¸°ì–µí•  ë•Œ ë‘ë ¤ì›€ì€ íž˜ì„ ìžƒìŠµë‹ˆë‹¤.' },
-  Anxiety: { title:'ë¶ˆì•ˆ', note:'ë¶ˆì•ˆì€ ìš°ë¦¬ë¥¼ ëŒë³´ì‹œëŠ” í•˜ë‚˜ë‹˜ê»˜ ëª¨ë“  ì—¼ë ¤ë¥¼ ë§¡ê¸°ë¼ëŠ” ì´ˆëŒ€ìž…ë‹ˆë‹¤.' },
-  Loneliness: { title:'ì™¸ë¡œì›€', note:'í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ëŠ” ê±°ë¦¬ë‚˜ ê³ ë¦½ìœ¼ë¡œ ì œí•œë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.' },
-  Anger: { title:'ë¶„ë…¸', note:'ë¶„ë…¸ëŠ” ì£„ê°€ ë˜ê¸° ì „ì— í•˜ë‚˜ë‹˜ê»˜ ë§¡ê²¨ì ¸ì•¼ í•©ë‹ˆë‹¤.' },
-  Gratitude: { title:'ê°ì‚¬', note:'ê°ì‚¬ëŠ” ìš°ë¦¬ê°€ ëª¨ë“  ê²ƒì„ ë°”ë¼ë³´ëŠ” ì‹œì„ ì„ ìƒˆë¡­ê²Œ ë¹šì–´ ê°€ëŠ” í›ˆë ¨ìž…ë‹ˆë‹¤.' },
-  Guilt: { title:'ì£„ì±…ê°ê³¼ í›„íšŒ', note:'ì£„ì±…ê°ì€ ìš°ë¦¬ë¥¼ ì‹­ìžê°€ë¡œ ì´ëŒë©°, ê·¸ê³³ì—ì„œ ìš©ì„œëŠ” ì™„ì „í•´ì§‘ë‹ˆë‹¤.' },
-  Love: { title:'ì‚¬ëž‘', note:'í•˜ë‚˜ë‹˜ì˜ ì‚¬ëž‘ì€ ëª¨ë“  ì‚¬ëž‘ì˜ ê¸°ì´ˆì´ë©°, ê·¸ ì‚¬ëž‘ì´ ë¨¼ì € ìš°ë¦¬ì—ê²Œ ì™”ìŠµë‹ˆë‹¤.' },
-  Discouragement: { title:'ë‚™ì‹¬', note:'ì£¼ë¥¼ ê¸°ë‹¤ë¦¬ëŠ” ìžì—ê²Œ í•˜ë‚˜ë‹˜ì€ ìƒˆ íž˜ì„ ì£¼ì‹­ë‹ˆë‹¤.' }
+  Joy: { title:'??', note:'?? ? ? ? ? ? ?? ?? ?? ??.' },
+  Sorrow: { title:'??', note:'?? ? ? ?? ?? ?? ? ? ??.' },
+  Peace: { title:'??', note:'?? ? ? ? ?? ?? ? ?? ?? ? ?? ?.' },
+  Hope: { title:'??', note:'? ? ?? ? ?? ?? ?? ? ?? ?.' },
+  Fear: { title:'?', note:'?? ? ? ?? ? ? ?? ?? ??.' },
+  Anxiety: { title:'??', note:'? ? ?? ?? ?? ? ?? ?.' },
+  Loneliness: { title:'?', note:'?? ? ? ?? ?? ??.' },
+  Anger: { title:'??', note:'? ?? ?? ?? ?? ?? ?.' },
+  Gratitude: { title:'??', note:'? ? ?? ?? ?? ? ? ?? ?? ?.' },
+  Guilt: { title:'?? ??', note:'?? ? ?? ?, ?? ? ??.' },
+  Love: { title:'??', note:'?? ? ?? ? ??, ? ? ?? ?? ??.' },
+  Discouragement: { title:'??', note:'?? ?? ? ?? ? ?? ??.' }
 };
 
 const TOPIC_RESULT_KO = {
-  'Joy': { name:'ê¸°ì¨', cat:'ê°ì •', note:'ì°¸ëœ ê¸°ì¨ì€ ìƒí™©ì´ ì•„ë‹ˆë¼ í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ ì•ˆì— ë¿Œë¦¬ë¥¼ ë‘¡ë‹ˆë‹¤.' },
-  'Sorrow & Grief': { name:'ìŠ¬í””', cat:'ê°ì •', note:'í•˜ë‚˜ë‹˜ì€ ìƒí•œ ë§ˆìŒì— ê°€ê¹Œì´ ì˜¤ì‹œë©° ìš°ë¦¬ì˜ ëˆˆë¬¼ì„ ì™¸ë©´í•˜ì§€ ì•Šìœ¼ì‹­ë‹ˆë‹¤.' },
-  'Peace': { name:'í‰ì•ˆ', cat:'ê°ì •', note:'í•˜ë‚˜ë‹˜ì´ ì£¼ì‹œëŠ” í‰ì•ˆì€ í­í’ ì†ì—ì„œë„ ë§ˆìŒì„ ì§€ì¼œ ì¤ë‹ˆë‹¤.' },
-  'Hope': { name:'ì†Œë§', cat:'ê°ì •', note:'ì„±ê²½ì  ì†Œë§ì€ í•˜ë‚˜ë‹˜ì˜ ì•½ì†ì— ë¿Œë¦¬ë‚´ë¦° í™•ì‹  ìžˆëŠ” ê¸°ë‹¤ë¦¼ìž…ë‹ˆë‹¤.' },
-  'Fear': { name:'ë‘ë ¤ì›€', cat:'ê°ì •', note:'í•˜ë‚˜ë‹˜ì´ ìš°ë¦¬ì˜ ë„ì›€ì´ì‹¬ì„ ê¸°ì–µí•  ë•Œ ë‘ë ¤ì›€ì€ íž˜ì„ ìžƒìŠµë‹ˆë‹¤.' },
-  'Anxiety & Worry': { name:'ë¶ˆì•ˆ', cat:'ê°ì •', note:'ë¶ˆì•ˆì€ ìš°ë¦¬ë¥¼ ëŒë³´ì‹œëŠ” í•˜ë‚˜ë‹˜ê»˜ ì—¼ë ¤ë¥¼ ë§¡ê¸°ë¼ëŠ” ì´ˆëŒ€ìž…ë‹ˆë‹¤.' },
-  'Loneliness': { name:'ì™¸ë¡œì›€', cat:'ê°ì •', note:'í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ëŠ” ê±°ë¦¬ì™€ ì§ˆë³‘ê³¼ ê³ ë¦½ìœ¼ë¡œ ì œí•œë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.' },
-  'Anger': { name:'ë¶„ë…¸', cat:'ê°ì •', note:'ë¶„ë…¸ê°€ ì£„ê°€ ë˜ê¸° ì „ì— í•˜ë‚˜ë‹˜ê»˜ ë§¡ê²¨ì§ˆ ë•Œ ë‹¤ìŠ¤ë ¤ì§‘ë‹ˆë‹¤.' },
-  'Gratitude': { name:'ê°ì‚¬', cat:'ê°ì •', note:'ê°ì‚¬ëŠ” ì„¸ìƒì„ ë°”ë¼ë³´ëŠ” ì‹œì„ ì„ ìƒˆë¡­ê²Œ ë¹šì–´ ê°€ëŠ” í›ˆë ¨ìž…ë‹ˆë‹¤.' },
-  'Guilt & Regret': { name:'ì£„ì±…ê°ê³¼ í›„íšŒ', cat:'ê°ì •', note:'ì£„ì±…ê°ì€ ìš°ë¦¬ë¥¼ ì‹­ìžê°€ë¡œ ì´ëŒë©°, ê±°ê¸°ì—ì„œ ìš©ì„œëŠ” ì™„ì „í•´ì§‘ë‹ˆë‹¤.' },
-  'Love': { name:'ì‚¬ëž‘', cat:'ê°ì •', note:'í•˜ë‚˜ë‹˜ì˜ ì‚¬ëž‘ì€ ëª¨ë“  ì‚¬ëž‘ì˜ ê¸°ì´ˆì´ë©°, ê·¸ ì‚¬ëž‘ì´ ë¨¼ì € ìš°ë¦¬ì—ê²Œ ì™”ìŠµë‹ˆë‹¤.' },
-  'Discouragement': { name:'ë‚™ì‹¬', cat:'ê°ì •', note:'ê°€ìž¥ ë‚®ì€ ìžë¦¬ì—ì„œë„ í•˜ë‚˜ë‹˜ì€ ì£¼ë¥¼ ê¸°ë‹¤ë¦¬ëŠ” ìžì—ê²Œ ìƒˆ íž˜ì„ ì£¼ì‹­ë‹ˆë‹¤.' },
-  'Suffering & Trials': { name:'ê³ ë‚œê³¼ ì‹œë ¨', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ê³ ë‚œì€ í•˜ë‚˜ë‹˜ì˜ ì† ì•ˆì—ì„œ í—›ë˜ì§€ ì•Šìœ¼ë©°, í•˜ë‚˜ë‹˜ì€ ê·¸ê²ƒì„ í†µí•´ ì¼í•˜ì‹­ë‹ˆë‹¤.' },
-  'Illness & Sickness': { name:'ì§ˆë³‘ê³¼ ì•„í””', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ë³‘ ê°€ìš´ë°ì„œë„ í•˜ë‚˜ë‹˜ì€ ë©€ë¦¬ ê³„ì‹œì§€ ì•Šê³  ë¶™ë“œì‹œë©° í•¨ê»˜í•˜ì‹­ë‹ˆë‹¤.' },
-  'Death & Dying': { name:'ì£½ìŒê³¼ ìž„ì¢…', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ë¯¿ëŠ” ì´ì—ê²Œ ì£½ìŒì€ ëì´ ì•„ë‹ˆë¼ í•˜ë‚˜ë‹˜ê»˜ë¡œ ë“¤ì–´ê°€ëŠ” ë¬¸ìž…ë‹ˆë‹¤.' },
-  'Grief & Funeral Comfort': { name:'ìŠ¬í””ê³¼ ìž¥ë¡€ì˜ ìœ„ë¡œ', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'í•¨ê»˜ ìŠ¬í¼í•˜ê³  ê¸°ì–µí•˜ëŠ” ì´ë“¤ì„ ìœ„í•œ ì˜ì›í•œ ì†Œë§ì˜ ë§ì”€ìž…ë‹ˆë‹¤.' },
-  'Forgiveness': { name:'ìš©ì„œ', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ìš©ì„œëŠ” ìž˜ëª»ì„ ë¶™ë“¤ê³  ì‚´ì•„ê°€ëŠ” ë¬´ê±°ìš´ ì§ì—ì„œ ìš°ë¦¬ë¥¼ ë†“ì•„ì¤ë‹ˆë‹¤.' },
-  'Marriage & Family': { name:'ê²°í˜¼ê³¼ ê°€ì •', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ê²°í˜¼ì€ ê·¸ë¦¬ìŠ¤ë„ê»˜ì„œ êµíšŒë¥¼ ì‚¬ëž‘í•˜ì‹  ìžê¸°í¬ìƒì  ì‚¬ëž‘ì„ ë¹„ì¶¥ë‹ˆë‹¤.' },
-  'Money & Financial Worry': { name:'ìž¬ì •ê³¼ ëˆ ê±±ì •', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'í•˜ë‚˜ë‹˜ì€ ë¨¼ì € ê·¸ì˜ ë‚˜ë¼ë¥¼ êµ¬í•˜ë¼ê³  ë¶€ë¥´ì‹œë©° í•„ìš”í•œ ê³µê¸‰ì„ ì•½ì†í•˜ì‹­ë‹ˆë‹¤.' },
-  'Decision-Making & Wisdom': { name:'ê²°ì •ê³¼ ì§€í˜œ', cat:'ì‚¶ì˜ ë¬¸ì œ', note:'ê°ˆë¦¼ê¸¸ë§ˆë‹¤ ìžì‹ ì˜ ëª…ì² ë§Œ ì˜ì§€í•˜ì§€ ë§ê³  ë©ˆì¶”ì–´ í•˜ë‚˜ë‹˜ì„ ë°”ë¼ë³´ì‹­ì‹œì˜¤.' },
-  'Faith & Trust': { name:'ë¯¿ìŒê³¼ ì‹ ë¢°', cat:'ì˜ì  ì£¼ì œ', note:'ë¯¿ìŒì€ ê¸¸ì´ ë³´ì´ì§€ ì•Šì•„ë„ í•˜ë‚˜ë‹˜ì„ ë¶™ë“œëŠ” ì‹ ë¢°ìž…ë‹ˆë‹¤.' },
-  'Prayer': { name:'ê¸°ë„ì™€ ì¤‘ë³´', cat:'ì˜ì  ì£¼ì œ', note:'ê¸°ë„ëŠ” ê°€ìž¥ ë‹¨ìˆœí•˜ë©´ì„œë„ ê°€ìž¥ ê¹Šì€ ë¯¿ìŒì˜ í–‰ìœ„ìž…ë‹ˆë‹¤.' },
-  'Grace & Mercy': { name:'ì€í˜œì™€ ìžë¹„', cat:'ì˜ì  ì£¼ì œ', note:'ì€í˜œëŠ” ë°›ì„ ìžê²©ì´ ì—†ëŠ” ìš°ë¦¬ì—ê²Œ í•˜ë‚˜ë‹˜ì´ ë² í‘¸ì‹œëŠ” ì„ ë¬¼ì´ë©° ë¯¿ìŒì˜ ê¸°ì´ˆìž…ë‹ˆë‹¤.' },
-  'Salvation': { name:'êµ¬ì›ê³¼ ì†ëŸ‰', cat:'ì˜ì  ì£¼ì œ', note:'êµ¬ì›ì€ ì „ì ìœ¼ë¡œ í•˜ë‚˜ë‹˜ì˜ ì„ ë¬¼ì´ë©° ì˜¤ì§ ê·¸ë¦¬ìŠ¤ë„ë¥¼ ë¯¿ëŠ” ë¯¿ìŒìœ¼ë¡œ ë°›ìŠµë‹ˆë‹¤.' },
-  'Heaven & Eternity': { name:'ì²œêµ­ê³¼ ì˜ì›', cat:'ì˜ì  ì£¼ì œ', note:'ì²œêµ­ì€ ì‹¤ì œì´ë©°, í•˜ë‚˜ë‹˜ê»˜ì„œ ìžê¸° ë°±ì„±ê³¼ ì˜ì›ížˆ í•¨ê»˜í•˜ì‹œëŠ” ê³³ìž…ë‹ˆë‹¤.' },
-  'Strength': { name:'íž˜', cat:'ì˜ì  ì£¼ì œ', note:'í•˜ë‚˜ë‹˜ì€ í”¼ê³¤í•œ ìžì—ê²Œ ëŠ¥ë ¥ì„ ì£¼ì‹œë©° ë¬´ëŠ¥í•œ ìžì—ê²Œ íž˜ì„ ë”í•˜ì‹­ë‹ˆë‹¤.' },
-  "God's Presence": { name:'í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ì™€ ìœ„ë¡œ', cat:'ì˜ì  ì£¼ì œ', note:'í•˜ë‚˜ë‹˜ì˜ ìž„ìž¬ëŠ” ê±´ë¬¼ì— ì œí•œë˜ì§€ ì•Šìœ¼ë©° ì–¸ì œë‚˜ ìš°ë¦¬ ê°€ê¹Œì´ì— ìžˆìŠµë‹ˆë‹¤.' }
+  'Joy': { name:'??', cat:'??', note:'?? ? ? ? ?? ?? ?? ? ?.' },
+  'Sorrow & Grief': { name:'??', cat:'??', note:'?? ?? ? ? ? ? ? ?? ?.' },
+  'Peace': { name:'??', cat:'??', note:'?? ? ? ?? ?? ? ?? ?.' },
+  'Hope': { name:'??', cat:'??', note:'? ? ?? ? ?? ?? ?? ??.' },
+  'Fear': { name:'?', cat:'??', note:'?? ? ? ? ? ?? ?? ??.' },
+  'Anxiety & Worry': { name:'??', cat:'??', note:'? ? ?? ?? ? ?? ?.' },
+  'Loneliness': { name:'?', cat:'??', note:'?? ? ? ? ?? ?? ??.' },
+  'Anger': { name:'??', cat:'??', note:'? ?? ?? ?? ?? ? ? ??.' },
+  'Gratitude': { name:'??', cat:'??', note:'? ? ?? ? ? ?? ?? ?.' },
+  'Guilt & Regret': { name:'?? ??', cat:'??', note:'?? ? ?? ?, ?? ? ??.' },
+  'Love': { name:'??', cat:'??', note:'?? ? ?? ? ??, ? ? ?? ?? ??.' },
+  'Discouragement': { name:'??', cat:'??', note:'?? ?? ? ?? ?? ?? ? ? ?? ??.' },
+  'Suffering & Trials': { name:'? ??', cat:'?? ??', note:'? ?? ? ? ? ?, ?? ? ?? ?.' },
+  'Illness & Sickness': { name:'? ??', cat:'?? ??', note:'? ? ?? ?? ? ?? ?? ??.' },
+  'Death & Dying': { name:'? ??', cat:'?? ??', note:'?? ? ? ?? ? ? ?? ??.' },
+  'Grief & Funeral Comfort': { name:'? ? ??', cat:'?? ??', note:'?? ?? ?? ? ?? ? ? ?.' },
+  'Forgiveness': { name:'??', cat:'?? ??', note:'? ? ? ?? ? ? ? ?.' },
+  'Marriage & Family': { name:'? ??', cat:'?? ??', note:'? ?? ? ?? ? ? ??.' },
+  'Money & Financial Worry': { name:'? ? ??', cat:'?? ??', note:'?? ?? ?? ? ?? ?? ? ? ??.' },
+  'Decision-Making & Wisdom': { name:'? ??', cat:'?? ??', note:'? ? ? ?? ?? ? ?? ??.' },
+  'Faith & Trust': { name:'? ??', cat:'?? ??', note:'? ?? ? ? ?? ? ?.' },
+  'Prayer': { name:'? ??', cat:'?? ??', note:'? ?? ?? ?? ?? ? ?.' },
+  'Grace & Mercy': { name:'? ??', cat:'?? ??', note:'? ?? ? ?? ?? ?? ?? ?? ? ?.' },
+  'Salvation': { name:'? ??', cat:'?? ??', note:'? ?? ?? ?? ?? ? ?? ?? ??.' },
+  'Heaven & Eternity': { name:'? ??', cat:'?? ??', note:'? ??, ? ?? ? ? ? ??.' },
+  'Strength': { name:'?', cat:'?? ??', note:'?? ? ? ? ? ? ? ?? ?.' },
+  "God's Presence": { name:'?? ? ??', cat:'?? ??', note:'?? ? ? ?? ? ? ?? ?? ??.' }
 };
 
 function openEmotion(name){
@@ -51,7 +51,7 @@ function openEmotion(name){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const localized=lang==='ko' ? (EMOTION_MODAL_KO[name] || null) : null;
   document.getElementById('m-icon').textContent=d.icon;
-  document.getElementById('m-cat').textContent=lang==='ko'?'ê°ì •':'Emotion';
+  document.getElementById('m-cat').textContent=lang==='ko'?'감정':'Emotion';
   document.getElementById('m-title').textContent=localized?localized.title:name;
   document.getElementById('m-note').textContent=localized?localized.note:d.note;
   let dvIdx = 1000;
@@ -143,31 +143,31 @@ const EXACT_TOPIC_QUERY_MAP = {
   funeral:'Grief & Funeral Comfort',
   death:'Death & Dying',
   dying:'Death & Dying',
-  ìŠ¬í””:'Sorrow & Grief',
-  ë‘ë ¤ì›€:'Fear',
-  ì†Œë§:'Hope',
-  íž˜:'Strength',
-  í‰ì•ˆ:'Peace',
-  ìš©ì„œ:'Forgiveness',
-  ìž¬ì •:'Money & Financial Worry',
-  ëˆ:'Money & Financial Worry',
-  ë¶ˆì•ˆ:'Anxiety & Worry',
-  ì™¸ë¡œì›€:'Loneliness',
-  ì§ˆë³‘:'Illness & Sickness',
-  ì•„í””:'Illness & Sickness',
-  ê²°í˜¼:'Marriage & Family',
-  ê°€ì •:'Marriage & Family',
-  ë¯¿ìŒ:'Faith & Trust',
-  ì‹ ë¢°:'Faith & Trust',
-  ê¸°ë„:'Prayer',
-  êµ¬ì›:'Salvation',
-  ì²œêµ­:'Heaven & Eternity',
-  ì˜ì›:'Heaven & Eternity',
-  ìž„ìž¬:"God's Presence",
-  ìœ„ë¡œ:'Grief & Funeral Comfort',
-  ìž¥ë¡€:'Grief & Funeral Comfort',
-  ì£½ìŒ:'Death & Dying',
-  ìž„ì¢…:'Death & Dying'
+  슬픔:'Sorrow & Grief',
+  두려움:'Fear',
+  소망:'Hope',
+  힘:'Strength',
+  평안:'Peace',
+  용서:'Forgiveness',
+  재정:'Money & Financial Worry',
+  돈:'Money & Financial Worry',
+  불안:'Anxiety & Worry',
+  외로움:'Loneliness',
+  질병:'Illness & Sickness',
+  아픔:'Illness & Sickness',
+  결혼:'Marriage & Family',
+  가정:'Marriage & Family',
+  믿음:'Faith & Trust',
+  신뢰:'Faith & Trust',
+  기도:'Prayer',
+  구원:'Salvation',
+  천국:'Heaven & Eternity',
+  영원:'Heaven & Eternity',
+  임재:"God's Presence",
+  위로:'Grief & Funeral Comfort',
+  장례:'Grief & Funeral Comfort',
+  죽음:'Death & Dying',
+  임종:'Death & Dying'
 };
 
 function doHeroSearch(){
@@ -196,7 +196,7 @@ function doHeroSearch(){
   if(matched.length===0){
     nr.style.display='block';
     rt.textContent=lang==='ko'
-      ? '"'+inp.value+'"ì— ëŒ€í•œ ì„±ê²½ êµ¬ì ˆì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤'
+      ? '"'+inp.value+'"에 대한 성경 구절을 찾지 못했습니다'
       : 'No Bible verses found for "'+inp.value+'"';
     rc.textContent='';
   }
@@ -205,10 +205,10 @@ function doHeroSearch(){
       ? getLocalizedTopicResult(matched[0], 'ko').name
       : inp.value;
     rt.textContent=lang==='ko'
-      ? '"'+displayQuery+'"ì— ëŒ€í•œ ì„±ê²½ êµ¬ì ˆ'
+      ? '"'+displayQuery+'"에 대한 성경 구절'
       : 'Bible Verses for "'+displayQuery+'"';
     rc.textContent=lang==='ko'
-      ? matched.length+'ê°œ ì£¼ì œ ì°¾ìŒ'
+      ? matched.length+'개 주제 찾음'
       : matched.length+' topic'+(matched.length!==1?'s':'')+' found';
     matched.forEach((t,i)=>{
       const displayTopic=getLocalizedTopicResult(t, lang);
@@ -412,18 +412,18 @@ function heroChip(term){
   const isKorean=document.documentElement.lang==='ko';
   const chipTopicMap=isKorean
     ? {
-        grief:'ìŠ¬í””',
-        fear:'ë‘ë ¤ì›€',
-        lonely:'ì™¸ë¡œì›€',
-        sick:'ì§ˆë³‘ê³¼ ì•„í””',
-        anxiety:'ë¶ˆì•ˆ',
-        forgive:'ìš©ì„œ',
-        hope:'ì†Œë§',
-        strength:'ë‚™ì‹¬',
-        money:'ìž¬ì •ê³¼ ëˆ ê±±ì •',
-        peace:'í‰ì•ˆ',
-        marriage:'ê²°í˜¼ê³¼ ê°€ì •',
-        death:'ì£½ìŒê³¼ ìž„ì¢…'
+        grief:'슬픔',
+        fear:'두려움',
+        lonely:'외로움',
+        sick:'질병과 아픔',
+        anxiety:'불안',
+        forgive:'용서',
+        hope:'소망',
+        strength:'낙심',
+        money:'재정과 돈 걱정',
+        peace:'평안',
+        marriage:'결혼과 가정',
+        death:'죽음과 임종'
       }
     : {
         grief:'Grief',
@@ -1069,10 +1069,10 @@ function getLivingWordLinkLabel(type){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const normalized=(type||'').toLowerCase();
   if(lang==='ko'){
-    if(normalized==='podcast')return 'ë“£ê¸°';
-    if(normalized==='powerpoint')return 'ê°•ì˜ ì—´ê¸°';
-    if(normalized==='journal')return 'ë¬µìƒ ì½ê¸°';
-    return 'ê¸€ ì½ê¸°';
+    if(normalized==='podcast')return '듣기';
+    if(normalized==='powerpoint')return '강의 열기';
+    if(normalized==='journal')return '묵상 읽기';
+    return '글 읽기';
   }
   if(normalized==='podcast')return 'Listen';
   if(normalized==='powerpoint')return 'Open Lesson';
@@ -1141,10 +1141,10 @@ function getLivingWordLinkLabel(type){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
   const normalized=(type||'').toLowerCase();
   if(lang==='ko'){
-    if(normalized==='podcast') return 'ì˜¤ë””ì˜¤ ë“£ê¸°';
-    if(normalized==='powerpoint') return 'ê°•ì˜ ì—´ê¸°';
-    if(normalized==='journal') return 'ë¬µìƒ ì½ê¸°';
-    return 'ê¸€ ì½ê¸°';
+    if(normalized==='podcast') return '오디오 듣기';
+    if(normalized==='powerpoint') return '강의 열기';
+    if(normalized==='journal') return '묵상 읽기';
+    return '글 읽기';
   }
   if(normalized==='podcast') return 'Listen Now';
   if(normalized==='powerpoint') return 'Open Lesson';
@@ -1154,7 +1154,7 @@ function getLivingWordLinkLabel(type){
 
 function getLivingWordOpenAudioLabel(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
-  return lang==='ko' ? 'ì˜¤ë””ì˜¤ ì§ì ‘ ì—´ê¸°' : 'Open Audio';
+  return lang==='ko' ? '오디오 직접 열기' : 'Open Audio';
 }
 
 function loadVisitStats(){
@@ -1262,7 +1262,7 @@ function renderGuestbook(){
   list.innerHTML=guestbookEntries.map(entry=>{
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
-      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'ë°©ë¬¸ìž':'Guest'))+'</div>'
+      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'방문자':'Guest'))+'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
       +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
@@ -1278,7 +1278,7 @@ function submitGuestbookEntry(){
   const name=(nameInput.value||'').trim();
   const message=(messageInput.value||'').trim();
   if(!name||!message){
-    alert(lang==='ko'?'ì´ë¦„ê³¼ ë©”ì‹œì§€ë¥¼ ëª¨ë‘ ìž…ë ¥í•´ ì£¼ì„¸ìš”.':'Please enter both your name and your message.');
+    alert(lang==='ko'?'이름과 메시지를 모두 입력해 주세요.':'Please enter both your name and your message.');
     return;
   }
   guestbookEntries.unshift({
@@ -1296,13 +1296,13 @@ function submitGuestbookEntry(){
 function formatGuestbookDate(value){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const date=value?new Date(value):new Date();
-  if(Number.isNaN(date.getTime()))return lang==='ko'?'ìµœê·¼ ë©”ì‹œì§€':'Recent Message';
+  if(Number.isNaN(date.getTime()))return lang==='ko'?'최근 메시지':'Recent Message';
   return date.toLocaleDateString(lang==='ko'?'ko-KR':undefined,{year:'numeric',month:'short',day:'numeric'});
 }
 
 function getLocalizedPhotoCount(count){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
-  if(lang==='ko')return count+'ê°œì˜ ì‚¬ì§„';
+  if(lang==='ko')return count+'개의 사진';
   return count+' photo'+(count!==1?'s':'');
 }
 
@@ -1331,8 +1331,8 @@ function normalizeGuestbookEntries(items){
   function buildGalleryCaptionHtml(item){
     const title=(item.title||'').trim();
     const summary=(item.summary||item.caption||'').trim();
-    const displayTitle=item.language==='ko' ? title.replace(/ ìžì „ê±° ì—¬í–‰$/,'\nìžì „ê±° ì—¬í–‰') : title;
-    const displaySummary=item.language==='ko' ? summary.replace(/ ìžì „ê±° ì—¬í–‰$/,'\nìžì „ê±° ì—¬í–‰') : summary;
+    const displayTitle=item.language==='ko' ? title.replace(/ 자전거 여행$/,'\n자전거 여행') : title;
+    const displaySummary=item.language==='ko' ? summary.replace(/ 자전거 여행$/,'\n자전거 여행') : summary;
     const showTitle=title && title!==summary;
     if(!showTitle && !displaySummary)return '';
     return `<div class="gallery-copy">
@@ -1374,7 +1374,7 @@ function renderGuestbook(){
   const empty=document.getElementById('guestbook-empty');
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
-  const replyLabel=lang==='ko'?'ìš´ì˜ìž ë‹µê¸€':'Reply from Admin';
+  const replyLabel=lang==='ko'?'운영자 답글':'Reply from Admin';
   if(!list||!empty)return;
   if(!visibleEntries.length){
     list.innerHTML='';
@@ -1386,7 +1386,7 @@ function renderGuestbook(){
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
       +'<div class="guestbook-entry-topline">'
-      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'ë°©ë¬¸ìž':'Guest'))+'</div>'
+      +'<div class="guestbook-entry-name">'+escapeHtml(entry.name||(lang==='ko'?'방문자':'Guest'))+'</div>'
       +(entry.reactionEmoji?'<div class="guestbook-entry-reaction" aria-label="Guestbook reaction">'+escapeHtml(entry.reactionEmoji)+'</div>':'')
       +'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
@@ -1413,7 +1413,7 @@ function submitGuestbookEntry(){
   const name=(nameInput.value||'').trim();
   const message=(messageInput.value||'').trim();
   if(!name||!message){
-    alert(lang==='ko'?'ì´ë¦„ê³¼ ë©”ì‹œì§€ë¥¼ ëª¨ë‘ ìž…ë ¥í•´ ì£¼ì„¸ìš”.':'Please enter both your name and your message.');
+    alert(lang==='ko'?'이름과 메시지를 모두 입력해 주세요.':'Please enter both your name and your message.');
     return;
   }
   guestbookEntries.unshift({
@@ -1447,7 +1447,7 @@ async function submitGuestbookEntry(){
   const name=(nameInput.value||'').trim();
   const message=(messageInput.value||'').trim();
   if(!name||!message){
-    alert(lang==='ko'?'Ã¬ÂÂ´Ã«Â¦â€žÃªÂ³Â¼ Ã«Â©â€Ã¬â€¹Å“Ã¬Â§â‚¬Ã«Â¥Â¼ Ã«ÂªÂ¨Ã«â€˜Â Ã¬Å¾â€¦Ã«Â Â¥Ã­â€¢Â´ Ã¬Â£Â¼Ã¬â€žÂ¸Ã¬Å¡â€.':'Please enter both your name and your message.');
+    alert(lang==='ko'?'이름과 메시지를 모두 입력해 주세요.':'Please enter both your name and your message.');
     return;
   }
   const entry={
@@ -1576,6 +1576,7 @@ async function loadGalleryItems(){
 }
 
 loadGalleryItems();
+
 
 
 
