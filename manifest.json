@@ -1,0 +1,19 @@
+{
+  "name": "Life's Moments, God's Word",
+  "short_name": "Life's Moments",
+  "description": "Bible verses, devotion, prayer, comfort, guestbook, and faith resources in English and Korean.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#102117",
+  "theme_color": "#102117",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/img/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
