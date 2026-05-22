@@ -126,6 +126,9 @@
       if(event.button !== 0){
         return;
       }
+      if(event.target.closest('[data-lang-btn]')){
+        return;
+      }
       pointerId=event.pointerId;
       startX=event.clientX;
       startY=event.clientY;
