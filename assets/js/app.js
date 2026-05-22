@@ -165,6 +165,16 @@ function normalizeTopicVerseReference(ref){
     .trim();
 }
 
+function repairMojibake(str){
+  const value=String(str||'');
+  if(!/[\u00C0-\u00FF]/.test(value)) return value;
+  try{
+    return decodeURIComponent(escape(value));
+  }catch(_error){
+    return value;
+  }
+}
+
 function injectTopicVerseKoreanNotes(){
   document.querySelectorAll('.topic-panel .dv-content').forEach(content=>{
     if(content.querySelector('.ko-key-note')) return;
@@ -175,7 +185,7 @@ function injectTopicVerseKoreanNotes(){
     if(!note) return;
     const noteEl=document.createElement('p');
     noteEl.className='ko-key-note';
-    noteEl.textContent='한글 핵심 뜻: '+note;
+    noteEl.textContent='한글 핵심 뜻: '+repairMojibake(note);
     cite.insertAdjacentElement('afterend',noteEl);
   });
 }
