@@ -1017,8 +1017,6 @@ const DEFAULT_LIVING_WORD_ITEMS=[
 
 let livingWordItems=normalizeLivingWordItems(loadStoredItems(LIVING_WORD_STORAGE,DEFAULT_LIVING_WORD_ITEMS));
 
-recordHomepageVisit();
-
 function renderLivingWord(){
   const grid=document.getElementById('living-word-grid');
   const empty=document.getElementById('living-word-empty');
@@ -1090,6 +1088,9 @@ function getLivingWordLinkLabel(type){
 }
 
 function recordHomepageVisit(){
+  if(window.__homepageVisitRecorded){
+    return;
+  }
   const stats=loadVisitStats();
   const nowIso=new Date().toISOString();
   const lang=getHomepageVisitLanguage();
@@ -1105,6 +1106,7 @@ function recordHomepageVisit(){
     sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
   }
   saveVisitStats(stats);
+  window.__homepageVisitRecorded=true;
 }
 
 function getHomepageVisitLanguage(){
@@ -1117,6 +1119,29 @@ function getHomepageVisitLanguage(){
     return 'en';
   }
 }
+
+function updateHomepageVisitLanguage(lang){
+  const next=lang==='ko' ? 'ko' : 'en';
+  const stats=loadVisitStats();
+  const history=Array.isArray(stats.history) ? stats.history : [];
+  if(!history.length){
+    return;
+  }
+  const lastIndex=history.length-1;
+  const lastItem=history[lastIndex];
+  if(!lastItem || typeof lastItem.at !== 'string'){
+    return;
+  }
+  history[lastIndex]={
+    ...lastItem,
+    lang:next
+  };
+  stats.history=history;
+  saveVisitStats(stats);
+}
+
+window.recordHomepageVisit=recordHomepageVisit;
+window.updateHomepageVisitLanguage=updateHomepageVisitLanguage;
 
 // Keep Living the Word link labels readable in both English and Korean.
 function getLivingWordLinkLabel(type){

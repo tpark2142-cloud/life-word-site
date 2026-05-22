@@ -42,6 +42,9 @@
       localStorage.setItem(STORAGE_KEY, next);
     }catch(_error){}
     applyLanguage(next);
+    if(typeof window.updateHomepageVisitLanguage === 'function'){
+      window.updateHomepageVisitLanguage(next);
+    }
   }
 
   function bindButtons(){
@@ -189,5 +192,8 @@
     bindButtons();
     initializeFloatingSwitcher();
     applyLanguage(getSiteLanguage());
+    if(typeof window.recordHomepageVisit === 'function'){
+      window.recordHomepageVisit();
+    }
   });
 })();
