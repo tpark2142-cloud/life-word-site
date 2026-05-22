@@ -357,9 +357,10 @@ footer a:hover{color:var(--gold-light)}
   font-family: 'EB Garamond', serif;
   font-size: 11px;
   font-style: italic;
-  color: rgba(255,255,255,.35);
+  color: #f4d889;
   margin-top: 8px;
   line-height: 1.5;
+  text-shadow: 0 0 14px rgba(244,216,137,.16);
 }
 .sb-cross {
   font-size: 22px;
