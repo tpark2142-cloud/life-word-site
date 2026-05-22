@@ -96,6 +96,20 @@ function tgl(btn){
   if(!isOpen){btn.classList.add('open');panel.classList.add('open');setTimeout(()=>btn.scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
 }
 
+function bindTopicButtons(){
+  document.querySelectorAll('.topic-btn').forEach(btn=>{
+    if(btn.dataset.topicBound==='true'){
+      return;
+    }
+    btn.dataset.topicBound='true';
+    btn.addEventListener('click', function(event){
+      event.preventDefault();
+      tgl(btn);
+    });
+  });
+}
+window.tgl=tgl;
+
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // SEARCH ENGINE
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -1576,6 +1590,8 @@ async function loadGalleryItems(){
 }
 
 loadGalleryItems();
+
+bindTopicButtons();
 
 
 
