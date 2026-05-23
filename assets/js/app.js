@@ -561,7 +561,8 @@ function closeLightbox(event){
   if(event){
     event.stopPropagation();
     const closeButton=event.target.closest ? event.target.closest('.gallery-lightbox-close') : null;
-    if(event.target.id!=='gallery-lightbox' && !closeButton)return;
+    const returnButton=event.target.closest ? event.target.closest('.gallery-lightbox-return') : null;
+    if(event.target.id!=='gallery-lightbox' && !closeButton && !returnButton)return;
   }
   const lb=document.getElementById('gallery-lightbox');
   if(!lb)return;
@@ -577,7 +578,8 @@ function handleGalleryThumbClick(link,event){
   const title=link.dataset.title || link.getAttribute('aria-label') || '';
   if(!src)return true;
   if(event)event.preventDefault();
-  return !openLightbox(src,title,event);
+  openLightbox(src,title,event);
+  return false;
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();}});
 
@@ -1379,7 +1381,7 @@ function renderGallery(){
     if(!grid)return;
     grid.classList.toggle('gallery-editing',galleryEditMode);
     grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-      <a class="gallery-thumb" href="${escapeAttr(item.src)}" target="_blank" rel="noopener noreferrer" data-src="${escapeAttr(item.src)}" data-title="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}">
+      <a class="gallery-thumb" href="${escapeAttr(item.src)}" data-src="${escapeAttr(item.src)}" data-title="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" onclick="return handleGalleryThumbClick(this,event)">
         <img src="${escapeAttr(item.src)}" alt="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" loading="lazy">
       </a>
       ${buildGalleryCaptionHtml(item)}

@@ -765,9 +765,12 @@ gtag('config', 'G-2SJCBS84VD');
 </section>
 
 <div class="gallery-lightbox" id="gallery-lightbox" onclick="closeLightbox(event)">
-  <button class="gallery-lightbox-close" type="button" onclick="closeLightbox(event)">&times;</button>
+  <button class="gallery-lightbox-close" type="button" onclick="closeLightbox(event)" aria-label="Close gallery image">&times;</button>
   <img id="gallery-lightbox-image" alt="Gallery photo preview">
   <p id="gallery-lightbox-caption"></p>
+  <button class="gallery-lightbox-return" id="gallery-lightbox-return" type="button" onclick="closeLightbox(event)">
+    Back to Gallery
+  </button>
 </div>
 
 <!-- AI SEARCH -->

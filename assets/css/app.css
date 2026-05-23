@@ -663,7 +663,7 @@ footer a:hover{color:var(--gold-light)}
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 190px));
+  grid-template-columns: repeat(auto-fit, minmax(132px, 168px));
   justify-content: start;
   gap: 16px;
   margin-top: 8px;
@@ -831,25 +831,77 @@ html[lang="ko"] .gallery-copy-summary{
   cursor: default;
   display: block;
 }
-.lb-close {
-  position: fixed; top: 18px; right: 22px;
-  width: 44px; height: 44px;
+.gallery-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
   background: rgba(255,255,255,.12);
   border: 1px solid rgba(255,255,255,.25);
   border-radius: 50%;
-  color: #fff; font-size: 22px; cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
   line-height: 1;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, transform .2s;
   z-index: 1001;
 }
-.lb-close:hover { background: rgba(255,255,255,.25); }
+.gallery-lightbox-close:hover { background: rgba(255,255,255,.25); transform: scale(1.04); }
+.gallery-lightbox-return {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18,45,32,.92);
+  color: #ffe39a;
+  border: 1px solid rgba(255,227,154,.38);
+  border-radius: 999px;
+  padding: 12px 16px;
+  min-width: 148px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  z-index: 1001;
+}
+.gallery-lightbox-return:hover {
+  background: rgba(28,61,44,.98);
+  color: #fff1bf;
+}
 
 @media(max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); }
+  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); }
+  .gallery-lightbox-return {
+    right: 14px;
+    top: auto;
+    bottom: 18px;
+    transform: none;
+    min-width: 130px;
+    padding: 11px 14px;
+    font-size: 10px;
+  }
 }
 @media(max-width: 480px) {
-  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .gallery-lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+  }
+  .gallery-lightbox-return {
+    right: 12px;
+    bottom: 12px;
+    min-width: 122px;
+    padding: 10px 12px;
+    font-size: 9.5px;
+  }
 }
 
 /* ══════════════════════════════════════════════
