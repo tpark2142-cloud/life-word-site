@@ -1362,11 +1362,22 @@ function renderGallery(){
     if(!grid)return;
     grid.classList.toggle('gallery-editing',galleryEditMode);
     grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-      <button type="button" class="gallery-thumb" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}')">
+      <button type="button" class="gallery-thumb" data-src="${escapeAttr(item.src)}" data-title="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}">
         <img src="${escapeAttr(item.src)}" alt="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" loading="lazy">
       </button>
       ${buildGalleryCaptionHtml(item)}
     </div>`).join('');
+    grid.querySelectorAll('.gallery-thumb').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        openLightbox(btn.dataset.src||'',btn.dataset.title||'');
+      });
+      btn.addEventListener('keydown',event=>{
+        if(event.key==='Enter' || event.key===' '){
+          event.preventDefault();
+          openLightbox(btn.dataset.src||'',btn.dataset.title||'');
+        }
+      });
+    });
     updateGalleryCount(visibleItems.length);
     checkGalleryEmpty(visibleItems.length);
     updateGalleryEditButton();
