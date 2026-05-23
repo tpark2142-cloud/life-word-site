@@ -1183,6 +1183,39 @@ window.applyPageLanguage=function(lang){
 };
 </script>
 <script src="assets/js/app.js?v=20260521b"></script>
+<script>
+window.tgl = function(btn){
+  if(!btn) return;
+  var panel = btn.nextElementSibling;
+  if(!panel || !panel.classList.contains('topic-panel')) return;
+  var scope = btn.closest('.topic-col-card') || document;
+  var isOpen = btn.classList.contains('open');
+  scope.querySelectorAll('.topic-btn.open').forEach(function(openBtn){
+    openBtn.classList.remove('open');
+    if(openBtn.nextElementSibling && openBtn.nextElementSibling.classList.contains('topic-panel')){
+      openBtn.nextElementSibling.classList.remove('open');
+    }
+  });
+  if(!isOpen){
+    btn.classList.add('open');
+    panel.classList.add('open');
+    setTimeout(function(){
+      if(typeof btn.scrollIntoView === 'function'){
+        btn.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    }, 50);
+  }
+};
+document.querySelectorAll('.topic-btn').forEach(function(btn){
+  btn.removeAttribute('onclick');
+  if(btn.dataset.topicBound === 'true') return;
+  btn.dataset.topicBound = 'true';
+  btn.addEventListener('click', function(event){
+    event.preventDefault();
+    window.tgl(btn);
+  });
+});
+</script>
 <script src="assets/js/lang.js?v=20260521c"></script>
 <script src="assets/js/pwa.js"></script>
 
