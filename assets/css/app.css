@@ -663,7 +663,7 @@ footer a:hover{color:var(--gold-light)}
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 190px));
   justify-content: start;
   gap: 16px;
   margin-top: 8px;
@@ -846,7 +846,7 @@ html[lang="ko"] .gallery-copy-summary{
 .lb-close:hover { background: rgba(255,255,255,.25); }
 
 @media(max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); }
 }
 @media(max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }

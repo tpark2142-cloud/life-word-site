@@ -543,13 +543,13 @@ updateSidebarActiveLinkFromView();
 function openLightbox(src,alt,evt){
   if(evt)evt.stopPropagation();
   const lb=document.getElementById('gallery-lightbox');
-  const img=document.getElementById('lb-img');
+  const img=document.getElementById('gallery-lightbox-image');
   img.src='';
   setTimeout(()=>{
     img.src=src;
     img.alt=alt||'';
   },10);
-  const cap=document.getElementById('lb-caption');
+  const cap=document.getElementById('gallery-lightbox-caption');
   if(cap)cap.textContent=alt||'';
   lb.style.display='flex';
   lb.classList.add('show');
@@ -559,7 +559,7 @@ function closeLightbox(){
   const lb=document.getElementById('gallery-lightbox');
   lb.classList.remove('show');
   lb.style.display='none';
-  document.getElementById('lb-img').src='';
+  document.getElementById('gallery-lightbox-image').src='';
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();}});
