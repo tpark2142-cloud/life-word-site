@@ -1019,6 +1019,8 @@ renderGallery();
 const LIVING_WORD_STORAGE='lifeword.livingWord.v1';
 const HOMEPAGE_VISITS_STORAGE='lifeword.homepageVisits.v1';
 const HOMEPAGE_VISIT_SESSION_KEY='lifeword.homepageVisit.session';
+const HOMEPAGE_VISIT_REMOTE_SESSION_KEY='lifeword.homepageVisit.remoteSession';
+const HOMEPAGE_VISIT_REMOTE_ID_KEY='lifeword.homepageVisit.remoteId';
 const SITE_LANGUAGE_STORAGE='lifeword.siteLang';
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
@@ -1133,6 +1135,7 @@ function recordHomepageVisit(){
   }
   saveVisitStats(stats);
   window.__homepageVisitRecorded=true;
+  void recordHomepageVisitRemote(nowIso, lang);
 }
 
 function getHomepageVisitLanguage(){
@@ -1164,6 +1167,7 @@ function updateHomepageVisitLanguage(lang){
   };
   stats.history=history;
   saveVisitStats(stats);
+  void updateHomepageVisitLanguageRemote(next);
 }
 
 window.recordHomepageVisit=recordHomepageVisit;
@@ -1219,6 +1223,65 @@ function saveVisitStats(stats){
   try{
     localStorage.setItem(HOMEPAGE_VISITS_STORAGE,JSON.stringify(stats));
   }catch(_error){}
+}
+
+async function recordHomepageVisitRemote(nowIso, lang){
+  if(!supabaseClient){
+    return;
+  }
+  try{
+    if(sessionStorage.getItem(HOMEPAGE_VISIT_REMOTE_SESSION_KEY)==='true'){
+      return;
+    }
+    const sessionKey=getHomepageVisitRemoteSessionKey();
+    const payload={
+      visited_at: nowIso,
+      language: lang==='ko' ? 'ko' : 'en',
+      page_path: window.location.pathname || '/',
+      session_key: sessionKey
+    };
+    const { data, error } = await supabaseClient
+      .from('homepage_visits')
+      .insert(payload)
+      .select('id')
+      .single();
+    if(error){
+      return;
+    }
+    if(data && typeof data.id !== 'undefined'){
+      sessionStorage.setItem(HOMEPAGE_VISIT_REMOTE_ID_KEY, String(data.id));
+    }
+    sessionStorage.setItem(HOMEPAGE_VISIT_REMOTE_SESSION_KEY, 'true');
+  }catch(_error){}
+}
+
+async function updateHomepageVisitLanguageRemote(lang){
+  if(!supabaseClient){
+    return;
+  }
+  try{
+    const visitId=sessionStorage.getItem(HOMEPAGE_VISIT_REMOTE_ID_KEY);
+    const sessionKey=getHomepageVisitRemoteSessionKey();
+    if(!visitId){
+      return;
+    }
+    await supabaseClient
+      .rpc('update_homepage_visit_language', {
+        visit_id: Number(visitId),
+        next_language: lang==='ko' ? 'ko' : 'en',
+        visit_session_key: sessionKey
+      });
+  }catch(_error){}
+}
+
+function getHomepageVisitRemoteSessionKey(){
+  const existing=sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY);
+  if(existing){
+    return existing;
+  }
+  const generated=`hv-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`;
+  sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY, generated);
+  return generated;
 }
 
 const GUESTBOOK_STORAGE='lifeword.guestbook.v1';
