@@ -89,11 +89,20 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 // TOPIC ACCORDION
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function tgl(btn){
+  if(!btn)return;
   const panel=btn.nextElementSibling;
+  if(!panel)return;
   const isOpen=btn.classList.contains('open');
-  const col=btn.closest('.topic-col-card');
-  col.querySelectorAll('.topic-btn.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
-  if(!isOpen){btn.classList.add('open');panel.classList.add('open');setTimeout(()=>btn.scrollIntoView({behavior:'smooth',block:'nearest'}),50);}
+  const col=btn.closest('.topic-col-card') || btn.parentElement?.parentElement || document;
+  col.querySelectorAll('.topic-btn.open').forEach(b=>{
+    b.classList.remove('open');
+    if(b.nextElementSibling)b.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){
+    btn.classList.add('open');
+    panel.classList.add('open');
+    setTimeout(()=>btn.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+  }
 }
 
 function bindTopicButtons(){
@@ -536,6 +545,7 @@ sbLinks.forEach(link=>{
 window.addEventListener('hashchange',updateSidebarActiveLinkFromView);
 window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true});
 updateSidebarActiveLinkFromView();
+bindTopicButtons();
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
@@ -1021,6 +1031,7 @@ const HOMEPAGE_VISITS_STORAGE='lifeword.homepageVisits.v1';
 const HOMEPAGE_VISIT_SESSION_KEY='lifeword.homepageVisit.session';
 const HOMEPAGE_VISIT_REMOTE_SESSION_KEY='lifeword.homepageVisit.remoteSession';
 const HOMEPAGE_VISIT_REMOTE_ID_KEY='lifeword.homepageVisit.remoteId';
+const HOMEPAGE_VISIT_LANGUAGES_KEY='lifeword.homepageVisit.languages.v1';
 const SITE_LANGUAGE_STORAGE='lifeword.siteLang';
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
@@ -1119,23 +1130,15 @@ function recordHomepageVisit(){
   if(window.__homepageVisitRecorded){
     return;
   }
-  const stats=loadVisitStats();
-  const nowIso=new Date().toISOString();
   const lang=getHomepageVisitLanguage();
-  stats.totalViews=(stats.totalViews||0)+1;
-  stats.lastVisitedAt=nowIso;
-  stats.history=Array.isArray(stats.history)?stats.history:[];
-  stats.history.push({at:nowIso,lang:lang==='ko'?'ko':'en'});
-  if(stats.history.length>5000){
-    stats.history=stats.history.slice(-5000);
-  }
+  recordHomepageVisitForLanguage(lang);
   if(!sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY)){
+    const stats=loadVisitStats();
     stats.browserSessions=(stats.browserSessions||0)+1;
+    saveVisitStats(stats);
     sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
   }
-  saveVisitStats(stats);
   window.__homepageVisitRecorded=true;
-  void recordHomepageVisitRemote(nowIso, lang);
 }
 
 function getHomepageVisitLanguage(){
@@ -1151,23 +1154,7 @@ function getHomepageVisitLanguage(){
 
 function updateHomepageVisitLanguage(lang){
   const next=lang==='ko' ? 'ko' : 'en';
-  const stats=loadVisitStats();
-  const history=Array.isArray(stats.history) ? stats.history : [];
-  if(!history.length){
-    return;
-  }
-  const lastIndex=history.length-1;
-  const lastItem=history[lastIndex];
-  if(!lastItem || typeof lastItem.at !== 'string'){
-    return;
-  }
-  history[lastIndex]={
-    ...lastItem,
-    lang:next
-  };
-  stats.history=history;
-  saveVisitStats(stats);
-  void updateHomepageVisitLanguageRemote(next);
+  recordHomepageVisitForLanguage(next);
 }
 
 window.recordHomepageVisit=recordHomepageVisit;
@@ -1225,14 +1212,53 @@ function saveVisitStats(stats){
   }catch(_error){}
 }
 
+function recordHomepageVisitForLanguage(lang){
+  const normalized=lang==='ko' ? 'ko' : 'en';
+  if(hasHomepageVisitLanguageRecorded(normalized)){
+    return;
+  }
+  const stats=loadVisitStats();
+  const nowIso=new Date().toISOString();
+  stats.totalViews=(stats.totalViews||0)+1;
+  stats.lastVisitedAt=nowIso;
+  stats.history=Array.isArray(stats.history)?stats.history:[];
+  stats.history.push({at:nowIso,lang:normalized});
+  if(stats.history.length>5000){
+    stats.history=stats.history.slice(-5000);
+  }
+  saveVisitStats(stats);
+  markHomepageVisitLanguageRecorded(normalized);
+  void recordHomepageVisitRemote(nowIso, normalized);
+}
+
+function hasHomepageVisitLanguageRecorded(lang){
+  try{
+    const raw=sessionStorage.getItem(HOMEPAGE_VISIT_LANGUAGES_KEY);
+    if(!raw){
+      return false;
+    }
+    const parsed=JSON.parse(raw);
+    return Boolean(parsed && parsed[lang==='ko'?'ko':'en']);
+  }catch(_error){
+    return false;
+  }
+}
+
+function markHomepageVisitLanguageRecorded(lang){
+  try{
+    const normalized=lang==='ko' ? 'ko' : 'en';
+    const raw=sessionStorage.getItem(HOMEPAGE_VISIT_LANGUAGES_KEY);
+    const parsed=raw ? JSON.parse(raw) : {};
+    parsed[normalized]=true;
+    sessionStorage.setItem(HOMEPAGE_VISIT_LANGUAGES_KEY, JSON.stringify(parsed));
+  }catch(_error){}
+}
+
 async function recordHomepageVisitRemote(nowIso, lang){
   if(!supabaseClient){
     return;
   }
   try{
-    if(sessionStorage.getItem(HOMEPAGE_VISIT_REMOTE_SESSION_KEY)==='true'){
-      return;
-    }
     const sessionKey=getHomepageVisitRemoteSessionKey();
     const payload={
       visited_at: nowIso,
@@ -1240,37 +1266,14 @@ async function recordHomepageVisitRemote(nowIso, lang){
       page_path: window.location.pathname || '/',
       session_key: sessionKey
     };
-    const { data, error } = await supabaseClient
+    const { error } = await supabaseClient
       .from('homepage_visits')
       .insert(payload)
-      .select('id')
-      .single();
+      .select('id');
     if(error){
       return;
     }
-    if(data && typeof data.id !== 'undefined'){
-      sessionStorage.setItem(HOMEPAGE_VISIT_REMOTE_ID_KEY, String(data.id));
-    }
     sessionStorage.setItem(HOMEPAGE_VISIT_REMOTE_SESSION_KEY, 'true');
-  }catch(_error){}
-}
-
-async function updateHomepageVisitLanguageRemote(lang){
-  if(!supabaseClient){
-    return;
-  }
-  try{
-    const visitId=sessionStorage.getItem(HOMEPAGE_VISIT_REMOTE_ID_KEY);
-    const sessionKey=getHomepageVisitRemoteSessionKey();
-    if(!visitId){
-      return;
-    }
-    await supabaseClient
-      .rpc('update_homepage_visit_language', {
-        visit_id: Number(visitId),
-        next_language: lang==='ko' ? 'ko' : 'en',
-        visit_session_key: sessionKey
-      });
   }catch(_error){}
 }
 
