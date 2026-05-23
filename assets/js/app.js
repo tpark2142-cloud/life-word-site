@@ -1032,6 +1032,7 @@ const HOMEPAGE_VISIT_SESSION_KEY='lifeword.homepageVisit.session';
 const HOMEPAGE_VISIT_REMOTE_SESSION_KEY='lifeword.homepageVisit.remoteSession';
 const HOMEPAGE_VISIT_REMOTE_ID_KEY='lifeword.homepageVisit.remoteId';
 const HOMEPAGE_VISIT_LANGUAGES_KEY='lifeword.homepageVisit.languages.v1';
+const HOMEPAGE_VISIT_REMOTE_SESSION_VALUE_KEY='lifeword.homepageVisit.remoteSessionValue.v1';
 const SITE_LANGUAGE_STORAGE='lifeword.siteLang';
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
@@ -1278,12 +1279,12 @@ async function recordHomepageVisitRemote(nowIso, lang){
 }
 
 function getHomepageVisitRemoteSessionKey(){
-  const existing=sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY);
-  if(existing){
+  const existing=sessionStorage.getItem(HOMEPAGE_VISIT_REMOTE_SESSION_VALUE_KEY);
+  if(existing && existing !== 'true'){
     return existing;
   }
   const generated=`hv-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`;
-  sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY, generated);
+  sessionStorage.setItem(HOMEPAGE_VISIT_REMOTE_SESSION_VALUE_KEY, generated);
   return generated;
 }
 
