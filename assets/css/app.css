@@ -663,7 +663,8 @@ footer a:hover{color:var(--gold-light)}
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+  justify-content: start;
   gap: 18px;
   margin-top: 8px;
 }
@@ -683,6 +684,10 @@ footer a:hover{color:var(--gold-light)}
   overflow: hidden;
   cursor: pointer;
   background: rgba(6,16,12,.55);
+  border: 0;
+  padding: 0;
+  width: 100%;
+  text-align: left;
 }
 .gallery-thumb:focus-visible{
   outline: 2px solid var(--gold-light);
@@ -696,22 +701,6 @@ footer a:hover{color:var(--gold-light)}
   transition: transform .35s ease;
 }
 .gallery-item:hover .gallery-thumb img { transform: scale(1.04); }
-.gallery-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 35%, rgba(20,31,24,.88) 100%);
-  opacity: 0;
-  transition: opacity .25s;
-  display: flex; align-items: flex-end; justify-content: space-between;
-  padding: 12px 14px; gap: 8px;
-}
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-caption {
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: .08em;
-  color: var(--gold-light);
-  flex: 1;
-}
 .gallery-copy{
   background: rgba(13,26,20,.92);
   padding: 14px 16px 16px;
@@ -857,7 +846,7 @@ html[lang="ko"] .gallery-copy-summary{
 .lb-close:hover { background: rgba(255,255,255,.25); }
 
 @media(max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 }
 @media(max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }

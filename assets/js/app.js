@@ -1362,10 +1362,9 @@ function renderGallery(){
     if(!grid)return;
     grid.classList.toggle('gallery-editing',galleryEditMode);
     grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-      <div class="gallery-thumb" role="button" tabindex="0" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLightbox('${escapeAttr(item.src)}','${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}')}">
+      <button type="button" class="gallery-thumb" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}')">
         <img src="${escapeAttr(item.src)}" alt="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
-      </div>
+      </button>
       ${buildGalleryCaptionHtml(item)}
     </div>`).join('');
     updateGalleryCount(visibleItems.length);
