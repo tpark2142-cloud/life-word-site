@@ -16,6 +16,33 @@ const EMOTION_MODAL_KO = {
   Discouragement: { title:'낙심', note:'가장 낮은 자리에서도 하나님은 멀리 계시지 않으며 새 힘을 주십니다.' }
 };
 
+const KOREAN_VERSE_BY_REF = {
+  'Philippians 4:13': '내게 능력 주시는 그리스도를 통하여 내가 모든 것을 할 수 있느니라.',
+  'Philippians 4:4': '주 안에서 항상 기뻐하라. 내가 다시 말하노니 기뻐하라.',
+  'Psalm 16:11': '주께서 내게 생명의 길을 보여 주시리니 주의 면전에는 충만한 기쁨이 있고 주의 오른편에는 즐거움이 영원무궁토록 있나이다.',
+  'John 15:11': '내가 이런 것을 너희에게 말한 것은 나의 기쁨이 너희 안에 머물러 있어 너희의 기쁨이 충만하게 하려는 것이라.',
+  'Psalm 34:18': '주께서 마음이 상한 자들을 가까이하시며 참회하는 영이 있는 자를 구원하시는도다.',
+  'Matthew 5:4': '애통하는 자들은 복이 있나니, 그들이 위로를 받을 것임이요,',
+  'Philippians 4:7': '그리하면 모든 지각을 초월하시는 하나님의 평강이 그리스도 예수 안에서 너희의 마음과 생각을 지키시리라.',
+  'John 14:27': '내가 너희에게 화평을 남겨 두나니 나의 화평을 너희에게 주노라. 내가 너희에게 주는 것은 세상이 주는 것과 같지 아니하니, 너희는 마음에 근심하지 말고, 두려워하지도 말라.',
+  'Isaiah 26:3': '주께서는 마음을 주께 의탁하는 사람을 완전한 화평 속에 지키시리니 이는 그 사람이 주를 의뢰함이니이다.',
+  'Romans 15:13': '이제 소망의 하나님께서 너희를 모든 기쁨과 평강으로 믿음 안에서 충만케 하시어 성령의 능력으로 소망이 넘치게 하시기를 원하노라.',
+  'Jeremiah 29:11': '이는 내가 너희를 향하여 생각하는 그 생각들을 내가 앎이니, 곧 화평의 생각이요, 재앙이 아니라. 기대하던 끝을 너희에게 주리라. 주가 말하노라.',
+  '1 Peter 1:3': '하나님, 곧 우리 주 예수 그리스도의 아버지를 송축하리로다. 그분은 그의 풍성하신 자비하심을 따라 죽은 자들로부터의 예수 그리스도의 부활로 인하여, 우리를 거듭나게 하사 산 소망을 갖게 하셨으며',
+  'Isaiah 41:10': '너는 두려워 말라, 내가 너와 함께함이라. 놀라지 말라, 내가 네 하나님임이라. 내가 너를 강건하게 하리라. 정녕, 내가 너를 도우리라. 정녕, 내가 내 의의 오른손으로 너를 높이리라.',
+  'Psalm 23:4': '정녕, 내가 죽음의 그림자의 골짜기를 지날지라도 악을 두려워하지 않으리니 이는 주께서 나와 함께 계심이요, 주의 막대기와 주의 지팡이가 나를 위로하심이라.',
+  '2 Timothy 1:7': '하나님께서 우리에게 주신 것은 두려워하는 영이 아니라 능력과 사랑과 건전한 생각의 영이라.',
+  '1 Peter 5:7': '너희의 염려를 다 하나님께 맡기라. 이는 그분께서 너희를 돌보심이니라.',
+  'Philippians 4:6': '아무것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희의 구하는 것들을 감사함으로 하나님께 알려지게 하라.',
+  'Matthew 6:34': '그러므로 내일을 위하여 염려하지 말라. 내일 일은 내일 염려할 것이요, 그 날의 재앙은 그 날로 충분하니라.',
+  'Psalm 23:1-2': '주는 나의 목자시니, 내가 부족한 것이 없으리로다. 그가 나를 푸른 초장에 눕게 하시며 잔잔한 물가로 나를 인도하시는도다.',
+  'Philippians 1:21': '이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.'
+};
+
+function getKoreanVerseText(ref, fallback) {
+  return KOREAN_VERSE_BY_REF[ref] || fallback || '';
+}
+
 const TOPIC_RESULT_KO = {
   'Joy': { name:'기쁨', cat:'감정', note:'참된 기쁨은 하나님의 임재 안에 머무를 때 깊어집니다.' },
   'Sorrow & Grief': { name:'슬픔과 애통', cat:'감정', note:'하나님은 상한 마음 가까이 오시며 우리의 눈물을 아십니다.' },
@@ -58,12 +85,13 @@ function openEmotion(name){
   document.getElementById('m-verses').innerHTML=d.verses.map(v=>{
     if(v.kjv !== undefined){
       const id = 'mdv'+(++dvIdx);
+      const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
       return '<div class="modal-dv dual-verse">'
         +'<div class="dv-tabs">'
         +'<button class="dv-tab active" onclick="switchTab(this,\''+id+'-kjv\')">KJV</button>'
         +'<button class="dv-tab" onclick="switchTab(this,\''+id+'-esv\')">ESV</button>'
         +'</div>'
-        +'<div class="dv-content active" id="'+id+'-kjv"><blockquote>&ldquo;'+v.kjv+'&rdquo;</blockquote><cite>'+v.r+'</cite></div>'
+        +'<div class="dv-content active" id="'+id+'-kjv"><blockquote>&ldquo;'+kjvText+'&rdquo;</blockquote><cite>'+v.r+'</cite></div>'
         +'<div class="dv-content" id="'+id+'-esv"><blockquote>&ldquo;'+v.esv+'&rdquo;</blockquote><cite>'+v.r+' (ESV)</cite></div>'
         +'</div>';
     }
@@ -241,12 +269,13 @@ function doHeroSearch(){
         +t.verses.map(v=>{
           if(v.kjv){
             const rid='rs'+(++_resIdx); // globally unique per search
+            const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
             return '<div class="res-dual dual-verse">'
               +'<div class="dv-tabs">'
               +'<button class="dv-tab active" onclick="rTab(this)">KJV</button>'
               +'<button class="dv-tab" onclick="rTab(this)">ESV</button>'
               +'</div>'
-              +'<div class="dv-content active" id="'+rid+'-kjv"><p>&ldquo;'+hl(v.kjv,words)+'&rdquo;</p><cite>'+v.r+'</cite></div>'
+              +'<div class="dv-content active" id="'+rid+'-kjv"><p>&ldquo;'+hl(kjvText,words)+'&rdquo;</p><cite>'+v.r+'</cite></div>'
               +'<div class="dv-content" id="'+rid+'-esv"><p>&ldquo;'+hl(v.esv,words)+'&rdquo;</p><cite>'+v.r+' (ESV)</cite></div>'
               +'</div>';
           }
@@ -478,12 +507,14 @@ if(aiHubInput){
 let dvCounter = 0;
 function dualVerse(kjv, esv, ref) {
   const id = 'dv' + (++dvCounter);
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const kjvText = lang==='ko' ? getKoreanVerseText(ref, kjv) : kjv;
   return '<div class="dual-verse">'
     + '<div class="dv-tabs">'
     + '<button class="dv-tab active" onclick="switchTab(this,\'' + id + '-kjv\')">KJV</button>'
     + '<button class="dv-tab" onclick="switchTab(this,\'' + id + '-esv\')">ESV</button>'
     + '</div>'
-    + '<div class="dv-content active" id="' + id + '-kjv"><p>&ldquo;' + kjv + '&rdquo;</p><cite>' + ref + '</cite></div>'
+    + '<div class="dv-content active" id="' + id + '-kjv"><p>&ldquo;' + kjvText + '&rdquo;</p><cite>' + ref + '</cite></div>'
     + '<div class="dv-content" id="' + id + '-esv"><p>&ldquo;' + esv + '&rdquo;</p><cite>' + ref + ' (ESV)</cite></div>'
     + '</div>';
 }
