@@ -1013,9 +1013,6 @@ html[lang="ko"] .guestbook-entry-name{font-family:'Malgun Gothic','Apple SD Goth
 .guestbook-entry-date{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
 .guestbook-entry-reaction{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 8px;border-radius:999px;background:#fff;border:1px solid rgba(184,147,90,.26);font-size:18px;box-shadow:0 8px 16px rgba(28,46,36,.07)}
 .guestbook-entry-message{font-size:17px;line-height:1.8;color:var(--text);white-space:pre-wrap}
-.guestbook-entry-preview,.guestbook-entry-full{white-space:pre-wrap}
-.guestbook-entry-toggle{margin-top:10px;border:none;background:transparent;color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;padding:0}
-.guestbook-entry-toggle:hover{color:var(--gold-light)}
 .guestbook-entry-reply{margin-top:14px;padding:15px 18px;border-radius:14px;background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);border:1px solid rgba(184,147,90,.18);border-left:4px solid rgba(184,147,90,.78);box-shadow:0 12px 24px rgba(28,46,36,.06)}
 .guestbook-entry-reply-label{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a8742f;text-shadow:0 1px 0 rgba(255,255,255,.75);margin-bottom:10px}
 .guestbook-entry-reply-text{font-size:16px;line-height:1.85;color:var(--deep);white-space:pre-wrap;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}

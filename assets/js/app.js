@@ -1486,8 +1486,6 @@ function renderGuestbook(){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
   const replyLabel=lang==='ko'?'운영자 답글':'Reply from Admin';
-  const moreLabel=lang==='ko'?'전체 보기':'Read more';
-  const lessLabel=lang==='ko'?'접기':'Show less';
   if(!list||!empty)return;
   if(!visibleEntries.length){
     list.innerHTML='';
@@ -1496,14 +1494,6 @@ function renderGuestbook(){
   }
   empty.style.display='none';
   list.innerHTML=visibleEntries.map(entry=>{
-    const message=String(entry.message||'');
-    const replyText=String(entry.replyText||'');
-    const messageCollapsed=message.length>140 || message.includes('\n');
-    const replyCollapsed=replyText.length>120 || replyText.includes('\n');
-    const messagePreview=messageCollapsed ? `${message.slice(0, 140).trim()}...` : message;
-    const replyPreview=replyCollapsed ? `${replyText.slice(0, 120).trim()}...` : replyText;
-    const messageId=`guestbook-msg-${escapeAttr(entry.id||makeId('gbv'))}`;
-    const replyId=`guestbook-reply-${escapeAttr(entry.id||makeId('gbr'))}`;
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
       +'<div class="guestbook-entry-topline">'
@@ -1512,44 +1502,11 @@ function renderGuestbook(){
       +'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
-      +'<div class="guestbook-entry-message" id="'+messageId+'">'
-      +(messageCollapsed
-        ? '<div class="guestbook-entry-preview">'+escapeHtml(messagePreview)+'</div>'
-          +'<div class="guestbook-entry-full" hidden>'+escapeHtml(message)+'</div>'
-          +'<button class="guestbook-entry-toggle" type="button" onclick="toggleGuestbookEntry(\''+messageId+'\')" data-more-label="'+escapeAttr(moreLabel)+'" data-less-label="'+escapeAttr(lessLabel)+'">'+escapeHtml(moreLabel)+'</button>'
-        : escapeHtml(message))
-      +'</div>'
-      +(replyText
-        ? '<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text" id="'+replyId+'">'
-          +(replyCollapsed
-            ? '<div class="guestbook-entry-preview">'+escapeHtml(replyPreview)+'</div>'
-              +'<div class="guestbook-entry-full" hidden>'+escapeHtml(replyText)+'</div>'
-              +'<button class="guestbook-entry-toggle" type="button" onclick="toggleGuestbookEntry(\''+replyId+'\')" data-more-label="'+escapeAttr(moreLabel)+'" data-less-label="'+escapeAttr(lessLabel)+'">'+escapeHtml(moreLabel)+'</button>'
-            : escapeHtml(replyText))
-          +'</div></div>'
-        : '')
+      +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
+      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text">'+escapeHtml(entry.replyText)+'</div></div>':'')
       +'</article>';
   }).join('');
 }
-
-window.toggleGuestbookEntry=function(entryId){
-  const wrapper=document.getElementById(entryId);
-  if(!wrapper)return;
-  const preview=wrapper.querySelector('.guestbook-entry-preview');
-  const full=wrapper.querySelector('.guestbook-entry-full');
-  const button=wrapper.querySelector('.guestbook-entry-toggle');
-  if(!preview||!full||!button)return;
-  const expanding=full.hasAttribute('hidden');
-  if(expanding){
-    preview.setAttribute('hidden','hidden');
-    full.removeAttribute('hidden');
-    button.textContent=button.dataset.lessLabel||'Show less';
-    return;
-  }
-  full.setAttribute('hidden','hidden');
-  preview.removeAttribute('hidden');
-  button.textContent=button.dataset.moreLabel||'Read more';
-};
 
 window.appendGuestbookEmoji=function(emoji){
   const messageInput=document.getElementById('guestbook-message');
