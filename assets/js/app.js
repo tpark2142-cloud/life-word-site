@@ -69,6 +69,10 @@ const KOREAN_VERSE_BY_REF = {
 function getKoreanVerseText(ref, fallback) {
   return KOREAN_VERSE_BY_REF[ref] || fallback || '';
 }
+function getKjvLabel(){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  return lang==='ko' ? '킹 제임스' : 'KJV';
+}
 
 const TOPIC_RESULT_KO = {
   'Joy': { name:'기쁨', cat:'감정', note:'참된 기쁨은 하나님의 임재 안에 머무를 때 깊어집니다.' },
@@ -115,7 +119,7 @@ function openEmotion(name){
       const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
       return '<div class="modal-dv dual-verse">'
         +'<div class="dv-tabs">'
-        +'<button class="dv-tab active" onclick="switchTab(this,\''+id+'-kjv\')">KJV</button>'
+        +'<button class="dv-tab active" onclick="switchTab(this,\''+id+'-kjv\')">'+getKjvLabel()+'</button>'
         +'<button class="dv-tab" onclick="switchTab(this,\''+id+'-esv\')">ESV</button>'
         +'</div>'
         +'<div class="dv-content active" id="'+id+'-kjv"><blockquote>&ldquo;'+kjvText+'&rdquo;</blockquote><cite>'+v.r+'</cite></div>'
@@ -299,7 +303,7 @@ function doHeroSearch(){
             const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
             return '<div class="res-dual dual-verse">'
               +'<div class="dv-tabs">'
-              +'<button class="dv-tab active" onclick="rTab(this)">KJV</button>'
+              +'<button class="dv-tab active" onclick="rTab(this)">'+getKjvLabel()+'</button>'
               +'<button class="dv-tab" onclick="rTab(this)">ESV</button>'
               +'</div>'
               +'<div class="dv-content active" id="'+rid+'-kjv"><p>&ldquo;'+hl(kjvText,words)+'&rdquo;</p><cite>'+v.r+'</cite></div>'
@@ -538,7 +542,7 @@ function dualVerse(kjv, esv, ref) {
   const kjvText = lang==='ko' ? getKoreanVerseText(ref, kjv) : kjv;
   return '<div class="dual-verse">'
     + '<div class="dv-tabs">'
-    + '<button class="dv-tab active" onclick="switchTab(this,\'' + id + '-kjv\')">KJV</button>'
+    + '<button class="dv-tab active" onclick="switchTab(this,\'' + id + '-kjv\')">' + getKjvLabel() + '</button>'
     + '<button class="dv-tab" onclick="switchTab(this,\'' + id + '-esv\')">ESV</button>'
     + '</div>'
     + '<div class="dv-content active" id="' + id + '-kjv"><p>&ldquo;' + kjvText + '&rdquo;</p><cite>' + ref + '</cite></div>'
@@ -564,6 +568,12 @@ function switchTab(btn, contentId) {
 }
 function updateStaticKjvCards(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  document.querySelectorAll('.dv-tabs').forEach(tabs=>{
+    const firstButton=tabs.querySelector('.dv-tab');
+    if(firstButton){
+      firstButton.textContent=getKjvLabel();
+    }
+  });
   document.querySelectorAll('.dv-content').forEach(panel=>{
     const refEl=panel.querySelector('cite, span');
     const verseEl=panel.querySelector('p, blockquote');
