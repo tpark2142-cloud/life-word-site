@@ -40,7 +40,30 @@ const KOREAN_VERSE_BY_REF = {
   'Psalm 23:1-2': '주는 나의 목자시니, 내가 부족한 것이 없으리로다. 그가 나를 푸른 초장에 눕게 하시며 잔잔한 물가로 나를 인도하시는도다.',
   'Proverbs 16:31': '의의 길에서 얻게 된다면 흰머리는 영광의 면류관이니라.',
   'Isaiah 46:4': '너희의 노년에 이르러서도 내가 너희를 백발이 될 때까지도 내가 너희를 품을 것이라. 내가 지었으니 내가 안고 품을 것이며 너희들을 건져내리라.',
-  'Philippians 1:21': '이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.'
+  'Philippians 1:21': '이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.',
+  'Psalm 147:3': '그는 마음이 상한 자들을 고치시며 그들의 상처들을 싸매어 주시는도다.',
+  'Psalm 41:3': '주께서는 병상에서 그에게 힘을 돋우시며 그의 병든 때에 그의 모든 침상을 고치시리이다.',
+  '2 Corinthians 12:9': '주께서 내게 말씀하시기를 “내 은혜가 네게 충분하도다. 이는 내 능력이 약한 데서 온전하게 됨이니라.”고 하셨느니라. 그러므로 내가 오히려 매우 기쁘게 나의 약한 것들을 자랑하리니 이는 그리스도의 능력이 내게 거하게 하려 함이라.',
+  'John 11:25': '예수께서 그녀에게 말씀하시기를 “나는 부활이요, 생명이니 나를 믿는 자는 죽어도 살 것이며',
+  '1 Thessalonians 4:13-14': '형제들아, 잠든 자들에 관해서는 너희가 모르게 되는 것을 원치 아니하노니 이는 너희가 소망이 없는 다른 사람들과 같이 슬퍼하지 않게 하려는 것이라.',
+  'Ephesians 4:32': '너희는 서로 친절하고 다정다감하며 서로 용서하되 하나님께서 그리스도를 위하여 너희를 용서하신 것같이 하라.',
+  'Colossians 3:13': '만일 어떤 사람이 누구에게 불평이 있으면 서로 용납하고, 서로 용서하기를 마치 그리스도께서 너희를 용서하신 것같이 너희도 그리하라.',
+  'Matthew 6:14': '만일 너희가 사람들의 허물을 용서하면 하늘에 계신 너희 아버지께서도 너희를 용서하실 것이니라.',
+  'Hebrews 13:5': '너희의 생활방식에 탐욕이 없도록 하고 현재 가진 것들로 만족하라. 이는 그가 말씀하시기를 “내가 너를 떠나지 아니하고 너를 버리지 아니하리라.”고 하셨음이라.',
+  'Psalm 139:7': '내가 주의 영으로부터 벗어나 어디로 가며 주의 면전에서 벗어나 어디로 피하리이까?',
+  'Matthew 28:20': '내가 너희에게 명령한 모든 것을 가르쳐 지키게 하라. 보라, 내가 세상 끝까지 너희와 항상 함께 있으리라.”고 하시더라. 아멘.',
+  'Isaiah 40:31': '오직 주를 앙망하는 자는 자기의 힘을 새롭게 하리니 독수리처럼 날개로 치솟을 것이요, 그들이 달려도 피곤치 않으며 걸어도 곤비치 아니하리라.',
+  'Matthew 11:28': '수고하고 무거운 짐진 자들아, 다 내게로 오라. 그러면 내가 너희에게 쉼을 주리라.',
+  'Psalm 46:1': '하나님은 우리의 피난처요 힘이시며, 고난 중에 나타나시는 도움이시라.',
+  'Proverbs 3:5-6': '네 마음을 다하여 주를 신뢰하고, 네 자신의 명철을 의지하지 말라. 네 모든 길들에서 그를 인정하라. 그리하면 그가 네 길들을 지도하시리라.',
+  'James 1:5': '너희 중에 누가 지혜가 부족하면, 모든 사람에게 아낌없이 주시고 꾸짖지 아니하시는 하나님께 구하라. 그러면 그분께서 주실 것이라.',
+  'Psalm 32:8': '네가 가야 할 길을 내가 네게 지시하고 가르치리니 내가 너를 내 눈으로 인도하리라.',
+  'Mark 9:24': '“주여, 내가 믿나이다. 나의 믿음 없음을 도와주소서.”라고 하더라.',
+  'Hebrews 11:1': '이제 믿음은 바라는 것들에 대한 실상이요, 보이지 않는 것들에 대한 증거니,',
+  'Romans 10:17': '그러므로 믿음은 들음에서 나오며 들음은 하나님의 말씀에 의해서니라.',
+  'Matthew 6:31-33': '그러므로 “무엇을 먹을까?” “무엇을 마실까?” “무엇을 입을까?”라고 말하며 염려하지 말라. (이런 것들은 모두 이방인들이 구하는 것이라.) 하늘에 계신 너희 아버지께서는 너희에게 이런 모든 것이 필요한 줄 아시느니라. 오히려 너희는 먼저 하나님의 나라와 그분의 의를 구하라. 그리하면 이 모든 것을 너희에게 더해 주시리라.',
+  'Philippians 4:19': '그러나 나의 하나님께서 그리스도 예수를 통하여 영광 가운데서 그의 풍요함을 따라 너희의 모든 필요를 채워 주실 것이라.',
+  'Psalm 37:25': '내가 어려서부터 지금 늙기까지 의인이 버림받거나 그의 씨가 걸식함을 아직 보지 못하였도다.'
 };
 
 function getKoreanVerseText(ref, fallback) {
@@ -539,6 +562,22 @@ function switchTab(btn, contentId) {
   var target=document.getElementById(contentId);
   if(target){ target.style.display='block'; target.classList.add('active'); }
 }
+function updateStaticKjvCards(){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  document.querySelectorAll('.dv-content').forEach(panel=>{
+    const refEl=panel.querySelector('cite, span');
+    const verseEl=panel.querySelector('p, blockquote');
+    if(!refEl || !verseEl)return;
+    const refText=(refEl.textContent||'').trim();
+    if(!refText || /\(ESV\)/i.test(refText))return;
+    const ref=refText.replace(/\s*\(KJV\)\s*$/i,'').trim();
+    if(!verseEl.dataset.kjvOriginal){
+      verseEl.dataset.kjvOriginal=verseEl.textContent.trim().replace(/^["“”]+|["“”]+$/g,'');
+    }
+    const nextText=lang==='ko' ? getKoreanVerseText(ref, verseEl.dataset.kjvOriginal) : verseEl.dataset.kjvOriginal;
+    verseEl.innerHTML='&ldquo;'+escapeHtml(nextText)+'&rdquo;';
+  });
+}
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // SIDEBAR TOGGLE (MOBILE)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -581,6 +620,8 @@ window.addEventListener('hashchange',updateSidebarActiveLinkFromView);
 window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true});
 updateSidebarActiveLinkFromView();
 bindTopicButtons();
+updateStaticKjvCards();
+window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
