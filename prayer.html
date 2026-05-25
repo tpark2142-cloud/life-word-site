@@ -507,6 +507,55 @@ window.applyPageLanguage=function(lang){
         if(ps[1] && notes[index]!==undefined) ps[1].textContent=notes[index];
       });
     }
+  } else {
+    const banner=q('.prayer-banner');
+    if(banner){
+      const ps=banner.querySelectorAll('p');
+      if(ps[0]) ps[0].textContent='✦ Foundation Verse ✦';
+      if(ps[1]) ps[1].textContent='Prayer is the way of faith that lays down anxiety and lifts a thankful heart to God.';
+    }
+    setText('#v1k .vt','“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.”');
+    setText('#v1k cite','Philippians 4:6–7');
+    setText('#v2k cite','Matthew 6:9–13');
+    const lordsPrayer=q('#v2k .vt');
+    if(lordsPrayer){
+      lordsPrayer.innerHTML='&ldquo;Our Father which art in heaven, Hallowed be thy name. Thy kingdom come, Thy will be done in earth, as it is in heaven.<br>Give us this day our daily bread.<br>And forgive us our debts, as we forgive our debtors.<br>And lead us not into temptation, but deliver us from evil.&rdquo;';
+    }
+    setText('#v3k .vt','“This is the day which the LORD hath made; we will rejoice and be glad in it.”');
+    setText('#v3k cite','Psalm 118:24');
+    setText('#v4k .vt','“The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness.”');
+    setText('#v4k cite','Psalm 41:3');
+    setText('#v5k .vt','“The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.”');
+    setText('#v5k cite','Psalm 34:18');
+    setText('#v6k .vt','“Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee.”');
+    setText('#v6k cite','Isaiah 41:10');
+    setText('#v7k .vt','“If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.”');
+    setText('#v7k cite','1 John 1:9');
+    setText('#v8k .vt','“Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.”');
+    setText('#v8k cite','Proverbs 3:5–6');
+    setText('#v9k .vt','“And even to your old age I am he; and even to hoar hairs will I carry you: I have made, and I will bear; even I will carry, and will deliver you.”');
+    setText('#v9k cite','Isaiah 46:4');
+    setText('#v10k .vt','“This is the day which the LORD hath made; we will rejoice and be glad in it.”');
+    setText('#v10k cite','Psalm 118:24');
+    const prayerTags=['Morning','Illness','Grief','Fear & Anxiety','Forgiveness','Guidance & Decisions','For Seniors','Thanksgiving'];
+    const prayerTitles=['🌅 A Prayer to Begin the Day','🩺 Prayer for Healing & Strength','🕯️ Prayer in a Season of Loss','🛡️ Prayer Against Fear','🕊️ A Prayer of Confession','🧭 Prayer at a Crossroads','🌅 A Prayer for the Later Years','🙌 A Prayer of Gratitude'];
+    const prayerNotes=['Before the day fills with noise, offer it back to God. Ask Him to guide your steps and guard your words.','When sickness weakens the body, God’s grace sustains the spirit. Bring your illness honestly before Him.','Grief is one of the most honest places we can stand before God. He is near to the brokenhearted.','When fear overwhelms, this prayer anchors the heart in God’s promise to be with us.','God promises to forgive every sin that is brought honestly to Him. Nothing is too great for His grace.','When facing an important decision, surrender your understanding to God and ask for His direction.','For those in the autumn of life — God’s promise does not expire with age.','Gratitude reshapes the heart. This prayer turns our attention from what we lack to what God has given.'];
+    const prayerBodies=['“Lord, this day is a gift I did not earn. Before it fills with demands, I offer it back to You. Guide my steps. Guard my words. Let everything I do today be done for Your glory. Amen.”','“Father, my body is weak and I am tired. But You are the Lord who sustains me. Be my strength when I have none. Whether You restore my health or carry me through, I trust You. Your grace is sufficient for me today. Amen.”','“Lord, I am broken. I did not know pain could be this heavy. But You said You are near to those whose hearts are crushed — so I come to You now. Hold me when I cannot hold on. Remind me that weeping endures for a night, but joy comes in the morning. Amen.”','“God, I am afraid. I know You said ‘fear not’ — but I need Your help to believe it. I cast this anxiety on You. Replace my fear with Your peace that passes all understanding. Guard my heart. Guard my mind. Be with me now. Amen.”','“Father, I come with the weight of something I have done — or something done to me that I am struggling to release. You are faithful and just to forgive. Cleanse me. And give me the grace to extend that forgiveness to others, as You have forgiven me. Amen.”','“Lord, I am at a crossroads and I do not know the way forward. I lay down my own plans, my own reasoning, my own will. I ask You to direct my path — clearly, unmistakably. Give me wisdom. Give me ears to hear Your voice. I choose to trust You. Amen.”','“Father, the years have brought changes I did not always choose. But You said that even to old age, You will carry me. I am not forgotten. I am not finished. Still use me. Still fill me with Your presence. Let my later years be full of Your faithfulness. Amen.”','“Lord, today I choose gratitude. Not because everything is easy — but because You are good, and Your mercies are new every morning. Thank You for life. For breath. For grace. For the people You have placed in my path. For a future and a hope. I worship You. Amen.”'];
+    setList('.pc-tag', prayerTags);
+    setList('.pc-head h3', prayerTitles);
+    setList('.pc-body > p:first-child', prayerNotes);
+    setList('.pc-prayer', prayerBodies);
+    const actsItems=q('.prayer-grid')?.nextElementSibling;
+    if(actsItems){
+      const cols=actsItems.querySelectorAll('div[style*="grid-template-columns"] > div');
+      const steps=['A — ADORATION','C — CONFESSION','T — THANKSGIVING','S — SUPPLICATION'];
+      const notes=['Begin by praising God for who He is — not for what He’s done, but simply for His nature and character.','Bring your sins honestly before God. He already knows them — confession is for your freedom, not His information.','Thank God for specific blessings. Let gratitude redirect your heart from what you lack to what you have been given.','Now bring your requests — for yourself and for others. God invites you to ask. He loves to give.'];
+      cols.forEach((col,index)=>{
+        const ps=col.querySelectorAll('p');
+        if(ps[0] && steps[index]!==undefined) ps[0].textContent=steps[index];
+        if(ps[1] && notes[index]!==undefined) ps[1].textContent=notes[index];
+      });
+    }
   }
   setList('footer p a', t.footerLinks);
   setText('.footer-esv', t.footerEsv);
