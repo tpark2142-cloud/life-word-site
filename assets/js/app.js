@@ -1266,6 +1266,9 @@ function getLivingWordMediaMarkup(item){
   if(item.mediaKind==='video'){
     return '<div class="living-word-media-shell"><video class="living-word-media" controls playsinline preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></video></div>';
   }
+  if(item.mediaKind==='pdf'){
+    return '';
+  }
   return '<div class="living-word-media-shell living-word-audio-shell"><audio class="living-word-media" controls preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></audio></div>';
 }
 
@@ -1279,6 +1282,9 @@ function getLivingWordActionMarkup(item){
   }
   if((item.type||'').toLowerCase()==='podcast' && mediaLink){
     actions.push(`<a class="living-word-link-btn living-word-link-btn-secondary" href="${escapeAttr(mediaLink)}" target="_blank" rel="noopener noreferrer">${getLivingWordOpenAudioLabel()}</a>`);
+  }
+  if(item.mediaKind==='pdf' && mediaLink){
+    actions.push(`<a class="living-word-link-btn living-word-link-btn-secondary" href="${escapeAttr(mediaLink)}" target="_blank" rel="noopener noreferrer">${getLivingWordOpenPdfLabel()}</a>`);
   }
   if(!actions.length)return '';
   return `<div class="living-word-actions">${actions.join('')}</div>`;
@@ -1359,6 +1365,11 @@ function getLivingWordLinkLabel(type){
 function getLivingWordOpenAudioLabel(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
   return lang==='ko' ? '오디오 직접 열기' : 'Open Audio';
+}
+
+function getLivingWordOpenPdfLabel(){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  return lang==='ko' ? 'PDF 열기' : 'Open PDF';
 }
 
 function loadVisitStats(){
@@ -1802,6 +1813,7 @@ function inferLivingWordMediaKind(url, type){
   const value=(url||'').toLowerCase();
   if(/\.(mp4|webm|mov|m4v)(\?|#|$)/.test(value)) return 'video';
   if(/\.(mp3|m4a|wav|ogg|aac)(\?|#|$)/.test(value)) return 'audio';
+  if(value.startsWith('data:application/pdf') || /\.(pdf)(\?|#|$)/.test(value)) return 'pdf';
   return '';
 }
 
