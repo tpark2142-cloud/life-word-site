@@ -354,6 +354,7 @@ window.applyPageLanguage=function(lang){
   const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};
   const setHTML=(selector,value)=>{const el=q(selector); if(el) el.innerHTML=value;};
   const setList=(selector,values)=>{qa(selector).forEach((el,index)=>{ if(values[index]!==undefined) el.textContent=values[index]; });};
+  const setVersionTabs=(nextLang)=>{qa('.dv-tabs').forEach((tabs)=>{const buttons=tabs.querySelectorAll('.dv-tab'); if(buttons[0]) buttons[0].textContent=nextLang==='ko'?'킹제임스':'KJV'; if(buttons[1]) buttons[1].textContent='ESV';});};
   const setSidebarLinks=(values)=>{
     qa('.sidebar .sb-link').forEach((link,index)=>{
       if(values[index]===undefined) return;
@@ -409,6 +410,7 @@ window.applyPageLanguage=function(lang){
     : 'Bible verses for every season of life.');
   setText('.sb-footer-verse', lang==='ko'?'주의 말씀은 내 발에 등이요 내 길에 빛이니이다.':'Thy word is a lamp unto my feet, and a light unto my path.');
   setText('.sb-footer-ref', lang==='ko'?'시편 119:105':'Psalm 119:105');
+  setVersionTabs(lang);
   setList('header nav ul li a', t.nav);
   setText('.hero-badge', t.heroBadge);
   setHTML('.hero h1', t.heroTitle);
