@@ -158,8 +158,8 @@ footer a:hover{color:var(--gold-light)}
     <a class="sb-link" href="comfort.html" onclick="closeSidebar()"><span class="sb-icon">&#10047;</span> Comfort</a>
   </div>
   <div class="sb-footer">
-    <p class="sb-footer-verse">ì£¼ì˜ ë§ì”€ì€ ë‚´ ë°œì— ë“±ì´ìš” ë‚´ ê¸¸ì— ë¹›ì´ë‹ˆì´ë‹¤.</p>
-    <span class="sb-footer-ref">ì‹œíŽ¸ 119:105</span>
+    <p class="sb-footer-verse">주의 말씀은 내 발에 등이요 내 길에 빛이니이다.</p>
+    <span class="sb-footer-ref">시편 119:105</span>
   </div>
 </aside>
 <div class="main-content">
@@ -380,7 +380,7 @@ window.applyPageLanguage=function(lang){
   const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};
   const setHTML=(selector,value)=>{const el=q(selector); if(el) el.innerHTML=value;};
   const setList=(selector,values)=>{qa(selector).forEach((el,index)=>{ if(values[index]!==undefined) el.textContent=values[index]; });};
-  const setVersionTabs=(nextLang)=>{qa('.dv-tabs').forEach((tabs)=>{const buttons=tabs.querySelectorAll('.dv-tab'); if(buttons[0]) buttons[0].textContent=nextLang==='ko'?'í‚¹ì œìž„ìŠ¤':'KJV'; if(buttons[1]) buttons[1].textContent='ESV';});};
+  const setVersionTabs=(nextLang)=>{qa('.dv-tabs').forEach((tabs)=>{const buttons=tabs.querySelectorAll('.dv-tab'); if(buttons[0]) buttons[0].textContent=nextLang==='ko'?'킹제임스':'KJV'; if(buttons[1]) buttons[1].textContent='ESV';});};
   const setSidebarLinks=(values)=>{
     qa('.sidebar .sb-link').forEach((link,index)=>{
       if(values[index]===undefined) return;
@@ -397,19 +397,19 @@ window.applyPageLanguage=function(lang){
   };
   const t=lang==='ko'
     ? {
-        sidebarGroups:['íƒìƒ‰','ë‚˜ì˜ ì—¬ì •','ë” ë³´ê¸°'],
-        sidebarLinks:['í™ˆ','ê°ì •','ìƒí™©','ì£¼ì œ','í™©í˜¼ì˜ ê³„ì ˆ','ê°¤ëŸ¬ë¦¬','AI ê²€ìƒ‰','ì „ë„','ë§ì”€ëŒ€ë¡œ ì‚´ê¸°','ë°©ëª…ë¡','ë¬µìƒ','ê¸°ë„','ìœ„ë¡œ'],
-        nav:['í™ˆ','ê°ì •','ìƒí™©','ì£¼ì œ','ë§ì”€ëŒ€ë¡œ ì‚´ê¸°','ë°©ëª…ë¡','ë¬µìƒ','ê¸°ë„','ìœ„ë¡œ'],
-        heroBadge:'✦ ëª¨ë“  í•„ìš”ë¥¼ ìœ„í•œ ê¸°ë„ ✦',
-        heroTitle:'<span class="hero-title-icon">🙏</span>ëª¨ë“  ìˆœê°„ë§ˆë‹¤<br><em>í•˜ë‚˜ë‹˜ê»˜ ì•„ë¢°ì„¸ìš”</em>',
-        heroSub:'ì§ˆë³‘, ìŠ¬í””, ë‘ë ¤ì›€, ê°ì‚¬, ì¼ìƒì„ ìœ„í•œ ë§ì”€ì— ë¿Œë¦¬ë‚´ë¦° ê¸°ë„ë¬¸ìž…ë‹ˆë‹¤.',
-        guidedLabel:'ì¸ë„í•˜ëŠ” ê¸°ë„',
-        guidedTitle:'ìƒí™©ë³„ ê¸°ë„ë¬¸',
-        guidedIntro:'ê° ê¸°ë„ëŠ” ì„±ê²½ì— ê·¼ê±°í•©ë‹ˆë‹¤. ê·¸ëŒ€ë¡œ ì½ì–´ë„ ë˜ê³ , ìžì‹ ì˜ ë§ë¡œ í•˜ë‚˜ë‹˜ê»˜ ë“œë¦¬ëŠ” ê¸°ë„ì˜ ê¸¸ìž¡ì´ë¡œ ì‚¼ì•„ë„ ë©ë‹ˆë‹¤.',
-        actsLabel:'ì–´ë–»ê²Œ ê¸°ë„í• ê¹Œìš”',
-        actsTitle:'A.C.T.S. ê¸°ë„ ë°©ë²•',
-        footerLinks:['í™ˆ','ê°ì •','ê°¤ëŸ¬ë¦¬','AI ê²€ìƒ‰','ì „ë„','ë§ì”€ëŒ€ë¡œ ì‚´ê¸°','ë°©ëª…ë¡','ë¬µìƒ','ê¸°ë„','ìœ„ë¡œ'],
-        footerEsv:'ëª¨ë“  ì„±ê²½ êµ¬ì ˆì€ King James Versionê³¼ English Standard Version (ESV)ì—ì„œ ì¸ìš©í–ˆìŠµë‹ˆë‹¤. ì›ë¬¸ì— ì¶©ì‹¤í•˜ê³ , ì½ê¸° ì‰½ê³  í’ˆìœ„ ìžˆëŠ” ë²ˆì—­ìœ¼ë¡œ ë„ë¦¬ ì‚¬ìš©ë©ë‹ˆë‹¤.',
+        sidebarGroups:['탐색','나의 여정','더 보기'],
+        sidebarLinks:['홈','감정','상황','주제','황혼의 계절','갤러리','AI 검색','전도','말씀대로 살기','방명록','묵상','기도','위로'],
+        nav:['홈','감정','상황','주제','말씀대로 살기','방명록','묵상','기도','위로'],
+        heroBadge:'✦ 모든 필요를 위한 기도 ✦',
+        heroTitle:'<span class="hero-title-icon">🙏</span>모든 순간마다<br><em>하나님께 아뢰세요</em>',
+        heroSub:'질병, 슬픔, 두려움, 감사, 일상을 위한 말씀에 뿌리내린 기도문입니다.',
+        guidedLabel:'인도하는 기도',
+        guidedTitle:'상황별 기도문',
+        guidedIntro:'각 기도는 성경에 근거합니다. 그대로 읽어도 되고, 자신의 말로 하나님께 드리는 기도의 길잡이로 삼아도 됩니다.',
+        actsLabel:'어떻게 기도할까요',
+        actsTitle:'A.C.T.S. 기도 방법',
+        footerLinks:['홈','감정','갤러리','AI 검색','전도','말씀대로 살기','방명록','묵상','기도','위로'],
+        footerEsv:'모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고, 읽기 쉽고 품위 있는 번역으로 널리 사용됩니다.',
         created:'Created by Tea Park'
       }
     : {
@@ -431,13 +431,13 @@ window.applyPageLanguage=function(lang){
   setList('.sb-group-label', t.sidebarGroups);
   setSidebarLinks(t.sidebarLinks);
   setHTML('.sb-brand-name', lang==='ko'
-    ? 'ì‚¶ì˜ ìˆœê°„ë“¤<span>í•˜ë‚˜ë‹˜ì˜ ë§ì”€</span>'
+    ? '삶의 순간들<span>하나님의 말씀</span>'
     : 'Life&rsquo;s Moments<span>God&rsquo;s Word</span>');
   setText('.sb-brand-sub', lang==='ko'
-    ? 'ì‚¶ì˜ ëª¨ë“  ê³„ì ˆì„ ìœ„í•œ ì„±ê²½ ë§ì”€'
+    ? '삶의 모든 계절을 위한 성경 말씀'
     : 'Bible verses for every season of life.');
-  setText('.sb-footer-verse', lang==='ko'?'ì£¼ì˜ ë§ì”€ì€ ë‚´ ë°œì— ë“±ì´ìš” ë‚´ ê¸¸ì— ë¹›ì´ë‹ˆì´ë‹¤.':'Thy word is a lamp unto my feet, and a light unto my path.');
-  setText('.sb-footer-ref', lang==='ko'?'ì‹œíŽ¸ 119:105':'Psalm 119:105');
+  setText('.sb-footer-verse', lang==='ko'?'주의 말씀은 내 발에 등이요 내 길에 빛이니이다.':'Thy word is a lamp unto my feet, and a light unto my path.');
+  setText('.sb-footer-ref', lang==='ko'?'시편 119:105':'Psalm 119:105');
   setVersionTabs(lang);
   setList('header nav ul li a', t.nav);
   setText('.hero-badge', t.heroBadge);
@@ -512,7 +512,6 @@ window.applyPageLanguage=function(lang){
   setText('.footer-esv', t.footerEsv);
   setText('footer p[style*="font-size:13px"]', t.created);
 };
-</script>
 <script src="assets/js/lang.js?v=20260521c"></script>
 <script src="assets/js/pwa.js"></script>
 </div>
