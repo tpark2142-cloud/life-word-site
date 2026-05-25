@@ -133,8 +133,16 @@ const KOREAN_VERSE_BY_REF = {
   ,'John 14:2': '내 아버지 집에는 거할 곳이 많도다. 그렇지 않으면 내가 너희에게 말하였으리라. 내가 너희를 위하여 처소를 마련하러 가노니'
 };
 
+function normalizeVerseRef(ref) {
+  return String(ref || '')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function getKoreanVerseText(ref, fallback) {
-  return KOREAN_VERSE_BY_REF[ref] || fallback || '';
+  const normalizedRef = normalizeVerseRef(ref);
+  return KOREAN_VERSE_BY_REF[normalizedRef] || KOREAN_VERSE_BY_REF[String(ref || '').trim()] || fallback || '';
 }
 function getKjvLabel(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';

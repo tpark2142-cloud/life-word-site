@@ -198,8 +198,7 @@ mark{background:rgba(184,147,90,.28);color:inherit;border-radius:2px;padding:0 2
 .topic-panel.open{max-height:900px}
 .tp-inner{padding:4px 22px 20px}
 .tp-note{font-size:14px;color:var(--text-soft);font-style:italic;margin-bottom:14px;padding-top:14px;line-height:1.65}
-.ko-key-note{display:none;margin-top:10px;font-size:14px;color:var(--text-soft);font-style:italic;line-height:1.65}
-html[lang="ko"] .ko-key-note{display:block}
+.ko-key-note{display:none !important;margin-top:10px;font-size:14px;color:var(--text-soft);font-style:italic;line-height:1.65}
 .tp-v{border-left:2px solid var(--gold);padding:11px 15px;background:#fff;border-radius:0 4px 4px 0;margin-bottom:9px}
 .tp-v p{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:5px}
 .tp-v cite{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold)}
