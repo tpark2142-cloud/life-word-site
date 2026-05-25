@@ -220,6 +220,11 @@ mark{background:rgba(184,147,90,.28);color:inherit;border-radius:2px;padding:0 2
 .senior-verse-box{background:var(--deep);border-radius:8px;padding:32px 38px;text-align:center;margin:0 auto 44px;max-width:680px}
 .senior-verse-box p{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.8vw,26px);font-style:italic;color:#fff;line-height:1.55;margin-bottom:12px}
 .senior-verse-box cite{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.12em;color:var(--gold-light)}
+.senior-memory-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px 28px;text-align:center;margin:0 auto 28px;max-width:620px;box-shadow:0 12px 24px rgba(20,40,30,.06)}
+.s-memory-lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.s-memory-title{font-family:'Cinzel',serif;font-size:18px;letter-spacing:.05em;color:var(--deep);margin:0 0 12px}
+.s-memory-verse{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.3vw,24px);font-style:italic;color:var(--text);line-height:1.55;margin-bottom:10px}
+.s-memory-ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;color:var(--gold-light)}
 .senior-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
 .sc{background:#fff;border:1px solid var(--border);border-radius:8px;padding:26px 22px}
 .sc .icon{font-size:30px;margin-bottom:12px}

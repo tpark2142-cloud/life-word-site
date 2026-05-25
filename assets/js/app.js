@@ -237,6 +237,152 @@ function closeModal(e){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
+const TODAY_MEMORY_VERSE_ROTATIONS = {
+  ko: [
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '오늘 하루 마음에 두고 천천히 되새겨 보세요.',
+      verse: '“영원하신 하나님은 너의 피난처시니 아래에는 영원한 팔이 있도다.”',
+      ref: '신명기 33:27 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '필요할 때마다 소리 내어 읽어도 좋습니다.',
+      verse: '“두려워하지 말라. 내가 너와 함께함이니라. 놀라지 말라. 내가 네 하나님이니라.”',
+      ref: '이사야 41:10 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '짧게라도 기억하며 오늘의 걸음을 시작해 보세요.',
+      verse: '“네 마음을 다하여 주를 신뢰하고, 네 자신의 명철을 의지하지 말라.”',
+      ref: '잠언 3:5 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '지친 순간에 다시 떠올릴 수 있도록 가까이 두세요.',
+      verse: '“수고하고 무거운 짐진 자들아, 다 내게로 오라. 그러면 내가 너희에게 쉼을 주리라.”',
+      ref: '마태복음 11:28 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '오늘의 염려를 내려놓으며 천천히 묵상해 보세요.',
+      verse: '“아무것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희의 구하는 것들을 감사함으로 하나님께 알려지게 하라.”',
+      ref: '빌립보서 4:6 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '하루를 시작하며 또는 마무리하며 읽기 좋은 말씀입니다.',
+      verse: '“주의 말씀은 내 발에 등불이요, 내 길에 빛이니이다.”',
+      ref: '시편 119:105 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: '암송구절',
+      title: '오늘의 암송구절',
+      note: '하나님의 선하심을 붙들며 평안히 머물러 보세요.',
+      verse: '“주는 나의 목자시니, 내가 부족한 것이 없으리로다.”',
+      ref: '시편 23:1 (KJV)'
+    }
+  ],
+  en: [
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'Keep this verse close and read it slowly through the day.',
+      verse: '“The eternal God is thy refuge, and underneath are the everlasting arms.”',
+      ref: 'Deuteronomy 33:27 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'A good verse to return to whenever your heart feels unsettled.',
+      verse: '“Fear thou not; for I am with thee: be not dismayed; for I am thy God.”',
+      ref: 'Isaiah 41:10 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'Read it once now and again later in the day.',
+      verse: '“Trust in the Lord with all thine heart; and lean not unto thine own understanding.”',
+      ref: 'Proverbs 3:5 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'A gentle verse for tired hearts and heavy days.',
+      verse: '“Come unto me, all ye that labour and are heavy laden, and I will give you rest.”',
+      ref: 'Matthew 11:28 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'Pause with this verse and turn today’s worries into prayer.',
+      verse: '“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.”',
+      ref: 'Philippians 4:6 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'A simple verse to carry into every decision and step.',
+      verse: '“Thy word is a lamp unto my feet, and a light unto my path.”',
+      ref: 'Psalm 119:105 (KJV)'
+    },
+    {
+      icon: '✦',
+      category: 'Memory Verse',
+      title: "Today's Memory Verse",
+      note: 'Let this promise steady your heart today.',
+      verse: '“The Lord is my shepherd; I shall not want.”',
+      ref: 'Psalm 23:1 (KJV)'
+    }
+  ]
+};
+
+function getTodayMemoryVerseData(lang){
+  const verses = TODAY_MEMORY_VERSE_ROTATIONS[lang] || TODAY_MEMORY_VERSE_ROTATIONS.en;
+  const today = new Date();
+  const start = Date.UTC(2026, 4, 25);
+  const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const index = Math.floor((todayUtc - start) / 86400000);
+  return verses[((index % verses.length) + verses.length) % verses.length];
+}
+
+function openTodayMemoryVersePopup(force){
+  if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
+  const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
+  const todayKey = new Date().toISOString().slice(0,10);
+  const storageKey = 'lm-gw-memory-popup-' + todayKey + '-' + lang;
+  if(!force && localStorage.getItem(storageKey) === 'shown') return;
+  const data = getTodayMemoryVerseData(lang);
+  document.getElementById('m-icon').textContent = data.icon;
+  document.getElementById('m-cat').textContent = data.category;
+  document.getElementById('m-title').textContent = data.title;
+  document.getElementById('m-note').textContent = data.note;
+  document.getElementById('m-verses').innerHTML =
+    '<div class="modal-v"><blockquote>&ldquo;' + data.verse + '&rdquo;</blockquote><cite>' + data.ref + '</cite></div>';
+  document.getElementById('modal-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+  localStorage.setItem(storageKey, 'shown');
+}
+
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TOPIC ACCORDION
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -1883,6 +2029,10 @@ async function loadGalleryItems(){
 loadGalleryItems();
 
 bindTopicButtons();
+
+window.addEventListener('load', ()=>{
+  window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
+});
 
 
 
