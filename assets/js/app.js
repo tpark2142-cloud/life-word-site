@@ -356,13 +356,67 @@ const TODAY_MEMORY_VERSE_ROTATIONS = {
   ]
 };
 
+let DAILY_MEMORY_VERSE_POOL = null;
+
+function buildDailyMemoryVersePool(){
+  if(DAILY_MEMORY_VERSE_POOL) return DAILY_MEMORY_VERSE_POOL;
+  const poolMap = new Map();
+  const addVerse = (ref, enVerse) => {
+    const normalizedRef = normalizeVerseRef(ref);
+    const normalizedVerse = String(enVerse || '').trim();
+    const koVerse = String(getKoreanVerseText(normalizedRef, '') || '').trim();
+    if(!normalizedRef || !normalizedVerse || !koVerse) return;
+    if(!poolMap.has(normalizedRef)){
+      poolMap.set(normalizedRef, {
+        ref: normalizedRef,
+        enVerse: normalizedVerse,
+        koVerse
+      });
+    }
+  };
+
+  Object.values(EMOTIONS || {}).forEach(group => {
+    (group.verses || []).forEach(verse => {
+      if(verse && verse.kjv && verse.r) addVerse(verse.r, verse.kjv);
+    });
+  });
+
+  (DB || []).forEach(topic => {
+    (topic.verses || []).forEach(verse => {
+      if(verse && verse.kjv && verse.r) addVerse(verse.r, verse.kjv);
+    });
+  });
+
+  DAILY_MEMORY_VERSE_POOL = Array.from(poolMap.values());
+  return DAILY_MEMORY_VERSE_POOL;
+}
+
+function getDayOfYear(date){
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date - start;
+  const oneDay = 1000 * 60 * 60 * 24;
+  return Math.floor(diff / oneDay);
+}
+
 function getTodayMemoryVerseData(lang){
-  const verses = TODAY_MEMORY_VERSE_ROTATIONS[lang] || TODAY_MEMORY_VERSE_ROTATIONS.en;
-  const today = new Date();
-  const start = Date.UTC(2026, 4, 25);
-  const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-  const index = Math.floor((todayUtc - start) / 86400000);
-  return verses[((index % verses.length) + verses.length) % verses.length];
+  const pool = buildDailyMemoryVersePool();
+  if(pool.length){
+    const today = new Date();
+    const dayIndex = getDayOfYear(today) - 1;
+    const verse = pool[((dayIndex % pool.length) + pool.length) % pool.length];
+    return {
+      icon: '✦',
+      category: lang === 'ko' ? '암송구절' : 'Memory Verse',
+      title: lang === 'ko' ? '오늘의 암송구절' : "Today's Memory Verse",
+      note: lang === 'ko'
+        ? '오늘 날짜에 맞는 암송구절입니다. 하루 동안 여러 번 천천히 읽어 보세요.'
+        : 'A memory verse selected for today. Read it slowly a few times through the day.',
+      verse: lang === 'ko' ? verse.koVerse : verse.enVerse,
+      ref: verse.ref + ' (KJV)'
+    };
+  }
+  const fallback = TODAY_MEMORY_VERSE_ROTATIONS[lang] || TODAY_MEMORY_VERSE_ROTATIONS.en;
+  return fallback[0];
 }
 
 function openTodayMemoryVersePopup(force){
