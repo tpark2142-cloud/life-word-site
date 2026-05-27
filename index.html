@@ -194,6 +194,42 @@ gtag('config', 'G-2SJCBS84VD');
   </div>
 </section>
 
+<section class="home-spotlight" id="home-spotlight">
+  <div class="home-spotlight-inner">
+    <article class="spot-card">
+      <p class="spot-kicker" id="spot-most-kicker">Most Visited</p>
+      <h2 class="spot-title" id="spot-most-title">Start with the verses visitors look for most often.</h2>
+      <div class="spot-pill-grid">
+        <button class="spot-pill" id="spot-most-1" type="button" onclick="heroChip('fear');document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'});">Fear</button>
+        <button class="spot-pill" id="spot-most-2" type="button" onclick="heroChip('anxiety');document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'});">Anxiety</button>
+        <button class="spot-pill" id="spot-most-3" type="button" onclick="heroChip('grief');document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'});">Grief</button>
+        <button class="spot-pill" id="spot-most-4" type="button" onclick="heroChip('hope');document.getElementById('results-section').scrollIntoView({behavior:'smooth',block:'start'});">Hope</button>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <p class="spot-kicker" id="spot-week-kicker">This Week's Highlights</p>
+      <h2 class="spot-title" id="spot-week-title">Open the sections that help first-time visitors get started quickly.</h2>
+      <div class="spot-link-stack">
+        <a class="spot-link" id="spot-week-1" href="#" onclick="openTodayMemoryVersePopup(true);return false;">Today's Memory Verse</a>
+        <a class="spot-link" id="spot-week-2" href="#seniors">Twilight Season</a>
+        <a class="spot-link" id="spot-week-3" href="#living-word">Living the Word</a>
+      </div>
+    </article>
+
+    <article class="spot-card">
+      <p class="spot-kicker" id="spot-share-kicker">Share This Site</p>
+      <h2 class="spot-title" id="spot-share-title">Send this homepage to someone who may need comfort today.</h2>
+      <p class="spot-copy" id="spot-share-copy">You can share by KakaoTalk, text, email, or copy the link.</p>
+      <div class="spot-actions">
+        <button class="spot-action-btn primary" id="spot-share-btn" type="button" onclick="shareSite()">Share This Site</button>
+        <button class="spot-action-btn" id="spot-copy-btn" type="button" onclick="copySiteLink()">Copy Link</button>
+      </div>
+      <p class="spot-feedback" id="spot-feedback" aria-live="polite"></p>
+    </article>
+  </div>
+</section>
+
 <!-- SEARCH RESULTS -->
 <section id="results-section">
   <div class="results-inner">
@@ -982,6 +1018,11 @@ window.applyPageLanguage=function(lang){
         heroPlaceholder:'검색: 슬픔, 두려움, 질병, 소망, 용서, 결혼…',
         heroButton:'성경 검색',
         heroQuick:['성경 찾기','말씀대로 살기','방명록'],
+        spotlight:{
+          most:['많이 찾는 말씀','방문자들이 가장 자주 찾는 말씀부터 바로 시작해 보세요.','두려움','불안','슬픔','소망'],
+          week:['이번 주 추천','처음 방문한 분들이 가장 쉽게 시작할 수 있는 곳을 모아 두었습니다.','오늘의 암송구절','황혼의 계절','말씀대로 살기'],
+          share:['이 사이트 나누기','오늘 위로나 도움이 필요할 수 있는 분께 이 홈을 보내 주세요.','카카오톡, 문자, 이메일로 보내거나 링크를 복사할 수 있습니다.','이 사이트 나누기','링크 복사']
+        },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
         emotionCardTitles:['기쁨','슬픔','평안','소망','두려움','불안','외로움','분노','감사','죄책감과 후회','사랑','낙심'],
@@ -1027,6 +1068,11 @@ window.applyPageLanguage=function(lang){
         heroPlaceholder:'Search: grief, fear, sick, hope, forgive, marriage…',
         heroButton:'Search Bible',
         heroQuick:['Search Verses','Living the Word','Guestbook'],
+        spotlight:{
+          most:['Most Visited','Start with the verses visitors look for most often.','Fear','Anxiety','Grief','Hope'],
+          week:["This Week's Highlights",'Open the sections that help first-time visitors get started quickly.',"Today's Memory Verse",'Twilight Season','Living the Word'],
+          share:['Share This Site','Send this homepage to someone who may need comfort today.','You can share by KakaoTalk, text, email, or copy the link.','Share This Site','Copy Link']
+        },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
         emotionCardTitles:['Joy','Sorrow','Peace','Hope','Fear','Anxiety','Loneliness','Anger','Gratitude','Guilt & Regret','Love','Discouragement'],
@@ -1219,6 +1265,23 @@ window.applyPageLanguage=function(lang){
   setText('#hero-quick-search', text.heroQuick[0]);
   setText('#hero-quick-living', text.heroQuick[1]);
   setText('#hero-quick-guestbook', text.heroQuick[2]);
+  setText('#spot-most-kicker', text.spotlight.most[0]);
+  setText('#spot-most-title', text.spotlight.most[1]);
+  setText('#spot-most-1', text.spotlight.most[2]);
+  setText('#spot-most-2', text.spotlight.most[3]);
+  setText('#spot-most-3', text.spotlight.most[4]);
+  setText('#spot-most-4', text.spotlight.most[5]);
+  setText('#spot-week-kicker', text.spotlight.week[0]);
+  setText('#spot-week-title', text.spotlight.week[1]);
+  setText('#spot-week-1', text.spotlight.week[2]);
+  setText('#spot-week-2', text.spotlight.week[3]);
+  setText('#spot-week-3', text.spotlight.week[4]);
+  setText('#spot-share-kicker', text.spotlight.share[0]);
+  setText('#spot-share-title', text.spotlight.share[1]);
+  setText('#spot-share-copy', text.spotlight.share[2]);
+  setText('#spot-share-btn', text.spotlight.share[3]);
+  setText('#spot-copy-btn', text.spotlight.share[4]);
+  setText('#spot-feedback', '');
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
@@ -1353,6 +1416,43 @@ window.applyPageLanguage=function(lang){
   setText('.footer-esv', text.footerEsv);
   setText('footer p[style*="font-size:13px"]', text.createdBy);
   setText('footer p[style*="font-size:12px"]', text.copyright);
+};
+</script>
+<script>
+window.shareSite = async function(){
+  const lang = (document.documentElement.getAttribute('lang') || 'en').startsWith('ko') ? 'ko' : 'en';
+  const url = 'https://www.lifemoment.site';
+  const title = lang === 'ko' ? '삶의 순간들, 하나님의 말씀' : "Life's Moments, God's Word";
+  const shareText = lang === 'ko'
+    ? '성경 말씀과 기도, 위로와 소망을 함께 찾을 수 있는 홈페이지입니다.'
+    : 'A homepage for Bible verses, prayer, comfort, and hope.';
+  const feedback = document.getElementById('spot-feedback');
+  try{
+    if(navigator.share){
+      await navigator.share({title:title, text:shareText, url:url});
+      if(feedback) feedback.textContent = lang === 'ko' ? '공유 창을 열었습니다.' : 'Share window opened.';
+      return;
+    }
+    await window.copySiteLink();
+  }catch(err){
+    if(err && err.name === 'AbortError') return;
+    if(feedback) feedback.textContent = lang === 'ko' ? '공유를 열지 못했습니다. 링크를 복사해 사용해 주세요.' : 'Could not open share. Please use the copied link.';
+  }
+};
+
+window.copySiteLink = async function(){
+  const lang = (document.documentElement.getAttribute('lang') || 'en').startsWith('ko') ? 'ko' : 'en';
+  const url = 'https://www.lifemoment.site';
+  const feedback = document.getElementById('spot-feedback');
+  try{
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(url);
+      if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사했습니다.' : 'Link copied.';
+      return;
+    }
+  }catch(err){}
+  window.prompt(lang === 'ko' ? '이 링크를 복사해 주세요.' : 'Copy this link:', url);
+  if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
 <script src="assets/js/app.js?v=20260524d"></script>
