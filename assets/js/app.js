@@ -884,15 +884,14 @@ function updateStaticKjvCards(){
 
 function updateStaticTopicEsvCards(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
-  document.querySelectorAll('.dv-content').forEach(panel=>{
-    if(!/^tp\d+e$/i.test(panel.id || '')){
-      return;
-    }
+  document.querySelectorAll('#topics .dv-content').forEach(panel=>{
     const refEl=panel.querySelector('cite, span');
     const verseEl=panel.querySelector('p, blockquote');
     if(!refEl || !verseEl)return;
     const refText=(refEl.textContent||'').trim();
-    if(!/\(ESV\)/i.test(refText))return;
+    if(!/\(ESV\)/i.test(refText)){
+      return;
+    }
     const ref=refText.replace(/\s*\(ESV\)\s*$/i,'').trim();
     if(!verseEl.dataset.esvOriginal){
       verseEl.dataset.esvOriginal=verseEl.textContent.trim().replace(/^["“”]+|["“”]+$/g,'');
