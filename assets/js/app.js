@@ -310,13 +310,14 @@ function openEmotion(name){
     if(v.kjv !== undefined){
       const id = 'mdv'+(++dvIdx);
       const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
+      const esvText = lang==='ko' ? getKoreanEsvText(v.r, v.esv) : v.esv;
       return '<div class="modal-dv dual-verse">'
         +'<div class="dv-tabs">'
         +'<button class="dv-tab active" onclick="switchTab(this,\''+id+'-kjv\')">'+getKjvLabel()+'</button>'
         +'<button class="dv-tab" onclick="switchTab(this,\''+id+'-esv\')">ESV</button>'
         +'</div>'
         +'<div class="dv-content active" id="'+id+'-kjv"><blockquote>&ldquo;'+kjvText+'&rdquo;</blockquote><cite>'+v.r+'</cite></div>'
-        +'<div class="dv-content" id="'+id+'-esv"><blockquote>&ldquo;'+v.esv+'&rdquo;</blockquote><cite>'+v.r+' (ESV)</cite></div>'
+        +'<div class="dv-content" id="'+id+'-esv"><blockquote>&ldquo;'+esvText+'&rdquo;</blockquote><cite>'+v.r+' (ESV)</cite></div>'
         +'</div>';
     }
     return '<div class="modal-v"><blockquote>&ldquo;'+(v.t||v.esv)+'&rdquo;</blockquote><cite>'+v.r+'</cite></div>';
@@ -697,13 +698,14 @@ function doHeroSearch(){
           if(v.kjv){
             const rid='rs'+(++_resIdx); // globally unique per search
             const kjvText = lang==='ko' ? getKoreanVerseText(v.r, v.kjv) : v.kjv;
+            const esvText = lang==='ko' ? getKoreanEsvText(v.r, v.esv) : v.esv;
             return '<div class="res-dual dual-verse">'
               +'<div class="dv-tabs">'
               +'<button class="dv-tab active" onclick="rTab(this)">'+getKjvLabel()+'</button>'
               +'<button class="dv-tab" onclick="rTab(this)">ESV</button>'
               +'</div>'
               +'<div class="dv-content active" id="'+rid+'-kjv"><p>&ldquo;'+hl(kjvText,words)+'&rdquo;</p><cite>'+v.r+'</cite></div>'
-              +'<div class="dv-content" id="'+rid+'-esv"><p>&ldquo;'+hl(v.esv,words)+'&rdquo;</p><cite>'+v.r+' (ESV)</cite></div>'
+              +'<div class="dv-content" id="'+rid+'-esv"><p>&ldquo;'+hl(esvText,words)+'&rdquo;</p><cite>'+v.r+' (ESV)</cite></div>'
               +'</div>';
           }
           return '<div class="res-verse"><p>&ldquo;'+hl((v.t||v.esv||''),words)+'&rdquo;</p><cite>'+v.r+'</cite></div>';
