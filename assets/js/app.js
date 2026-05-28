@@ -953,7 +953,13 @@ function switchTab(btn, contentId) {
     }
   }
   btn.classList.add('active');
-  var target=document.getElementById(contentId);
+  var target=null;
+  for(var j=0;j<children.length;j++){
+    if(children[j].id===contentId){
+      target=children[j];
+      break;
+    }
+  }
   if(target){ target.style.display='block'; target.classList.add('active'); }
 }
 function updateStaticKjvCards(){
