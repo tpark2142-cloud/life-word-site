@@ -881,6 +881,26 @@ function updateStaticKjvCards(){
     verseEl.innerHTML='&ldquo;'+escapeHtml(nextText)+'&rdquo;';
   });
 }
+
+function updateStaticTopicEsvCards(){
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  document.querySelectorAll('.dv-content').forEach(panel=>{
+    if(!/^tp\d+e$/i.test(panel.id || '')){
+      return;
+    }
+    const refEl=panel.querySelector('cite, span');
+    const verseEl=panel.querySelector('p, blockquote');
+    if(!refEl || !verseEl)return;
+    const refText=(refEl.textContent||'').trim();
+    if(!/\(ESV\)/i.test(refText))return;
+    const ref=refText.replace(/\s*\(ESV\)\s*$/i,'').trim();
+    if(!verseEl.dataset.esvOriginal){
+      verseEl.dataset.esvOriginal=verseEl.textContent.trim().replace(/^["“”]+|["“”]+$/g,'');
+    }
+    const nextText=lang==='ko' ? getKoreanVerseText(ref, verseEl.dataset.esvOriginal) : verseEl.dataset.esvOriginal;
+    verseEl.innerHTML='&ldquo;'+escapeHtml(nextText)+'&rdquo;';
+  });
+}
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // SIDEBAR TOGGLE (MOBILE)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -924,7 +944,9 @@ window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true})
 updateSidebarActiveLinkFromView();
 bindTopicButtons();
 updateStaticKjvCards();
+updateStaticTopicEsvCards();
 window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
+window.addEventListener('lifeword:languagechange', updateStaticTopicEsvCards);
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
