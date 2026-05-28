@@ -992,7 +992,7 @@ function updateStaticKjvCards(){
 
 function updateStaticTopicEsvCards(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
-  document.querySelectorAll('#topics .dv-content').forEach(panel=>{
+  document.querySelectorAll('#topics .dv-content, #situations .dv-content').forEach(panel=>{
     const refEl=panel.querySelector('cite, span');
     const verseEl=panel.querySelector('p, blockquote');
     if(!refEl || !verseEl)return;
