@@ -85,6 +85,7 @@ html[lang="ko"] .hero-quick-btn{font-size:10.5px;letter-spacing:.08em}
 .spot-action-btn:hover{transform:translateY(-1px);border-color:rgba(184,147,90,.65);background:var(--gold-pale)}
 .spot-action-btn.primary:hover{background:var(--green);border-color:var(--green)}
 .spot-feedback{min-height:22px;margin-top:14px;font-size:13px;color:var(--gold);font-style:italic}
+.spot-install-note{margin-top:8px;font-size:14px;line-height:1.8;color:var(--text-soft)}
 #results-section{display:none;background:var(--gold-pale);border-bottom:1px solid var(--border)}
 .results-inner{max-width:1120px;margin:0 auto;padding:48px 28px}
 .res-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:10px}

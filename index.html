@@ -226,6 +226,7 @@ gtag('config', 'G-2SJCBS84VD');
         <button class="spot-action-btn" id="spot-copy-btn" type="button" onclick="copySiteLink()">Copy Link</button>
       </div>
       <p class="spot-feedback" id="spot-feedback" aria-live="polite"></p>
+      <p class="spot-install-note" id="spot-share-install-note">Open https://www.lifemoment.site and add it to your home screen or install it as an app. Then you can open it anytime like a regular app on your phone, tablet, or computer.</p>
     </article>
   </div>
 </section>
@@ -1021,7 +1022,7 @@ window.applyPageLanguage=function(lang){
         spotlight:{
           most:['많이 찾는 말씀','방문자들이 가장 자주 찾는 말씀부터 바로 시작해 보세요.','두려움','불안','슬픔','소망'],
           week:['이번 주 추천','처음 방문한 분들이 가장 쉽게 시작할 수 있는 곳을 모아 두었습니다.','오늘의 암송구절','황혼의 계절','말씀대로 살기'],
-          share:['이 사이트 나누기','오늘 위로나 도움이 필요할 수 있는 분께 이 홈을 보내 주세요.','카카오톡, 문자, 이메일로 보내거나 링크를 복사할 수 있습니다.','이 사이트 나누기','링크 복사']
+          share:['이 사이트 나누기','오늘 위로나 도움이 필요할 수 있는 분께 이 홈을 보내 주세요.','카카오톡, 문자, 이메일로 보내거나 링크를 복사할 수 있습니다.','이 사이트 나누기','링크 복사','https://www.lifemoment.site 를 열고 홈 화면에 추가하거나 앱으로 설치해 주세요. 그러면 휴대폰, 태블릿, 컴퓨터에서 일반 앱처럼 언제든지 바로 열 수 있습니다.']
         },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
@@ -1071,7 +1072,7 @@ window.applyPageLanguage=function(lang){
         spotlight:{
           most:['Most Visited','Start with the verses visitors look for most often.','Fear','Anxiety','Grief','Hope'],
           week:["This Week's Highlights",'Open the sections that help first-time visitors get started quickly.',"Today's Memory Verse",'Twilight Season','Living the Word'],
-          share:['Share This Site','Send this homepage to someone who may need comfort today.','You can share by SNS, text, email, or copy the link.','Share This Site','Copy Link']
+          share:['Share This Site','Send this homepage to someone who may need comfort today.','You can share by SNS, text, email, or copy the link.','Share This Site','Copy Link','Open https://www.lifemoment.site and add it to your home screen or install it as an app. Then you can open it anytime like a regular app on your phone, tablet, or computer.']
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
@@ -1281,6 +1282,7 @@ window.applyPageLanguage=function(lang){
   setText('#spot-share-copy', text.spotlight.share[2]);
   setText('#spot-share-btn', text.spotlight.share[3]);
   setText('#spot-copy-btn', text.spotlight.share[4]);
+  setText('#spot-share-install-note', text.spotlight.share[5]);
   setText('#spot-feedback', '');
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
