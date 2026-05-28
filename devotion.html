@@ -354,6 +354,22 @@ setDailyDevotion();
 
 </script>
 <script>
+const devotionEnglishSnapshot = {
+  readingLabel: document.querySelector('.reading-label')?.textContent || '',
+  readingRef: document.querySelector('#reading-ref')?.textContent || '',
+  readingNote: document.querySelector('#reading-note')?.textContent || '',
+  readingBody: document.querySelector('#reading-body')?.textContent || '',
+  readingCite: document.querySelector('#reading-cite')?.textContent || '',
+  morningPrayer: document.querySelector('#morning-prayer')?.textContent || '',
+  rTags: Array.from(document.querySelectorAll('.r-tag')).map((el) => el.textContent),
+  verses: ['v1k','v2k','v3k','v4k','v5k','v1e','v2e','v3e','v4e','v5e'].reduce((acc, id) => {
+    const vt = document.querySelector(`#${id} .vt`);
+    const cite = document.querySelector(`#${id} cite`);
+    acc[id] = { vt: vt ? vt.textContent : '', cite: cite ? cite.textContent : '' };
+    return acc;
+  }, {})
+};
+
 window.applyPageLanguage=function(lang){
   const q=(selector)=>document.querySelector(selector);
   const qa=(selector)=>Array.from(document.querySelectorAll(selector));
@@ -414,11 +430,6 @@ window.applyPageLanguage=function(lang){
         created:'Created by Tea Park'
       };
 
-  if (lang === 'en' && q('.wrap > .section-title') && /7일|묵상|하나님 말씀/.test(document.body.textContent)) {
-    window.location.href = 'devotion.html';
-    return;
-  }
-
   setList('.sb-group-label', t.sidebarGroups);
   setSidebarLinks(t.sidebarLinks);
   setHTML('.sb-brand-name', lang==='ko'
@@ -478,6 +489,21 @@ window.applyPageLanguage=function(lang){
     setText('#v4e cite','이사야 40:31 (ESV)');
     setText('#v5e .vt','“그러므로 우리가 낙심하지 아니하노니 우리의 겉사람은 낡아질지라도 우리의 속사람은 날로 새로워지도다.”');
     setText('#v5e cite','고린도후서 4:16 (ESV)');
+  } else {
+    setText('.reading-label','✦ Reading');
+    setText('#reading-ref','Isaiah 40:28–31 — Strength for the Weary');
+    setText('#reading-note','Isaiah reminds us that the Creator of the universe does not grow tired. He sees our exhaustion, He knows our limits — and He offers something the world cannot: renewed strength for those who wait on Him.');
+    setText('#reading-body', devotionEnglishSnapshot.readingBody);
+    setText('#reading-cite', devotionEnglishSnapshot.readingCite);
+    setText('#morning-prayer', devotionEnglishSnapshot.morningPrayer);
+    devotionEnglishSnapshot.rTags.forEach((value, index) => {
+      const target = document.querySelectorAll('.r-tag')[index];
+      if (target) target.textContent = value;
+    });
+    Object.entries(devotionEnglishSnapshot.verses).forEach(([id, verse]) => {
+      setText(`#${id} .vt`, verse.vt);
+      setText(`#${id} cite`, verse.cite);
+    });
   }
 
   setDailyDevotion();

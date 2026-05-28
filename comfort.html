@@ -415,6 +415,22 @@ function dst(b,p){switchTab(b,p);}
 
 </script>
 <script>
+const comfortEnglishSnapshot = {
+  lead: document.querySelector('.comfort-band .lead')?.textContent || '',
+  psalmTitle: document.querySelector('.psalm23-box h3')?.textContent || '',
+  psalmBody: document.querySelector('.psalm23-box p')?.textContent || '',
+  psalmCite: document.querySelector('.psalm23-box cite')?.textContent || '',
+  titles: Array.from(document.querySelectorAll('.section-card h3')).map((el) => el.textContent),
+  notes: Array.from(document.querySelectorAll('.section-card .note')).map((el) => el.textContent),
+  closingPrayer: document.querySelector('.closing-prayer p:last-child')?.textContent || '',
+  verses: ['v1k','v2k','v3k','v4k','v5k','v6k','v7k','v8k','v9k','v10k','v11k','v12k','v13k','v14k','v15k','v1e','v2e','v3e','v4e','v5e','v6e','v7e','v8e','v9e','v10e','v11e','v12e','v13e','v14e','v15e'].reduce((acc, id) => {
+    const vt = document.querySelector(`#${id} .vt`);
+    const cite = document.querySelector(`#${id} cite`);
+    acc[id] = { vt: vt ? vt.textContent : '', cite: cite ? cite.textContent : '' };
+    return acc;
+  }, {})
+};
+
 window.applyPageLanguage = function(lang){
   const q = (selector) => document.querySelector(selector);
   const qa = (selector) => Array.from(document.querySelectorAll(selector));
@@ -468,11 +484,6 @@ window.applyPageLanguage = function(lang){
         footerEsv: 'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
         created: 'Created by Tea Park'
       };
-
-  if (lang === 'en' && q('.section-card h3') && /하나님|부활의 소망|천국의 약속|남겨진 이들을 위한 위로|그리스도 안에서 잠든 이들을 위하여/.test(q('.section-card h3').textContent)) {
-    window.location.href = 'comfort.html';
-    return;
-  }
 
   setList('.sb-group-label', t.sidebarGroups);
   setSidebarLinks(t.sidebarLinks);
@@ -567,6 +578,24 @@ window.applyPageLanguage = function(lang){
     setText('#v15e .vt', '“내 영을 주의 손에 부탁하나이다. 진실하신 하나님 여호와여, 주께서 나를 구속하셨나이다.”');
     setText('#v15e cite', '시편 31:5 (ESV)');
     setText('.closing-prayer p:last-child', '주 하나님, 우리는 상실의 그늘 아래 서 있습니다. 때로는 할 말을 찾지 못하지만, 주님은 말로 다할 수 없는 슬픔까지도 들으십니다. 주님은 부활이요 생명이시며, 모든 눈물을 닦아 주시는 분이십니다. 애통하는 자들을 위로하시고, 상한 마음을 붙들어 주시며, 이것이 끝이 아님을 다시 깨닫게 하소서. 예수님 때문에 무덤은 마지막 말을 하지 못합니다. 우리가 주님을 신뢰합니다. 아멘.');
+  } else {
+    setText('.comfort-band .lead', comfortEnglishSnapshot.lead);
+    setText('.psalm23-box h3', comfortEnglishSnapshot.psalmTitle);
+    setText('.psalm23-box p', comfortEnglishSnapshot.psalmBody);
+    setText('.psalm23-box cite', comfortEnglishSnapshot.psalmCite);
+    comfortEnglishSnapshot.titles.forEach((value, index) => {
+      const target = document.querySelectorAll('.section-card h3')[index];
+      if (target) target.textContent = value;
+    });
+    comfortEnglishSnapshot.notes.forEach((value, index) => {
+      const target = document.querySelectorAll('.section-card .note')[index];
+      if (target) target.textContent = value;
+    });
+    Object.entries(comfortEnglishSnapshot.verses).forEach(([id, verse]) => {
+      setText(`#${id} .vt`, verse.vt);
+      setText(`#${id} cite`, verse.cite);
+    });
+    setText('.closing-prayer p:last-child', comfortEnglishSnapshot.closingPrayer);
   }
 
   const closing = q('.closing-prayer .section-lbl');
