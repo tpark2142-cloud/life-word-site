@@ -414,6 +414,11 @@ window.applyPageLanguage=function(lang){
         created:'Created by Tea Park'
       };
 
+  if (lang === 'en' && q('.wrap > .section-title') && /7일|묵상|하나님 말씀/.test(document.body.textContent)) {
+    window.location.href = 'devotion.html';
+    return;
+  }
+
   setList('.sb-group-label', t.sidebarGroups);
   setSidebarLinks(t.sidebarLinks);
   setHTML('.sb-brand-name', lang==='ko'
