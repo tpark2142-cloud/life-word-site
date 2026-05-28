@@ -374,6 +374,16 @@ function dst(b,p){switchTab(b,p);}
 
 </script>
 <script>
+const prayerEnglishSnapshot = {
+  banner: Array.from(document.querySelectorAll('.prayer-banner p')).map((el) => el.textContent),
+  versionVerses: ['v1k','v2k','v3k','v4k','v5k','v6k','v7k','v8k','v9k','v10k','v1e','v2e','v3e','v4e','v5e','v6e','v7e','v8e','v9e','v10e'].reduce((acc, id) => {
+    const vt = document.querySelector(`#${id} .vt`);
+    const cite = document.querySelector(`#${id} cite`);
+    acc[id] = { vt: vt ? vt.innerHTML : '', cite: cite ? cite.textContent : '' };
+    return acc;
+  }, {})
+};
+
 window.applyPageLanguage=function(lang){
   const q=(selector)=>document.querySelector(selector);
   const qa=(selector)=>Array.from(document.querySelectorAll(selector));
@@ -534,8 +544,8 @@ window.applyPageLanguage=function(lang){
     const banner=q('.prayer-banner');
     if(banner){
       const ps=banner.querySelectorAll('p');
-      if(ps[0]) ps[0].textContent='✦ Foundation Verse ✦';
-      if(ps[1]) ps[1].textContent='Prayer is the way of faith that lays down anxiety and lifts a thankful heart to God.';
+      if(ps[0]) ps[0].textContent=prayerEnglishSnapshot.banner[0] || '✦ Foundation Verse ✦';
+      if(ps[1]) ps[1].textContent=prayerEnglishSnapshot.banner[1] || 'Prayer is the way of faith that lays down anxiety and lifts a thankful heart to God.';
     }
     setText('#v1k .vt','“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.”');
     setText('#v1k cite','Philippians 4:6–7');
@@ -560,6 +570,12 @@ window.applyPageLanguage=function(lang){
     setText('#v9k cite','Isaiah 46:4');
     setText('#v10k .vt','“This is the day which the LORD hath made; we will rejoice and be glad in it.”');
     setText('#v10k cite','Psalm 118:24');
+    Object.entries(prayerEnglishSnapshot.versionVerses).forEach(([id, verse]) => {
+      const vt = q(`#${id} .vt`);
+      const cite = q(`#${id} cite`);
+      if (vt) vt.innerHTML = verse.vt;
+      if (cite) cite.textContent = verse.cite;
+    });
     const prayerTags=['Morning','Illness','Grief','Fear & Anxiety','Forgiveness','Guidance & Decisions','For Seniors','Thanksgiving'];
     const prayerTitles=['🌅 A Prayer to Begin the Day','🩺 Prayer for Healing & Strength','🕯️ Prayer in a Season of Loss','🛡️ Prayer Against Fear','🕊️ A Prayer of Confession','🧭 Prayer at a Crossroads','🌅 A Prayer for the Later Years','🙌 A Prayer of Gratitude'];
     const prayerNotes=['Before the day fills with noise, offer it back to God. Ask Him to guide your steps and guard your words.','When sickness weakens the body, God’s grace sustains the spirit. Bring your illness honestly before Him.','Grief is one of the most honest places we can stand before God. He is near to the brokenhearted.','When fear overwhelms, this prayer anchors the heart in God’s promise to be with us.','God promises to forgive every sin that is brought honestly to Him. Nothing is too great for His grace.','When facing an important decision, surrender your understanding to God and ask for His direction.','For those in the autumn of life — God’s promise does not expire with age.','Gratitude reshapes the heart. This prayer turns our attention from what we lack to what God has given.'];
