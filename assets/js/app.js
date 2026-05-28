@@ -560,6 +560,9 @@ function bindTopicButtons(){
       return;
     }
     btn.dataset.topicBound='true';
+    if(btn.getAttribute('onclick')){
+      return;
+    }
     btn.addEventListener('click', function(event){
       event.preventDefault();
       tgl(btn);
