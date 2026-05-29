@@ -91,6 +91,9 @@ html[lang="ko"] .hero-quick-btn{font-size:10.5px;letter-spacing:.08em}
 .spot-install-note{margin-top:2px;max-width:318px;padding:10px 12px;border-radius:12px;background:var(--gold-pale);border:1px solid rgba(184,147,90,.28);font-size:clamp(15px,1.7vw,16.5px);line-height:1.68;color:var(--deep);box-shadow:0 6px 16px rgba(28,46,36,.05)}
 #results-section{display:none;background:var(--gold-pale);border-bottom:1px solid var(--border)}
 .results-inner{max-width:1120px;margin:0 auto;padding:48px 28px}
+.section-return{display:flex;justify-content:center;margin-top:24px}
+.section-return-btn{display:inline-flex;align-items:center;justify-content:center;min-width:190px;padding:12px 22px;border-radius:999px;border:1px solid rgba(184,147,90,.34);background:#fff;color:var(--deep);text-decoration:none;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 10px 22px rgba(28,46,36,.05);transition:transform .18s,background .18s,border-color .18s,color .18s}
+.section-return-btn:hover{transform:translateY(-1px);background:var(--gold-pale);border-color:rgba(184,147,90,.64);color:var(--deep)}
 .res-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:10px}
 .res-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--deep)}
 .res-count{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold)}
@@ -308,6 +311,7 @@ footer a:hover{color:var(--gold-light)}
   .spot-title{font-size:23px}
   .spot-link{font-size:18px}
   .spot-install-note{max-width:100%;padding:10px 12px;font-size:14.5px;line-height:1.66}
+  .section-return-btn{width:100%;max-width:320px}
   .spot-actions{flex-direction:column}
   .spot-action-btn{width:100%}
   .nav-inner{padding:13px 16px}
