@@ -35,13 +35,15 @@ nav ul li a:hover,nav ul li a.active{color:var(--gold)}
 .hero h1 em{font-style:italic;color:var(--gold-light);display:block}
 .hero-lead{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.8vw,24px);font-style:italic;color:rgba(255,255,255,.76);max-width:640px;margin-bottom:44px;opacity:0;animation:up .9s .6s forwards;line-height:1.6}
 .hero-welcome{font-size:clamp(16px,2.1vw,20px);color:#f4d889;max-width:760px;margin:0 auto 24px;line-height:1.8;opacity:0;animation:up .9s .68s forwards;text-shadow:0 0 14px rgba(244,216,137,.18)}
+.hero-guide{font-size:clamp(14px,1.9vw,18px);color:rgba(255,247,232,.9);max-width:680px;margin:0 auto 22px;line-height:1.7;opacity:0;animation:up .9s .72s forwards}
 .hero-install-note{font-size:clamp(14px,1.85vw,17px);color:#ffd7d7;max-width:840px;margin:0 auto 28px;line-height:1.75;opacity:0;animation:up .9s .72s forwards;background:rgba(72,14,18,.34);border:1px solid rgba(220,110,110,.4);border-radius:18px;padding:14px 18px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
-.hero-quick{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:780px;margin:0 auto 30px;opacity:0;animation:up .9s .76s forwards}
+.hero-quick{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:780px;margin:0 auto 30px;opacity:0;animation:up .9s .8s forwards}
 .hero-quick-btn{display:inline-flex;align-items:center;justify-content:center;min-width:168px;padding:12px 22px;border-radius:999px;border:1px solid rgba(212,170,112,.42);background:rgba(255,255,255,.1);font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#fff7e8;box-shadow:0 10px 24px rgba(0,0,0,.14);transition:transform .2s,background .2s,border-color .2s,color .2s}
 .hero-quick-btn:hover{transform:translateY(-2px);background:rgba(212,170,112,.28);border-color:rgba(244,216,137,.75);color:#fff}
 html[lang="ko"] .hero h1{font-size:clamp(38px,7.4vw,82px);line-height:1.08;letter-spacing:-.02em}
 html[lang="ko"] .hero-lead{font-size:clamp(16px,2.5vw,22px);max-width:760px}
 html[lang="ko"] .hero-welcome{font-size:clamp(15px,2.2vw,19px);max-width:820px}
+html[lang="ko"] .hero-guide{font-size:clamp(14px,2vw,17.5px);max-width:760px}
 html[lang="ko"] .hero-install-note{font-size:clamp(13.5px,2.05vw,16px);max-width:860px;line-height:1.8}
 html[lang="ko"] .hero-quick-btn{font-size:10.5px;letter-spacing:.08em}
 
@@ -297,6 +299,7 @@ footer a:hover{color:var(--gold-light)}
   .lang-btn.active{background:#163023;color:#ffe39a;box-shadow:0 3px 10px rgba(10,20,15,.26),inset 0 0 0 1px rgba(255,239,196,.18)}
   .hero{min-height:auto;padding:100px 20px 60px}
   .hero-welcome{margin-bottom:20px}
+  .hero-guide{margin-bottom:18px}
   .hero-install-note{margin-bottom:22px;padding:12px 14px;border-radius:16px}
   .hero-quick{gap:10px;margin-bottom:24px}
   .hero-quick-btn{min-width:140px;padding:11px 16px;font-size:10.2px}
