@@ -57,6 +57,9 @@ footer p{font-size:14px;line-height:2.1}
 footer a{color:var(--gold);text-decoration:none}
 footer a:hover{color:var(--gold-light)}
 .footer-esv{font-size:11px;color:rgba(255,255,255,.28);margin-top:16px;line-height:1.7}
+.page-return{display:flex;justify-content:center;padding:0 28px 44px}
+.page-return-btn{display:inline-flex;align-items:center;justify-content:center;min-width:220px;padding:12px 24px;border-radius:999px;border:1px solid rgba(184,147,90,.34);background:#fff;color:var(--deep);text-decoration:none;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 10px 22px rgba(28,46,36,.05);transition:transform .18s,background .18s,border-color .18s,color .18s}
+.page-return-btn:hover{transform:translateY(-1px);background:var(--gold-pale);border-color:rgba(184,147,90,.64);color:var(--deep)}
 
     .dv-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:13px}
     .dv-tabs{display:flex;border-bottom:1px solid var(--border)}
@@ -327,6 +330,10 @@ footer a:hover{color:var(--gold-light)}
 
 </div>
 
+<div class="page-return">
+  <a class="page-return-btn" id="page-return-btn" href="index.html#home-pathways">Back to Start</a>
+</div>
+
 <footer>
   <span class="footer-logo">Life&rsquo;s Moments, <span>God&rsquo;s Word</span></span>
   <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
@@ -413,6 +420,7 @@ window.applyPageLanguage=function(lang){
         heroBadge:'✦ 모든 필요를 위한 기도 ✦',
         heroTitle:'<span class="hero-title-icon">🙏</span>모든 순간마다<br><em>하나님께 아뢰세요</em>',
         heroSub:'질병, 슬픔, 두려움, 감사, 일상을 위한 말씀에 뿌리내린 기도문입니다.',
+        goBack:'처음으로 돌아가기',
         guidedLabel:'인도하는 기도',
         guidedTitle:'상황별 기도문',
         guidedIntro:'각 기도는 성경에 근거합니다. 그대로 읽어도 되고, 자신의 말로 하나님께 드리는 기도의 길잡이로 삼아도 됩니다.',
@@ -429,6 +437,7 @@ window.applyPageLanguage=function(lang){
         heroBadge:'✦ Prayers for Every Need ✦',
         heroTitle:'<span class="hero-title-icon">🙏</span>Speak to God<br><em>in Every Moment</em>',
         heroSub:'Guided prayers rooted in Scripture — for illness, grief, fear, thanksgiving, and daily life.',
+        goBack:'Go Back to Start',
         guidedLabel:'Guided Prayers',
         guidedTitle:'Prayers for Every Situation',
         guidedIntro:'Each prayer is rooted in Scripture. Read it aloud, or let it guide your own words to God.',
@@ -453,6 +462,7 @@ window.applyPageLanguage=function(lang){
   setText('.hero-badge', t.heroBadge);
   setHTML('.hero h1', t.heroTitle);
   setText('.hero-sub', t.heroSub);
+  setText('#page-return-btn', t.goBack);
   const prayerGrid=q('.prayer-grid');
   if(prayerGrid){
     const guidedTitle=prayerGrid.previousElementSibling;

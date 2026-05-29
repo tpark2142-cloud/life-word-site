@@ -65,6 +65,9 @@ footer p{font-size:14px;line-height:2.1}
 footer a{color:var(--gold);text-decoration:none}
 footer a:hover{color:var(--gold-light)}
 .footer-esv{font-size:11px;color:rgba(255,255,255,.28);margin-top:16px;line-height:1.7}
+.page-return{display:flex;justify-content:center;padding:0 28px 44px}
+.page-return-btn{display:inline-flex;align-items:center;justify-content:center;min-width:220px;padding:12px 24px;border-radius:999px;border:1px solid rgba(184,147,90,.34);background:#fff;color:var(--deep);text-decoration:none;font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 10px 22px rgba(28,46,36,.05);transition:transform .18s,background .18s,border-color .18s,color .18s}
+.page-return-btn:hover{transform:translateY(-1px);background:var(--gold-pale);border-color:rgba(184,147,90,.64);color:var(--deep)}
 
     .dv-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:13px}
     .dv-tabs{display:flex;border-bottom:1px solid var(--border)}
@@ -362,6 +365,10 @@ footer a:hover{color:var(--gold-light)}
 
 </div>
 
+<div class="page-return">
+  <a class="page-return-btn" id="page-return-btn" href="index.html#home-pathways">Back to Start</a>
+</div>
+
 <footer>
   <span class="footer-logo">Life&rsquo;s Moments, <span>God&rsquo;s Word</span></span>
   <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
@@ -465,6 +472,7 @@ window.applyPageLanguage = function(lang){
         heroBadge: '✦ 슬픔과 상실을 위한 말씀 ✦',
         heroTitle: '<span class="hero-title-icon">🤍</span>힘들 때에도<br><em>하나님은 위로하십니다</em>',
         heroSub: '장례식에서, 병상에서, 그리고 조용한 슬픔의 시간 속에서도 하나님의 말씀은 위로를 줍니다.',
+        goBack: '처음으로 돌아가기',
         comfortLabel: '✦ 위로의 말씀 ✦',
         comfortPrayer: '마치는 기도',
         footerLinks: ['홈', '감정', '갤러리', 'AI 검색', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
@@ -478,6 +486,7 @@ window.applyPageLanguage = function(lang){
         heroBadge: '✦ Scripture for Grief & Loss ✦',
         heroTitle: '<span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em>',
         heroSub: 'God&rsquo;s Word holds comfort for every kind of loss — at funerals, at bedsides, and in the quiet of grief.',
+        goBack: 'Go Back to Start',
         comfortLabel: '✦ A Word of Comfort ✦',
         comfortPrayer: 'Closing Prayer',
         footerLinks: ['Home', 'Emotions', 'Gallery', 'AI Search', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
@@ -496,6 +505,7 @@ window.applyPageLanguage = function(lang){
   setText('.hero-badge', t.heroBadge);
   setHTML('.hero h1', t.heroTitle);
   setText('.hero-sub', t.heroSub);
+  setText('#page-return-btn', t.goBack);
   setText('.comfort-band .section-lbl', t.comfortLabel);
 
   if (lang === 'ko') {
