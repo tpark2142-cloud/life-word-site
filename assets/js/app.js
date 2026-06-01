@@ -515,8 +515,8 @@ function getTodayMemoryVerseData(lang){
       category: lang === 'ko' ? '암송구절' : 'Memory Verse',
       title: lang === 'ko' ? '오늘의 암송구절' : "Today's Memory Verse",
       note: lang === 'ko'
-        ? '365일 전용 목록에서 오늘 날짜에 맞는 ESV 암송구절입니다.'
-        : 'An ESV memory verse selected from the dedicated 365-day plan for today.',
+        ? '오늘의 묵상 말씀입니다. 이 말씀으로 주님과 조용히 교제해 보세요.'
+        : 'This is today’s meditation verse. Take a quiet moment to meet with the Lord through this passage.',
       verse: lang === 'ko'
         ? getKoreanEsvText(ref, plannedEntry.memory.esv)
         : plannedEntry.memory.esv,
@@ -533,8 +533,8 @@ function getTodayMemoryVerseData(lang){
       category: lang === 'ko' ? '암송구절' : 'Memory Verse',
       title: lang === 'ko' ? '오늘의 암송구절' : "Today's Memory Verse",
       note: lang === 'ko'
-        ? '오늘 날짜에 맞는 암송구절입니다. 하루 동안 여러 번 천천히 읽어 보세요.'
-        : 'A memory verse selected for today. Read it slowly a few times through the day.',
+        ? '오늘의 묵상 말씀입니다. 이 말씀으로 주님과 조용히 교제해 보세요.'
+        : 'This is today’s meditation verse. Take a quiet moment to meet with the Lord through this passage.',
       verse: lang === 'ko' ? verse.koVerse : verse.enVerse,
       ref: verse.ref + ' (ESV)'
     };
