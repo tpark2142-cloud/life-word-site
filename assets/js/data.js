@@ -34,14 +34,6 @@ const EMOTIONS={
     {kjv:'Be ye angry, and sin not: let not the sun go down upon your wrath.',esv:'Be angry and do not sin; do not let the sun go down on your anger.',r:'Ephesians 4:26'},
     {kjv:'Wherefore, my beloved brethren, let every man be swift to hear, slow to speak, slow to wrath.',esv:'Let every person be quick to hear, slow to speak, slow to anger.',r:'James 1:19–20'},
     {kjv:'A soft answer turneth away wrath: but grievous words stir up anger.',esv:'A soft answer turns away wrath, but a harsh word stirs up anger.',r:'Proverbs 15:1'}]},
-  {name:'Parenting & Children',cat:'Life Issues',keys:'parenting children child family mother father raising kids discipline nurture home wisdom training legacy',note:'Children are a heritage from God, and parenting is one of the clearest places to reflect His heart.',verses:[
-    {kjv:'Lo, children are an heritage of the LORD: and the fruit of the womb is his reward.',esv:'Behold, children are a heritage from the Lord, the fruit of the womb a reward.',r:'Psalm 127:3'},
-    {kjv:'Train up a child in the way he should go: and when he is old, he will not depart from it.',esv:'Train up a child in the way he should go; even when he is old he will not depart from it.',r:'Proverbs 22:6'},
-    {kjv:'And, ye fathers, provoke not your children to wrath: but bring them up in the nurture and admonition of the Lord.',esv:'Fathers, do not provoke your children to anger, but bring them up in the discipline and instruction of the Lord.',r:'Ephesians 6:4'}]},
-  {name:'Work & Calling',cat:'Life Issues',keys:'work calling vocation purpose career job labor office business serve serving diligence workplace mission',note:'Work is one of the places we serve God with faithfulness, humility, and daily purpose.',verses:[
-    {kjv:'And whatsoever ye do, do it heartily, as to the Lord, and not unto men;',esv:'Whatever you do, work heartily, as for the Lord and not for men.',r:'Colossians 3:23'},
-    {kjv:'Commit thy works unto the LORD, and thy thoughts shall be established.',esv:'Commit your work to the Lord, and your plans will be established.',r:'Proverbs 16:3'},
-    {kjv:'Whether therefore ye eat, or drink, or whatsoever ye do, do all to the glory of God.',esv:'So, whether you eat or drink, or whatever you do, do all to the glory of God.',r:'1 Corinthians 10:31'}]},
   Gratitude:{icon:'🌱',note:'Gratitude is not a feeling we wait for — it is a practice that reshapes how we see everything.',verses:[
     {kjv:'In every thing give thanks: for this is the will of God in Christ Jesus concerning you.',esv:'Give thanks in all circumstances; for this is the will of God in Christ Jesus for you.',r:'1 Thessalonians 5:18'},
     {kjv:'Enter into his gates with thanksgiving, and into his courts with praise: be thankful unto him, and bless his name.',esv:'Enter his gates with thanksgiving, and his courts with praise! Give thanks to him; bless his name!',r:'Psalm 100:4'},
