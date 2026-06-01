@@ -11,6 +11,7 @@
     'Gratitude': '감사',
     'Guilt & Regret': '죄책감과 후회',
     'Discouragement': '낙심',
+    'Contentment & Satisfaction': '자족과 만족',
     'Depression & Discouragement': '우울과 깊은 침체',
     'Sleep & Insomnia': '수면과 불면',
     'Suffering & Trials': '고난과 시련',
@@ -24,6 +25,8 @@
     'Relationship Conflict': '관계의 갈등',
     'Money & Financial Worry': '재정과 돈 걱정',
     'Decision-Making & Wisdom': '결정과 지혜',
+    'Aging & Senior Life': '노년과 시니어의 삶',
+    'New Beginnings & Change': '새로운 시작과 변화',
     'Faith & Trust': '믿음과 신뢰',
     'Prayer': '기도와 중보',
     'Grace & Mercy': '은혜와 자비',
@@ -32,6 +35,49 @@
     'Strength': '힘과 용기',
     "God's Presence": '하나님의 임재와 위로'
   };
+
+  const MONTH_LENGTHS = [31,28,31,30,31,30,31,31,30,31,30,31];
+  const MONTH_THEME_FLOW = [
+    ['New Beginnings & Change','Hope','Faith & Trust','Peace'],
+    ['Prayer','Grace & Mercy','Contentment & Satisfaction','Decision-Making & Wisdom'],
+    ['Fear','Anxiety & Worry','Strength','God\'s Presence'],
+    ['Salvation','Grace & Mercy','Forgiveness','Joy'],
+    ['Marriage & Family','Relationship Conflict','Caregiving & Support','Love'],
+    ['Work & Calling','Money & Financial Worry','Decision-Making & Wisdom','Contentment & Satisfaction'],
+    ['Joy','Gratitude','Worship & Praise','Hope'],
+    ['Suffering & Trials','Illness & Sickness','Strength','Peace'],
+    ['Parenting & Children','Aging & Senior Life','God\'s Presence','Prayer'],
+    ['Discouragement','Depression & Discouragement','Sleep & Insomnia','Faith & Trust'],
+    ['Death & Dying','Grief & Funeral Comfort','Heaven & Eternity','Hope'],
+    ['Gratitude','Joy','Heaven & Eternity','God\'s Presence']
+  ];
+
+  const MONTH_MEDITATION_FLOW = [
+    ['Faith & Trust','Prayer','Grace & Mercy','Hope'],
+    ['Decision-Making & Wisdom','Contentment & Satisfaction','Peace','God\'s Presence'],
+    ['Strength','Fear','Hope','Prayer'],
+    ['Forgiveness','Salvation','Joy','Love'],
+    ['Caregiving & Support','Relationship Conflict','Marriage & Family','Grace & Mercy'],
+    ['Work & Calling','Money & Financial Worry','Decision-Making & Wisdom','Faith & Trust'],
+    ['Gratitude','Joy','Hope','Worship & Praise'],
+    ['Suffering & Trials','Illness & Sickness','Peace','God\'s Presence'],
+    ['Aging & Senior Life','New Beginnings & Change','Parenting & Children','Prayer'],
+    ['Discouragement','Sleep & Insomnia','Faith & Trust','Strength'],
+    ['Heaven & Eternity','Grief & Funeral Comfort','God\'s Presence','Hope'],
+    ['Grace & Mercy','Joy','Heaven & Eternity','Peace']
+  ];
+
+  function monthFromDay(day){
+    let running = 0;
+    for(let monthIndex = 0; monthIndex < MONTH_LENGTHS.length; monthIndex += 1){
+      const next = running + MONTH_LENGTHS[monthIndex];
+      if(day <= next){
+        return { monthIndex, dayInMonth: day - running };
+      }
+      running = next;
+    }
+    return { monthIndex: 11, dayInMonth: 31 };
+  }
 
   function buildSourceEntries(){
     const entries = [];
@@ -64,19 +110,59 @@
     return entries;
   }
 
+  function groupByTopic(entries){
+    return entries.reduce((acc, entry) => {
+      (acc[entry.topicEn] = acc[entry.topicEn] || []).push(entry);
+      return acc;
+    }, {});
+  }
+
+  function uniqueAvailableTopics(requestedTopics, topicMap, fallbackTopics){
+    const seen = new Set();
+    const result = [];
+    requestedTopics.forEach(topic => {
+      if(topicMap[topic] && !seen.has(topic)){
+        seen.add(topic);
+        result.push(topic);
+      }
+    });
+    if(result.length){
+      return result;
+    }
+    return fallbackTopics;
+  }
+
+  function pickEntryForDay(topics, topicMap, dayInMonth, bias){
+    const topicIndex = (dayInMonth - 1 + bias) % topics.length;
+    const topicName = topics[topicIndex];
+    const verses = topicMap[topicName] || [];
+    const verseIndex = Math.floor((dayInMonth - 1 + bias) / topics.length) % verses.length;
+    return verses[verseIndex];
+  }
+
   function buildDailyVerse365Plan(){
     const source = buildSourceEntries();
+    if(!source.length) return [];
+
+    const topicMap = groupByTopic(source);
+    const fallbackTopics = Object.keys(topicMap);
     const plan = [];
-    if(!source.length) return plan;
 
     for(let day = 1; day <= 365; day += 1){
-      const memoryIndex = (day - 1) % source.length;
-      let meditationIndex = ((day - 1) * 11 + 17) % source.length;
-      if(source.length > 1 && meditationIndex === memoryIndex){
-        meditationIndex = (meditationIndex + 1) % source.length;
+      const { monthIndex, dayInMonth } = monthFromDay(day);
+      const memoryTopics = uniqueAvailableTopics(MONTH_THEME_FLOW[monthIndex], topicMap, fallbackTopics);
+      const meditationTopics = uniqueAvailableTopics(MONTH_MEDITATION_FLOW[monthIndex], topicMap, fallbackTopics);
+      const memory = pickEntryForDay(memoryTopics, topicMap, dayInMonth, monthIndex);
+      let meditation = pickEntryForDay(meditationTopics, topicMap, dayInMonth, monthIndex + 2);
+
+      if(meditation && memory && meditation.id === memory.id){
+        meditation = pickEntryForDay(meditationTopics, topicMap, dayInMonth + 1, monthIndex + 5);
       }
-      const memory = source[memoryIndex];
-      const meditation = source[meditationIndex];
+      if(meditation && memory && meditation.id === memory.id && fallbackTopics.length > 1){
+        const altTopics = fallbackTopics.filter(topic => topic !== memory.topicEn);
+        meditation = pickEntryForDay(altTopics, topicMap, dayInMonth, monthIndex + 7);
+      }
+
       plan.push({
         day,
         topicEn: memory.topicEn,
@@ -99,6 +185,7 @@
         }
       });
     }
+
     return plan;
   }
 
