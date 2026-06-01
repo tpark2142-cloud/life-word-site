@@ -459,6 +459,13 @@ const TODAY_MEMORY_VERSE_ROTATIONS = {
 
 let DAILY_MEMORY_VERSE_POOL = null;
 
+function getDailyVersePlanEntry(){
+  const plan = Array.isArray(window.DAILY_VERSE_365_PLAN) ? window.DAILY_VERSE_365_PLAN : [];
+  if(!plan.length) return null;
+  const dayIndex = getDayOfYear(new Date()) - 1;
+  return plan[((dayIndex % plan.length) + plan.length) % plan.length];
+}
+
 function buildDailyMemoryVersePool(){
   if(DAILY_MEMORY_VERSE_POOL) return DAILY_MEMORY_VERSE_POOL;
   const poolMap = new Map();
@@ -500,6 +507,22 @@ function getDayOfYear(date){
 }
 
 function getTodayMemoryVerseData(lang){
+  const plannedEntry = getDailyVersePlanEntry();
+  if(plannedEntry && plannedEntry.memory){
+    const ref = normalizeVerseRef(plannedEntry.memory.ref);
+    return {
+      icon: '✦',
+      category: lang === 'ko' ? '암송구절' : 'Memory Verse',
+      title: lang === 'ko' ? '오늘의 암송구절' : "Today's Memory Verse",
+      note: lang === 'ko'
+        ? '365일 전용 목록에서 오늘 날짜에 맞는 ESV 암송구절입니다.'
+        : 'An ESV memory verse selected from the dedicated 365-day plan for today.',
+      verse: lang === 'ko'
+        ? getKoreanEsvText(ref, plannedEntry.memory.esv)
+        : plannedEntry.memory.esv,
+      ref: (lang === 'ko' ? ref : plannedEntry.memory.ref) + ' (ESV)'
+    };
+  }
   const pool = buildDailyMemoryVersePool();
   if(pool.length){
     const today = new Date();
@@ -572,6 +595,19 @@ function getDailyMeditationNote(lang, category){
 }
 
 function getTodayMeditationData(lang){
+  const plannedEntry = getDailyVersePlanEntry();
+  if(plannedEntry && plannedEntry.meditation){
+    const ref = normalizeVerseRef(plannedEntry.meditation.ref);
+    const category = plannedEntry.meditation.categoryEn || 'Spiritual Themes';
+    return {
+      label: lang === 'ko' ? '✦ 오늘의 묵상 말씀 ✦' : '✦ Today’s Meditation Verse ✦',
+      verse: lang === 'ko'
+        ? getKoreanEsvText(ref, plannedEntry.meditation.esv)
+        : plannedEntry.meditation.esv,
+      ref: (lang === 'ko' ? ref : plannedEntry.meditation.ref) + ' (ESV)',
+      note: getDailyMeditationNote(lang, category)
+    };
+  }
   const pool = buildDailyMeditationPool();
   const dayIndex = getDayOfYear(new Date()) - 1;
   const noteLabel = lang === 'ko' ? '✦ 오늘의 묵상 말씀 ✦' : '✦ Today’s Meditation Verse ✦';
