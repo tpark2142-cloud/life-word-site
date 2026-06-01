@@ -3,6 +3,7 @@
   const POSITION_KEY='lifeword.langSwitcherPosition.v1';
   const DRAG_THRESHOLD=6;
   let suppressClicksUntil=0;
+  let popupRefreshTimer=null;
 
   function normalizeLanguage(value){
     return value === 'ko' ? 'ko' : 'en';
@@ -28,13 +29,13 @@
     const next = normalizeLanguage(lang);
     document.documentElement.lang = next;
     updateButtons(next);
-    window.dispatchEvent(new CustomEvent('lifeword:languagechange', { detail: { lang: next } }));
     if(typeof window.applyPageLanguage === 'function'){
       window.applyPageLanguage(next);
     }
     if(typeof window.refreshPublicLanguage === 'function'){
       window.refreshPublicLanguage();
     }
+    window.dispatchEvent(new CustomEvent('lifeword:languagechange', { detail: { lang: next } }));
   }
 
   function setSiteLanguage(lang){
@@ -43,11 +44,6 @@
       localStorage.setItem(STORAGE_KEY, next);
     }catch(_error){}
     applyLanguage(next);
-    if(typeof window.openTodayMemoryVersePopup === 'function'){
-      window.setTimeout(() => {
-        window.openTodayMemoryVersePopup(true);
-      }, 120);
-    }
     if(typeof window.updateHomepageVisitLanguage === 'function'){
       window.updateHomepageVisitLanguage(next);
     }
@@ -193,6 +189,19 @@
 
   window.getSiteLanguage = getSiteLanguage;
   window.setSiteLanguage = setSiteLanguage;
+
+  window.addEventListener('lifeword:languagechange', () => {
+    if(typeof window.openTodayMemoryVersePopup !== 'function'){
+      return;
+    }
+    if(popupRefreshTimer){
+      window.clearTimeout(popupRefreshTimer);
+    }
+    popupRefreshTimer = window.setTimeout(() => {
+      window.openTodayMemoryVersePopup(true);
+      popupRefreshTimer = null;
+    }, 180);
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     bindButtons();
