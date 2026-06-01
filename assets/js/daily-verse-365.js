@@ -23,14 +23,21 @@
     'Forgiveness': '용서',
     'Marriage & Family': '결혼과 가정',
     'Relationship Conflict': '관계의 갈등',
+    'Parenting & Children': '양육과 자녀',
+    'Work & Calling': '일과 부르심',
     'Money & Financial Worry': '재정과 돈 걱정',
     'Decision-Making & Wisdom': '결정과 지혜',
     'Aging & Senior Life': '노년과 시니어의 삶',
     'New Beginnings & Change': '새로운 시작과 변화',
     'Faith & Trust': '믿음과 신뢰',
+    'Love & Compassion': '사랑과 긍휼',
     'Prayer': '기도와 중보',
     'Grace & Mercy': '은혜와 자비',
     'Salvation': '구원과 속량',
+    'Obedience & Surrender': '순종과 내려놓음',
+    'The Holy Spirit': '성령님',
+    'Worship & Praise': '예배와 찬양',
+    'Evangelism & Witness': '전도와 증언',
     'Heaven & Eternity': '천국과 영원',
     'Strength': '힘과 용기',
     "God's Presence": '하나님의 임재와 위로'
@@ -39,32 +46,32 @@
   const MONTH_LENGTHS = [31,28,31,30,31,30,31,31,30,31,30,31];
   const MONTH_THEME_FLOW = [
     ['New Beginnings & Change','Hope','Faith & Trust','Peace'],
-    ['Prayer','Grace & Mercy','Contentment & Satisfaction','Decision-Making & Wisdom'],
+    ['Prayer','Grace & Mercy','Obedience & Surrender','Decision-Making & Wisdom'],
     ['Fear','Anxiety & Worry','Strength','God\'s Presence'],
-    ['Salvation','Grace & Mercy','Forgiveness','Joy'],
-    ['Marriage & Family','Relationship Conflict','Caregiving & Support','Love'],
+    ['Salvation','Grace & Mercy','Forgiveness','Love & Compassion'],
+    ['Marriage & Family','Relationship Conflict','Caregiving & Support','Love & Compassion'],
     ['Work & Calling','Money & Financial Worry','Decision-Making & Wisdom','Contentment & Satisfaction'],
     ['Joy','Gratitude','Worship & Praise','Hope'],
     ['Suffering & Trials','Illness & Sickness','Strength','Peace'],
     ['Parenting & Children','Aging & Senior Life','God\'s Presence','Prayer'],
-    ['Discouragement','Depression & Discouragement','Sleep & Insomnia','Faith & Trust'],
+    ['Discouragement','Depression & Discouragement','Sleep & Insomnia','The Holy Spirit'],
     ['Death & Dying','Grief & Funeral Comfort','Heaven & Eternity','Hope'],
-    ['Gratitude','Joy','Heaven & Eternity','God\'s Presence']
+    ['Gratitude','Joy','Heaven & Eternity','Evangelism & Witness']
   ];
 
   const MONTH_MEDITATION_FLOW = [
     ['Faith & Trust','Prayer','Grace & Mercy','Hope'],
     ['Decision-Making & Wisdom','Contentment & Satisfaction','Peace','God\'s Presence'],
     ['Strength','Fear','Hope','Prayer'],
-    ['Forgiveness','Salvation','Joy','Love'],
+    ['Forgiveness','Salvation','Joy','Love & Compassion'],
     ['Caregiving & Support','Relationship Conflict','Marriage & Family','Grace & Mercy'],
     ['Work & Calling','Money & Financial Worry','Decision-Making & Wisdom','Faith & Trust'],
     ['Gratitude','Joy','Hope','Worship & Praise'],
     ['Suffering & Trials','Illness & Sickness','Peace','God\'s Presence'],
     ['Aging & Senior Life','New Beginnings & Change','Parenting & Children','Prayer'],
-    ['Discouragement','Sleep & Insomnia','Faith & Trust','Strength'],
+    ['Discouragement','Sleep & Insomnia','The Holy Spirit','Strength'],
     ['Heaven & Eternity','Grief & Funeral Comfort','God\'s Presence','Hope'],
-    ['Grace & Mercy','Joy','Heaven & Eternity','Peace']
+    ['Grace & Mercy','Evangelism & Witness','Heaven & Eternity','Peace']
   ];
 
   function monthFromDay(day){
@@ -126,10 +133,7 @@
         result.push(topic);
       }
     });
-    if(result.length){
-      return result;
-    }
-    return fallbackTopics;
+    return result.length ? result : fallbackTopics;
   }
 
   function pickEntryForDay(topics, topicMap, dayInMonth, bias){
