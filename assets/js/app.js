@@ -760,6 +760,7 @@ function openTodayMemoryVersePopup(force){
   document.body.style.overflow = 'hidden';
   localStorage.setItem(storageKey, 'shown');
 }
+window.openTodayMemoryVersePopup = openTodayMemoryVersePopup;
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TOPIC ACCORDION
