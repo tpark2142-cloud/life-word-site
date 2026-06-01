@@ -25,7 +25,8 @@
     });
   }
 
-  function applyLanguage(lang){
+  function applyLanguage(lang, options){
+    const settings = options || {};
     const next = normalizeLanguage(lang);
     document.documentElement.lang = next;
     updateButtons(next);
@@ -35,7 +36,7 @@
     if(typeof window.refreshPublicLanguage === 'function'){
       window.refreshPublicLanguage();
     }
-    window.dispatchEvent(new CustomEvent('lifeword:languagechange', { detail: { lang: next } }));
+    window.dispatchEvent(new CustomEvent('lifeword:languagechange', { detail: { lang: next, fromUser: !!settings.fromUser } }));
   }
 
   function setSiteLanguage(lang){
@@ -43,7 +44,7 @@
     try{
       localStorage.setItem(STORAGE_KEY, next);
     }catch(_error){}
-    applyLanguage(next);
+    applyLanguage(next, { fromUser: true });
     if(typeof window.updateHomepageVisitLanguage === 'function'){
       window.updateHomepageVisitLanguage(next);
     }
@@ -190,15 +191,21 @@
   window.getSiteLanguage = getSiteLanguage;
   window.setSiteLanguage = setSiteLanguage;
 
-  window.addEventListener('lifeword:languagechange', () => {
-    if(typeof window.openTodayMemoryVersePopup !== 'function'){
+  window.addEventListener('lifeword:languagechange', (event) => {
+    if(!event?.detail?.fromUser){
+      return;
+    }
+    const popupFn = typeof window.openTodayMemoryVersePopup === 'function'
+      ? window.openTodayMemoryVersePopup
+      : (typeof window.openPageLanguagePopup === 'function' ? window.openPageLanguagePopup : null);
+    if(!popupFn){
       return;
     }
     if(popupRefreshTimer){
       window.clearTimeout(popupRefreshTimer);
     }
     popupRefreshTimer = window.setTimeout(() => {
-      window.openTodayMemoryVersePopup(true);
+      popupFn(true);
       popupRefreshTimer = null;
     }, 180);
   });
@@ -206,7 +213,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     bindButtons();
     initializeFloatingSwitcher();
-    applyLanguage(getSiteLanguage());
+    applyLanguage(getSiteLanguage(), { fromUser: false });
     if(typeof window.recordHomepageVisit === 'function'){
       window.recordHomepageVisit();
     }

@@ -36,7 +36,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(253,248,240,.97);backdr
 nav ul{list-style:none;display:flex;gap:18px;flex-wrap:wrap}
 nav ul li a{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.08em;text-decoration:none;color:var(--text-soft);transition:color .2s}
 nav ul li a:hover{color:var(--gold)}
-.lang-switcher{position:fixed;top:6px;right:4px;z-index:500;display:flex;gap:3px;padding:3px;border-radius:999px;background:rgba(253,248,240,.9);border:1px solid rgba(184,147,90,.24);backdrop-filter:blur(10px);box-shadow:0 6px 16px rgba(28,46,36,.08)}
+.lang-switcher{position:fixed;top:6px;right:4px;z-index:700;display:flex;gap:3px;padding:3px;border-radius:999px;background:rgba(253,248,240,.9);border:1px solid rgba(184,147,90,.24);backdrop-filter:blur(10px);box-shadow:0 6px 16px rgba(28,46,36,.08)}
 .lang-btn{border:none;border-radius:999px;padding:7px 16px;font-family:'Cinzel',serif;font-size:12.8px;font-weight:700;letter-spacing:.07em;background:transparent;color:rgba(28,46,36,.94);cursor:pointer;min-width:68px;text-shadow:0 1px 0 rgba(255,255,255,.18)}
 .lang-btn.active{background:var(--deep);color:#fff0cf;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .page-float-return{display:none;position:fixed;right:14px;bottom:18px;z-index:480;align-items:center;justify-content:center;padding:11px 16px;border-radius:999px;background:rgba(28,46,36,.96);border:1px solid rgba(212,170,112,.58);box-shadow:0 10px 24px rgba(8,18,13,.28);color:#fff3d2;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
@@ -128,6 +128,18 @@ footer a:hover{color:var(--gold-light)}
       .sb-overlay.open{display:block}
     }
 @media(max-width:640px){.lang-switcher{top:4px;right:2px;padding:4px;background:rgba(253,248,240,.97);border:1px solid rgba(184,147,90,.42);box-shadow:0 10px 22px rgba(14,27,22,.22)}.lang-btn{padding:10px 18px;font-size:13.6px;font-weight:800;min-width:74px;box-shadow:inset 0 0 0 1px rgba(28,46,36,.12)}.lang-btn.active{background:#163023;color:#ffe39a;box-shadow:0 3px 10px rgba(10,20,15,.26),inset 0 0 0 1px rgba(255,239,196,.18)}.wrap{padding:40px 18px}.nav-inner{padding:12px 16px}nav ul{gap:10px}}
+.page-memory-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:640;align-items:center;justify-content:center;padding:24px}
+.page-memory-overlay.show{display:flex}
+.page-memory-box{background:#fff;border-radius:10px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.22)}
+.page-memory-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-soft);line-height:1}
+.page-memory-head{background:var(--deep);border-radius:10px 10px 0 0;padding:26px 52px 22px 28px}
+.page-memory-cat{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:var(--gold-light);text-transform:uppercase;margin-bottom:6px}
+.page-memory-head h2{font-family:'Cinzel',serif;font-size:17px;letter-spacing:.08em;color:#fff}
+.page-memory-body{padding:28px}
+.page-memory-note{font-size:16px;color:var(--text-soft);font-style:italic;margin-bottom:18px;line-height:1.7}
+.page-memory-verse{border-left:2px solid var(--gold);padding:14px 18px;background:var(--gold-pale);border-radius:0 6px 6px 0}
+.page-memory-verse blockquote{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--deep);line-height:1.55;margin-bottom:8px}
+.page-memory-verse cite{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -615,7 +627,49 @@ window.applyPageLanguage=function(lang){
   setText('footer p[style*="font-size:13px"]', t.created);
 };
 </script>
-<script src="assets/js/lang.js?v=20260521c"></script>
+<div id="page-memory-overlay" class="page-memory-overlay" onclick="closePageLanguagePopup(event)">
+  <div class="page-memory-box">
+    <button class="page-memory-close" type="button" onclick="closePageLanguagePopup(event)" aria-label="Close popup">&times;</button>
+    <div class="page-memory-head">
+      <div class="page-memory-cat" id="page-memory-cat">Prayer Verse</div>
+      <h2 id="page-memory-title">Today's Prayer Verse</h2>
+    </div>
+    <div class="page-memory-body">
+      <p class="page-memory-note" id="page-memory-note">Let this verse guide your prayer for today.</p>
+      <div class="page-memory-verse">
+        <blockquote id="page-memory-verse"></blockquote>
+        <cite id="page-memory-ref"></cite>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function closePageLanguagePopup(event){
+  if(event){
+    const closeButton=event.target.closest?event.target.closest('.page-memory-close'):null;
+    if(event.target.id!=='page-memory-overlay' && !closeButton){
+      return;
+    }
+  }
+  const overlay=document.getElementById('page-memory-overlay');
+  if(!overlay)return;
+  overlay.classList.remove('show');
+  document.body.style.overflow='';
+}
+window.openPageLanguagePopup=function(){
+  const overlay=document.getElementById('page-memory-overlay');
+  if(!overlay)return;
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  document.getElementById('page-memory-cat').textContent=lang==='ko'?'기도 말씀':'Prayer Verse';
+  document.getElementById('page-memory-title').textContent=lang==='ko'?'오늘의 기도 말씀입니다':'Today\'s Prayer Verse';
+  document.getElementById('page-memory-note').textContent=lang==='ko'?'이 말씀으로 오늘의 기도를 조용히 시작해 보세요.':'Let this verse guide your prayer for today.';
+  document.getElementById('page-memory-verse').textContent=(document.querySelector('#v1e .vt')?.textContent||'').trim();
+  document.getElementById('page-memory-ref').textContent=(document.querySelector('#v1e cite')?.textContent||'').trim();
+  overlay.classList.add('show');
+  document.body.style.overflow='hidden';
+};
+</script>
+<script src="assets/js/lang.js?v=20260601d"></script>
 <script src="assets/js/pwa.js"></script>
 </div>
 </body>
