@@ -43,6 +43,11 @@
       localStorage.setItem(STORAGE_KEY, next);
     }catch(_error){}
     applyLanguage(next);
+    if(typeof window.openTodayMemoryVersePopup === 'function'){
+      window.setTimeout(() => {
+        window.openTodayMemoryVersePopup(true);
+      }, 120);
+    }
     if(typeof window.updateHomepageVisitLanguage === 'function'){
       window.updateHomepageVisitLanguage(next);
     }
