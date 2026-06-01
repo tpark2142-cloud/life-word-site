@@ -297,6 +297,85 @@ const TOPIC_RESULT_KO = {
   "God's Presence": { name:'하나님의 임재와 위로', cat:'영적 주제', note:'하나님의 임재는 어디서나 우리 가까이에 있으며 결코 떠나지 않으십니다.' }
 };
 
+const TOPIC_BONUS_VERSES = {
+  'Joy': [{ r:'Psalm 118:24', kjv:'This is the day which the LORD hath made; we will rejoice and be glad in it.', esv:'This is the day that the Lord has made; let us rejoice and be glad in it.', koKjv:'이 날은 주께서 만드신 날이니 우리가 이 날 안에서 기뻐하고 즐거워하리로다.', koEsv:'이 날은 주께서 만드신 날이니 우리가 이날을 기뻐하며 즐거워하자.' }],
+  'Sorrow & Grief': [{ r:'2 Corinthians 1:3-4', kjv:'Blessed be God... the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation.', esv:'Blessed be... the Father of mercies and God of all comfort, who comforts us in all our affliction.', koKjv:'하나님 곧 모든 자비의 아버지시요 모든 위로의 하나님께서 우리의 모든 환난 가운데서 우리를 위로하십니다.', koEsv:'긍휼의 아버지이시며 모든 위로의 하나님께서 우리의 모든 환난 가운데서 우리를 위로하십니다.' }],
+  'Peace': [{ r:'Psalm 29:11', kjv:'The LORD will bless his people with peace.', esv:'May the Lord bless his people with peace!', koKjv:'주께서 자기 백성에게 평안을 복으로 주시리로다.', koEsv:'주께서 자기 백성에게 평강을 복으로 주시기를 원하노라.' }],
+  'Hope': [{ r:'Hebrews 10:23', kjv:'Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;)', esv:'Let us hold fast the confession of our hope without wavering, for he who promised is faithful.', koKjv:'약속하신 분께서 신실하시니 우리가 흔들림 없이 우리의 소망의 고백을 굳게 붙들자.', koEsv:'약속하신 이가 신실하시니 우리가 흔들림 없이 소망의 고백을 굳게 붙들자.' }],
+  'Fear': [{ r:'Psalm 56:3', kjv:'What time I am afraid, I will trust in thee.', esv:'When I am afraid, I put my trust in you.', koKjv:'내가 두려워하는 때에는 주를 신뢰하리이다.', koEsv:'내가 두려워할 때에 내가 주를 신뢰하리이다.' }],
+  'Anxiety & Worry': [{ r:'Psalm 94:19', kjv:'In the multitude of my thoughts within me thy comforts delight my soul.', esv:'When the cares of my heart are many, your consolations cheer my soul.', koKjv:'내 속에 생각이 많을 때에 주의 위로들이 내 혼을 즐겁게 하나이다.', koEsv:'내 마음의 염려가 많을 때에 주의 위로가 내 영혼을 기쁘게 합니다.' }],
+  'Loneliness': [{ r:'Deuteronomy 31:8', kjv:'And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee.', esv:'It is the Lord who goes before you. He will be with you; he will not leave you or forsake you.', koKjv:'주께서 친히 네 앞서 가시며 너와 함께하실 것이요, 너를 떠나지 아니하시며 버리지 아니하시리라.', koEsv:'주께서 친히 네 앞에 가시고 너와 함께하실 것이다. 그가 너를 떠나지 아니하시며 버리지 아니하실 것이다.' }],
+  'Anger': [{ r:'Ecclesiastes 7:9', kjv:'Be not hasty in thy spirit to be angry: for anger resteth in the bosom of fools.', esv:'Be not quick in your spirit to become angry, for anger lodges in the heart of fools.', koKjv:'네 영 안에서 성내기를 속히 하지 말라. 분노는 어리석은 자들의 품에 머무느니라.', koEsv:'네 심령으로 속히 성내지 말라. 분노는 어리석은 자의 품에 머무느니라.' }],
+  'Gratitude': [{ r:'Psalm 136:1', kjv:'O give thanks unto the LORD; for he is good: for his mercy endureth for ever.', esv:'Give thanks to the Lord, for he is good, for his steadfast love endures forever.', koKjv:'오, 주께 감사하라. 그분은 선하시며 그분의 긍휼은 영원히 지속되기 때문이로다.', koEsv:'주께 감사하라. 그는 선하시며 그의 인자하심이 영원함이로다.' }],
+  'Love': [{ r:'John 13:34', kjv:'A new commandment I give unto you, That ye love one another; as I have loved you.', esv:'A new commandment I give to you, that you love one another: just as I have loved you.', koKjv:'내가 너희에게 새 명령을 주노니, 서로 사랑하라. 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라.', koEsv:'내가 너희에게 새 계명을 주노니 서로 사랑하라. 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라.' }],
+  'Guilt & Regret': [{ r:'Isaiah 1:18', kjv:'Though your sins be as scarlet, they shall be as white as snow.', esv:'Though your sins are like scarlet, they shall be as white as snow.', koKjv:'너희 죄가 주홍 같을지라도 눈과 같이 희어질 것이요.', koEsv:'너희 죄가 주홍 같을지라도 눈 같이 희어질 것이다.' }],
+  'Discouragement': [{ r:'Psalm 31:24', kjv:'Be of good courage, and he shall strengthen your heart, all ye that hope in the LORD.', esv:'Be strong, and let your heart take courage, all you who wait for the Lord!', koKjv:'주를 바라는 너희 모두여, 용기를 내라. 그리하면 그분께서 너희 마음을 강하게 하시리로다.', koEsv:'주를 바라는 너희 모두여, 강하고 담대하라. 그가 너희 마음을 굳세게 하실 것이다.' }],
+  'Contentment & Satisfaction': [{ r:'Psalm 23:1', kjv:'The LORD is my shepherd; I shall not want.', esv:'The Lord is my shepherd; I shall not want.', koKjv:'주는 나의 목자시니 내가 부족함이 없으리로다.', koEsv:'여호와는 나의 목자시니 내게 부족함이 없다.' }],
+  'Depression & Discouragement': [{ r:'Psalm 40:1-2', kjv:'He brought me up also out of an horrible pit... and set my feet upon a rock.', esv:'He drew me up from the pit of destruction... and set my feet upon a rock.', koKjv:'그분께서 나를 두려운 구덩이에서 끌어올리시고 내 발을 반석 위에 세우셨도다.', koEsv:'그가 나를 멸망의 구덩이에서 끌어올리시고 내 발을 반석 위에 두셨다.' }],
+  'Sleep & Insomnia': [{ r:'Proverbs 3:24', kjv:'When thou liest down, thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet.', esv:'If you lie down, you will not be afraid; when you lie down, your sleep will be sweet.', koKjv:'네가 누울 때에 두려워하지 아니하리니, 참으로 네가 누울 때에 네 잠이 달리로다.', koEsv:'네가 누울 때에 두려워하지 않을 것이며 네가 누우면 네 잠이 달 것이다.' }],
+  'Suffering & Trials': [{ r:'1 Peter 5:10', kjv:'The God of all grace... after that ye have suffered a while, make you perfect, stablish, strengthen, settle you.', esv:'After you have suffered a little while, the God of all grace... will himself restore, confirm, strengthen, and establish you.', koKjv:'모든 은혜의 하나님께서 너희를 완전하게 하시고 굳건하게 하시며 강하게 하시고 터를 견고하게 세우시리라.', koEsv:'모든 은혜의 하나님께서 잠시 고난을 당한 너희를 친히 회복하시고 굳게 하시며 강하게 하시고 터를 견고하게 하실 것이다.' }],
+  'Illness & Sickness': [{ r:'Jeremiah 17:14', kjv:'Heal me, O LORD, and I shall be healed; save me, and I shall be saved.', esv:'Heal me, O Lord, and I shall be healed; save me, and I shall be saved.', koKjv:'오 주여, 나를 고치소서. 그리하면 내가 고침을 받으리이다. 나를 구원하소서. 그리하면 내가 구원을 받으리이다.', koEsv:'여호와여, 나를 고쳐 주소서. 그러면 내가 낫겠고, 나를 구원하여 주소서. 그러면 내가 구원을 얻겠습니다.' }],
+  'Death & Dying': [{ r:'Psalm 116:15', kjv:'Precious in the sight of the LORD is the death of his saints.', esv:'Precious in the sight of the Lord is the death of his saints.', koKjv:'주의 눈앞에서 그분의 성도들의 죽음은 귀중하도다.', koEsv:'여호와께서 보시기에 그의 성도들의 죽음은 귀하다.' }],
+  'Caregiving & Support': [{ r:'Isaiah 40:11', kjv:'He shall gather the lambs with his arm, and carry them in his bosom.', esv:'He will tend his flock like a shepherd; he will gather the lambs in his arms.', koKjv:'그분께서 어린양들을 자기 팔로 모으시고 자기 품에 안으시리로다.', koEsv:'그는 목자 같이 양 떼를 먹이시며 어린 양들을 자기 팔로 모아 품에 안으실 것이다.' }],
+  'Addiction & Recovery': [{ r:'2 Corinthians 5:17', kjv:'If any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.', esv:'If anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come.', koKjv:'누구든지 그리스도 안에 있으면 새로운 창조물이라. 옛것들은 지나갔으니, 보라, 모든 것이 새롭게 되었도다.', koEsv:'누구든지 그리스도 안에 있으면 새로운 피조물이다. 옛 것은 지나갔으니 보라 새 것이 되었다.' }],
+  'Forgiveness': [{ r:'Luke 6:37', kjv:'Forgive, and ye shall be forgiven.', esv:'Forgive, and you will be forgiven.', koKjv:'용서하라. 그리하면 너희가 용서받으리라.', koEsv:'용서하라. 그러면 너희도 용서받을 것이다.' }],
+  'Marriage & Family': [{ r:'Joshua 24:15', kjv:'As for me and my house, we will serve the LORD.', esv:'As for me and my house, we will serve the Lord.', koKjv:'오직 나와 내 집은 주를 섬기겠노라.', koEsv:'오직 나와 내 집은 여호와를 섬기겠다.' }],
+  'Relationship Conflict': [{ r:'Ephesians 4:2-3', kjv:'With all lowliness and meekness, with longsuffering, forbearing one another in love; Endeavouring to keep the unity of the Spirit in the bond of peace.', esv:'With all humility and gentleness, with patience, bearing with one another in love, eager to maintain the unity of the Spirit in the bond of peace.', koKjv:'모든 겸손과 온유와 오래 참음으로 사랑 안에서 서로 용납하고 평안의 매는 띠로 성령의 하나 되게 하신 것을 힘써 지키라.', koEsv:'모든 겸손과 온유와 오래 참음으로 사랑 가운데서 서로 용납하고 평안의 매는 줄로 성령이 하나 되게 하신 것을 힘써 지켜라.' }],
+  'Parenting & Children': [{ r:'Proverbs 22:6', kjv:'Train up a child in the way he should go: and when he is old, he will not depart from it.', esv:'Train up a child in the way he should go; even when he is old he will not depart from it.', koKjv:'아이를 마땅히 가야 할 길로 훈련시키라. 그리하면 늙어도 그 길을 떠나지 아니하리라.', koEsv:'마땅히 행할 길을 아이에게 가르치라. 그리하면 늙어도 그것을 떠나지 않을 것이다.' }],
+  'Work & Calling': [{ r:'Colossians 3:23', kjv:'And whatsoever ye do, do it heartily, as to the Lord, and not unto men;', esv:'Whatever you do, work heartily, as for the Lord and not for men.', koKjv:'무엇을 하든지 마음을 다하여 주께 하듯 하고 사람들에게 하듯 하지 말라.', koEsv:'무슨 일을 하든지 마음을 다하여 주께 하듯 하고 사람에게 하듯 하지 말라.' }],
+  'Money & Financial Worry': [{ r:'Psalm 37:25', kjv:'I have not seen the righteous forsaken, nor his seed begging bread.', esv:'I have not seen the righteous forsaken or his children begging for bread.', koKjv:'내가 의인이 버림받는 것이나 그의 씨가 빵을 구걸하는 것을 보지 못하였도다.', koEsv:'내가 의인이 버림받거나 그의 자손이 떡을 구걸하는 것을 본 적이 없다.' }],
+  'Failure & Disappointment': [{ r:'Psalm 37:23-24', kjv:'Though he fall, he shall not be utterly cast down: for the LORD upholdeth him with his hand.', esv:'Though he fall, he shall not be cast headlong, for the Lord upholds his hand.', koKjv:'그가 넘어질지라도 완전히 내던져지지 아니하리니 이는 주께서 자기 손으로 그를 붙드심이라.', koEsv:'그가 넘어져도 완전히 엎드러지지 않을 것은 여호와께서 그의 손을 붙드심이다.' }],
+  'Decision-Making & Wisdom': [{ r:'Psalm 32:8', kjv:'I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye.', esv:'I will instruct you and teach you in the way you should go; I will counsel you with my eye upon you.', koKjv:'내가 네가 가야 할 길에서 너를 가르치고 네게 훈계하리니 내 눈으로 너를 인도하리라.', koEsv:'내가 네가 가야 할 길을 네게 가르치고 훈계하겠으며 내 눈으로 너를 지도하겠다.' }],
+  'Aging & Senior Life': [{ r:'Psalm 92:14', kjv:'They shall still bring forth fruit in old age; they shall be fat and flourishing;', esv:'They still bear fruit in old age; they are ever full of sap and green.', koKjv:'그들은 늙어서도 여전히 열매를 맺으며 기름지고 번성하리로다.', koEsv:'그들은 늙어도 여전히 열매를 맺으며 진액이 풍족하고 푸르다.' }],
+  'New Beginnings & Change': [{ r:'Isaiah 43:19', kjv:'Behold, I will do a new thing; now it shall spring forth; shall ye not know it?', esv:'Behold, I am doing a new thing; now it springs forth, do you not perceive it?', koKjv:'보라, 내가 새 일을 행하리니 이제 그것이 나타날 것이라. 너희가 그것을 알지 못하겠느냐?', koEsv:'보라, 내가 새 일을 행하겠다. 이제 그것이 나타날 것이니 너희가 깨닫지 못하겠느냐?' }],
+  'Faith & Trust': [{ r:'Psalm 56:3', kjv:'What time I am afraid, I will trust in thee.', esv:'When I am afraid, I put my trust in you.', koKjv:'내가 두려워하는 때에는 주를 신뢰하리이다.', koEsv:'내가 두려워할 때에 내가 주를 신뢰하리이다.' }],
+  'Prayer': [{ r:'Jeremiah 33:3', kjv:'Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.', esv:'Call to me and I will answer you, and will tell you great and hidden things that you have not known.', koKjv:'내게 부르짖으라. 그리하면 내가 네게 응답하고 네가 알지 못하는 크고 능한 일들을 네게 보이리라.', koEsv:'내게 부르짖어라. 내가 네게 응답하겠고 네가 알지 못하는 크고 은밀한 일들을 네게 알려 주겠다.' }],
+  'Grace & Mercy': [{ r:'Lamentations 3:22-23', kjv:'It is of the LORD\'s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.', esv:'The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning.', koKjv:'주의 긍휼로 인하여 우리가 진멸되지 아니함은 그의 자비가 무궁함이니이다. 이것들이 아침마다 새로우니 주의 신실하심이 크시도소이다.', koEsv:'여호와의 인자와 긍휼이 무궁하므로 우리가 진멸되지 아니함이다. 이것들이 아침마다 새로우니 주의 성실하심이 크시다.' }],
+  'Salvation': [{ r:'Acts 4:12', kjv:'Neither is there salvation in any other: for there is none other name under heaven given among men, whereby we must be saved.', esv:'There is salvation in no one else, for there is no other name under heaven given among men by which we must be saved.', koKjv:'다른 어떤 이 안에도 구원이 없나니 우리가 구원받아야 할 다른 이름을 하늘 아래 사람들 가운데 주신 일이 없음이라.', koEsv:'다른 이에게서는 구원을 얻을 수 없나니 천하 사람 중에 우리가 구원을 받아야 할 다른 이름을 주신 일이 없음이라.' }],
+  'Obedience & Surrender': [{ r:'John 14:15', kjv:'If ye love me, keep my commandments.', esv:'If you love me, you will keep my commandments.', koKjv:'너희가 나를 사랑하면 나의 명령들을 지키라.', koEsv:'너희가 나를 사랑하면 나의 계명들을 지킬 것이다.' }],
+  'Holiness & Sanctification': [{ r:'1 Peter 1:15-16', kjv:'Be ye holy; for I am holy.', esv:'You also be holy in all your conduct, since it is written, “You shall be holy, for I am holy.”', koKjv:'나를 부르신 분께서 거룩하신 것 같이 너희도 모든 행실에서 거룩하라. 기록되기를 내가 거룩하니 너희도 거룩하라 하였느니라.', koEsv:'너희를 부르신 이가 거룩하신 것처럼 너희도 모든 행실에서 거룩한 사람이 되어라. 기록되되 내가 거룩하니 너희도 거룩할지어다 하셨다.' }],
+  'The Holy Spirit': [{ r:'Romans 8:26', kjv:'Likewise the Spirit also helpeth our infirmities.', esv:'Likewise the Spirit helps us in our weakness.', koKjv:'이와 같이 성령께서도 우리의 연약함을 도우시느니라.', koEsv:'이와 같이 성령도 우리의 연약함을 도우신다.' }],
+  'Worship & Praise': [{ r:'Psalm 100:2', kjv:'Serve the LORD with gladness: come before his presence with singing.', esv:'Serve the Lord with gladness! Come into his presence with singing!', koKjv:'즐거움으로 주를 섬기고 노래하며 그분 앞에 나아갈지어다.', koEsv:'기쁨으로 여호와를 섬기며 노래하면서 그의 앞에 나아가라.' }],
+  'Evangelism & Witness': [{ r:'Acts 1:8', kjv:'Ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me.', esv:'You will receive power when the Holy Spirit has come upon you, and you will be my witnesses.', koKjv:'오직 성령님께서 너희에게 임하신 뒤에 너희가 권능을 받고 내 증인이 되리라.', koEsv:'오직 성령이 너희에게 임하시면 너희가 권능을 받고 내 증인이 될 것이다.' }],
+  'Heaven & Eternity': [{ r:'1 Thessalonians 4:16-17', kjv:'And so shall we ever be with the Lord.', esv:'And so we will always be with the Lord.', koKjv:'그리하여 우리가 항상 주와 함께 있으리라.', koEsv:'그리하여 우리가 항상 주와 함께 있을 것이다.' }],
+  'Strength': [{ r:'Psalm 28:7', kjv:'The LORD is my strength and my shield; my heart trusted in him, and I am helped.', esv:'The Lord is my strength and my shield; in him my heart trusts, and I am helped.', koKjv:'주는 나의 힘이시요 나의 방패시니 내 마음이 그분을 신뢰하여 내가 도움을 받았도다.', koEsv:'여호와는 나의 힘이시요 나의 방패이시니 내 마음이 그를 의지하여 도움을 얻었다.' }],
+  "God's Presence": [{ r:'Zephaniah 3:17', kjv:'The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy.', esv:'The Lord your God is in your midst, a mighty one who will save; he will rejoice over you with gladness.', koKjv:'네 가운데 계신 주 네 하나님은 능하신 분이시니 그가 구원하시며 기쁨으로 너로 인하여 즐거워하시리라.', koEsv:'너의 하나님 여호와가 네 가운데 계시니 그는 구원을 베푸실 전능자시다. 그가 기쁨으로 너로 말미암아 즐거워하실 것이다.' }]
+};
+
+const TOPIC_NAME_ALIASES = {
+  'Anger & Frustration': 'Anger',
+  'Grief': 'Sorrow & Grief',
+  'Anxiety': 'Anxiety & Worry',
+  'Love & Compassion': 'Love',
+  'Prayer & Intercession': 'Prayer',
+  'Salvation & Redemption': 'Salvation',
+  'God’s Presence & Comfort': "God's Presence",
+  "God's Presence & Comfort": "God's Presence"
+};
+
+function normalizeTopicName(value) {
+  return String(value || '')
+    .replace(/&/g, ' and ')
+    .replace(/[\u2018\u2019']/g, '')
+    .replace(/[\u2013\u2014]/g, ' ')
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+const TOPIC_LOOKUP_BY_LABEL = (() => {
+  const map = {};
+  Object.keys(TOPIC_RESULT_KO).forEach(key => {
+    map[normalizeTopicName(key)] = key;
+    map[normalizeTopicName(TOPIC_RESULT_KO[key].name)] = key;
+  });
+  Object.keys(TOPIC_NAME_ALIASES).forEach(label => {
+    map[normalizeTopicName(label)] = TOPIC_NAME_ALIASES[label];
+  });
+  return map;
+})();
+
 function openEmotion(name){
   const d=EMOTIONS[name];if(!d)return;
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
@@ -1114,6 +1193,57 @@ function switchTab(btn, contentId) {
   }
   if(target){ target.style.display='block'; target.classList.add('active'); }
 }
+
+function getTopicButtonLabel(btn){
+  if(!btn)return '';
+  const clone=btn.cloneNode(true);
+  clone.querySelectorAll('.t-icon').forEach(icon=>icon.remove());
+  return clone.textContent.trim();
+}
+
+function resolveTopicKeyFromLabel(label){
+  if(!label)return null;
+  const normalized=normalizeTopicName(label);
+  return TOPIC_LOOKUP_BY_LABEL[normalized] || null;
+}
+
+function renderTopicBonusVerseCard(topicKey, verseData){
+  const id='tpx'+(++dvCounter);
+  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const kjvText=lang==='ko'
+    ? (verseData.koKjv || getKoreanVerseText(verseData.r, verseData.kjv))
+    : verseData.kjv;
+  const esvText=lang==='ko'
+    ? (verseData.koEsv || getKoreanEsvText(verseData.r, verseData.esv))
+    : verseData.esv;
+  const refLabel=escapeHtml(verseData.r);
+  return '<div class="topic-bonus-card" data-topic-bonus="true" data-topic-key="'+escapeAttr(topicKey)+'" style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);">'
+    + '<div class="dv-tabs" style="border-bottom:1px solid var(--border);">'
+    + '<button class="dv-tab active" onclick="switchTab(this,\'' + id + '-kjv\')" style="font-size:9px;padding:5px 10px;">' + getKjvLabel() + '</button>'
+    + '<button class="dv-tab" onclick="switchTab(this,\'' + id + '-esv\')" style="font-size:9px;padding:5px 10px;">ESV</button>'
+    + '</div>'
+    + '<div class="dv-content active" id="' + id + '-kjv" style="padding:10px 14px;background:#fff;"><p style="font-family:\'Cormorant Garamond\',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;' + escapeHtml(kjvText) + '&rdquo;</p><cite style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">' + refLabel + '</cite></div>'
+    + '<div class="dv-content" id="' + id + '-esv" style="padding:10px 14px;background:#fff;"><p style="font-family:\'Cormorant Garamond\',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;' + escapeHtml(esvText) + '&rdquo;</p><cite style="font-family:\'Cinzel\',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">' + refLabel + ' (ESV)</cite></div>'
+    + '</div>';
+}
+
+function injectTopicBonusVerses(){
+  const topicsRoot=document.getElementById('topics');
+  if(!topicsRoot)return;
+  topicsRoot.querySelectorAll('.topic-item').forEach(item=>{
+    const btn=item.querySelector('.topic-btn');
+    const inner=item.querySelector('.tp-inner');
+    if(!btn || !inner)return;
+    inner.querySelectorAll('[data-topic-bonus="true"]').forEach(el=>el.remove());
+    const topicKey=resolveTopicKeyFromLabel(getTopicButtonLabel(btn));
+    const bonusVerses=topicKey ? TOPIC_BONUS_VERSES[topicKey] : null;
+    if(!bonusVerses || !bonusVerses.length)return;
+    bonusVerses.forEach(verseData=>{
+      inner.insertAdjacentHTML('beforeend', renderTopicBonusVerseCard(topicKey, verseData));
+    });
+  });
+}
+
 function updateStaticKjvCards(){
   const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
   document.querySelectorAll('.dv-tabs').forEach(tabs=>{
@@ -1197,8 +1327,10 @@ window.addEventListener('hashchange',updateSidebarActiveLinkFromView);
 window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true});
 updateSidebarActiveLinkFromView();
 bindTopicButtons();
+injectTopicBonusVerses();
 updateStaticKjvCards();
 updateStaticTopicEsvCards();
+window.addEventListener('lifeword:languagechange', injectTopicBonusVerses);
 window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
 window.addEventListener('lifeword:languagechange', updateStaticTopicEsvCards);
 
