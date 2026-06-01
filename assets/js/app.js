@@ -345,56 +345,56 @@ const TODAY_MEMORY_VERSE_ROTATIONS = {
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '오늘 하루 마음에 두고 천천히 되새겨 보세요.',
-      verse: '“영원하신 하나님은 너의 피난처시니 아래에는 영원한 팔이 있도다.”',
-      ref: '신명기 33:27 (KJV)'
+      verse: '“영원하신 하나님은 너의 거처가 되시나니 그 아래에는 영원한 팔이 있도다.”',
+      ref: '신명기 33:27 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '필요할 때마다 소리 내어 읽어도 좋습니다.',
-      verse: '“두려워하지 말라. 내가 너와 함께함이니라. 놀라지 말라. 내가 네 하나님이니라.”',
-      ref: '이사야 41:10 (KJV)'
+      verse: '“두려워하지 말라, 내가 너와 함께함이라. 놀라지 말라, 내가 네 하나님이니라.”',
+      ref: '이사야 41:10 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '짧게라도 기억하며 오늘의 걸음을 시작해 보세요.',
-      verse: '“네 마음을 다하여 주를 신뢰하고, 네 자신의 명철을 의지하지 말라.”',
-      ref: '잠언 3:5 (KJV)'
+      verse: '“네 마음을 다하여 주를 신뢰하고 네 명철을 의지하지 말라.”',
+      ref: '잠언 3:5 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '지친 순간에 다시 떠올릴 수 있도록 가까이 두세요.',
-      verse: '“수고하고 무거운 짐진 자들아, 다 내게로 오라. 그러면 내가 너희에게 쉼을 주리라.”',
-      ref: '마태복음 11:28 (KJV)'
+      verse: '“수고하고 무거운 짐 진 자들아 다 내게로 오라. 내가 너희를 쉬게 하리라.”',
+      ref: '마태복음 11:28 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '오늘의 염려를 내려놓으며 천천히 묵상해 보세요.',
-      verse: '“아무것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희의 구하는 것들을 감사함으로 하나님께 알려지게 하라.”',
-      ref: '빌립보서 4:6 (KJV)'
+      verse: '“아무 것도 염려하지 말고 다만 모든 일에 기도와 간구로, 감사함으로 너희 구할 것을 하나님께 아뢰라.”',
+      ref: '빌립보서 4:6 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '하루를 시작하며 또는 마무리하며 읽기 좋은 말씀입니다.',
-      verse: '“주의 말씀은 내 발에 등불이요, 내 길에 빛이니이다.”',
-      ref: '시편 119:105 (KJV)'
+      verse: '“주의 말씀은 내 발에 등이요 내 길에 빛이니이다.”',
+      ref: '시편 119:105 (ESV)'
     },
     {
       icon: '✦',
       category: '암송구절',
       title: '오늘의 암송구절',
       note: '하나님의 선하심을 붙들며 평안히 머물러 보세요.',
-      verse: '“주는 나의 목자시니, 내가 부족한 것이 없으리로다.”',
-      ref: '시편 23:1 (KJV)'
+      verse: '“주는 나의 목자시니 내게 부족함이 없으리로다.”',
+      ref: '시편 23:1 (ESV)'
     }
   ],
   en: [
@@ -403,48 +403,48 @@ const TODAY_MEMORY_VERSE_ROTATIONS = {
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'Keep this verse close and read it slowly through the day.',
-      verse: '“The eternal God is thy refuge, and underneath are the everlasting arms.”',
-      ref: 'Deuteronomy 33:27 (KJV)'
+      verse: '“The eternal God is your dwelling place, and underneath are the everlasting arms.”',
+      ref: 'Deuteronomy 33:27 (ESV)'
     },
     {
       icon: '✦',
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'A good verse to return to whenever your heart feels unsettled.',
-      verse: '“Fear thou not; for I am with thee: be not dismayed; for I am thy God.”',
-      ref: 'Isaiah 41:10 (KJV)'
+      verse: '“Fear not, for I am with you; be not dismayed, for I am your God.”',
+      ref: 'Isaiah 41:10 (ESV)'
     },
     {
       icon: '✦',
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'Read it once now and again later in the day.',
-      verse: '“Trust in the Lord with all thine heart; and lean not unto thine own understanding.”',
-      ref: 'Proverbs 3:5 (KJV)'
+      verse: '“Trust in the Lord with all your heart, and do not lean on your own understanding.”',
+      ref: 'Proverbs 3:5 (ESV)'
     },
     {
       icon: '✦',
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'A gentle verse for tired hearts and heavy days.',
-      verse: '“Come unto me, all ye that labour and are heavy laden, and I will give you rest.”',
-      ref: 'Matthew 11:28 (KJV)'
+      verse: '“Come to me, all who labor and are heavy laden, and I will give you rest.”',
+      ref: 'Matthew 11:28 (ESV)'
     },
     {
       icon: '✦',
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'Pause with this verse and turn today’s worries into prayer.',
-      verse: '“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.”',
-      ref: 'Philippians 4:6 (KJV)'
+      verse: '“Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.”',
+      ref: 'Philippians 4:6 (ESV)'
     },
     {
       icon: '✦',
       category: 'Memory Verse',
       title: "Today's Memory Verse",
       note: 'A simple verse to carry into every decision and step.',
-      verse: '“Thy word is a lamp unto my feet, and a light unto my path.”',
-      ref: 'Psalm 119:105 (KJV)'
+      verse: '“Your word is a lamp to my feet and a light to my path.”',
+      ref: 'Psalm 119:105 (ESV)'
     },
     {
       icon: '✦',
@@ -452,7 +452,7 @@ const TODAY_MEMORY_VERSE_ROTATIONS = {
       title: "Today's Memory Verse",
       note: 'Let this promise steady your heart today.',
       verse: '“The Lord is my shepherd; I shall not want.”',
-      ref: 'Psalm 23:1 (KJV)'
+      ref: 'Psalm 23:1 (ESV)'
     }
   ]
 };
@@ -462,29 +462,29 @@ let DAILY_MEMORY_VERSE_POOL = null;
 function buildDailyMemoryVersePool(){
   if(DAILY_MEMORY_VERSE_POOL) return DAILY_MEMORY_VERSE_POOL;
   const poolMap = new Map();
-  const addVerse = (ref, enVerse) => {
+  const addVerse = (ref, enVerse, koVerse) => {
     const normalizedRef = normalizeVerseRef(ref);
     const normalizedVerse = String(enVerse || '').trim();
-    const koVerse = String(getKoreanVerseText(normalizedRef, '') || '').trim();
-    if(!normalizedRef || !normalizedVerse || !koVerse) return;
+    const normalizedKoVerse = String(koVerse || '').trim();
+    if(!normalizedRef || !normalizedVerse || !normalizedKoVerse) return;
     if(!poolMap.has(normalizedRef)){
       poolMap.set(normalizedRef, {
         ref: normalizedRef,
         enVerse: normalizedVerse,
-        koVerse
+        koVerse: normalizedKoVerse
       });
     }
   };
 
   Object.values(EMOTIONS || {}).forEach(group => {
     (group.verses || []).forEach(verse => {
-      if(verse && verse.kjv && verse.r) addVerse(verse.r, verse.kjv);
+      if(verse && verse.esv && verse.r) addVerse(verse.r, verse.esv, getKoreanEsvText(verse.r, ''));
     });
   });
 
   (DB || []).forEach(topic => {
     (topic.verses || []).forEach(verse => {
-      if(verse && verse.kjv && verse.r) addVerse(verse.r, verse.kjv);
+      if(verse && verse.esv && verse.r) addVerse(verse.r, verse.esv, getKoreanEsvText(verse.r, ''));
     });
   });
 
@@ -513,12 +513,120 @@ function getTodayMemoryVerseData(lang){
         ? '오늘 날짜에 맞는 암송구절입니다. 하루 동안 여러 번 천천히 읽어 보세요.'
         : 'A memory verse selected for today. Read it slowly a few times through the day.',
       verse: lang === 'ko' ? verse.koVerse : verse.enVerse,
-      ref: verse.ref + ' (KJV)'
+      ref: verse.ref + ' (ESV)'
     };
   }
   const fallback = TODAY_MEMORY_VERSE_ROTATIONS[lang] || TODAY_MEMORY_VERSE_ROTATIONS.en;
   return fallback[0];
 }
+
+let DAILY_MEDITATION_POOL = null;
+
+const DAILY_MEDITATION_NOTES = {
+  en: {
+    'Emotions': 'A verse for the heart today. Read it slowly and let it steady your thoughts.',
+    'Life Issues': 'A verse for today’s real-life needs. Carry this promise with you through the day.',
+    'Spiritual Themes': 'A verse to draw you nearer to God today. Pause and reflect on it quietly.',
+    default: 'A verse for today. Read it slowly and carry it with you throughout the day.'
+  },
+  ko: {
+    'Emotions': '오늘의 마음에 이 말씀을 천천히 품어 보세요.',
+    'Life Issues': '오늘의 삶의 자리에서 이 약속을 붙들어 보세요.',
+    'Spiritual Themes': '오늘의 걸음 속에서 이 말씀으로 하나님께 더 가까이 나아가 보세요.',
+    default: '오늘 하루 이 말씀을 천천히 읽고 마음에 품어 보세요.'
+  }
+};
+
+function buildDailyMeditationPool(){
+  if(DAILY_MEDITATION_POOL) return DAILY_MEDITATION_POOL;
+  const pool = [];
+
+  (DB || []).forEach(topic => {
+    const category = String(topic?.cat || '').trim() || 'Spiritual Themes';
+    const verses = Array.isArray(topic?.verses) ? topic.verses : [];
+    verses.forEach(verse => {
+      const ref = normalizeVerseRef(verse?.r);
+      const enKjv = String(verse?.kjv || '').trim();
+      const enEsv = String(verse?.esv || '').trim();
+      const koKjv = String(getKoreanVerseText(ref, '') || '').trim();
+      const koEsv = String(getKoreanEsvText(ref, '') || '').trim();
+      if(!ref || !enKjv || !enEsv || !koKjv || !koEsv) return;
+      pool.push({
+        ref,
+        category,
+        enKjv,
+        enEsv,
+        koKjv,
+        koEsv
+      });
+    });
+  });
+
+  DAILY_MEDITATION_POOL = pool;
+  return DAILY_MEDITATION_POOL;
+}
+
+function getDailyMeditationNote(lang, category){
+  const noteSet = DAILY_MEDITATION_NOTES[lang] || DAILY_MEDITATION_NOTES.en;
+  return noteSet[category] || noteSet.default;
+}
+
+function getTodayMeditationData(lang){
+  const pool = buildDailyMeditationPool();
+  const dayIndex = getDayOfYear(new Date()) - 1;
+  const noteLabel = lang === 'ko' ? '✦ 오늘의 묵상 말씀 ✦' : '✦ Today’s Meditation Verse ✦';
+
+  if(pool.length){
+    const memoryPool = buildDailyMemoryVersePool();
+    const memoryRef = memoryPool.length
+      ? memoryPool[((dayIndex % memoryPool.length) + memoryPool.length) % memoryPool.length].ref
+      : '';
+    let index = ((dayIndex * 17) + 11) % pool.length;
+    let selected = pool[index];
+
+    if(pool.length > 1){
+      for(let tries = 0; tries < pool.length; tries += 1){
+        const candidate = pool[(index + tries) % pool.length];
+        if(candidate.ref !== memoryRef){
+          selected = candidate;
+          break;
+        }
+      }
+    }
+
+    return {
+      label: noteLabel,
+      verse: lang === 'ko' ? selected.koEsv : selected.enEsv,
+      ref: selected.ref + ' (ESV)',
+      note: getDailyMeditationNote(lang, selected.category)
+    };
+  }
+
+  return {
+    label: noteLabel,
+    verse: lang === 'ko'
+      ? '“내게 능력 주시는 그리스도를 통하여 내가 모든 것을 할 수 있느니라.”'
+      : '“I can do all things through him who strengthens me.”',
+    ref: lang === 'ko' ? '빌립보서 4:13 (ESV)' : 'Philippians 4:13 (ESV)',
+    note: getDailyMeditationNote(lang, 'default')
+  };
+}
+
+function applyHomepageDailyMeditation(){
+  if(!document.querySelector('.votd-band')) return;
+  const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
+  const data = getTodayMeditationData(lang);
+  const labelEl = document.querySelector('.votd-lbl');
+  const verseEl = document.querySelector('.votd-q');
+  const refEl = document.querySelector('.votd-ref');
+  const noteEl = document.querySelector('.votd-note');
+  if(labelEl) labelEl.textContent = data.label;
+  if(verseEl) verseEl.innerHTML = '&ldquo;' + data.verse + '&rdquo;';
+  if(refEl) refEl.textContent = data.ref;
+  if(noteEl) noteEl.textContent = data.note;
+}
+
+window.refreshDailyHomepageVerse = applyHomepageDailyMeditation;
 
 function openTodayMemoryVersePopup(force){
   if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
@@ -2217,6 +2325,7 @@ loadGalleryItems();
 bindTopicButtons();
 
 window.addEventListener('load', ()=>{
+  applyHomepageDailyMeditation();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
 

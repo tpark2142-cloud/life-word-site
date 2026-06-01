@@ -1500,6 +1500,9 @@ window.applyPageLanguage=function(lang){
   setText('.footer-esv', text.footerEsv);
   setText('footer p[style*="font-size:13px"]', text.createdBy);
   setText('footer p[style*="font-size:12px"]', text.copyright);
+  if(typeof window.refreshDailyHomepageVerse === 'function'){
+    window.refreshDailyHomepageVerse();
+  }
 };
 </script>
 <script>
@@ -1539,7 +1542,7 @@ window.copySiteLink = async function(){
   if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
-<script src="assets/js/app.js?v=20260527k"></script>
+<script src="assets/js/app.js?v=20260601a"></script>
 <script src="assets/js/lang.js?v=20260521c"></script>
 <script src="assets/js/pwa.js"></script>
 
