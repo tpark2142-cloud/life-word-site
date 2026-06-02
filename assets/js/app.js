@@ -1390,12 +1390,102 @@ const TRAVEL_IMAGE_MAX_WIDTH=1600;
 const TRAVEL_IMAGE_MAX_HEIGHT=1600;
 const TRAVEL_IMAGE_QUALITY=.82;
 const DEFAULT_GALLERY_ITEMS=[
-  {id:'g1',src:'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=500&q=75',caption:'TÃ¼rkiye - Ancient Churches'},
-  {id:'g2',src:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75',caption:'Cappadocia - Balloon Sunrise'},
-  {id:'g3',src:'https://images.unsplash.com/photo-1609788935434-3c1d2945a57f?w=500&q=75',caption:'New York - Gods World'},
-  {id:'g4',src:'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=500&q=75',caption:'Gods Word - Our Guide'},
-  {id:'g5',src:'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=75',caption:'Creation - His Handiwork'},
-  {id:'g6',src:'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=500&q=75',caption:'Edmonton - Home'}
+  {
+    id:'g1-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=500&q=75',
+    title:'Ancient Church Ruins in Türkiye',
+    summary:'A quiet place where history, prayer, and reflection seem to linger in the stones.',
+    caption:'Ancient Church Ruins in Türkiye'
+  },
+  {
+    id:'g2-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75',
+    title:'Sunrise Over Cappadocia',
+    summary:'Soft morning light and drifting balloons create a peaceful beginning to the day.',
+    caption:'Sunrise Over Cappadocia'
+  },
+  {
+    id:'g3-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1609788935434-3c1d2945a57f?w=500&q=75',
+    title:'A Bright Moment in New York',
+    summary:'A city scene that captures movement, light, and a sense of wonder in ordinary life.',
+    caption:'A Bright Moment in New York'
+  },
+  {
+    id:'g4-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=500&q=75',
+    title:'A Gentle Path for Reflection',
+    summary:'A quiet travel moment that invites stillness, gratitude, and calm reflection.',
+    caption:'A Gentle Path for Reflection'
+  },
+  {
+    id:'g5-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=75',
+    title:'Creation in Full Beauty',
+    summary:'Wide skies, open land, and living color remind us how much beauty surrounds us.',
+    caption:'Creation in Full Beauty'
+  },
+  {
+    id:'g6-en',
+    language:'en',
+    src:'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=500&q=75',
+    title:'Home in Edmonton',
+    summary:'A familiar place remembered with warmth, gratitude, and a sense of belonging.',
+    caption:'Home in Edmonton'
+  },
+  {
+    id:'g1-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=500&q=75',
+    title:'튀르키예의 오래된 교회 유적',
+    summary:'역사와 기도의 흔적이 조용히 머무는 듯한 장소의 분위기를 담았습니다.',
+    caption:'튀르키예의 오래된 교회 유적'
+  },
+  {
+    id:'g2-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75',
+    title:'카파도키아의 해뜨는 아침',
+    summary:'부드러운 아침 빛과 떠오르는 열기구가 평안한 하루의 시작을 보여 줍니다.',
+    caption:'카파도키아의 해뜨는 아침'
+  },
+  {
+    id:'g3-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1609788935434-3c1d2945a57f?w=500&q=75',
+    title:'뉴욕의 빛나는 한순간',
+    summary:'도시의 움직임과 빛 속에서도 특별한 아름다움이 느껴지는 장면입니다.',
+    caption:'뉴욕의 빛나는 한순간'
+  },
+  {
+    id:'g4-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=500&q=75',
+    title:'조용히 머물게 하는 길',
+    summary:'잠시 걸음을 늦추고 고요히 생각하게 만드는 여행의 한순간입니다.',
+    caption:'조용히 머물게 하는 길'
+  },
+  {
+    id:'g5-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=75',
+    title:'창조의 가득한 아름다움',
+    summary:'넓은 하늘과 살아 있는 색감이 자연의 풍성함과 평안을 전해 줍니다.',
+    caption:'창조의 가득한 아름다움'
+  },
+  {
+    id:'g6-ko',
+    language:'ko',
+    src:'https://images.unsplash.com/photo-1585336261022-680e295ce3fe?w=500&q=75',
+    title:'에드먼턴, 익숙한 집 같은 풍경',
+    summary:'따뜻한 기억과 감사가 스며 있는 익숙한 장소의 정취를 담았습니다.',
+    caption:'에드먼턴, 익숙한 집 같은 풍경'
+  }
 ];
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
 let galleryItems=loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS);
