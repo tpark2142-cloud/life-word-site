@@ -195,17 +195,15 @@
     if(!event?.detail?.fromUser){
       return;
     }
-    const popupFn = typeof window.openTodayMemoryVersePopup === 'function'
-      ? window.openTodayMemoryVersePopup
-      : (typeof window.openPageLanguagePopup === 'function' ? window.openPageLanguagePopup : null);
-    if(!popupFn){
+    const isHomepage = !!document.querySelector('.votd-band') && !!document.getElementById('modal-overlay');
+    if(!isHomepage || typeof window.openTodayMemoryVersePopup !== 'function'){
       return;
     }
     if(popupRefreshTimer){
       window.clearTimeout(popupRefreshTimer);
     }
     popupRefreshTimer = window.setTimeout(() => {
-      popupFn(true);
+      window.openTodayMemoryVersePopup(true);
       popupRefreshTimer = null;
     }, 180);
   });
