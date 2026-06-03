@@ -846,6 +846,16 @@ const EXACT_TOPIC_QUERY_MAP = {
   funeral:'Grief & Funeral Comfort',
   death:'Death & Dying',
   dying:'Death & Dying',
+  기쁨:'Joy',
+  기뻐:'Joy',
+  기뻐요:'Joy',
+  기쁩니다:'Joy',
+  너무기뻐요:'Joy',
+  '너무 기뻐요':'Joy',
+  즐거워요:'Joy',
+  즐겁습니다:'Joy',
+  행복해요:'Joy',
+  행복합니다:'Joy',
   슬픔:'Sorrow & Grief',
   슬퍼:'Sorrow & Grief',
   슬퍼요:'Sorrow & Grief',
@@ -918,6 +928,7 @@ function getHeroTopicHaystack(topic){
 }
 
 const HERO_INTENT_PHRASES = {
+  'Joy': ['기쁨','기뻐','기뻐요','기쁩니다','즐거워','즐거워요','행복해','행복해요','감격','좋아요','감사해요','joy','joyful','rejoice','happy','happiness','delight','glad'],
   'Sorrow & Grief': ['슬픔','슬퍼','슬프','마음이 아파','마음이 너무 아파','마음 아파','마음 아프','가슴 아파','가슴 아프','눈물','울고','울어요','상처','상실','잃었','떠났','그리워','애통','sorrow','sad','sadness','grief','grieving','tears','crying','heartbroken','heartbreak','loss','lost someone'],
   'Fear': ['두려움','두려워','무서워','겁나','불길','걱정돼','fear','afraid','scared','terrified','frightened','panic','danger'],
   'Anxiety & Worry': ['불안','염려','걱정','초조','긴장','마음이 불편','압박','스트레스','anxiety','anxious','worry','worried','stress','stressed','overthinking','nervous','uneasy'],
