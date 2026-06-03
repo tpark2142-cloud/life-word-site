@@ -376,6 +376,17 @@ const TOPIC_LOOKUP_BY_LABEL = (() => {
   return map;
 })();
 
+function getLocalizedTopicResult(topic, lang){
+  if(lang==='ko' && topic && TOPIC_RESULT_KO[topic.name]){
+    return TOPIC_RESULT_KO[topic.name];
+  }
+  return {
+    name: topic?.name || '',
+    cat: topic?.cat || '',
+    note: topic?.note || ''
+  };
+}
+
 function openEmotion(name){
   const d=EMOTIONS[name];if(!d)return;
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
