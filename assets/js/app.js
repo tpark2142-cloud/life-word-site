@@ -596,6 +596,14 @@ function getDayOfYear(date){
   return Math.floor(diff / oneDay);
 }
 
+function getLocalDateKey(date){
+  const current = date || new Date();
+  const year = current.getFullYear();
+  const month = String(current.getMonth() + 1).padStart(2, '0');
+  const day = String(current.getDate()).padStart(2, '0');
+  return year + '-' + month + '-' + day;
+}
+
 function getTodayMemoryVerseData(lang){
   const plannedEntry = getDailyVersePlanEntry();
   if(plannedEntry && plannedEntry.memory){
@@ -757,7 +765,7 @@ window.refreshDailyHomepageVerse = applyHomepageDailyMeditation;
 function openTodayMemoryVersePopup(force){
   if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
   const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
-  const todayKey = new Date().toISOString().slice(0,10);
+  const todayKey = getLocalDateKey();
   const storageKey = 'lm-gw-memory-popup-' + todayKey + '-' + lang;
   if(!force && localStorage.getItem(storageKey) === 'shown') return;
   const data = getTodayMemoryVerseData(lang);
@@ -772,6 +780,20 @@ function openTodayMemoryVersePopup(force){
   localStorage.setItem(storageKey, 'shown');
 }
 window.openTodayMemoryVersePopup = openTodayMemoryVersePopup;
+
+let dailyVerseRefreshTimer = null;
+function scheduleDailyVerseRefresh(){
+  if(dailyVerseRefreshTimer){
+    window.clearTimeout(dailyVerseRefreshTimer);
+  }
+  const now = new Date();
+  const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 1, 0);
+  dailyVerseRefreshTimer = window.setTimeout(() => {
+    applyHomepageDailyMeditation();
+    dailyVerseRefreshTimer = null;
+    scheduleDailyVerseRefresh();
+  }, Math.max(1000, nextMidnight.getTime() - now.getTime()));
+}
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TOPIC ACCORDION
@@ -1452,6 +1474,7 @@ updateStaticTopicEsvCards();
 window.addEventListener('lifeword:languagechange', injectTopicBonusVerses);
 window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
 window.addEventListener('lifeword:languagechange', updateStaticTopicEsvCards);
+window.addEventListener('lifeword:languagechange', applyHomepageDailyMeditation);
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
@@ -2702,7 +2725,8 @@ loadGalleryItems();
 bindTopicButtons();
 
 window.addEventListener('load', ()=>{
-  applyHomepageDailyMeditation();
+applyHomepageDailyMeditation();
+  scheduleDailyVerseRefresh();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
 
