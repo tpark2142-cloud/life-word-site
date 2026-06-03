@@ -847,6 +847,17 @@ const EXACT_TOPIC_QUERY_MAP = {
   death:'Death & Dying',
   dying:'Death & Dying',
   슬픔:'Sorrow & Grief',
+  슬퍼:'Sorrow & Grief',
+  슬퍼요:'Sorrow & Grief',
+  슬픕니다:'Sorrow & Grief',
+  '너무 슬퍼요':'Sorrow & Grief',
+  너무슬퍼요:'Sorrow & Grief',
+  '마음이 슬퍼요':'Sorrow & Grief',
+  마음이슬퍼요:'Sorrow & Grief',
+  '마음이 아파요':'Sorrow & Grief',
+  마음이아파요:'Sorrow & Grief',
+  '마음이 너무 아파요':'Sorrow & Grief',
+  마음이너무아파요:'Sorrow & Grief',
   두려움:'Fear',
   소망:'Hope',
   힘:'Strength',
@@ -877,7 +888,8 @@ function resolveHeroTopicQuery(query){
   const raw=String(query||'').trim();
   const lower=raw.toLowerCase();
   const normalized=normalizeTopicName(raw);
-  const direct=EXACT_TOPIC_QUERY_MAP[lower] || EXACT_TOPIC_QUERY_MAP[raw];
+  const compact=normalized.replace(/\s+/g, '');
+  const direct=EXACT_TOPIC_QUERY_MAP[lower] || EXACT_TOPIC_QUERY_MAP[raw] || EXACT_TOPIC_QUERY_MAP[normalized] || EXACT_TOPIC_QUERY_MAP[compact];
   if(direct)return TOPIC_NAME_ALIASES[direct] || direct;
   if(TOPIC_LOOKUP_BY_LABEL[normalized])return TOPIC_LOOKUP_BY_LABEL[normalized];
   const localizedMatch=Object.keys(TOPIC_RESULT_KO).find(key=>{
