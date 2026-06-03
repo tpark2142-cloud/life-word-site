@@ -642,6 +642,7 @@ function getTodayMemoryVerseData(lang){
 }
 
 let DAILY_MEDITATION_POOL = null;
+const HOMEPAGE_PROMISE_REF = 'Matthew 6:33';
 
 const DAILY_MEDITATION_NOTES = {
   en: {
@@ -696,15 +697,17 @@ function getTodayMeditationData(lang){
   const plannedEntry = getDailyVersePlanEntry();
   if(plannedEntry && plannedEntry.meditation){
     const ref = normalizeVerseRef(plannedEntry.meditation.ref);
-    const category = plannedEntry.meditation.categoryEn || 'Spiritual Themes';
-    return {
-      label: lang === 'ko' ? '✦ 오늘의 묵상 말씀 ✦' : '✦ Today’s Meditation Verse ✦',
-      verse: lang === 'ko'
-        ? getKoreanEsvText(ref, plannedEntry.meditation.esv)
-        : plannedEntry.meditation.esv,
-      ref: (lang === 'ko' ? ref : plannedEntry.meditation.ref) + ' (ESV)',
-      note: getDailyMeditationNote(lang, category)
-    };
+    if(ref !== HOMEPAGE_PROMISE_REF){
+      const category = plannedEntry.meditation.categoryEn || 'Spiritual Themes';
+      return {
+        label: lang === 'ko' ? '✦ 오늘의 묵상 말씀 ✦' : '✦ Today’s Meditation Verse ✦',
+        verse: lang === 'ko'
+          ? getKoreanEsvText(ref, plannedEntry.meditation.esv)
+          : plannedEntry.meditation.esv,
+        ref: (lang === 'ko' ? ref : plannedEntry.meditation.ref) + ' (ESV)',
+        note: getDailyMeditationNote(lang, category)
+      };
+    }
   }
   const pool = buildDailyMeditationPool();
   const dayIndex = getDayOfYear(new Date()) - 1;
@@ -721,7 +724,7 @@ function getTodayMeditationData(lang){
     if(pool.length > 1){
       for(let tries = 0; tries < pool.length; tries += 1){
         const candidate = pool[(index + tries) % pool.length];
-        if(candidate.ref !== memoryRef){
+        if(candidate.ref !== memoryRef && normalizeVerseRef(candidate.ref) !== HOMEPAGE_PROMISE_REF){
           selected = candidate;
           break;
         }
