@@ -33,7 +33,7 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260601a">
+<link rel="stylesheet" href="assets/css/app.css?v=20260603a">
 </head>
 <body>
 
@@ -228,6 +228,19 @@ gtag('config', 'G-2SJCBS84VD');
       <p class="spot-feedback" id="spot-feedback" aria-live="polite"></p>
       <p class="spot-install-note" id="spot-share-install-note">Open https://www.lifemoment.site and add it to your home screen or install it as an app. Then you can open it anytime like a regular app on your phone, tablet, or computer.</p>
     </article>
+  </div>
+</section>
+
+<section class="home-update" id="homepage-update">
+  <div class="home-update-inner">
+    <p class="home-update-kicker" id="update-kicker">Site Update</p>
+    <h2 class="home-update-title" id="update-title">Korean ESV support is now available.</h2>
+    <p class="home-update-copy" id="update-copy">The Korean site now provides Korean translations of ESV verses alongside Korean King James text, helping readers understand and meditate on Scripture more easily.</p>
+    <ul class="home-update-list" aria-label="Site update summary">
+      <li id="update-item-1">Bible search has been improved for Korean and English words, phrases, and life-situation questions.</li>
+      <li id="update-item-2">Today&rsquo;s Memory Verse refreshes daily and works across both EN and KO views.</li>
+      <li id="update-item-3">Homepage notices and Bible translation descriptions were refined for clarity.</li>
+    </ul>
   </div>
 </section>
 
@@ -1079,6 +1092,12 @@ window.applyPageLanguage=function(lang){
           week:['이번 주 추천','여기서부터 천천히 시작해 보세요.','오늘의 암송구절','황혼의 계절','말씀대로 살기'],
           share:['이 사이트 나누기','오늘 위로나 도움이 필요한 분께 이 페이지를 전해 보세요.','SNS, 문자, 이메일 또는 링크 복사로 나눌 수 있습니다.','이 사이트 나누기','링크 복사','https://www.lifemoment.site 를 열고 홈 화면에 추가하거나 앱으로 설치해 주세요. 그러면 휴대폰, 태블릿, 컴퓨터에서 일반 앱처럼 언제든지 바로 열 수 있습니다.']
         },
+        update:{
+          kicker:'홈페이지 업데이트',
+          title:'한글 ESV 번역 지원을 추가했습니다.',
+          copy:'한글 사이트에서 ESV 성경 구절을 한글로 번역해 제공하고, 한글 킹제임스 본문과 함께 말씀을 더 쉽게 이해하고 묵상할 수 있도록 다듬었습니다.',
+          items:['영어와 한글 검색창 모두 단어, 문장, 삶의 상황 질문을 더 잘 찾아줍니다.','오늘의 암송구절은 EN/KO 화면에서 매일 새롭게 표시됩니다.','성경 번역 안내와 홈페이지 문구를 더 간결하고 분명하게 정리했습니다.']
+        },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
         emotionCardTitles:['기쁨','슬픔','평안','소망','두려움','불안','외로움','분노','감사','죄책감과 후회','사랑','낙심'],
@@ -1139,6 +1158,12 @@ window.applyPageLanguage=function(lang){
           most:['Most Visited','Start with the verses people open most often.','Anxiety','Fear','Grief','Hope'],
           week:["This Week's Highlights",'Start here with one of these three sections.',"Today's Memory Verse",'Twilight Season','Living the Word'],
           share:['Share This Site','Send this page to someone who may need comfort today.','Share by SNS, text, email, or copy the link.','Share This Site','Copy Link','Open https://www.lifemoment.site and add it to your home screen or install it as an app. Then you can open it anytime like a regular app on your phone, tablet, or computer.']
+        },
+        update:{
+          kicker:'Site Update',
+          title:'Korean ESV support is now available.',
+          copy:'The Korean site now provides Korean translations of ESV verses alongside Korean King James text, helping readers understand and meditate on Scripture more easily.',
+          items:['Bible search now responds better to Korean and English words, phrases, and life-situation questions.','Today’s Memory Verse refreshes daily across both EN and KO views.','Homepage notices and Bible translation descriptions were refined for clarity.']
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
@@ -1368,6 +1393,12 @@ window.applyPageLanguage=function(lang){
   setText('#spot-copy-btn', text.spotlight.share[4]);
   setText('#spot-share-install-note', text.spotlight.share[5]);
   setText('#spot-feedback', '');
+  setText('#update-kicker', text.update.kicker);
+  setText('#update-title', text.update.title);
+  setText('#update-copy', text.update.copy);
+  setText('#update-item-1', text.update.items[0]);
+  setText('#update-item-2', text.update.items[1]);
+  setText('#update-item-3', text.update.items[2]);
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);

@@ -1,13 +1,13 @@
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('lifemoment-static-v10').then(cache => cache.addAll([
+    caches.open('lifemoment-static-v11').then(cache => cache.addAll([
       './',
       './index.html',
       './devotion.html',
       './prayer.html',
       './comfort.html',
       './manifest.json',
-      './assets/css/app.css',
+      './assets/css/app.css?v=20260603a',
       './assets/js/app.js?v=20260603a',
       './assets/js/lang.js',
       './assets/js/data.js?v=20260602a',
@@ -21,7 +21,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys
-        .filter(key => key !== 'lifemoment-static-v10')
+        .filter(key => key !== 'lifemoment-static-v11')
         .map(key => caches.delete(key))
     )).then(() => self.clients.claim())
   );
@@ -38,7 +38,7 @@ self.addEventListener('fetch', event => {
       }
       return fetch(event.request).then(response => {
         const copy = response.clone();
-        caches.open('lifemoment-static-v10').then(cache => cache.put(event.request, copy));
+        caches.open('lifemoment-static-v11').then(cache => cache.put(event.request, copy));
         return response;
       }).catch(() => caches.match('./index.html'));
     })
