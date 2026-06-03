@@ -56,7 +56,7 @@ const EMOTIONS={
 // SEARCH DATABASE
 // ═══════════════════════════════════════
 const DB=[
-  {name:'Joy',cat:'Emotions',keys:'joy rejoice happy happiness delight glad praise celebrate',note:'True joy rests on God\'s unchanging presence, not changing circumstances.',verses:[
+  {name:'Joy',cat:'Emotions',keys:'joy rejoice happy happiness delight glad praise celebrate 기쁨 기뻐 기뻐요 기쁩니다 너무기뻐요 즐거움 즐거워요 즐겁습니다 행복 행복해요 행복합니다 감사 감격',note:'True joy rests on God\'s unchanging presence, not changing circumstances.',verses:[
     {kjv:'Thou wilt shew me the path of life: in thy presence is fulness of joy.',esv:'You make known to me the path of life; in your presence there is fullness of joy.',r:'Psalm 16:11'},
     {kjv:'Rejoice in the Lord alway: and again I say, Rejoice.',esv:'Rejoice in the Lord always; again I will say, rejoice.',r:'Philippians 4:4'},
     {kjv:'These things have I spoken unto you, that my joy might remain in you, and that your joy might be full.',esv:'These things I have spoken to you, that my joy may be in you, and that your joy may be full.',r:'John 15:11'}]},
