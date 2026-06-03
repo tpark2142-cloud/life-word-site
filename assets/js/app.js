@@ -873,6 +873,88 @@ const EXACT_TOPIC_QUERY_MAP = {
   임종:'Death & Dying'
 };
 
+function resolveHeroTopicQuery(query){
+  const raw=String(query||'').trim();
+  const lower=raw.toLowerCase();
+  const normalized=normalizeTopicName(raw);
+  const direct=EXACT_TOPIC_QUERY_MAP[lower] || EXACT_TOPIC_QUERY_MAP[raw];
+  if(direct)return TOPIC_NAME_ALIASES[direct] || direct;
+  if(TOPIC_LOOKUP_BY_LABEL[normalized])return TOPIC_LOOKUP_BY_LABEL[normalized];
+  const localizedMatch=Object.keys(TOPIC_RESULT_KO).find(key=>{
+    const ko=TOPIC_RESULT_KO[key] || {};
+    return normalizeTopicName(ko.name)===normalized || normalizeTopicName(ko.name).includes(normalized);
+  });
+  if(localizedMatch)return localizedMatch;
+  const englishMatch=(DB || []).find(topic=>{
+    const topicName=normalizeTopicName(topic.name);
+    return topicName===normalized || topicName.includes(normalized);
+  });
+  return englishMatch ? englishMatch.name : '';
+}
+
+function getHeroTopicHaystack(topic){
+  const localized=getLocalizedTopicResult(topic, 'ko');
+  const aliasLabels=Object.keys(TOPIC_NAME_ALIASES)
+    .filter(label=>TOPIC_NAME_ALIASES[label]===topic.name)
+    .join(' ');
+  return (
+    topic.name+' '+topic.cat+' '+topic.keys+' '+topic.note+' '+
+    localized.name+' '+localized.cat+' '+localized.note+' '+
+    aliasLabels+' '+
+    topic.verses.map(v=>(v.t||v.esv||'')+' '+(v.kjv||'')+' '+v.r).join(' ')
+  ).toLowerCase();
+}
+
+const HERO_INTENT_PHRASES = {
+  'Sorrow & Grief': ['슬픔','슬퍼','슬프','마음이 아파','마음이 너무 아파','마음 아파','마음 아프','가슴 아파','가슴 아프','눈물','울고','울어요','상처','상실','잃었','떠났','그리워','애통','sorrow','sad','sadness','grief','grieving','tears','crying','heartbroken','heartbreak','loss','lost someone'],
+  'Fear': ['두려움','두려워','무서워','겁나','불길','걱정돼','fear','afraid','scared','terrified','frightened','panic','danger'],
+  'Anxiety & Worry': ['불안','염려','걱정','초조','긴장','마음이 불편','압박','스트레스','anxiety','anxious','worry','worried','stress','stressed','overthinking','nervous','uneasy'],
+  'Loneliness': ['외로움','외로워','혼자','고립','버려진','아무도 없어','친구가 없어','lonely','alone','isolated','abandoned','rejected','no one','forgotten'],
+  'Illness & Sickness': ['질병','아픔','아파','병','병원','수술','치료','건강','암','통증','sick','ill','illness','sickness','disease','hospital','healing','pain','cancer','surgery'],
+  'Caregiving & Support': ['간병','돌봄','돌보고','돌보는','보호자','가족을 돌','가족이 아파','환자 돌','지쳐','caregiver','caregiving','taking care','supporting family','patient'],
+  'Death & Dying': ['죽음','임종','돌아가','세상 떠','생의 마지막','death','dying','terminal','end of life','passed away'],
+  'Grief & Funeral Comfort': ['장례','장례식','추모','위로가 필요','위로해','bereavement','funeral','memorial','burial','comfort me','need comfort'],
+  'Forgiveness': ['용서','미움','원망','상대가 미워','배신','화해','forgive','forgiveness','resentment','betrayed','betrayal','grudge','reconcile'],
+  'Marriage & Family': ['결혼','가정','부부','남편','아내','가족','자녀','부모','marriage','family','husband','wife','children','parenting','parents'],
+  'Money & Financial Worry': ['재정','돈','돈 걱정','빚','월세','렌트','생활비','경제','직장 잃','수입','financial','financial worry','money','money worry','worried about bills','debt','rent','bills','income','job loss'],
+  'Work & Calling': ['직장','일터','사업','소명','일이 힘','career','work','job','calling','business'],
+  'Decision-Making & Wisdom': ['결정','선택','어떻게 해야','길을 몰라','지혜','인도','decision','choose','choice','wisdom','guidance','what should i do'],
+  'Faith & Trust': ['믿음','신뢰','의심','믿기 어려','하나님을 못 느','faith','trust','doubt','doubting','hard to believe'],
+  'Hope': ['소망','희망','절망','막막','앞이 안 보여','hope','hopeless','future','despair','no hope'],
+  'Peace': ['평안','평화','마음의 쉼','쉬고 싶','calm','peace','rest','restless','quiet heart'],
+  'Strength': ['힘','새 힘','버틸 힘','감당','지쳤','피곤','strength','strong','weary','tired','exhausted','endure'],
+  'Discouragement': ['낙심','실망','포기','넘어졌','실패','discouraged','discouragement','defeated','give up','failure'],
+  'Depression & Discouragement': ['우울','침체','무기력','어두운 마음','살기 힘','depression','depressed','darkness','heavy heart','emotional pain'],
+  'Sleep & Insomnia': ['잠','불면','잠이 안','잠 못','밤마다','sleep','insomnia','sleepless','cannot sleep','can not sleep'],
+  'Prayer': ['기도','중보','하나님께 말','pray','prayer','intercession','talk to god'],
+  'Grace & Mercy': ['은혜','자비','긍휼','받을 자격','grace','mercy','compassion'],
+  'Salvation': ['구원','복음','예수 믿','영생','salvation','saved','gospel','eternal life','born again'],
+  "God's Presence": ['임재','하나님이 멀','하나님이 계','함께하심','presence','god feels far','god is near','with me'],
+  'Heaven & Eternity': ['천국','영원','내세','heaven','eternity','afterlife'],
+  'Gratitude': ['감사','고마움','thankful','gratitude','grateful','thanksgiving'],
+  'Love': ['사랑','긍휼','love','compassion'],
+  'Anger': ['분노','화가','짜증','억울','anger','angry','rage','frustrated'],
+  'Addiction & Recovery': ['중독','끊고 싶','습관을 못','회복','addiction','recovery','relapse','habit','bondage'],
+  'New Beginnings & Change': ['새 시작','변화','이사','새로운 길','new beginning','change','new chapter'],
+  'Aging & Senior Life': ['노년','시니어','나이 들어','늙어','aging','senior','old age'],
+  'Worship & Praise': ['예배','찬양','worship','praise'],
+  'Evangelism & Witness': ['전도','증언','복음 전','evangelism','witness','share the gospel']
+};
+
+function getHeroIntentScore(query, topicName){
+  const phrases=HERO_INTENT_PHRASES[topicName] || [];
+  const normalizedQuery=normalizeTopicName(query);
+  const lowerQuery=String(query||'').toLowerCase();
+  return phrases.reduce((score, phrase)=>{
+    const normalizedPhrase=normalizeTopicName(phrase);
+    if(!normalizedPhrase)return score;
+    if(normalizedQuery.includes(normalizedPhrase) || lowerQuery.includes(String(phrase).toLowerCase())){
+      return score + Math.max(3, normalizedPhrase.length > 5 ? 5 : 3);
+    }
+    return score;
+  }, 0);
+}
+
 function doHeroSearch(){
   const q=inp.value.trim().toLowerCase();
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
@@ -881,13 +963,15 @@ function doHeroSearch(){
   const words=typeof normalizeWords==='function'
     ? normalizeWords(q)
     : q.split(/\s+/).filter(w=>w.length>1);
-  const exactTopicName = EXACT_TOPIC_QUERY_MAP[q];
+  const exactTopicName = resolveHeroTopicQuery(q);
   const matched=exactTopicName
     ? DB.filter(t=>t.name===exactTopicName)
     : DB
       .map(t=>{
-        const hay=(t.name+' '+t.keys+' '+t.note+' '+t.verses.map(v=>(v.t||v.esv||'')+' '+(v.kjv||'')+' '+v.r).join(' ')).toLowerCase();
-        const score=words.reduce((sum,w)=>sum+(hay.includes(w)?1:0),0);
+        const hay=getHeroTopicHaystack(t);
+        const keywordScore=words.reduce((sum,w)=>sum+(hay.includes(w)?1:0),0);
+        const intentScore=getHeroIntentScore(q, t.name);
+        const score=keywordScore + intentScore;
         return {topic:t,score};
       })
       .filter(item=>item.score>0)
