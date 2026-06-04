@@ -2513,12 +2513,32 @@ function checkGalleryEmpty(countOverride){
   if(empty)empty.style.display=count===0?'block':'none';
 }
 
+const GUESTBOOK_PREVIEW_LIMIT=120;
+
+function getGuestbookPreview(message){
+  const text=String(message||'').trim();
+  if(text.length<=GUESTBOOK_PREVIEW_LIMIT){
+    return {preview:text,isLong:false};
+  }
+  return {preview:text.slice(0,GUESTBOOK_PREVIEW_LIMIT).trimEnd()+'...',isLong:true};
+}
+
+window.toggleGuestbookEntry=function(button){
+  const entry=button.closest('.guestbook-entry');
+  if(!entry)return;
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const expanded=entry.classList.toggle('expanded');
+  button.textContent=expanded?(lang==='ko'?'접기':'Show Less'):(lang==='ko'?'전체 보기':'Read More');
+  button.setAttribute('aria-expanded',expanded?'true':'false');
+};
+
 function renderGuestbook(){
   const list=document.getElementById('guestbook-list');
   const empty=document.getElementById('guestbook-empty');
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
   const replyLabel=lang==='ko'?'운영자 답글':'Reply from Admin';
+  const readMoreLabel=lang==='ko'?'전체 보기':'Read More';
   if(!list||!empty)return;
   if(!visibleEntries.length){
     list.innerHTML='';
@@ -2527,6 +2547,7 @@ function renderGuestbook(){
   }
   empty.style.display='none';
   list.innerHTML=visibleEntries.map(entry=>{
+    const messagePreview=getGuestbookPreview(entry.message||'');
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
       +'<div class="guestbook-entry-topline">'
@@ -2535,7 +2556,8 @@ function renderGuestbook(){
       +'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
-      +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
+      +'<div class="guestbook-entry-message guestbook-entry-preview">'+escapeHtml(messagePreview.preview)+'</div>'
+      +(messagePreview.isLong?'<div class="guestbook-entry-message guestbook-entry-full">'+escapeHtml(entry.message||'')+'</div><button class="guestbook-read-more" type="button" aria-expanded="false" onclick="toggleGuestbookEntry(this)">'+escapeHtml(readMoreLabel)+'</button>':'')
       +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text">'+escapeHtml(entry.replyText)+'</div></div>':'')
       +'</article>';
   }).join('');

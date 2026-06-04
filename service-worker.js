@@ -1,14 +1,14 @@
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('lifemoment-static-v12').then(cache => cache.addAll([
+    caches.open('lifemoment-static-v13').then(cache => cache.addAll([
       './',
       './index.html',
       './devotion.html',
       './prayer.html',
       './comfort.html',
       './manifest.json',
-      './assets/css/app.css?v=20260603a',
-      './assets/js/app.js?v=20260603b',
+      './assets/css/app.css?v=20260603b',
+      './assets/js/app.js?v=20260603c',
       './assets/js/lang.js',
       './assets/js/data.js?v=20260602a',
       './assets/js/ai-assistant.js',
@@ -21,7 +21,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys
-        .filter(key => key !== 'lifemoment-static-v12')
+        .filter(key => key !== 'lifemoment-static-v13')
         .map(key => caches.delete(key))
     )).then(() => self.clients.claim())
   );
