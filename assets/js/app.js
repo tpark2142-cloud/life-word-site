@@ -2513,7 +2513,7 @@ function checkGalleryEmpty(countOverride){
   if(empty)empty.style.display=count===0?'block':'none';
 }
 
-const GUESTBOOK_PREVIEW_LIMIT=120;
+const GUESTBOOK_PREVIEW_LIMIT=48;
 
 function getGuestbookPreview(message){
   const text=String(message||'').trim();
