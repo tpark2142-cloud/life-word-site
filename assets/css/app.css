@@ -103,6 +103,8 @@ html[lang="ko"] .hero-search::before{content:'여기서 시작';font-size:10.5px
 .home-update-copy{font-size:17px;line-height:1.78;color:var(--text-soft);max-width:760px;margin-bottom:16px}
 .home-update-list{display:grid;gap:8px;margin:0;padding-left:20px;color:var(--deep)}
 .home-update-list li{font-size:15.5px;line-height:1.65;color:var(--text-soft)}
+.ko-update-only{display:none}
+html[lang="ko"] .ko-update-only{display:list-item}
 html[lang="ko"] .home-update-copy{font-size:16px;line-height:1.85}
 html[lang="ko"] .home-update-list li{font-size:15.5px;line-height:1.75}
 .home-pathways{background:#fff;border-bottom:1px solid rgba(184,147,90,.18)}

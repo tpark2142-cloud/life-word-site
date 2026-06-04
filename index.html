@@ -33,7 +33,7 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260603f">
+<link rel="stylesheet" href="assets/css/app.css?v=20260604a">
 </head>
 <body>
 
@@ -243,6 +243,7 @@ gtag('config', 'G-2SJCBS84VD');
       <li id="update-item-1">Bible search has been improved for Korean and English words, phrases, and life-situation questions.</li>
       <li id="update-item-2">Today&rsquo;s Memory Verse refreshes daily and works across both EN and KO views.</li>
       <li id="update-item-3">Homepage notices and Bible translation descriptions were refined for clarity.</li>
+      <li class="ko-update-only" id="update-item-4">새 메뉴 “영어와 말씀”에서 영어 학습 영상을 보며 영어 성경을 더 친근하게 따라가고 묵상할 수 있습니다.</li>
     </ul>
   </div>
 </section>
@@ -1122,7 +1123,7 @@ window.applyPageLanguage=function(lang){
           kicker:'홈페이지 업데이트',
           title:'한글 ESV 번역 지원을 추가했습니다.',
           copy:'한글 사이트에서 ESV 성경 구절을 한글로 번역해 제공하고, 한글 킹제임스 본문과 함께 말씀을 더 쉽게 이해하고 묵상할 수 있도록 다듬었습니다.',
-          items:['영어와 한글 검색창 모두 단어, 문장, 삶의 상황 질문을 더 잘 찾아줍니다.','오늘의 암송구절은 EN/KO 화면에서 매일 새롭게 표시됩니다.','성경 번역 안내와 홈페이지 문구를 더 간결하고 분명하게 정리했습니다.']
+          items:['영어와 한글 검색창 모두 단어, 문장, 삶의 상황 질문을 더 잘 찾아줍니다.','오늘의 암송구절은 EN/KO 화면에서 매일 새롭게 표시됩니다.','성경 번역 안내와 홈페이지 문구를 더 간결하고 분명하게 정리했습니다.','새 메뉴 “영어와 말씀”에서 영어 학습 영상을 보며 영어 성경을 더 친근하게 따라가고 묵상할 수 있습니다.']
         },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
@@ -1189,7 +1190,7 @@ window.applyPageLanguage=function(lang){
           kicker:'Site Update',
           title:'Korean ESV support is now available.',
           copy:'The Korean site now provides Korean translations of ESV verses alongside Korean King James text, helping readers understand and meditate on Scripture more easily.',
-          items:['Bible search now responds better to Korean and English words, phrases, and life-situation questions.','Today’s Memory Verse refreshes daily across both EN and KO views.','Homepage notices and Bible translation descriptions were refined for clarity.']
+          items:['Bible search now responds better to Korean and English words, phrases, and life-situation questions.','Today’s Memory Verse refreshes daily across both EN and KO views.','Homepage notices and Bible translation descriptions were refined for clarity.','The Korean site now includes an English and Bible video space for learning and meditation.']
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
@@ -1425,6 +1426,7 @@ window.applyPageLanguage=function(lang){
   setText('#update-item-1', text.update.items[0]);
   setText('#update-item-2', text.update.items[1]);
   setText('#update-item-3', text.update.items[2]);
+  setText('#update-item-4', text.update.items[3]);
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
