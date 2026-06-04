@@ -2542,7 +2542,9 @@ window.toggleGuestbookReply=function(button){
 };
 
 function renderGuestbook(){
+  const leftList=document.getElementById('guestbook-list-left');
   const list=document.getElementById('guestbook-list');
+  const listCard=document.getElementById('guestbook-list-card');
   const empty=document.getElementById('guestbook-empty');
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
@@ -2550,12 +2552,15 @@ function renderGuestbook(){
   const readMoreLabel=lang==='ko'?'전체 보기':'Read More';
   if(!list||!empty)return;
   if(!visibleEntries.length){
+    if(leftList)leftList.innerHTML='';
     list.innerHTML='';
+    if(listCard)listCard.style.display='none';
     empty.style.display='block';
     return;
   }
   empty.style.display='none';
-  list.innerHTML=visibleEntries.map(entry=>{
+  if(listCard)listCard.style.display='block';
+  const buildGuestbookEntry=entry=>{
     const messagePreview=getGuestbookPreview(entry.message||'');
     const replyPreview=getGuestbookPreview(entry.replyText||'');
     return '<article class="guestbook-entry">'
@@ -2570,7 +2575,13 @@ function renderGuestbook(){
       +(messagePreview.isLong?'<div class="guestbook-entry-message guestbook-entry-full">'+escapeHtml(entry.message||'')+'</div><button class="guestbook-read-more" type="button" aria-expanded="false" onclick="toggleGuestbookEntry(this)">'+escapeHtml(readMoreLabel)+'</button>':'')
       +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text guestbook-reply-preview">'+escapeHtml(replyPreview.preview)+'</div>'+(replyPreview.isLong?'<div class="guestbook-entry-reply-text guestbook-reply-full">'+escapeHtml(entry.replyText||'')+'</div><button class="guestbook-read-more guestbook-reply-more" type="button" aria-expanded="false" onclick="toggleGuestbookReply(this)">'+escapeHtml(readMoreLabel)+'</button>':'')+'</div>':'')
       +'</article>';
-  }).join('');
+  };
+  const leftCount=leftList?Math.min(visibleEntries.length,Math.max(1,Math.ceil(visibleEntries.length/2)-1)):0;
+  const leftEntries=visibleEntries.slice(0,leftCount);
+  const rightEntries=visibleEntries.slice(leftCount);
+  if(leftList)leftList.innerHTML=leftEntries.map(buildGuestbookEntry).join('');
+  list.innerHTML=rightEntries.map(buildGuestbookEntry).join('');
+  if(listCard)listCard.style.display=rightEntries.length?'block':'none';
 }
 
 window.appendGuestbookEmoji=function(emoji){

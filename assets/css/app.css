@@ -1086,7 +1086,9 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-secondary-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--deep);text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;cursor:pointer}
 .ai-secondary-link:hover{border-color:var(--gold);color:var(--gold)}
 .guestbook-shell{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:30px;align-items:start}
+.guestbook-column{display:grid;gap:14px;align-content:start}
 .guestbook-form-card,.guestbook-list-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px}
+.guestbook-list-card{align-self:start}
 .guestbook-kicker{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
 .guestbook-field{display:grid;gap:8px;margin-bottom:16px}
 .guestbook-field label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
@@ -1101,6 +1103,7 @@ html[lang="ko"] .gallery-copy-summary{
 .guestbook-actions{display:flex;justify-content:flex-start}
 .guestbook-note{font-size:14px;line-height:1.7;color:var(--text-soft);font-style:italic;margin-top:14px}
 .guestbook-list{display:grid;gap:14px}
+.guestbook-list-under-form{margin-top:0}
 .guestbook-empty{padding:18px;border:1px dashed var(--border);border-radius:12px;background:var(--gold-pale);font-size:16px;line-height:1.7;color:var(--text-soft);font-style:italic}
 .guestbook-entry{background:var(--gold-pale);border:1px solid var(--border);border-radius:14px;padding:18px}
 .guestbook-entry-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap}

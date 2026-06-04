@@ -33,7 +33,7 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260603d">
+<link rel="stylesheet" href="assets/css/app.css?v=20260603e">
 </head>
 <body>
 
@@ -974,6 +974,7 @@ gtag('config', 'G-2SJCBS84VD');
   <h2 class="s-title">Guestbook</h2>
   <p class="s-intro">Welcome to the Guestbook. This is a warm and peaceful space where you can share a prayer request, a word of encouragement, a short testimony, or a message of faith. May we comfort, strengthen, and bless one another in God's love.</p>
   <div class="guestbook-shell">
+    <div class="guestbook-column">
     <div class="guestbook-form-card">
       <p class="guestbook-kicker">Leave a Note</p>
       <div class="guestbook-field">
@@ -999,9 +1000,11 @@ gtag('config', 'G-2SJCBS84VD');
       </div>
       <p class="guestbook-note">Messages posted here are stored online and shared with visitors on the English page.</p>
     </div>
-    <div class="guestbook-list-card">
+    <div class="guestbook-empty" id="guestbook-empty">No guestbook messages yet. Be the first to leave encouragement.</div>
+    <div class="guestbook-list guestbook-list-under-form" id="guestbook-list-left"></div>
+    </div>
+    <div class="guestbook-list-card" id="guestbook-list-card">
       <p class="guestbook-kicker">Guestbook Messages</p>
-      <div class="guestbook-empty" id="guestbook-empty">No guestbook messages yet. Be the first to leave encouragement.</div>
       <div class="guestbook-list" id="guestbook-list"></div>
     </div>
   </div>
@@ -1575,7 +1578,7 @@ window.copySiteLink = async function(){
   if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
-<script src="assets/js/app.js?v=20260603g"></script>
+<script src="assets/js/app.js?v=20260603i"></script>
 <script src="assets/js/lang.js?v=20260601e"></script>
 <script src="assets/js/pwa.js"></script>
 
