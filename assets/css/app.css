@@ -1119,6 +1119,10 @@ html[lang="ko"] .guestbook-read-more{font-family:'Malgun Gothic','Apple SD Gothi
 .guestbook-entry-reply{margin-top:14px;padding:15px 18px;border-radius:14px;background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);border:1px solid rgba(184,147,90,.18);border-left:4px solid rgba(184,147,90,.78);box-shadow:0 12px 24px rgba(28,46,36,.06)}
 .guestbook-entry-reply-label{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a8742f;text-shadow:0 1px 0 rgba(255,255,255,.75);margin-bottom:10px}
 .guestbook-entry-reply-text{font-size:16px;line-height:1.85;color:var(--deep);white-space:pre-wrap;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.guestbook-reply-full{display:none}
+.guestbook-entry-reply.expanded .guestbook-reply-preview{display:none}
+.guestbook-entry-reply.expanded .guestbook-reply-full{display:flex}
+.guestbook-reply-more{margin-top:12px}
 .living-word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:30px}
 .living-word-empty{display:none;padding:24px;border:1px dashed var(--border);border-radius:14px;background:var(--gold-pale);font-size:17px;line-height:1.7;color:var(--text-soft);font-style:italic;text-align:center}
 .living-word-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}

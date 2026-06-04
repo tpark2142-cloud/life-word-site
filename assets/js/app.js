@@ -2532,6 +2532,15 @@ window.toggleGuestbookEntry=function(button){
   button.setAttribute('aria-expanded',expanded?'true':'false');
 };
 
+window.toggleGuestbookReply=function(button){
+  const reply=button.closest('.guestbook-entry-reply');
+  if(!reply)return;
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const expanded=reply.classList.toggle('expanded');
+  button.textContent=expanded?(lang==='ko'?'접기':'Show Less'):(lang==='ko'?'전체 보기':'Read More');
+  button.setAttribute('aria-expanded',expanded?'true':'false');
+};
+
 function renderGuestbook(){
   const list=document.getElementById('guestbook-list');
   const empty=document.getElementById('guestbook-empty');
@@ -2548,6 +2557,7 @@ function renderGuestbook(){
   empty.style.display='none';
   list.innerHTML=visibleEntries.map(entry=>{
     const messagePreview=getGuestbookPreview(entry.message||'');
+    const replyPreview=getGuestbookPreview(entry.replyText||'');
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
       +'<div class="guestbook-entry-topline">'
@@ -2558,7 +2568,7 @@ function renderGuestbook(){
       +'</div>'
       +'<div class="guestbook-entry-message guestbook-entry-preview">'+escapeHtml(messagePreview.preview)+'</div>'
       +(messagePreview.isLong?'<div class="guestbook-entry-message guestbook-entry-full">'+escapeHtml(entry.message||'')+'</div><button class="guestbook-read-more" type="button" aria-expanded="false" onclick="toggleGuestbookEntry(this)">'+escapeHtml(readMoreLabel)+'</button>':'')
-      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text">'+escapeHtml(entry.replyText)+'</div></div>':'')
+      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text guestbook-reply-preview">'+escapeHtml(replyPreview.preview)+'</div>'+(replyPreview.isLong?'<div class="guestbook-entry-reply-text guestbook-reply-full">'+escapeHtml(entry.replyText||'')+'</div><button class="guestbook-read-more guestbook-reply-more" type="button" aria-expanded="false" onclick="toggleGuestbookReply(this)">'+escapeHtml(readMoreLabel)+'</button>':'')+'</div>':'')
       +'</article>';
   }).join('');
 }
