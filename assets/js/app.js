@@ -769,8 +769,17 @@ function openTodayMemoryVersePopup(force){
   if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
   const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
   const todayKey = getLocalDateKey();
-  const storageKey = 'lm-gw-memory-popup-' + todayKey + '-' + lang;
-  if(!force && localStorage.getItem(storageKey) === 'shown') return;
+  const storageKey = 'lm-gw-memory-popup-' + todayKey;
+  const legacyEnglishKey = storageKey + '-en';
+  const legacyKoreanKey = storageKey + '-ko';
+  if(!force && (
+    localStorage.getItem(storageKey) === 'shown'
+    || localStorage.getItem(legacyEnglishKey) === 'shown'
+    || localStorage.getItem(legacyKoreanKey) === 'shown'
+  )){
+    localStorage.setItem(storageKey, 'shown');
+    return;
+  }
   const data = getTodayMemoryVerseData(lang);
   document.getElementById('m-icon').textContent = data.icon;
   document.getElementById('m-cat').textContent = data.category;
