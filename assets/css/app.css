@@ -1099,6 +1099,10 @@ html[lang="ko"] .sb-link.ko-only{display:flex}
 @media(max-width:820px){
   .english-word-panel{grid-template-columns:1fr;padding:20px}
 }
+.missions-reading-card{margin-top:18px;padding:20px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%)}
+.missions-reading-card h3{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.1;color:var(--deep);margin-bottom:10px}
+html[lang="ko"] .missions-reading-card h3{font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:24px;font-weight:700;letter-spacing:0}
+.missions-reading-link{display:inline-flex;margin-top:14px;text-decoration:none}
 .guestbook-shell{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:30px;align-items:start}
 .guestbook-column{display:grid;gap:14px;align-content:start}
 .guestbook-form-card,.guestbook-list-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px}
