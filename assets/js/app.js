@@ -1657,12 +1657,23 @@ const SUPABASE_GALLERY_FILE_STEMS=[
   'IMG_8523',
   'n'
 ];
+const LOCAL_GALLERY_FALLBACK_STEMS=new Set([
+  '20230716_171655',
+  'DSC03624',
+  'IMG_1462',
+  'IMG_8523'
+]);
 
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
     const number=index+1;
-    const thumbSrc=`${SUPABASE_GALLERY_BUCKET_BASE}/thumbnails/${encodeURIComponent(stem)}-thumb.webp`;
-    const fullSrc=`${SUPABASE_GALLERY_BUCKET_BASE}/regular/${encodeURIComponent(stem)}-regular.webp`;
+    const hasLocalFallback=LOCAL_GALLERY_FALLBACK_STEMS.has(stem);
+    const thumbSrc=hasLocalFallback
+      ? `assets/img/gallery/thumbnails/${stem}-thumb.webp`
+      : `${SUPABASE_GALLERY_BUCKET_BASE}/thumbnails/${encodeURIComponent(stem)}-thumb.webp`;
+    const fullSrc=hasLocalFallback
+      ? `assets/img/gallery/regular/${stem}-regular.webp`
+      : `${SUPABASE_GALLERY_BUCKET_BASE}/regular/${encodeURIComponent(stem)}-regular.webp`;
     return [
       {
         id:`sg-${number}-en`,
@@ -1686,6 +1697,31 @@ function getGalleryStorageItems(){
   });
 }
 const SUPABASE_STORAGE_GALLERY_ITEMS=getGalleryStorageItems();
+function mergeGalleryCaptionsFromRows(storageItems, rows){
+  const captionsByLang=new Map();
+  (Array.isArray(rows)?rows:[]).forEach(row=>{
+    const lang=row && row.language==='ko' ? 'ko' : 'en';
+    if(!captionsByLang.has(lang))captionsByLang.set(lang,[]);
+    const title=(row.title||'').trim();
+    const caption=(row.caption||row.title||'').trim();
+    if(caption||title){
+      captionsByLang.get(lang).push({title,caption,summary:caption||title});
+    }
+  });
+  const seen={en:0,ko:0};
+  return normalizeGalleryItems(storageItems).map(item=>{
+    const lang=item.language==='ko'?'ko':'en';
+    const next=(captionsByLang.get(lang)||[])[seen[lang]];
+    seen[lang]+=1;
+    if(!next)return item;
+    return {
+      ...item,
+      title:next.title||next.caption||item.title,
+      caption:next.caption||next.title||item.caption,
+      summary:next.summary||next.caption||item.summary
+    };
+  });
+}
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
 let galleryItems=loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS);
 let journalEditMode=false;
@@ -2536,11 +2572,11 @@ function normalizeGuestbookEntries(items){
     const summary=(item.summary||item.caption||'').trim();
     const displayTitle=item.language==='ko' ? title.replace(/ 자전거 여행$/,'\n자전거 여행') : title;
     const displaySummary=item.language==='ko' ? summary.replace(/ 자전거 여행$/,'\n자전거 여행') : summary;
-    const showTitle=title && title!==summary;
-    if(!showTitle && !displaySummary)return '';
+    const showSummary=displaySummary && displaySummary!==displayTitle;
+    if(!displayTitle && !displaySummary)return '';
     return `<div class="gallery-copy">
-      ${showTitle?`<h3 class="gallery-copy-title">${escapeHtml(displayTitle)}</h3>`:''}
-      ${displaySummary?`<p class="gallery-copy-summary">${escapeHtml(displaySummary)}</p>`:''}
+      ${displayTitle?`<h3 class="gallery-copy-title">${escapeHtml(displayTitle)}</h3>`:''}
+      ${showSummary?`<p class="gallery-copy-summary">${escapeHtml(displaySummary)}</p>`:''}
     </div>`;
   }
   
@@ -2814,9 +2850,6 @@ async function loadLivingWordItems(){
 loadLivingWordItems();
 
 async function loadGalleryItems(){
-  galleryItems=normalizeGalleryItems(SUPABASE_STORAGE_GALLERY_ITEMS);
-  renderGallery();
-  return;
   if(!supabaseClient){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
     renderGallery();
@@ -2829,20 +2862,7 @@ async function loadGalleryItems(){
       .eq('is_visible',true)
       .order('created_at',{ascending:false});
     if(error)throw error;
-      if(!data || !data.length){
-        galleryItems=normalizeGalleryItems(SUPABASE_STORAGE_GALLERY_ITEMS);
-        renderGallery();
-        return;
-      }
-      galleryItems=normalizeGalleryItems((data||[]).map(item=>({
-        id:'g-'+String(item.id),
-        language:item.language==='ko'?'ko':'en',
-        title:(item.title||'').trim(),
-        src:(item.image_url||'').trim(),
-        thumbSrc:getGalleryThumbnailSrc((item.image_url||'').trim()),
-        caption:(item.caption||item.title||'Untitled Photo').trim(),
-        summary:(item.caption||item.title||'Untitled Photo').trim()
-      })));
+      galleryItems=mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,data||[]);
       renderGallery();
   }catch(_error){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
