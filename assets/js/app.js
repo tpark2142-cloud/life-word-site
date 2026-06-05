@@ -1640,8 +1640,54 @@ const DEFAULT_GALLERY_ITEMS=[
     caption:'에드먼턴, 익숙한 집 같은 풍경'
   }
 ];
+const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/storage/v1/object/public/gallery';
+const SUPABASE_GALLERY_FILE_STEMS=[
+  '1',
+  '1765669348028',
+  '20210820_152827-01',
+  '20220813_125953',
+  '20230716_171655',
+  'c',
+  'DSC03624',
+  'DSC04230',
+  'DSC04349',
+  'FB_IMG_1713760844282',
+  'IMG_1462',
+  'IMG_8519',
+  'IMG_8523',
+  'n'
+];
+
+function getGalleryStorageItems(){
+  return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
+    const number=index+1;
+    const thumbSrc=`${SUPABASE_GALLERY_BUCKET_BASE}/thumbnails/${encodeURIComponent(stem)}-thumb.webp`;
+    const fullSrc=`${SUPABASE_GALLERY_BUCKET_BASE}/regular/${encodeURIComponent(stem)}-regular.webp`;
+    return [
+      {
+        id:`sg-${number}-en`,
+        language:'en',
+        src:fullSrc,
+        thumbSrc,
+        title:`Gallery Photo ${number}`,
+        summary:'A shared moment from Life Moment Gallery.',
+        caption:`Gallery Photo ${number}`
+      },
+      {
+        id:`sg-${number}-ko`,
+        language:'ko',
+        src:fullSrc,
+        thumbSrc,
+        title:`갤러리 사진 ${number}`,
+        summary:'Life Moment 갤러리에 함께 나누는 사진입니다.',
+        caption:`갤러리 사진 ${number}`
+      }
+    ];
+  });
+}
+const SUPABASE_STORAGE_GALLERY_ITEMS=getGalleryStorageItems();
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
-let galleryItems=loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS);
+let galleryItems=loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS);
 let journalEditMode=false;
 let galleryEditMode=false;
 function resizeImageFile(file){
@@ -2448,14 +2494,29 @@ function getLocalizedPhotoCount(count){
   return count+' photo'+(count!==1?'s':'');
 }
 
+function getGalleryThumbnailSrc(fullSrc){
+  const src=String(fullSrc||'').trim();
+  if(!src)return '';
+  if(src.includes('/regular/') && src.includes('-regular.webp')){
+    return src.replace('/regular/','/thumbnails/').replace('-regular.webp','-thumb.webp');
+  }
+  return src;
+}
+
 function normalizeGalleryItems(items){
-    return (Array.isArray(items) ? items : []).map(item => ({
-      ...item,
-      language: item && item.language === 'ko' ? 'ko' : 'en',
-      title: (item && item.title ? String(item.title) : '').trim(),
-      summary: (item && (item.summary || item.caption) ? String(item.summary || item.caption) : '').trim(),
-      caption: (item && item.caption ? String(item.caption) : '').trim()
-    }));
+    return (Array.isArray(items) ? items : []).map(item => {
+      const fullSrc=String((item && (item.src || item.fullSrc || item.regularSrc || item.image_url)) || '').trim();
+      const thumbSrc=String((item && (item.thumbSrc || item.thumbnailSrc || item.thumbnail_url || item.thumb_url)) || getGalleryThumbnailSrc(fullSrc)).trim();
+      return {
+        ...item,
+        src:fullSrc,
+        thumbSrc:thumbSrc||fullSrc,
+        language: item && item.language === 'ko' ? 'ko' : 'en',
+        title: (item && item.title ? String(item.title) : '').trim(),
+        summary: (item && (item.summary || item.caption) ? String(item.summary || item.caption) : '').trim(),
+        caption: (item && item.caption ? String(item.caption) : '').trim()
+      };
+    });
   }
 
 function normalizeGuestbookEntries(items){
@@ -2489,12 +2550,17 @@ function renderGallery(){
     const visibleItems=galleryItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
     if(!grid)return;
     grid.classList.toggle('gallery-editing',galleryEditMode);
-    grid.innerHTML=visibleItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-      <a class="gallery-thumb" href="${escapeAttr(item.src)}" data-src="${escapeAttr(item.src)}" data-title="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" aria-label="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" onclick="return handleGalleryThumbClick(this,event)">
-        <img src="${escapeAttr(item.src)}" alt="${escapeAttr((item.title||item.summary||item.caption||'Gallery photo').trim())}" loading="lazy">
+    grid.innerHTML=visibleItems.map(item=>{
+      const fullSrc=(item.src||'').trim();
+      const thumbSrc=(item.thumbSrc||item.src||'').trim();
+      const label=(item.title||item.summary||item.caption||'Gallery photo').trim();
+      return `<div class="gallery-item" data-id="${escapeAttr(item.id)}">
+      <a class="gallery-thumb" href="${escapeAttr(fullSrc)}" data-src="${escapeAttr(fullSrc)}" data-title="${escapeAttr(label)}" aria-label="${escapeAttr(label)}" onclick="return handleGalleryThumbClick(this,event)">
+        <img src="${escapeAttr(thumbSrc)}" alt="${escapeAttr(label)}" loading="lazy">
       </a>
       ${buildGalleryCaptionHtml(item)}
-    </div>`).join('');
+    </div>`;
+    }).join('');
     grid.querySelectorAll('.gallery-thumb').forEach(btn=>{
       btn.addEventListener('click',event=>{
         handleGalleryThumbClick(btn,event);
@@ -2748,8 +2814,11 @@ async function loadLivingWordItems(){
 loadLivingWordItems();
 
 async function loadGalleryItems(){
+  galleryItems=normalizeGalleryItems(SUPABASE_STORAGE_GALLERY_ITEMS);
+  renderGallery();
+  return;
   if(!supabaseClient){
-    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS));
+    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
     renderGallery();
     return;
   }
@@ -2760,17 +2829,23 @@ async function loadGalleryItems(){
       .eq('is_visible',true)
       .order('created_at',{ascending:false});
     if(error)throw error;
+      if(!data || !data.length){
+        galleryItems=normalizeGalleryItems(SUPABASE_STORAGE_GALLERY_ITEMS);
+        renderGallery();
+        return;
+      }
       galleryItems=normalizeGalleryItems((data||[]).map(item=>({
         id:'g-'+String(item.id),
         language:item.language==='ko'?'ko':'en',
         title:(item.title||'').trim(),
         src:(item.image_url||'').trim(),
+        thumbSrc:getGalleryThumbnailSrc((item.image_url||'').trim()),
         caption:(item.caption||item.title||'Untitled Photo').trim(),
         summary:(item.caption||item.title||'Untitled Photo').trim()
       })));
       renderGallery();
   }catch(_error){
-    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,DEFAULT_GALLERY_ITEMS));
+    galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
     renderGallery();
   }
 }
