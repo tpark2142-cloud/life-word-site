@@ -1677,6 +1677,7 @@ function getGalleryStorageItems(){
     return [
       {
         id:`sg-${number}-en`,
+        stem,
         language:'en',
         src:fullSrc,
         thumbSrc,
@@ -1686,6 +1687,7 @@ function getGalleryStorageItems(){
       },
       {
         id:`sg-${number}-ko`,
+        stem,
         language:'ko',
         src:fullSrc,
         thumbSrc,
@@ -1697,22 +1699,37 @@ function getGalleryStorageItems(){
   });
 }
 const SUPABASE_STORAGE_GALLERY_ITEMS=getGalleryStorageItems();
+function getGalleryStemFromUrl(value){
+  const raw=String(value||'').trim();
+  if(!raw)return '';
+  let decoded=raw;
+  try{decoded=decodeURIComponent(raw);}catch(_error){}
+  const match=decoded.match(/(?:regular|thumbnails)\/([^/?#]+?)(?:-(?:regular|thumb))?\.webp(?:[?#].*)?$/i);
+  if(match)return match[1];
+  const fileMatch=decoded.match(/([^\/\\?#]+?)(?:-(?:regular|thumb))?\.webp(?:[?#].*)?$/i);
+  return fileMatch?fileMatch[1]:raw.replace(/^.*[\/\\]/,'').replace(/-(?:regular|thumb)\.webp$/i,'').replace(/\.webp$/i,'');
+}
 function mergeGalleryCaptionsFromRows(storageItems, rows){
   const captionsByLang=new Map();
+  const captionsByStem=new Map();
   (Array.isArray(rows)?rows:[]).forEach(row=>{
     const lang=row && row.language==='ko' ? 'ko' : 'en';
     if(!captionsByLang.has(lang))captionsByLang.set(lang,[]);
     const title=(row.title||'').trim();
     const caption=(row.caption||row.title||'').trim();
+    const stem=getGalleryStemFromUrl(row && row.image_url);
     if(caption||title){
-      captionsByLang.get(lang).push({title,caption,summary:caption||title});
+      const next={title,caption,summary:caption||title,stem};
+      if(stem)captionsByStem.set(`${lang}:${stem}`,next);
+      captionsByLang.get(lang).push(next);
     }
   });
   const seen={en:0,ko:0};
   return normalizeGalleryItems(storageItems).map(item=>{
     const lang=item.language==='ko'?'ko':'en';
-    const next=(captionsByLang.get(lang)||[])[seen[lang]];
-    seen[lang]+=1;
+    const stem=item.stem||getGalleryStemFromUrl(item.src);
+    const next=captionsByStem.get(`${lang}:${stem}`)||(captionsByLang.get(lang)||[])[seen[lang]];
+    if(!captionsByStem.get(`${lang}:${stem}`))seen[lang]+=1;
     if(!next)return item;
     return {
       ...item,
