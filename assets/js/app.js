@@ -1644,7 +1644,6 @@ const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/sto
 const SUPABASE_GALLERY_FILE_STEMS=[
   '1',
   '1765669348028',
-  '2',
   '20210820_152827-01',
   '20220813_125953',
   '20240705_123854',
