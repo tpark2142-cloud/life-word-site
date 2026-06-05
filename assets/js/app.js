@@ -1656,6 +1656,9 @@ const SUPABASE_GALLERY_FILE_STEMS=[
   'n'
 ];
 const LOCAL_GALLERY_FALLBACK_STEMS=new Set([]);
+const HIDDEN_GALLERY_FILE_STEMS=new Set([
+  'DSC04230'
+]);
 
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
@@ -1743,6 +1746,7 @@ function getGalleryItemsFromRows(rows){
       const imageUrl=String((row && row.image_url) || '').trim();
       const stem=getGalleryStemFromUrl(imageUrl);
       if(!stem && !imageUrl)return null;
+      if(stem && HIDDEN_GALLERY_FILE_STEMS.has(stem))return null;
       const storageItem=getStorageGalleryItem(stem,lang);
       const title=(row.title||'').trim();
       const caption=(row.caption||row.title||'').trim();
@@ -1768,7 +1772,10 @@ function mergeGalleryRowsWithStorage(rows){
   const rowItems=getGalleryItemsFromRows(rows);
   const used=new Set(rowItems.map(item=>`${item.language}:${item.stem||getGalleryStemFromUrl(item.src)}`));
   const storageItems=mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,rows)
-    .filter(item=>!used.has(`${item.language}:${item.stem||getGalleryStemFromUrl(item.src)}`));
+    .filter(item=>{
+      const stem=item.stem||getGalleryStemFromUrl(item.src);
+      return !HIDDEN_GALLERY_FILE_STEMS.has(stem) && !used.has(`${item.language}:${stem}`);
+    });
   return normalizeGalleryItems([...rowItems,...storageItems]);
 }
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
