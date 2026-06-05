@@ -1764,6 +1764,13 @@ function getGalleryItemsFromRows(rows){
     })
     .filter(Boolean));
 }
+function mergeGalleryRowsWithStorage(rows){
+  const rowItems=getGalleryItemsFromRows(rows);
+  const used=new Set(rowItems.map(item=>`${item.language}:${item.stem||getGalleryStemFromUrl(item.src)}`));
+  const storageItems=mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,rows)
+    .filter(item=>!used.has(`${item.language}:${item.stem||getGalleryStemFromUrl(item.src)}`));
+  return normalizeGalleryItems([...rowItems,...storageItems]);
+}
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
 let galleryItems=loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS);
 let journalEditMode=false;
@@ -2913,8 +2920,7 @@ async function loadGalleryItems(){
       .eq('is_visible',true)
       .order('created_at',{ascending:false});
     if(error)throw error;
-      const itemsFromRows=getGalleryItemsFromRows(data||[]);
-      galleryItems=itemsFromRows.length ? itemsFromRows : mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,data||[]);
+      galleryItems=mergeGalleryRowsWithStorage(data||[]);
       renderGallery();
   }catch(_error){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
