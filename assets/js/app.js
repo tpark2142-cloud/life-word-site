@@ -1642,27 +1642,20 @@ const DEFAULT_GALLERY_ITEMS=[
 ];
 const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/storage/v1/object/public/gallery';
 const SUPABASE_GALLERY_FILE_STEMS=[
+  '1',
   '2',
+  '20210820_152827-01',
   '20220813_125953',
-  '20230716_171655',
   '20240705_123854',
   'b',
   'c',
-  'DSC03624',
-  'DSC04230',
   'DSC04349',
   'FB_IMG_1713760844282',
   'IMG_1462',
   'IMG_8519',
-  'IMG_8523',
   'n'
 ];
-const LOCAL_GALLERY_FALLBACK_STEMS=new Set([
-  '20230716_171655',
-  'DSC03624',
-  'IMG_1462',
-  'IMG_8523'
-]);
+const LOCAL_GALLERY_FALLBACK_STEMS=new Set([]);
 
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
@@ -1738,6 +1731,38 @@ function mergeGalleryCaptionsFromRows(storageItems, rows){
       summary:next.summary||next.caption||item.summary
     };
   });
+}
+function getStorageGalleryItem(stem, lang){
+  const normalizedLang=lang==='ko'?'ko':'en';
+  return SUPABASE_STORAGE_GALLERY_ITEMS.find(item=>item.stem===stem && item.language===normalizedLang) || null;
+}
+function getGalleryItemsFromRows(rows){
+  return normalizeGalleryItems((Array.isArray(rows)?rows:[])
+    .map(row=>{
+      const lang=row && row.language==='ko' ? 'ko' : 'en';
+      const imageUrl=String((row && row.image_url) || '').trim();
+      const stem=getGalleryStemFromUrl(imageUrl);
+      if(!stem && !imageUrl)return null;
+      const storageItem=getStorageGalleryItem(stem,lang);
+      const title=(row.title||'').trim();
+      const caption=(row.caption||row.title||'').trim();
+      const src=(storageItem && storageItem.src) || imageUrl;
+      const thumbSrc=(storageItem && storageItem.thumbSrc) || getGalleryThumbnailSrc(src) || src;
+      const defaultTitle=lang==='ko'?'갤러리 사진':'Gallery Photo';
+      const defaultSummary=lang==='ko'?'Life Moment 갤러리에 함께 나누는 사진입니다.':'A shared moment from Life Moment Gallery.';
+      return {
+        id:`db-gallery-${row.id}`,
+        stem,
+        language:lang,
+        src,
+        thumbSrc,
+        title:title||caption||defaultTitle,
+        summary:caption||title||defaultSummary,
+        caption:caption||title||defaultTitle,
+        createdAt:row.created_at||''
+      };
+    })
+    .filter(Boolean));
 }
 let journalItems=loadStoredItems(STORAGE_JOURNAL,[]);
 let galleryItems=loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS);
@@ -2609,7 +2634,7 @@ function renderGallery(){
       const label=(item.title||item.summary||item.caption||'Gallery photo').trim();
       return `<div class="gallery-item" data-id="${escapeAttr(item.id)}">
       <a class="gallery-thumb" href="${escapeAttr(fullSrc)}" data-src="${escapeAttr(fullSrc)}" data-title="${escapeAttr(label)}" aria-label="${escapeAttr(label)}" onclick="return handleGalleryThumbClick(this,event)">
-        <img src="${escapeAttr(thumbSrc)}" alt="${escapeAttr(label)}" loading="lazy">
+        <img src="${escapeAttr(thumbSrc)}" data-fallback-src="${escapeAttr(fullSrc)}" alt="${escapeAttr(label)}" loading="lazy" onerror="handleGalleryImageError(this)">
       </a>
       ${buildGalleryCaptionHtml(item)}
     </div>`;
@@ -2628,6 +2653,15 @@ function renderGallery(){
     checkGalleryEmpty(visibleItems.length);
     updateGalleryEditButton();
 }
+
+window.handleGalleryImageError=function(img){
+  if(!img)return;
+  const fallback=img.dataset ? (img.dataset.fallbackSrc||'') : '';
+  if(fallback && !img.dataset.usedFallback){
+    img.dataset.usedFallback='true';
+    img.src=fallback;
+  }
+};
 
 function updateGalleryCount(countOverride){
   const el=document.getElementById('gallery-count');
@@ -2879,7 +2913,8 @@ async function loadGalleryItems(){
       .eq('is_visible',true)
       .order('created_at',{ascending:false});
     if(error)throw error;
-      galleryItems=mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,data||[]);
+      const itemsFromRows=getGalleryItemsFromRows(data||[]);
+      galleryItems=itemsFromRows.length ? itemsFromRows : mergeGalleryCaptionsFromRows(SUPABASE_STORAGE_GALLERY_ITEMS,data||[]);
       renderGallery();
   }catch(_error){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
