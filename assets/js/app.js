@@ -1642,11 +1642,11 @@ const DEFAULT_GALLERY_ITEMS=[
 ];
 const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/storage/v1/object/public/gallery';
 const SUPABASE_GALLERY_FILE_STEMS=[
-  '1',
-  '1765669348028',
-  '20210820_152827-01',
+  '2',
   '20220813_125953',
   '20230716_171655',
+  '20240705_123854',
+  'b',
   'c',
   'DSC03624',
   'DSC04230',
