@@ -1644,6 +1644,7 @@ const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/sto
 const SUPABASE_GALLERY_FILE_STEMS=[
   '1',
   '1765669348028',
+  '2',
   '20210820_152827-01',
   '20220813_125953',
   '20240705_123854',
@@ -1655,11 +1656,16 @@ const SUPABASE_GALLERY_FILE_STEMS=[
 ];
 const LOCAL_GALLERY_FALLBACK_STEMS=new Set([]);
 const HIDDEN_GALLERY_FILE_STEMS=new Set([
-  '2',
   'DSC04230',
   'DSC04349',
   'n'
 ]);
+const GALLERY_CAPTION_OVERRIDES={
+  '2':{
+    en:'At the Leaning Tower of Pisa, Italy',
+    ko:'이태리 피사 사원에서'
+  }
+};
 const HIDDEN_GALLERY_TEXT_PATTERNS=[
   '리스본',
   'Lisbon',
@@ -1671,6 +1677,7 @@ const HIDDEN_GALLERY_TEXT_PATTERNS=[
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
     const number=index+1;
+    const override=GALLERY_CAPTION_OVERRIDES[stem]||{};
     const hasLocalFallback=LOCAL_GALLERY_FALLBACK_STEMS.has(stem);
     const thumbSrc=hasLocalFallback
       ? `assets/img/gallery/thumbnails/${stem}-thumb.webp`
@@ -1685,9 +1692,9 @@ function getGalleryStorageItems(){
         language:'en',
         src:fullSrc,
         thumbSrc,
-        title:`Gallery Photo ${number}`,
-        summary:'A shared moment from Life Moment Gallery.',
-        caption:`Gallery Photo ${number}`
+        title:override.en||`Gallery Photo ${number}`,
+        summary:override.en||'A shared moment from Life Moment Gallery.',
+        caption:override.en||`Gallery Photo ${number}`
       },
       {
         id:`sg-${number}-ko`,
@@ -1695,9 +1702,9 @@ function getGalleryStorageItems(){
         language:'ko',
         src:fullSrc,
         thumbSrc,
-        title:`갤러리 사진 ${number}`,
-        summary:'Life Moment 갤러리에 함께 나누는 사진입니다.',
-        caption:`갤러리 사진 ${number}`
+        title:override.ko||`갤러리 사진 ${number}`,
+        summary:override.ko||'Life Moment 갤러리에 함께 나누는 사진입니다.',
+        caption:override.ko||`갤러리 사진 ${number}`
       }
     ];
   });
@@ -1748,6 +1755,11 @@ function getStorageGalleryItem(stem, lang){
   const normalizedLang=lang==='ko'?'ko':'en';
   return SUPABASE_STORAGE_GALLERY_ITEMS.find(item=>item.stem===stem && item.language===normalizedLang) || null;
 }
+function getGalleryCaptionOverride(stem, lang){
+  const override=GALLERY_CAPTION_OVERRIDES[stem||''];
+  if(!override)return '';
+  return lang==='ko' ? (override.ko||'') : (override.en||'');
+}
 function isHiddenGalleryText(title,caption){
   const text=`${title||''} ${caption||''}`;
   return HIDDEN_GALLERY_TEXT_PATTERNS.some(pattern=>text.includes(pattern));
@@ -1763,7 +1775,8 @@ function getGalleryItemsFromRows(rows){
       const storageItem=getStorageGalleryItem(stem,lang);
       const title=(row.title||'').trim();
       const caption=(row.caption||row.title||'').trim();
-      if(isHiddenGalleryText(title,caption))return null;
+      const overrideCaption=getGalleryCaptionOverride(stem,lang);
+      if(!overrideCaption && isHiddenGalleryText(title,caption))return null;
       const src=(storageItem && storageItem.src) || imageUrl;
       const thumbSrc=(storageItem && storageItem.thumbSrc) || getGalleryThumbnailSrc(src) || src;
       const defaultTitle=lang==='ko'?'갤러리 사진':'Gallery Photo';
@@ -1774,9 +1787,9 @@ function getGalleryItemsFromRows(rows){
         language:lang,
         src,
         thumbSrc,
-        title:title||caption||defaultTitle,
-        summary:caption||title||defaultSummary,
-        caption:caption||title||defaultTitle,
+        title:overrideCaption||title||caption||defaultTitle,
+        summary:overrideCaption||caption||title||defaultSummary,
+        caption:overrideCaption||caption||title||defaultTitle,
         createdAt:row.created_at||''
       };
     })
