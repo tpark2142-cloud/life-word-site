@@ -3,7 +3,6 @@
   const POSITION_KEY='lifeword.langSwitcherPosition.v1';
   const DRAG_THRESHOLD=6;
   let suppressClicksUntil=0;
-  let popupRefreshTimer=null;
 
   function normalizeLanguage(value){
     return value === 'ko' ? 'ko' : 'en';
@@ -190,23 +189,6 @@
 
   window.getSiteLanguage = getSiteLanguage;
   window.setSiteLanguage = setSiteLanguage;
-
-  window.addEventListener('lifeword:languagechange', (event) => {
-    if(!event?.detail?.fromUser){
-      return;
-    }
-    const isHomepage = !!document.querySelector('.votd-band') && !!document.getElementById('modal-overlay');
-    if(!isHomepage || typeof window.openTodayMemoryVersePopup !== 'function'){
-      return;
-    }
-    if(popupRefreshTimer){
-      window.clearTimeout(popupRefreshTimer);
-    }
-    popupRefreshTimer = window.setTimeout(() => {
-      window.openTodayMemoryVersePopup(true);
-      popupRefreshTimer = null;
-    }, 180);
-  });
 
   document.addEventListener('DOMContentLoaded', () => {
     bindButtons();
