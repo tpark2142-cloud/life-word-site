@@ -1651,14 +1651,14 @@ const SUPABASE_GALLERY_FILE_STEMS=[
   'c',
   'FB_IMG_1713760844282',
   'IMG_1462',
-  'IMG_8519',
-  'n'
+  'IMG_8519'
 ];
 const LOCAL_GALLERY_FALLBACK_STEMS=new Set([]);
 const HIDDEN_GALLERY_FILE_STEMS=new Set([
   '2',
   'DSC04230',
-  'DSC04349'
+  'DSC04349',
+  'n'
 ]);
 const HIDDEN_GALLERY_TEXT_PATTERNS=[
   '리스본',
