@@ -1663,6 +1663,7 @@ const HIDDEN_GALLERY_FILE_STEMS=new Set([
 const HIDDEN_GALLERY_TEXT_PATTERNS=[
   '알래스카 키나이',
   '리스본',
+  'Lisbon',
   'Praça',
   'Praca',
   'Commerce Square'
@@ -1722,6 +1723,7 @@ function mergeGalleryCaptionsFromRows(storageItems, rows){
     const title=(row.title||'').trim();
     const caption=(row.caption||row.title||'').trim();
     const stem=getGalleryStemFromUrl(row && row.image_url);
+    if((stem && HIDDEN_GALLERY_FILE_STEMS.has(stem)) || isHiddenGalleryText(title,caption))return;
     if(caption||title){
       const next={title,caption,summary:caption||title,stem};
       if(stem)captionsByStem.set(`${lang}:${stem}`,next);
