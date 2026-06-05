@@ -1649,7 +1649,6 @@ const SUPABASE_GALLERY_FILE_STEMS=[
   '20240705_123854',
   'b',
   'c',
-  'DSC04349',
   'FB_IMG_1713760844282',
   'IMG_1462',
   'IMG_8519',
@@ -1657,8 +1656,16 @@ const SUPABASE_GALLERY_FILE_STEMS=[
 ];
 const LOCAL_GALLERY_FALLBACK_STEMS=new Set([]);
 const HIDDEN_GALLERY_FILE_STEMS=new Set([
-  'DSC04230'
+  'DSC04230',
+  'DSC04349'
 ]);
+const HIDDEN_GALLERY_TEXT_PATTERNS=[
+  '알래스카 키나이',
+  '리스본',
+  'Praça',
+  'Praca',
+  'Commerce Square'
+];
 
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
@@ -1739,6 +1746,10 @@ function getStorageGalleryItem(stem, lang){
   const normalizedLang=lang==='ko'?'ko':'en';
   return SUPABASE_STORAGE_GALLERY_ITEMS.find(item=>item.stem===stem && item.language===normalizedLang) || null;
 }
+function isHiddenGalleryText(title,caption){
+  const text=`${title||''} ${caption||''}`;
+  return HIDDEN_GALLERY_TEXT_PATTERNS.some(pattern=>text.includes(pattern));
+}
 function getGalleryItemsFromRows(rows){
   return normalizeGalleryItems((Array.isArray(rows)?rows:[])
     .map(row=>{
@@ -1750,6 +1761,7 @@ function getGalleryItemsFromRows(rows){
       const storageItem=getStorageGalleryItem(stem,lang);
       const title=(row.title||'').trim();
       const caption=(row.caption||row.title||'').trim();
+      if(isHiddenGalleryText(title,caption))return null;
       const src=(storageItem && storageItem.src) || imageUrl;
       const thumbSrc=(storageItem && storageItem.thumbSrc) || getGalleryThumbnailSrc(src) || src;
       const defaultTitle=lang==='ko'?'갤러리 사진':'Gallery Photo';
