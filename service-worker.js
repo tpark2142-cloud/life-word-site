@@ -7,7 +7,7 @@ self.addEventListener('install', event => {
       './prayer.html',
       './comfort.html',
       './manifest.json',
-      './assets/css/app.css?v=20260605a',
+      './assets/css/app.css?v=20260605b',
       './assets/js/app.js?v=20260605v',
       './assets/js/lang.js?v=20260604a',
       './assets/js/data.js?v=20260602a',
