@@ -1374,6 +1374,7 @@ audio.living-word-media::-webkit-media-controls-enclosure{
 #ai-summary .ai-tool-name{
   font-family:'Cinzel',serif;
   font-size:11px;
+  font-weight:700;
   letter-spacing:.08em;
   color:var(--deep);
   text-decoration:none;
