@@ -1661,22 +1661,12 @@ const HIDDEN_GALLERY_FILE_STEMS=new Set([
   'n'
 ]);
 const GALLERY_CAPTION_OVERRIDES={
-  '2':{
-    en:'Portugal',
-    ko:'포르투칼'
-  },
   'IMG_1462':{
     en:'At the Leaning Tower of Pisa, Italy',
     ko:'이태리 피사 사원에서'
   }
 };
-const HIDDEN_GALLERY_TEXT_PATTERNS=[
-  '리스본',
-  'Lisbon',
-  'Praça',
-  'Praca',
-  'Commerce Square'
-];
+const HIDDEN_GALLERY_TEXT_PATTERNS=[];
 
 function getGalleryStorageItems(){
   return SUPABASE_GALLERY_FILE_STEMS.flatMap((stem,index)=>{
