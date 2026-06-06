@@ -1660,12 +1660,7 @@ const HIDDEN_GALLERY_FILE_STEMS=new Set([
   'DSC04349',
   'n'
 ]);
-const GALLERY_CAPTION_OVERRIDES={
-  'IMG_1462':{
-    en:'At the Leaning Tower of Pisa, Italy',
-    ko:'이태리 피사 사원에서'
-  }
-};
+const GALLERY_CAPTION_OVERRIDES={};
 const HIDDEN_GALLERY_TEXT_PATTERNS=[];
 
 function getGalleryStorageItems(){
