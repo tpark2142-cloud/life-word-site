@@ -1091,6 +1091,16 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-workspace-kicker{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 .ai-workspace-prompt p:last-child{font-size:17px;line-height:1.8;color:var(--deep)}
 .ai-workspace-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+#ai-summary .ai-hub-panel{
+  background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);
+  border:1px solid rgba(184,147,90,.28);
+  margin-bottom:24px;
+}
+#ai-summary .ai-hub-label{color:var(--gold)}
+#ai-summary .ai-mini-chip{color:var(--deep);border-color:rgba(184,147,90,.34);background:#fff}
+#ai-summary .ai-mini-chip:hover{background:var(--gold-pale);color:var(--gold)}
+#ai-summary .ai-workspace-box{margin-top:18px}
+#ai-summary .ai-workspace-links .ai-submit{padding:11px 16px;font-size:10px}
 .ai-site-matches{display:grid;gap:14px}
 .ai-match-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px}
 .ai-match-card h4{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--deep);margin-bottom:6px}

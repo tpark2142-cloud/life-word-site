@@ -1182,6 +1182,32 @@ function runAiWorkspaceSearch(){
     .sort((a,b)=>b.score-a.score)
     .slice(0,3);
 
+  const workspaceResult=document.getElementById('ai-workspace-result');
+  const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
+  const preparedQuestion=lang==='ko'
+    ? '다음 질문에 대해 이해하기 쉽게 답해 주세요. 핵심 내용을 짧게 정리하고, 필요하면 성경적 관점에서 생각해 볼 질문도 제안해 주세요: "'+query+'"'
+    : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest a few thoughtful follow-up questions when helpful: "'+query+'"';
+  const encodedPrompt=encodeURIComponent(preparedQuestion);
+  if(workspaceResult){
+    workspaceResult.innerHTML=''
+      +'<div class="ai-workspace-box">'
+      +'<h3 class="ai-workspace-title">'+(lang==='ko'?'정리된 질문':'Prepared Question')+'</h3>'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Copy this improved question or open it with an AI tool. Your homepage stays open here.')+'</p>'
+      +'<div class="ai-workspace-prompt">'
+      +'<div class="ai-workspace-kicker">'+(lang==='ko'?'질문 문장':'Question Prompt')+'</div>'
+      +'<p>'+escapeHtmlAi(preparedQuestion)+'</p>'
+      +'</div>'
+      +'<div class="ai-workspace-links">'
+      +'<button class="ai-submit" type="button" onclick="copyAiPreparedQuestion(\''+jsEscape(preparedQuestion)+'\')">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
+      +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
+      +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
+      +'<a class="ai-submit" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Gemini</a>'
+      +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
+      +'</div>'
+      +'<div class="ai-site-matches" id="ai-site-matches"></div>'
+      +'</div>';
+  }
+
   const title=document.getElementById('ai-workspace-title');
   const copy=document.getElementById('ai-workspace-copy');
   const promptText=document.getElementById('ai-workspace-prompt-text');
@@ -1252,6 +1278,14 @@ function escapeHtmlAi(value){
     .replace(/>/g,'&gt;')
     .replace(/"/g,'&quot;')
     .replace(/'/g,'&#39;');
+}
+function copyAiPreparedQuestion(text){
+  const value=String(text||'');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(value).catch(()=>window.prompt('Copy this question:',value));
+    return;
+  }
+  window.prompt('Copy this question:',value);
 }
 function openTopicPanelByLabel(label){
   const topicsRoot=document.getElementById('topics');
