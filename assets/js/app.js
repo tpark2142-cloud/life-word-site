@@ -1140,6 +1140,11 @@ const AI_WORKSPACE_TOOLS={
     name:'Brave Search',
     summary:'Best for privacy-minded searching while still helping people discover key ideas and questions.',
     promptLead:'Explore this question with a privacy-friendly search mindset and point me to the main ideas:'
+  },
+  claude:{
+    name:'Claude',
+    summary:'Best for thoughtful writing, longer summaries, gentle wording, and careful idea organization.',
+    promptLead:'Help me think through this question carefully and organize the answer in a clear, gentle way:'
   }
 };
 let activeAiWorkspaceTool='chatgpt';

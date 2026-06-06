@@ -1343,6 +1343,41 @@ audio.living-word-media::-webkit-media-controls-enclosure{
   flex-direction: column;
   gap: 12px;
 }
+#ai-summary .ai-tool-list{margin-top:18px}
+#ai-summary .ai-tool-list>summary{margin-bottom:18px}
+#ai-summary .ai-result-verses{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  align-items:stretch;
+}
+#ai-summary .ai-verse-card{
+  margin:0 !important;
+  min-height:164px;
+  padding:18px 16px;
+  border:1px solid rgba(184,147,90,.24);
+  border-radius:8px;
+  background:linear-gradient(180deg,#fff 0%,#fcf6eb 100%);
+  box-shadow:0 10px 22px rgba(28,46,36,.05);
+}
+#ai-summary .ai-verse-topic{margin-bottom:10px;line-height:1.25}
+#ai-summary .ai-tool-name{
+  font-family:'Cinzel',serif;
+  font-size:11px;
+  letter-spacing:.08em;
+  color:var(--deep);
+  text-decoration:none;
+}
+#ai-summary .ai-tool-name:hover{color:var(--gold)}
+#ai-summary .ai-tool-desc{font-size:14.5px;line-height:1.58;color:var(--text-soft)}
+@media(max-width:900px){
+  #ai-summary .ai-result-verses{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  #ai-summary .ai-card-body{padding:22px 18px}
+  #ai-summary .ai-result-verses{grid-template-columns:1fr}
+  #ai-summary .ai-verse-card{min-height:auto}
+}
 .ai-rv {
   border-left: 2px solid var(--gold);
   padding: 12px 16px;
