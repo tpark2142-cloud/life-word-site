@@ -62,6 +62,8 @@
       +'.pwa-install-btn{border:none;border-radius:999px;padding:10px 16px;font-family:Cinzel,serif;font-size:11px;letter-spacing:.12em;cursor:pointer}'
       +'.pwa-install-btn.primary{background:#d4aa70;color:#102117;font-weight:700}'
       +'.pwa-install-btn.secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}'
+      +'@media (max-width:719px){.pwa-install-banner{left:auto;right:14px;bottom:92px;width:min(310px,calc(100vw - 142px));padding:13px 14px 12px;border-radius:16px}.pwa-install-banner h3{font-size:12px}.pwa-install-banner p{font-size:14px;line-height:1.38}.pwa-install-actions{gap:8px;margin-top:10px}.pwa-install-btn{padding:9px 12px;font-size:9.8px}}'
+      +'@media (max-width:420px){.pwa-install-banner{right:10px;bottom:88px;width:min(280px,calc(100vw - 128px))}}'
       +'@media (min-width:720px){.pwa-install-banner{left:auto;right:20px;bottom:20px;max-width:400px}}';
     document.head.appendChild(style);
   }
