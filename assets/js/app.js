@@ -1203,6 +1203,7 @@ function runAiWorkspaceSearch(){
       +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
       +'<a class="ai-submit" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Gemini</a>'
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
+      +'<a class="ai-submit" href="https://grok.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Grok</a>'
       +'</div>'
       +'<div class="ai-site-matches" id="ai-site-matches"></div>'
       +'</div>';
