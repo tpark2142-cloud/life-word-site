@@ -1205,7 +1205,6 @@ function runAiWorkspaceSearch(){
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
       +'<a class="ai-submit" href="https://grok.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Grok</a>'
       +'</div>'
-      +'<div class="ai-site-matches" id="ai-site-matches"></div>'
       +'</div>';
   }
 
@@ -1213,7 +1212,7 @@ function runAiWorkspaceSearch(){
   const copy=document.getElementById('ai-workspace-copy');
   const promptText=document.getElementById('ai-workspace-prompt-text');
   const links=document.getElementById('ai-workspace-links');
-  const siteMatches=document.getElementById('ai-site-matches');
+  const siteMatches=null;
 
   if(title)title.textContent=tool.name+' Workspace';
   if(copy)copy.textContent=tool.summary+' This keeps the visitor inside your homepage and sends them back into your own original content.';
