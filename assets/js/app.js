@@ -1197,13 +1197,14 @@ function runAiWorkspaceSearch(){
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'질문 문장':'Question Prompt')+'</div>'
       +'<p>'+escapeHtmlAi(preparedQuestion)+'</p>'
       +'</div>'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 먼저 질문을 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, copy the prepared question first, then paste it after opening.')+'</p>'
       +'<div class="ai-workspace-links">'
       +'<button class="ai-submit" type="button" onclick="copyAiPreparedQuestion(\''+jsEscape(preparedQuestion)+'\')">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
       +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
       +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
-      +'<a class="ai-submit" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Gemini</a>'
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
-      +'<a class="ai-submit" href="https://grok.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Grok</a>'
+      +'<a class="ai-submit" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
+      +'<a class="ai-submit" href="https://grok.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Grok (붙여넣기)':'Grok (Paste)')+'</a>'
       +'</div>'
       +'</div>';
   }
