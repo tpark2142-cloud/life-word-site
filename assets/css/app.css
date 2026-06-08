@@ -1375,20 +1375,24 @@ audio.living-word-media::-webkit-media-controls-enclosure{
 #ai-summary .ai-tool-list>summary{margin-bottom:18px}
 #ai-summary .ai-result-verses{
   display:grid !important;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
+  grid-template-columns:1fr;
+  gap:10px;
   align-items:stretch;
 }
 #ai-summary .ai-verse-card{
   margin:0 !important;
-  min-height:126px;
-  padding:16px 15px;
+  min-height:auto;
+  padding:0;
   border:1px solid rgba(184,147,90,.24);
   border-radius:8px;
   background:linear-gradient(180deg,#fff 0%,#fcf6eb 100%);
   box-shadow:0 10px 22px rgba(28,46,36,.05);
+  overflow:hidden;
 }
-#ai-summary .ai-verse-topic{margin-bottom:10px;line-height:1.25}
+#ai-summary .ai-verse-topic{display:flex;align-items:center;gap:10px;margin:0;line-height:1.25;padding:15px;cursor:pointer;list-style:none}
+#ai-summary .ai-verse-topic::-webkit-details-marker{display:none}
+#ai-summary .ai-verse-topic::before{content:'+';width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--gold-pale);color:var(--gold);font-family:Arial,sans-serif;font-size:16px;flex:0 0 auto}
+#ai-summary .ai-verse-card[open] .ai-verse-topic::before{content:'-'}
 #ai-summary .ai-tool-name{
   font-family:'Cinzel',serif;
   font-size:11px;
@@ -1398,9 +1402,12 @@ audio.living-word-media::-webkit-media-controls-enclosure{
   text-decoration:none;
 }
 #ai-summary .ai-tool-name:hover{color:var(--gold)}
-#ai-summary .ai-tool-desc{font-size:14.5px;line-height:1.58;color:var(--text-soft)}
+#ai-summary .ai-verse-detail{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border-top:1px solid rgba(184,147,90,.2);padding:13px 15px 15px 47px;background:#fffdfa}
+#ai-summary .ai-tool-desc{font-size:14.5px;line-height:1.58;color:var(--text-soft);margin:0}
+#ai-summary .ai-tool-open{display:inline-flex;align-items:center;justify-content:center;min-width:78px;min-height:36px;border-radius:8px;background:var(--gold);color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+#ai-summary .ai-tool-open:hover{background:var(--deep)}
 @media(max-width:900px){
-  #ai-summary .ai-result-verses{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #ai-summary .ai-result-verses{grid-template-columns:1fr}
   .ai-guide-steps{grid-template-columns:1fr}
 }
 @media(max-width:560px){
