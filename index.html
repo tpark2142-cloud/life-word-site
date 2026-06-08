@@ -33,7 +33,7 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260606k">
+<link rel="stylesheet" href="assets/css/app.css?v=20260606l">
 </head>
 <body>
 
@@ -893,47 +893,61 @@ gtag('config', 'G-2SJCBS84VD');
         </div>
       </div>
       <div class="ai-card-body">
-        <div class="ai-hub-panel">
-          <label class="ai-hub-label" id="ai-helper-label" for="ai-hub-query">Type your question, then prepare it for AI.</label>
-          <div class="ai-hub-search">
-            <input class="ai-hub-input" id="ai-hub-query" type="text" placeholder="Type your question here..." autocomplete="off">
-            <button class="ai-submit" id="ai-helper-button" type="button" onclick="runAiWorkspaceSearch()">Prepare Question</button>
-          </div>
-          <div class="ai-hub-chips" aria-label="AI question examples">
-            <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('What Bible verses can comfort someone who feels lonely?')">Lonely</button>
-            <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('How can I explain forgiveness from the Bible in simple words?')">Forgiveness</button>
-            <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('Help me prepare a short Thanksgiving prayer for church fellowship.')">Prayer</button>
-          </div>
-          <ol class="ai-guide-steps" aria-label="How to get better AI answers">
-            <li id="ai-guide-step-1">Ask one clear question.</li>
-            <li id="ai-guide-step-2">Add your purpose, audience, and language.</li>
-            <li id="ai-guide-step-3">Compare answers and check sources.</li>
-          </ol>
-          <p class="ai-hub-note" id="ai-helper-note">AI opens in a new tab. This homepage will stay open.</p>
-          <div class="ai-workspace-result" id="ai-workspace-result" aria-live="polite"></div>
+        <div class="ai-playground-grid">
+          <details class="ai-playground-window">
+            <summary class="ai-search-shell">
+              <span class="ai-search-placeholder">Search: questions, Bible help, learning, research...</span>
+              <span class="ai-search-button">AI Search</span>
+            </summary>
+            <div class="ai-window-body">
+              <label class="ai-hub-label" id="ai-helper-label" for="ai-hub-query">Type your question, then prepare it for AI.</label>
+              <div class="ai-hub-search">
+                <input class="ai-hub-input" id="ai-hub-query" type="text" placeholder="Type your question here..." autocomplete="off">
+                <button class="ai-submit" id="ai-helper-button" type="button" onclick="runAiWorkspaceSearch()">Prepare Question</button>
+              </div>
+              <div class="ai-hub-chips" aria-label="AI question examples">
+                <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('What Bible verses can comfort someone who feels lonely?')">Lonely</button>
+                <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('How can I explain forgiveness from the Bible in simple words?')">Forgiveness</button>
+                <button class="ai-mini-chip" type="button" onclick="fillAiWorkspace('Help me prepare a short Thanksgiving prayer for church fellowship.')">Prayer</button>
+              </div>
+              <ol class="ai-guide-steps" aria-label="How to get better AI answers">
+                <li id="ai-guide-step-1">Ask one clear question.</li>
+                <li id="ai-guide-step-2">Add your purpose, audience, and language.</li>
+                <li id="ai-guide-step-3">Compare answers and check sources.</li>
+              </ol>
+              <p class="ai-hub-note" id="ai-helper-note">AI opens in a new tab. This homepage will stay open.</p>
+              <div class="ai-workspace-result" id="ai-workspace-result" aria-live="polite"></div>
+              <div class="ai-result-label">AI Search Tools</div>
+              <div class="ai-result-verses">
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">1. ChatGPT Search</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for natural-language searching, quick summaries, and easy follow-up questions in one place.</p><a class="ai-tool-open" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">2. Perplexity</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Useful for research-style searching with clear source links and organized answers.</p><a class="ai-tool-open" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">3. Google Gemini</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Good for broad question-and-answer searching with quick summaries and practical next steps.</p><a class="ai-tool-open" href="open-gemini.html">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">4. Microsoft Copilot</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A helpful option if you prefer Microsoft tools and a familiar search layout.</p><a class="ai-tool-open" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">5. Brave Search / Ask Brave</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A privacy-focused option that combines AI-style answers with standard search results.</p><a class="ai-tool-open" href="https://search.brave.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">6. Claude</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for thoughtful writing, longer summaries, gentle wording, and careful idea organization.</p><a class="ai-tool-open" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">7. Grok</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for real-time questions, current topics, and quick idea exploration.</p><a class="ai-tool-open" href="https://grok.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">8. Genspark</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A multi-tool AI workspace that can combine chat, search, and content tools in one place.</p><a class="ai-tool-open" href="https://www.genspark.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">9. Felo AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A useful AI search option for fast summaries, source-based browsing, and multilingual research.</p><a class="ai-tool-open" href="https://felo.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+              </div>
+            </div>
+          </details>
+          <details class="ai-playground-window">
+            <summary class="ai-search-shell">
+              <span class="ai-search-placeholder">Create: music, images, design, voice, video...</span>
+              <span class="ai-search-button">Creative AI</span>
+            </summary>
+            <div class="ai-window-body">
+              <div class="ai-result-label">Creative AI Tools</div>
+              <div class="ai-result-verses">
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">10. Suno AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Music playground for creating song ideas from simple prompts.</p><a class="ai-tool-open" href="https://suno.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">11. Adobe Firefly</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Creative image and design generation for visual ideas.</p><a class="ai-tool-open" href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">12. Canva AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Easy design help for cards, posts, flyers, and simple visual projects.</p><a class="ai-tool-open" href="https://www.canva.com/ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">13. ElevenLabs</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Voice and text-to-speech playground for narration and audio tests.</p><a class="ai-tool-open" href="https://elevenlabs.io/text-to-speech" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">14. Runway</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Video and motion AI tools for creative experiments.</p><a class="ai-tool-open" href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+              </div>
+            </div>
+          </details>
         </div>
-        <details class="ai-result ai-tool-list" style="display:block;" open>
-          <summary class="ai-submit" style="list-style:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;">
-            Open AI Playground
-          </summary>
-          <div class="ai-result-label" style="margin-top:18px;">Top Picks</div>
-          <div class="ai-result-verses" style="display:block;padding-top:10px;">
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">1. ChatGPT Search</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for natural-language searching, quick summaries, and easy follow-up questions in one place.</p><a class="ai-tool-open" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">2. Perplexity</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Useful for research-style searching with clear source links and organized answers.</p><a class="ai-tool-open" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">3. Google Gemini</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Good for broad question-and-answer searching with quick summaries and practical next steps.</p><a class="ai-tool-open" href="open-gemini.html">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">4. Microsoft Copilot</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A helpful option if you prefer Microsoft tools and a familiar search layout.</p><a class="ai-tool-open" href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">5. Brave Search / Ask Brave</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A privacy-focused option that combines AI-style answers with standard search results.</p><a class="ai-tool-open" href="https://search.brave.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">6. Claude</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for thoughtful writing, longer summaries, gentle wording, and careful idea organization.</p><a class="ai-tool-open" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">7. Grok</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for real-time questions, current topics, and quick idea exploration.</p><a class="ai-tool-open" href="https://grok.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">8. Suno AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Music playground for creating song ideas from simple prompts.</p><a class="ai-tool-open" href="https://suno.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">9. Adobe Firefly</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Creative image and design generation for visual ideas.</p><a class="ai-tool-open" href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">10. Canva AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Easy design help for cards, posts, flyers, and simple visual projects.</p><a class="ai-tool-open" href="https://www.canva.com/ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">11. ElevenLabs</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Voice and text-to-speech playground for narration and audio tests.</p><a class="ai-tool-open" href="https://elevenlabs.io/text-to-speech" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">12. Runway</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Video and motion AI tools for creative experiments.</p><a class="ai-tool-open" href="https://runwayml.com/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">13. Genspark</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A multi-tool AI workspace that can combine chat, search, and content tools in one place.</p><a class="ai-tool-open" href="https://www.genspark.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-            <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">14. Felo AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A useful AI search option for fast summaries, source-based browsing, and multilingual research.</p><a class="ai-tool-open" href="https://felo.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-          </div>
-        </details>
       </div>
     </div>
   </div>
@@ -1156,8 +1170,8 @@ window.applyPageLanguage=function(lang){
         about:['우리의 비전','책 소개','장과 절만으로 말씀을 찾는 데서 멈추지 않고, 삶의 실제 경험 속에서 하나님의 말씀을 만나도록 돕는 것이 이 사이트의 마음입니다.','우리가 존재하는 이유','상처받고, 두렵고, 슬프고, 소망을 찾고 있을 때 성경을 어디서부터 읽어야 할지 모르는 분들이 많습니다. 이 웹사이트는 바로 그 자리에서 하나님의 말씀으로 함께하도록 돕습니다.','성경 번역','이 사이트는 한글 킹제임스 성경 본문과 한글 ESV 번역문을 함께 제공하여, 말씀을 더 쉽게 이해하고 묵상할 수 있도록 돕습니다.','만든 이','Tea Park, B.A.<br>Eng. Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court, WCB<br>National Institute for LLE<br>NAIT','Agent Allstate Ins Co of Canada','믿음과 공동체','1970년부터 교회 사역에 헌신해 왔으며, 에드몬튼 성요셉 병원에서 Recreation Volunteer로 섬기고 있습니다.'],
         gallery:['함께한 순간들','갤러리','여행과 자연의 순간 속에서 평안과 감사, 그리고 조용한 감동이 담긴 사진들을 모아 두었습니다.','아직 게시된 갤러리 사진이 없습니다.'],
         ai:['친근한 AI 도구','AI 놀이터','질문, 음악, 이미지, 목소리, 디자인, 학습에 도움이 되는 AI 도구를 편하게 시험해 보세요. 각 링크는 새 탭에서 열리므로 홈 페이지로 쉽게 돌아올 수 있습니다.','AI 도구 체험하기','질문하고, 만들고, 비교해 보며 다시 성경 중심의 자료로 돌아오도록 돕는 친근한 AI 놀이터입니다.','AI 놀이터 열기','추천 AI 도구','질문을 입력하면 AI에게 묻기 좋은 문장으로 정리해 드립니다.','질문을 입력하세요...','질문 정리하기','AI는 새 탭에서 열리며, 이 홈페이지는 그대로 남아 있습니다.','질문은 하나만 분명하게 쓰세요.','목적, 대상, 언어를 함께 알려 주세요.','답을 비교하고 출처를 확인하세요.'],
-        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Suno AI','9. Adobe Firefly','10. Canva AI','11. ElevenLabs','12. Runway','13. Genspark','14. Felo AI'],
-        aiToolDescs:['일반 질문과 이어지는 대화','출처가 보이는 자료 검색','빠른 Google 스타일 도움','Microsoft 검색과 일상 도움','프라이버시 중심 검색','글쓰기, 요약, 부드러운 표현','실시간 질문과 최신 이슈 탐색','간단한 문장으로 음악 아이디어 만들기','이미지와 디자인 아이디어 만들기','카드, 포스터, 소셜 디자인 만들기','목소리와 나레이션 만들기','영상과 움직임 AI 실험','검색과 콘텐츠 도구 모음','다국어 요약과 자료 탐색'],
+        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Genspark','9. Felo AI','10. Suno AI','11. Adobe Firefly','12. Canva AI','13. ElevenLabs','14. Runway'],
+        aiToolDescs:['일반 질문과 이어지는 대화','출처가 보이는 자료 검색','빠른 Google 스타일 도움','Microsoft 검색과 일상 도움','프라이버시 중심 검색','글쓰기, 요약, 부드러운 표현','실시간 질문과 최신 이슈 탐색','검색과 콘텐츠 도구 모음','다국어 요약과 자료 탐색','간단한 문장으로 음악 아이디어 만들기','이미지와 디자인 아이디어 만들기','카드, 포스터, 소셜 디자인 만들기','목소리와 나레이션 만들기','영상과 움직임 AI 실험'],
         missions:['전도 자료','전도','복음을 더 쉽게 전할 수 있도록 돕는 전도 자료와 성경 읽기표를 살펴보세요. 구원의 메시지를 나누고, 말씀을 꾸준히 읽도록 돕는 자료입니다.','영원한 생명으로 인도하는 하나님의 다리','Majestic Media의 영문 전도 자료로, 개인 전도와 나눔에 활용할 수 있도록 복음을 시각적으로 분명하게 전합니다.','이 자료는 새 탭에서 열리므로 홈 페이지를 그대로 두고 읽거나 인쇄 자료로 활용할 수 있습니다.','영문 전도지 열기','성경 읽기표','M’Cheyne 성경 읽기표','매일 정해진 본문을 따라 구약과 신약을 함께 읽으며, 한 해 동안 말씀을 꾸준히 묵상하도록 돕는 성경 읽기표입니다. 개인 경건 시간, 가정 예배, 전도 후 양육 자료로 활용해 보세요.','성경 읽기표 열기'],
         living:['원본 가르침 콘텐츠','말씀대로 살기','팟캐스트, 글, 파워포인트 강의, 묵상 글을 통해 믿음 안에서 계속 자라가도록 돕는 공개 자료실입니다.','아직 게시된 Living the Word 글이 없습니다.'],
         fellowship:['공동체','방명록','방명록에 오신 것을 환영합니다. 이곳은 기도 제목, 위로의 말, 짧은 간증, 믿음의 나눔을 함께 나눌 수 있는 따뜻하고 평안한 공간입니다. 하나님의 사랑 안에서 서로를 위로하고, 격려하고, 축복하는 자리가 되기를 바랍니다.','메모 남기기','이름','메시지','짧은 댓글을 남겨 주세요...','메시지 남기기','아직 방명록 메시지가 없습니다. 첫 번째 메시지를 남겨 보세요.','여기에 남긴 글은 온라인으로 저장되며 한국어 페이지 방문자들과 함께 보입니다.','빠른 이모지'],
@@ -1223,8 +1237,8 @@ window.applyPageLanguage=function(lang){
         about:['Our Vision','About This Website','Helping people find God&rsquo;s Word not just by book or chapter &mdash; but through the real experiences of their lives.','Why We Exist','Many people do not know where to begin in the Bible when they are hurting, afraid, grieving, or searching for hope. This website meets you exactly where you are &mdash; with the Word of God.','Bible Translation','All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.','Created By','Tea Park, B.A.<br>Eng. Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court, WCB<br>National Institute for LLE<br>NAIT','Agent Allstate Ins Co of Canada','Faith &amp; Community','Dedicated to Church Ministry since 1970 and a proud Recreation Volunteer at St. Joseph&rsquo;s Hospital in Edmonton.'],
         gallery:['Shared Moments','Gallery','A collection of peaceful travel moments, beautiful landscapes, and quiet reflections gathered with gratitude.','No gallery photos have been published yet.'],
         ai:['Friendly AI Tools','AI Playground','Try friendly AI tools for questions, music, images, voice, design, and learning. Each link opens in a new tab so your Home page remains easy to return to.','AI Tools to Try','A simple place to test useful AI tools, compare answers, and return again to your Bible-centered resources.','Open AI Playground','Recommended AI Tools','Type your question, then prepare it for AI.','Type your question here...','Prepare Question','AI opens in a new tab. This homepage will stay open.','Ask one clear question.','Add your purpose, audience, and language.','Compare answers and check sources.'],
-        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Suno AI','9. Adobe Firefly','10. Canva AI','11. ElevenLabs','12. Runway','13. Genspark','14. Felo AI'],
-        aiToolDescs:['General questions and follow-up conversation','Research with sources','Quick Google-style help','Microsoft search and everyday help','Privacy-focused search','Writing, summaries, and gentle wording','Real-time questions and current topics','Music ideas from simple prompts','Image and design idea generation','Cards, posts, flyers, and simple designs','Voice and narration generation','Video and motion AI experiments','Search and content tools in one place','Multilingual summaries and source browsing'],
+        aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Genspark','9. Felo AI','10. Suno AI','11. Adobe Firefly','12. Canva AI','13. ElevenLabs','14. Runway'],
+        aiToolDescs:['General questions and follow-up conversation','Research with sources','Quick Google-style help','Microsoft search and everyday help','Privacy-focused search','Writing, summaries, and gentle wording','Real-time questions and current topics','Search and content tools in one place','Multilingual summaries and source browsing','Music ideas from simple prompts','Image and design idea generation','Cards, posts, flyers, and simple designs','Voice and narration generation','Video and motion AI experiments'],
         missions:['Outreach','Missions','Explore gospel outreach resources and a Bible reading plan that can help you share salvation clearly and encourage steady Scripture reading.','God’s Bridge to Eternal Life','An evangelism resource from Majestic Media that presents the gospel in a clear, visual way for personal sharing and outreach.','This external page opens in a new tab so you can read, share, or print the tract while keeping your home page easy to return to.','Open English Tract','Bible Reading Plan','M’Cheyne Bible Reading Plan','A daily Bible reading schedule that helps readers walk through the Old and New Testaments with steady, prayerful discipline throughout the year. It can be used for personal devotion, family worship, or follow-up after outreach.','Open Bible Reading Plan'],
         living:['Original Teaching Content','Living the Word','A public library for your podcasts, articles, PowerPoint teachings, and journal writing so people can keep growing in faith through your original content.','No Living the Word posts are published yet.'],
         fellowship:['Community','Guestbook','Welcome to the Guestbook. This is a warm and peaceful space where you can share a prayer request, a word of encouragement, a short testimony, or a message of faith. May we comfort, strengthen, and bless one another in God\'s love.','Leave a Note','Name','Message','Write a short comment...','Post Message','No guestbook messages yet. Be the first to leave a note.','Messages posted here are stored online and shared with visitors on the English page.','Quick Emoji'],
@@ -1626,7 +1640,7 @@ window.copySiteLink = async function(){
   if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
-<script src="assets/js/app.js?v=20260607k"></script>
+<script src="assets/js/app.js?v=20260607l"></script>
 <script src="assets/js/lang.js?v=20260604a"></script>
 <script src="assets/js/pwa.js?v=20260606b"></script>
 
