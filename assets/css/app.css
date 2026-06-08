@@ -1097,6 +1097,12 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-prepared-question-field{width:100%;min-height:96px;border:0;background:transparent;color:var(--deep);font:17px/1.8 'Noto Serif KR','Cormorant Garamond',serif;resize:vertical;outline:none}
 .ai-prepared-question-field::selection{background:rgba(184,147,90,.24)}
 .ai-workspace-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.ai-tool-launch-list{display:grid;gap:10px;margin-top:8px}
+.ai-tool-launch-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;background:#fff;border:1px solid rgba(184,147,90,.28);border-radius:10px;padding:13px 14px}
+.ai-tool-launch-card strong{display:block;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.06em;color:var(--deep);margin-bottom:3px}
+.ai-tool-launch-card span{display:block;font-size:14px;line-height:1.45;color:var(--text-soft)}
+.ai-tool-launch-button{display:inline-flex;align-items:center;justify-content:center;min-width:82px;min-height:38px;border:0;border-radius:8px;background:var(--gold);color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.ai-tool-launch-button:hover{background:var(--deep)}
 #ai-summary .ai-hub-panel{
   background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);
   border:1px solid rgba(184,147,90,.28);

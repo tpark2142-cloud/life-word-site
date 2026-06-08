@@ -1188,6 +1188,27 @@ function runAiWorkspaceSearch(){
     ? '다음 질문에 대해 이해하기 쉽게 답해 주세요. 핵심 내용을 짧게 정리하고, 필요하면 성경적 관점에서 생각해 볼 질문도 제안해 주세요: "'+query+'"'
     : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest a few thoughtful follow-up questions when helpful: "'+query+'"';
   const encodedPrompt=encodeURIComponent(preparedQuestion);
+  const aiLaunchRows=[
+    {name:'ChatGPT',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://chatgpt.com/?q='+encodedPrompt},
+    {name:'Claude',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://claude.ai/new?q='+encodedPrompt},
+    {name:'Perplexity',note:lang==='ko'?'출처 확인에 좋습니다.':'Good for answers with sources.',href:'https://www.perplexity.ai/search?q='+encodedPrompt},
+    {name:'Bing Copilot',note:lang==='ko'?'검색형 답변에 좋습니다.':'Good for search-style answers.',href:'https://www.bing.com/copilotsearch?q='+encodedPrompt},
+    {name:'Brave Search',note:lang==='ko'?'프라이버시 중심 검색입니다.':'Privacy-focused search.',href:'https://search.brave.com/search?q='+encodedPrompt},
+    {name:'Genspark',note:lang==='ko'?'필요하면 질문을 붙여 넣어 주세요.':'Paste the question if needed.',href:'https://www.genspark.ai/'},
+    {name:'Felo AI',note:lang==='ko'?'다국어 검색과 요약에 좋습니다.':'Good for multilingual search.',href:'https://felo.ai/'},
+    {name:'Gemini',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'open-gemini.html'},
+    {name:'Grok',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',button:true,url:'https://grok.com/'}
+  ];
+  const launchList=aiLaunchRows.map(item=>{
+    const label=item.name+(item.name==='Gemini'||item.name==='Grok'?' '+(lang==='ko'?'(붙여넣기)':'(Paste)'):'');
+    const action=item.button
+      ? '<button class="ai-tool-launch-button" type="button" onclick="openAiToolWithFallback(\''+item.url+'\')">'+(lang==='ko'?'열기':'Open')+'</button>'
+      : '<a class="ai-tool-launch-button" href="'+item.href+'" '+(item.href.indexOf('http')===0?'target="_blank" rel="noopener noreferrer"':'')+'>'+(lang==='ko'?'열기':'Open')+'</a>';
+    return '<div class="ai-tool-launch-card">'
+      +'<div><strong>'+escapeHtmlAi(label)+'</strong><span>'+escapeHtmlAi(item.note)+'</span></div>'
+      +action
+      +'</div>';
+  }).join('');
   if(workspaceResult){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
@@ -1200,12 +1221,8 @@ function runAiWorkspaceSearch(){
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 질문을 선택해 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, select and copy the prepared question first, then paste it after opening.')+'</p>'
       +'<div class="ai-workspace-links">'
       +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="selectAiPreparedQuestion()">'+(lang==='ko'?'질문 선택':'Select Question')+'</button>'
-      +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
-      +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
-      +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
-      +'<a class="ai-submit" href="open-gemini.html" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
-      +'<button class="ai-submit" type="button" onclick="openAiToolWithFallback(\'https://grok.com/\')" style="display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Grok (붙여넣기)':'Grok (Paste)')+'</button>'
       +'</div>'
+      +'<div class="ai-tool-launch-list">'+launchList+'</div>'
       +'</div>';
   }
 
