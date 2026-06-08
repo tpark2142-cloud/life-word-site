@@ -1192,14 +1192,14 @@ function runAiWorkspaceSearch(){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
       +'<h3 class="ai-workspace-title">'+(lang==='ko'?'AI에게 묻는 질문':'Question for AI')+'</h3>'
-      +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Copy this improved question or open it with an AI tool. Your homepage stays open here.')+'</p>'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 선택해 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Select and copy this improved question, or open it with an AI tool. Your homepage stays open here.')+'</p>'
       +'<div class="ai-workspace-prompt">'
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
       +'<textarea id="ai-prepared-question-text" class="ai-prepared-question-field" readonly onclick="this.focus();this.select();">'+escapeHtmlAi(preparedQuestion)+'</textarea>'
       +'</div>'
-      +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 먼저 질문을 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, copy the prepared question first, then paste it after opening.')+'</p>'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 질문을 선택해 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, select and copy the prepared question first, then paste it after opening.')+'</p>'
       +'<div class="ai-workspace-links">'
-      +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="copyAiPreparedQuestion(\''+jsEscape(preparedQuestion)+'\')">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
+      +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="selectAiPreparedQuestion()">'+(lang==='ko'?'질문 선택':'Select Question')+'</button>'
       +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
       +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
@@ -1280,50 +1280,21 @@ function escapeHtmlAi(value){
     .replace(/"/g,'&quot;')
     .replace(/'/g,'&#39;');
 }
-function copyAiPreparedQuestion(text){
+function selectAiPreparedQuestion(){
   const field=document.getElementById('ai-prepared-question-text');
-  const value=field&&field.value ? String(field.value) : String(text||'');
   const button=document.getElementById('ai-copy-question-btn');
   const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
-  let messageShown=false;
-  const copiedMessage=lang==='ko'?'질문이 복사되었습니다. Gemini에 붙여 넣어 주세요.':'Question copied. Paste it into Gemini.';
-  const done=()=>{
-    if(!button)return;
-    const original=button.textContent;
-    button.textContent=lang==='ko'?'복사됨':'Copied';
-    window.setTimeout(()=>{button.textContent=original;},1600);
-    if(!messageShown){
-      messageShown=true;
-      window.alert(copiedMessage);
-    }
-  };
-  const fallback=()=>{
-    const area=field||document.createElement('textarea');
-    area.value=value;
-    if(!field){
-      area.setAttribute('readonly','');
-      area.style.position='fixed';
-      area.style.left='-9999px';
-      area.style.top='0';
-      document.body.appendChild(area);
-    }
-    area.focus();
-    area.select();
-    area.setSelectionRange(0,area.value.length);
-    let copied=false;
-    try{copied=document.execCommand('copy');}catch(_error){}
-    if(!field)document.body.removeChild(area);
-    if(copied){
-      done();
-    }else{
-      window.prompt(lang==='ko'?'이 질문을 복사해 주세요.':'Copy this question:',value);
-    }
-  };
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(value).then(done).catch(fallback);
-  }else{
-    fallback();
+  if(field){
+    field.focus();
+    field.select();
+    field.setSelectionRange(0,field.value.length);
   }
+  if(button){
+    const original=button.textContent;
+    button.textContent=lang==='ko'?'선택됨':'Selected';
+    window.setTimeout(()=>{button.textContent=original;},1600);
+  }
+  window.alert(lang==='ko'?'질문이 선택되었습니다. Ctrl+C 또는 휴대폰의 복사 버튼으로 복사해 주세요.':'Question selected. Press Ctrl+C or use your phone copy button.');
 }
 function openAiToolWithFallback(url){
   const opened=window.open(url,'_blank','noopener,noreferrer');
