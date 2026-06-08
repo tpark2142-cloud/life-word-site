@@ -1189,25 +1189,32 @@ function runAiWorkspaceSearch(){
     : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest a few thoughtful follow-up questions when helpful: "'+query+'"';
   const encodedPrompt=encodeURIComponent(preparedQuestion);
   const aiLaunchRows=[
-    {name:'ChatGPT',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://chatgpt.com/?q='+encodedPrompt},
-    {name:'Claude',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://claude.ai/new?q='+encodedPrompt},
-    {name:'Perplexity',note:lang==='ko'?'출처 확인에 좋습니다.':'Good for answers with sources.',href:'https://www.perplexity.ai/search?q='+encodedPrompt},
-    {name:'Bing Copilot',note:lang==='ko'?'검색형 답변에 좋습니다.':'Good for search-style answers.',href:'https://www.bing.com/copilotsearch?q='+encodedPrompt},
-    {name:'Brave Search',note:lang==='ko'?'프라이버시 중심 검색입니다.':'Privacy-focused search.',href:'https://search.brave.com/search?q='+encodedPrompt},
-    {name:'Genspark',note:lang==='ko'?'필요하면 질문을 붙여 넣어 주세요.':'Paste the question if needed.',href:'https://www.genspark.ai/'},
-    {name:'Felo AI',note:lang==='ko'?'다국어 검색과 요약에 좋습니다.':'Good for multilingual search.',href:'https://felo.ai/'},
-    {name:'Gemini',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'open-gemini.html'},
-    {name:'Grok',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',button:true,url:'https://grok.com/'}
+    {name:'ChatGPT',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://chatgpt.com/?hints=search&q='+encodedPrompt},
+    {name:'Claude',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://claude.ai/new?q='+encodedPrompt},
+    {name:'Perplexity',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 출처 확인에 좋습니다.':'Opens with your question. Good for sources.',href:'https://www.perplexity.ai/search/new?q='+encodedPrompt},
+    {name:'Microsoft Copilot',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 검색형 답변에 좋습니다.':'Opens with your question. Good for search-style answers.',href:'https://copilot.microsoft.com/?q='+encodedPrompt},
+    {name:'Brave Search',kind:'auto',note:lang==='ko'?'질문이 검색창에 함께 열립니다.':'Opens search with your question.',href:'https://search.brave.com/search?q='+encodedPrompt},
+    {name:'Genspark',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://www.genspark.ai/'},
+    {name:'Felo AI',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://felo.ai/'},
+    {name:'Suno AI',kind:'paste',note:lang==='ko'?'음악 아이디어나 가사를 붙여 넣어 실험해 보세요.':'Paste a music idea or lyric prompt to experiment.',href:'https://suno.com/'},
+    {name:'Adobe Firefly',kind:'paste',note:lang==='ko'?'이미지 아이디어를 붙여 넣어 실험해 보세요.':'Paste an image idea to experiment.',href:'https://www.adobe.com/products/firefly.html'},
+    {name:'Canva AI',kind:'paste',note:lang==='ko'?'디자인 아이디어를 붙여 넣어 실험해 보세요.':'Paste a design idea to experiment.',href:'https://www.canva.com/ai/'},
+    {name:'ElevenLabs',kind:'paste',note:lang==='ko'?'읽어 줄 문장을 붙여 넣어 목소리를 시험해 보세요.':'Paste text to try voice and narration.',href:'https://elevenlabs.io/text-to-speech'},
+    {name:'Runway',kind:'paste',note:lang==='ko'?'영상 아이디어를 붙여 넣어 실험해 보세요.':'Paste a video idea to experiment.',href:'https://runwayml.com/'},
+    {name:'Gemini',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'open-gemini.html'},
+    {name:'Grok',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',button:true,url:'https://grok.com/'}
   ];
   const launchList=aiLaunchRows.map(item=>{
     const label=item.name+(item.name==='Gemini'||item.name==='Grok'?' '+(lang==='ko'?'(붙여넣기)':'(Paste)'):'');
+    const badge=item.kind==='auto'?(lang==='ko'?'자동 입력':'Auto'):(lang==='ko'?'붙여넣기':'Paste');
     const action=item.button
       ? '<button class="ai-tool-launch-button" type="button" onclick="openAiToolWithFallback(\''+item.url+'\')">'+(lang==='ko'?'열기':'Open')+'</button>'
       : '<a class="ai-tool-launch-button" href="'+item.href+'" '+(item.href.indexOf('http')===0?'target="_blank" rel="noopener noreferrer"':'')+'>'+(lang==='ko'?'열기':'Open')+'</a>';
-    return '<div class="ai-tool-launch-card">'
-      +'<div><strong>'+escapeHtmlAi(label)+'</strong><span>'+escapeHtmlAi(item.note)+'</span></div>'
+    return '<details class="ai-tool-launch-card">'
+      +'<summary><strong>'+escapeHtmlAi(label)+'</strong><em>'+badge+'</em></summary>'
+      +'<div class="ai-tool-launch-detail"><span>'+escapeHtmlAi(item.note)+'</span>'
       +action
-      +'</div>';
+      +'</div></details>';
   }).join('');
   if(workspaceResult){
     workspaceResult.innerHTML=''
