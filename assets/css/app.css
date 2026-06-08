@@ -1140,6 +1140,7 @@ html[lang="ko"] .gallery-copy-summary{
 .ko-only{display:none}
 html[lang="ko"] section.ko-only{display:block}
 html[lang="ko"] .sb-link.ko-only{display:grid}
+html[lang="ko"] details.ko-only{display:block}
 .english-word-panel{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(320px,1.18fr);gap:24px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px}
 .english-word-copy h3{font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:28px;line-height:1.25;color:var(--deep);margin-bottom:12px;font-weight:700}
 .english-word-copy p{font-size:17px;line-height:1.8;color:var(--text-soft);margin-bottom:16px}

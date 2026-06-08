@@ -1200,8 +1200,10 @@ function runAiWorkspaceSearch(){
     {name:'Canva AI',kind:'paste',note:lang==='ko'?'디자인 아이디어를 붙여 넣어 실험해 보세요.':'Paste a design idea to experiment.',href:'https://www.canva.com/ai/'},
     {name:'ElevenLabs',kind:'paste',note:lang==='ko'?'읽어 줄 문장을 붙여 넣어 목소리를 시험해 보세요.':'Paste text to try voice and narration.',href:'https://elevenlabs.io/text-to-speech'},
     {name:'Runway',kind:'paste',note:lang==='ko'?'영상 아이디어를 붙여 넣어 실험해 보세요.':'Paste a video idea to experiment.',href:'https://runwayml.com/'},
-    {name:'Gemini',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'open-gemini.html'},
-    {name:'Grok',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'https://grok.com/'}
+    {name:'Google NotebookLM',kind:'paste',note:lang==='ko'?'자료, 문서, 링크를 정리하고 요약하는 학습 도구입니다.':'Research and learning workspace for notes, documents, links, and summaries.',href:'https://notebooklm.google/'},
+    {name:'Google AI Studio',kind:'paste',note:lang==='ko'?'Gemini 모델을 직접 시험해 보는 Google AI 실험실입니다.':'Google Gemini model playground for prompts and experiments.',href:'https://aistudio.google.com/'},
+    {name:'Gemini',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'https://gemini.google.com/app'},
+    {name:'Grok',kind:'paste',note:lang==='ko'?'휴대폰에서는 안내 페이지를 거쳐 여는 것이 더 안정적입니다.':'Open through the helper page for better phone stability.',href:'open-grok.html'}
   ];
   if(lang==='ko'){
     aiLaunchRows.splice(9,0,{name:'HyperCLOVA X',kind:'paste',note:'한국어에 특화된 네이버의 초대규모 AI 모델입니다.',href:'https://clova.ai/en/hyperclova'});
