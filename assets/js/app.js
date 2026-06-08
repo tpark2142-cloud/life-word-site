@@ -1188,27 +1188,29 @@ function runAiWorkspaceSearch(){
     ? '다음 질문에 대해 이해하기 쉽게 답해 주세요. 핵심 내용을 짧게 정리하고, 필요하면 성경적 관점에서 생각해 볼 질문도 제안해 주세요: "'+query+'"'
     : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest a few thoughtful follow-up questions when helpful: "'+query+'"';
   const encodedPrompt=encodeURIComponent(preparedQuestion);
-  const aiLaunchRows=[
-    {name:'ChatGPT',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://chatgpt.com/?hints=search&q='+encodedPrompt},
+  const searchRows=[
+    {name:'ChatGPT',kind:'paste',note:lang==='ko'?'ChatGPT는 자동 입력이 기기마다 불안정하므로 질문을 복사해 붙여 넣어 주세요.':'ChatGPT auto-fill is unreliable on some devices. Open it, then paste the prepared question.',href:'https://chatgpt.com/'},
     {name:'Claude',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다.':'Opens with your question.',href:'https://claude.ai/new?q='+encodedPrompt},
     {name:'Perplexity',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 출처 확인에 좋습니다.':'Opens with your question. Good for sources.',href:'https://www.perplexity.ai/search/new?q='+encodedPrompt},
-    {name:'Microsoft Copilot',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 검색형 답변에 좋습니다.':'Opens with your question. Good for search-style answers.',href:'https://copilot.microsoft.com/?q='+encodedPrompt},
-    {name:'Brave Search',kind:'auto',note:lang==='ko'?'질문이 검색창에 함께 열립니다.':'Opens search with your question.',href:'https://search.brave.com/search?q='+encodedPrompt},
+    {name:'Microsoft Copilot',kind:'paste',note:lang==='ko'?'Copilot은 자동 입력이 기기마다 불안정하므로 질문을 복사해 붙여 넣어 주세요.':'Copilot auto-fill is unreliable on some devices. Open it, then paste the prepared question.',href:'https://copilot.microsoft.com/'},
+    {name:'Brave Search',kind:'paste',note:lang==='ko'?'Brave Search 첫 화면을 연 뒤 질문을 붙여 넣어 주세요.':'Open Brave Search, then paste the prepared question.',href:'https://search.brave.com/'},
     {name:'Genspark',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://www.genspark.ai/'},
     {name:'Felo AI',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://felo.ai/'},
+    {name:'Gemini',kind:'paste',note:lang==='ko'?'태블릿에서는 안내 페이지를 거쳐 여는 것이 더 안정적입니다.':'Open through the helper page for better tablet stability.',href:'open-gemini.html'},
+    {name:'Grok',kind:'paste',note:lang==='ko'?'휴대폰에서는 안내 페이지를 거쳐 여는 것이 더 안정적입니다.':'Open through the helper page for better phone stability.',href:'open-grok.html'}
+  ];
+  const creativeRows=[
     {name:'Suno AI',kind:'paste',note:lang==='ko'?'음악 아이디어나 가사를 붙여 넣어 실험해 보세요.':'Paste a music idea or lyric prompt to experiment.',href:'https://suno.com/'},
     {name:'Canva AI',kind:'paste',note:lang==='ko'?'디자인 아이디어를 붙여 넣어 실험해 보세요.':'Paste a design idea to experiment.',href:'https://www.canva.com/ai/'},
     {name:'ElevenLabs',kind:'paste',note:lang==='ko'?'읽어 줄 문장을 붙여 넣어 목소리를 시험해 보세요.':'Paste text to try voice and narration.',href:'https://elevenlabs.io/text-to-speech'},
     {name:'Runway',kind:'paste',note:lang==='ko'?'영상 아이디어를 붙여 넣어 실험해 보세요.':'Paste a video idea to experiment.',href:'https://runwayml.com/'},
     {name:'Google NotebookLM',kind:'paste',note:lang==='ko'?'자료, 문서, 링크를 정리하고 요약하는 학습 도구입니다.':'Research and learning workspace for notes, documents, links, and summaries.',href:'https://notebooklm.google/'},
-    {name:'Google AI Studio',kind:'paste',note:lang==='ko'?'Gemini 모델을 직접 시험해 보는 Google AI 실험실입니다.':'Google Gemini model playground for prompts and experiments.',href:'https://aistudio.google.com/'},
-    {name:'Gemini',kind:'paste',note:lang==='ko'?'태블릿에서는 안내 페이지를 거쳐 여는 것이 더 안정적입니다.':'Open through the helper page for better tablet stability.',href:'open-gemini.html'},
-    {name:'Grok',kind:'paste',note:lang==='ko'?'휴대폰에서는 안내 페이지를 거쳐 여는 것이 더 안정적입니다.':'Open through the helper page for better phone stability.',href:'open-grok.html'}
+    {name:'Google AI Studio',kind:'paste',note:lang==='ko'?'Gemini 모델을 직접 시험해 보는 Google AI 실험실입니다.':'Google Gemini model playground for prompts and experiments.',href:'https://aistudio.google.com/'}
   ];
   if(lang==='ko'){
-    aiLaunchRows.splice(9,0,{name:'HyperCLOVA X',kind:'paste',note:'한국어에 특화된 네이버의 초대규모 AI 모델입니다.',href:'https://clova.ai/en/hyperclova'});
+    searchRows.push({name:'HyperCLOVA X',kind:'paste',note:'한국어에 특화된 네이버의 초대규모 AI 모델입니다.',href:'https://clova.ai/en/hyperclova'});
   }
-  const launchList=aiLaunchRows.map(item=>{
+  const renderLaunchCards=rows=>rows.map(item=>{
     const label=item.name+(item.name==='Gemini'||item.name==='Grok'?' '+(lang==='ko'?'(붙여넣기)':'(Paste)'):'');
     const badge=item.kind==='auto'?(lang==='ko'?'자동 입력':'Auto'):(lang==='ko'?'붙여넣기':'Paste');
     const action=item.button
@@ -1220,6 +1222,11 @@ function runAiWorkspaceSearch(){
       +action
       +'</div></details>';
   }).join('');
+  const launchList=''
+    +'<div class="ai-tool-launch-groups">'
+    +'<section class="ai-tool-launch-group"><h4>'+(lang==='ko'?'AI 검색 도구':'AI Search Tools')+'</h4>'+renderLaunchCards(searchRows)+'</section>'
+    +'<section class="ai-tool-launch-group"><h4>'+(lang==='ko'?'창작 AI 도구':'Creative AI Tools')+'</h4>'+renderLaunchCards(creativeRows)+'</section>'
+    +'</div>';
   if(workspaceResult){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
