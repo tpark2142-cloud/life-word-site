@@ -1212,7 +1212,7 @@ function runAiWorkspaceSearch(){
   if(workspaceResult){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
-      +'<h3 class="ai-workspace-title">'+(lang==='ko'?'AI에게 묻는 질문':'Question for AI')+'</h3>'
+      +'<h3 class="ai-workspace-title">'+(lang==='ko'?'AI 놀이터 질문':'AI Playground Question')+'</h3>'
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 선택해 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Select and copy this improved question, or open it with an AI tool. Your homepage stays open here.')+'</p>'
       +'<div class="ai-workspace-prompt">'
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
@@ -3033,6 +3033,7 @@ applyHomepageDailyMeditation();
   scheduleDailyVerseRefresh();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
+
 
 
 

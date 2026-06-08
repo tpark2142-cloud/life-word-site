@@ -179,7 +179,7 @@ footer a:hover{color:var(--gold-light)}
     <div class="sb-divider"></div>
     <span class="sb-group-label">My Journey</span>
     <a class="sb-link" href="index.html#gallery" onclick="closeSidebar()"><span class="sb-icon">&#128247;</span> Gallery</a>
-    <a class="sb-link" href="index.html#ai-summary" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> Ask AI</a>
+    <a class="sb-link" href="index.html#ai-summary" onclick="closeSidebar()"><span class="sb-icon">&#10022;</span> AI Playground</a>
     <a class="sb-link" href="index.html#missions" onclick="closeSidebar()"><span class="sb-icon">&#9993;</span> Missions</a>
     <a class="sb-link" href="index.html#living-word" onclick="closeSidebar()"><span class="sb-icon">&#127908;</span> Living the Word</a>
     <a class="sb-link" href="index.html#fellowship" onclick="closeSidebar()"><span class="sb-icon">&#128172;</span> Guestbook</a>
@@ -389,7 +389,7 @@ footer a:hover{color:var(--gold-light)}
   <p>    <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
     <a href="index.html#emotions">Emotions</a> &nbsp;&middot;&nbsp;
     <a href="index.html#gallery">Gallery</a> &nbsp;&middot;&nbsp;
-    <a href="index.html#ai-summary">Ask AI</a> &nbsp;&middot;&nbsp;
+    <a href="index.html#ai-summary">AI Playground</a> &nbsp;&middot;&nbsp;
     <a href="index.html#missions">Missions</a> &nbsp;&middot;&nbsp;
     <a href="index.html#living-word">Living the Word</a> &nbsp;&middot;&nbsp;
     <a href="index.html#fellowship">Guestbook</a> &nbsp;&middot;&nbsp;
@@ -482,7 +482,7 @@ window.applyPageLanguage = function(lang){
   const t = lang === 'ko'
     ? {
         sidebarGroups: ['탐색', '나의 여정', '더 보기'],
-        sidebarLinks: ['홈', '감정', '상황', '주제', '황혼의 계절', '갤러리', 'AI에게 묻기', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
+        sidebarLinks: ['홈', '감정', '상황', '주제', '황혼의 계절', '갤러리', 'AI 놀이터', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
         nav: ['홈', '감정', '상황', '주제', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
         heroBadge: '✦ 슬픔과 상실을 위한 말씀 ✦',
         heroTitle: '<span class="hero-title-icon">🤍</span>힘들 때에도<br><em>하나님은 위로하십니다</em>',
@@ -490,13 +490,13 @@ window.applyPageLanguage = function(lang){
         goBack: '홈 시작으로',
         comfortLabel: '✦ 위로의 말씀 ✦',
         comfortPrayer: '마치는 기도',
-        footerLinks: ['홈', '감정', '갤러리', 'AI에게 묻기', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
+        footerLinks: ['홈', '감정', '갤러리', 'AI 놀이터', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
         footerEsv: '모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고 읽기 쉬운 번역으로 널리 사용됩니다.',
         created: 'Created by Tea Park'
       }
     : {
         sidebarGroups: ['Explore', 'My Journey', 'More'],
-        sidebarLinks: ['Home', 'Emotions', 'Situations', 'Topics', 'Twilight Season', 'Gallery', 'Ask AI', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
+        sidebarLinks: ['Home', 'Emotions', 'Situations', 'Topics', 'Twilight Season', 'Gallery', 'AI Playground', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
         nav: ['Home', 'Emotions', 'Situations', 'Topics', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
         heroBadge: '✦ Scripture for Grief & Loss ✦',
         heroTitle: '<span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em>',
@@ -504,7 +504,7 @@ window.applyPageLanguage = function(lang){
         goBack: 'Back to Home',
         comfortLabel: '✦ A Word of Comfort ✦',
         comfortPrayer: 'Closing Prayer',
-        footerLinks: ['Home', 'Emotions', 'Gallery', 'Ask AI', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
+        footerLinks: ['Home', 'Emotions', 'Gallery', 'AI Playground', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
         footerEsv: 'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
         created: 'Created by Tea Park'
       };
@@ -678,4 +678,5 @@ window.openPageLanguagePopup=function(){
 </div>
 </body>
 </html>
+
 
