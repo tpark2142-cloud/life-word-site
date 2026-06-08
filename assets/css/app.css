@@ -1094,6 +1094,8 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-workspace-prompt{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:18px}
 .ai-workspace-kicker{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
 .ai-workspace-prompt p:last-child{font-size:17px;line-height:1.8;color:var(--deep)}
+.ai-prepared-question-field{width:100%;min-height:96px;border:0;background:transparent;color:var(--deep);font:17px/1.8 'Noto Serif KR','Cormorant Garamond',serif;resize:vertical;outline:none}
+.ai-prepared-question-field::selection{background:rgba(184,147,90,.24)}
 .ai-workspace-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 #ai-summary .ai-hub-panel{
   background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);

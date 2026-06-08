@@ -1195,7 +1195,7 @@ function runAiWorkspaceSearch(){
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Copy this improved question or open it with an AI tool. Your homepage stays open here.')+'</p>'
       +'<div class="ai-workspace-prompt">'
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
-      +'<p id="ai-prepared-question-text">'+escapeHtmlAi(preparedQuestion)+'</p>'
+      +'<textarea id="ai-prepared-question-text" class="ai-prepared-question-field" readonly onclick="this.focus();this.select();">'+escapeHtmlAi(preparedQuestion)+'</textarea>'
       +'</div>'
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 먼저 질문을 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, copy the prepared question first, then paste it after opening.')+'</p>'
       +'<div class="ai-workspace-links">'
@@ -1281,7 +1281,8 @@ function escapeHtmlAi(value){
     .replace(/'/g,'&#39;');
 }
 function copyAiPreparedQuestion(text){
-  const value=String(text||'');
+  const field=document.getElementById('ai-prepared-question-text');
+  const value=field&&field.value ? String(field.value) : String(text||'');
   const button=document.getElementById('ai-copy-question-btn');
   const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
   let messageShown=false;
@@ -1297,19 +1298,21 @@ function copyAiPreparedQuestion(text){
     }
   };
   const fallback=()=>{
-    const area=document.createElement('textarea');
+    const area=field||document.createElement('textarea');
     area.value=value;
-    area.setAttribute('readonly','');
-    area.style.position='fixed';
-    area.style.left='-9999px';
-    area.style.top='0';
-    document.body.appendChild(area);
+    if(!field){
+      area.setAttribute('readonly','');
+      area.style.position='fixed';
+      area.style.left='-9999px';
+      area.style.top='0';
+      document.body.appendChild(area);
+    }
     area.focus();
     area.select();
     area.setSelectionRange(0,area.value.length);
     let copied=false;
     try{copied=document.execCommand('copy');}catch(_error){}
-    document.body.removeChild(area);
+    if(!field)document.body.removeChild(area);
     if(copied){
       done();
     }else{
