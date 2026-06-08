@@ -1222,9 +1222,12 @@ function runAiWorkspaceSearch(){
       +action
       +'</div></details>';
   }).join('');
-  const launchList=''
-    +'<div class="ai-tool-launch-groups">'
+  const searchLaunchList=''
+    +'<div class="ai-tool-launch-groups ai-tool-launch-groups-single">'
     +'<section class="ai-tool-launch-group"><h4>'+(lang==='ko'?'AI 검색 도구':'AI Search Tools')+'</h4>'+renderLaunchCards(searchRows)+'</section>'
+    +'</div>';
+  const creativeLaunchList=''
+    +'<div class="ai-tool-launch-groups ai-tool-launch-groups-single">'
     +'<section class="ai-tool-launch-group"><h4>'+(lang==='ko'?'창작 AI 도구':'Creative AI Tools')+'</h4>'+renderLaunchCards(creativeRows)+'</section>'
     +'</div>';
   if(workspaceResult){
@@ -1240,7 +1243,15 @@ function runAiWorkspaceSearch(){
       +'<div class="ai-workspace-links">'
       +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="selectAiPreparedQuestion()">'+(lang==='ko'?'질문 선택':'Select Question')+'</button>'
       +'</div>'
-      +'<div class="ai-tool-launch-list">'+launchList+'</div>'
+      +'<div class="ai-tool-launch-list">'+searchLaunchList+'</div>'
+      +'</div>';
+  }
+  const creativeWorkspaceResult=document.getElementById('ai-creative-workspace-result');
+  if(creativeWorkspaceResult){
+    creativeWorkspaceResult.innerHTML=''
+      +'<div class="ai-workspace-box ai-creative-workspace-box">'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'같은 질문을 창작 도구에도 붙여 넣어 음악, 디자인, 목소리, 영상 아이디어로 시험해 보세요.':'Use the same prepared question with creative tools for music, design, voice, video, and learning ideas.')+'</p>'
+      +'<div class="ai-tool-launch-list">'+creativeLaunchList+'</div>'
       +'</div>';
   }
 

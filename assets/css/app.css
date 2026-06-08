@@ -1099,6 +1099,7 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-workspace-links{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 .ai-tool-launch-list{display:grid;gap:10px;margin-top:8px}
 .ai-tool-launch-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:8px}
+.ai-tool-launch-groups-single{grid-template-columns:1fr}
 .ai-tool-launch-group{display:grid;align-content:start;gap:10px;background:#fffdfa;border:1px solid rgba(184,147,90,.22);border-radius:12px;padding:12px}
 .ai-tool-launch-group h4{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:0 0 2px}
 .ai-tool-launch-card{background:#fff;border:1px solid rgba(184,147,90,.28);border-radius:10px;overflow:hidden}
@@ -1131,6 +1132,9 @@ html[lang="ko"] .gallery-copy-summary{
 #ai-summary .ai-mini-chip{color:var(--deep);border-color:rgba(184,147,90,.34);background:#fff}
 #ai-summary .ai-mini-chip:hover{background:var(--gold-pale);color:var(--gold)}
 #ai-summary .ai-workspace-box{margin-top:18px}
+#ai-summary .ai-creative-workspace-result{margin-top:0;margin-bottom:16px}
+#ai-summary .ai-creative-workspace-box{padding:16px}
+#ai-summary .ai-creative-workspace-box .ai-workspace-copy{font-size:15px;line-height:1.55;margin-bottom:12px}
 #ai-summary .ai-workspace-links .ai-submit{padding:11px 16px;font-size:10px}
 .ai-site-matches{display:grid;gap:14px}
 .ai-match-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px}
