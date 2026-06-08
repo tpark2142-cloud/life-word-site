@@ -1,6 +1,6 @@
 ﻿self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('lifemoment-static-v80').then(cache => cache.addAll([
+    caches.open('lifemoment-static-v81').then(cache => cache.addAll([
       './',
       './index.html',
       './open-gemini.html',
@@ -24,7 +24,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys
-        .filter(key => key !== 'lifemoment-static-v80')
+        .filter(key => key !== 'lifemoment-static-v81')
         .map(key => caches.delete(key))
     )).then(() => self.clients.claim())
   );
@@ -41,7 +41,7 @@ self.addEventListener('fetch', event => {
       }
       return fetch(event.request).then(response => {
         const copy = response.clone();
-        caches.open('lifemoment-static-v80').then(cache => cache.put(event.request, copy));
+        caches.open('lifemoment-static-v81').then(cache => cache.put(event.request, copy));
         return response;
       }).catch(() => caches.match('./index.html'));
     })
