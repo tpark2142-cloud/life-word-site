@@ -1191,10 +1191,10 @@ function runAiWorkspaceSearch(){
   if(workspaceResult){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
-      +'<h3 class="ai-workspace-title">'+(lang==='ko'?'정리된 질문':'Prepared Question')+'</h3>'
+      +'<h3 class="ai-workspace-title">'+(lang==='ko'?'AI에게 묻는 질문':'Question for AI')+'</h3>'
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Copy this improved question or open it with an AI tool. Your homepage stays open here.')+'</p>'
       +'<div class="ai-workspace-prompt">'
-      +'<div class="ai-workspace-kicker">'+(lang==='ko'?'질문 문장':'Question Prompt')+'</div>'
+      +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
       +'<p>'+escapeHtmlAi(preparedQuestion)+'</p>'
       +'</div>'
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 먼저 질문을 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, copy the prepared question first, then paste it after opening.')+'</p>'
