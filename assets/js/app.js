@@ -1195,15 +1195,15 @@ function runAiWorkspaceSearch(){
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'아래 질문을 복사하거나 원하는 AI 도구로 열어 보세요. 홈페이지는 그대로 남아 있습니다.':'Copy this improved question or open it with an AI tool. Your homepage stays open here.')+'</p>'
       +'<div class="ai-workspace-prompt">'
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
-      +'<p>'+escapeHtmlAi(preparedQuestion)+'</p>'
+      +'<p id="ai-prepared-question-text">'+escapeHtmlAi(preparedQuestion)+'</p>'
       +'</div>'
       +'<p class="ai-workspace-copy">'+(lang==='ko'?'Gemini와 Grok은 질문이 자동으로 들어가지 않을 수 있습니다. 먼저 질문을 복사한 뒤 붙여 넣어 주세요.':'For Gemini and Grok, copy the prepared question first, then paste it after opening.')+'</p>'
       +'<div class="ai-workspace-links">'
-      +'<button class="ai-submit" type="button" onclick="copyAiPreparedQuestion(\''+jsEscape(preparedQuestion)+'\')">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
+      +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="copyAiPreparedQuestion(\''+jsEscape(preparedQuestion)+'\')">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
       +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
       +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
-      +'<a class="ai-submit" href="https://gemini.google.com/app" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
+      +'<a class="ai-submit" href="open-gemini.html" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
       +'<button class="ai-submit" type="button" onclick="openAiToolWithFallback(\'https://grok.com/\')" style="display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Grok (붙여넣기)':'Grok (Paste)')+'</button>'
       +'</div>'
       +'</div>';
@@ -1282,11 +1282,45 @@ function escapeHtmlAi(value){
 }
 function copyAiPreparedQuestion(text){
   const value=String(text||'');
+  const button=document.getElementById('ai-copy-question-btn');
+  const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
+  let messageShown=false;
+  const copiedMessage=lang==='ko'?'질문이 복사되었습니다. Gemini에 붙여 넣어 주세요.':'Question copied. Paste it into Gemini.';
+  const done=()=>{
+    if(!button)return;
+    const original=button.textContent;
+    button.textContent=lang==='ko'?'복사됨':'Copied';
+    window.setTimeout(()=>{button.textContent=original;},1600);
+    if(!messageShown){
+      messageShown=true;
+      window.alert(copiedMessage);
+    }
+  };
+  const fallback=()=>{
+    const area=document.createElement('textarea');
+    area.value=value;
+    area.setAttribute('readonly','');
+    area.style.position='fixed';
+    area.style.left='-9999px';
+    area.style.top='0';
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    area.setSelectionRange(0,area.value.length);
+    let copied=false;
+    try{copied=document.execCommand('copy');}catch(_error){}
+    document.body.removeChild(area);
+    if(copied){
+      done();
+    }else{
+      window.prompt(lang==='ko'?'이 질문을 복사해 주세요.':'Copy this question:',value);
+    }
+  };
   if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(value).catch(()=>window.prompt('Copy this question:',value));
-    return;
+    navigator.clipboard.writeText(value).then(done).catch(fallback);
+  }else{
+    fallback();
   }
-  window.prompt('Copy this question:',value);
 }
 function openAiToolWithFallback(url){
   const opened=window.open(url,'_blank','noopener,noreferrer');
