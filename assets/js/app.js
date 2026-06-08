@@ -1203,8 +1203,8 @@ function runAiWorkspaceSearch(){
       +'<a class="ai-submit" href="https://chatgpt.com/?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">ChatGPT</a>'
       +'<a class="ai-submit" href="https://claude.ai/new?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Claude</a>'
       +'<a class="ai-submit" href="https://www.perplexity.ai/search?q='+encodedPrompt+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Perplexity</a>'
-      +'<a class="ai-submit" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
-      +'<a class="ai-submit" href="https://grok.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Grok (붙여넣기)':'Grok (Paste)')+'</a>'
+      +'<a class="ai-submit" href="https://gemini.google.com/app" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Gemini (붙여넣기)':'Gemini (Paste)')+'</a>'
+      +'<button class="ai-submit" type="button" onclick="openAiToolWithFallback(\'https://grok.com/\')" style="display:inline-flex;align-items:center;justify-content:center;">'+(lang==='ko'?'Grok (붙여넣기)':'Grok (Paste)')+'</button>'
       +'</div>'
       +'</div>';
   }
@@ -1287,6 +1287,12 @@ function copyAiPreparedQuestion(text){
     return;
   }
   window.prompt('Copy this question:',value);
+}
+function openAiToolWithFallback(url){
+  const opened=window.open(url,'_blank','noopener,noreferrer');
+  if(!opened){
+    window.location.href=url;
+  }
 }
 function openTopicPanelByLabel(label){
   const topicsRoot=document.getElementById('topics');
