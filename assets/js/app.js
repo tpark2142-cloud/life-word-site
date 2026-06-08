@@ -1197,13 +1197,15 @@ function runAiWorkspaceSearch(){
     {name:'Genspark',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://www.genspark.ai/'},
     {name:'Felo AI',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 질문을 붙여 넣어 주세요.':'Open the tool, then paste the question.',href:'https://felo.ai/'},
     {name:'Suno AI',kind:'paste',note:lang==='ko'?'음악 아이디어나 가사를 붙여 넣어 실험해 보세요.':'Paste a music idea or lyric prompt to experiment.',href:'https://suno.com/'},
-    {name:'Adobe Firefly',kind:'paste',note:lang==='ko'?'이미지 아이디어를 붙여 넣어 실험해 보세요.':'Paste an image idea to experiment.',href:'https://www.adobe.com/products/firefly.html'},
     {name:'Canva AI',kind:'paste',note:lang==='ko'?'디자인 아이디어를 붙여 넣어 실험해 보세요.':'Paste a design idea to experiment.',href:'https://www.canva.com/ai/'},
     {name:'ElevenLabs',kind:'paste',note:lang==='ko'?'읽어 줄 문장을 붙여 넣어 목소리를 시험해 보세요.':'Paste text to try voice and narration.',href:'https://elevenlabs.io/text-to-speech'},
     {name:'Runway',kind:'paste',note:lang==='ko'?'영상 아이디어를 붙여 넣어 실험해 보세요.':'Paste a video idea to experiment.',href:'https://runwayml.com/'},
     {name:'Gemini',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'open-gemini.html'},
-    {name:'Grok',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',button:true,url:'https://grok.com/'}
+    {name:'Grok',kind:'paste',note:lang==='ko'?'질문 선택 후 붙여넣기가 가장 안정적입니다.':'Paste needed for best stability.',href:'https://grok.com/'}
   ];
+  if(lang==='ko'){
+    aiLaunchRows.splice(9,0,{name:'HyperCLOVA X',kind:'paste',note:'한국어에 특화된 네이버의 초대규모 AI 모델입니다.',href:'https://clova.ai/en/hyperclova'});
+  }
   const launchList=aiLaunchRows.map(item=>{
     const label=item.name+(item.name==='Gemini'||item.name==='Grok'?' '+(lang==='ko'?'(붙여넣기)':'(Paste)'):'');
     const badge=item.kind==='auto'?(lang==='ko'?'자동 입력':'Auto'):(lang==='ko'?'붙여넣기':'Paste');
