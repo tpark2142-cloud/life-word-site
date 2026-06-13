@@ -665,6 +665,53 @@ function getTodayMemoryVerseData(lang){
   return fallback[0];
 }
 
+const MEMORY_POPUP_RECENT_REFS_KEY = 'lm-gw-memory-popup-recent-refs';
+const MEMORY_POPUP_RECENT_LIMIT = 100;
+
+function loadRecentMemoryPopupRefs(){
+  try{
+    const parsed = JSON.parse(localStorage.getItem(MEMORY_POPUP_RECENT_REFS_KEY) || '[]');
+    return Array.isArray(parsed) ? parsed.filter(Boolean).map(ref => normalizeVerseRef(ref)) : [];
+  }catch(_error){
+    return [];
+  }
+}
+
+function saveRecentMemoryPopupRef(ref){
+  const normalizedRef = normalizeVerseRef(ref || '').replace(/\s*\(ESV\)\s*$/i, '');
+  if(!normalizedRef) return;
+  const recent = loadRecentMemoryPopupRefs().filter(item => item !== normalizedRef);
+  recent.unshift(normalizedRef);
+  try{
+    localStorage.setItem(MEMORY_POPUP_RECENT_REFS_KEY, JSON.stringify(recent.slice(0, MEMORY_POPUP_RECENT_LIMIT)));
+  }catch(_error){}
+}
+
+function getRotatingMemoryVerseData(lang){
+  const pool = buildDailyMemoryVersePool();
+  if(!pool.length) return getTodayMemoryVerseData(lang);
+  const recent = new Set(loadRecentMemoryPopupRefs());
+  const available = pool.filter(item => !recent.has(normalizeVerseRef(item.ref)));
+  const candidates = available.length ? available : pool;
+  const clickCountKey = 'lm-gw-memory-popup-click-count';
+  const currentCount = Number(localStorage.getItem(clickCountKey) || '0');
+  const dayIndex = getDayOfYear(new Date()) - 1;
+  const selected = candidates[((dayIndex + currentCount) % candidates.length + candidates.length) % candidates.length];
+  try{
+    localStorage.setItem(clickCountKey, String(currentCount + 1));
+  }catch(_error){}
+  return {
+    icon: '✦',
+    category: lang === 'ko' ? '암송구절' : 'Memory Verse',
+    title: lang === 'ko' ? '오늘의 암송구절' : "Today's Memory Verse",
+    note: lang === 'ko'
+      ? '최근에 본 말씀과 겹치지 않도록 다른 구절을 골랐습니다.'
+      : 'A fresh verse selected to avoid repeating recently viewed memory verses.',
+    verse: lang === 'ko' ? selected.koVerse : selected.enVerse,
+    ref: selected.ref + ' (ESV)'
+  };
+}
+
 let DAILY_MEDITATION_POOL = null;
 const HOMEPAGE_PROMISE_REF = 'Matthew 6:33';
 
@@ -807,7 +854,7 @@ function openTodayMemoryVersePopup(force){
     localStorage.setItem(storageKey, 'shown');
     return;
   }
-  const data = getTodayMemoryVerseData(lang);
+  const data = force ? getRotatingMemoryVerseData(lang) : getTodayMemoryVerseData(lang);
   document.getElementById('m-icon').textContent = data.icon;
   document.getElementById('m-cat').textContent = data.category;
   document.getElementById('m-title').textContent = data.title;
@@ -817,6 +864,7 @@ function openTodayMemoryVersePopup(force){
   document.getElementById('modal-overlay').classList.add('show');
   document.body.style.overflow = 'hidden';
   localStorage.setItem(storageKey, 'shown');
+  saveRecentMemoryPopupRef(data.ref);
   if(!force) markMemoryPopupAutoQuietPeriod();
 }
 window.openTodayMemoryVersePopup = openTodayMemoryVersePopup;
