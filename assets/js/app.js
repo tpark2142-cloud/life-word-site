@@ -425,6 +425,7 @@ function closeModal(e){
   }
   document.getElementById('modal-overlay').classList.remove('show');
   document.body.style.overflow='';
+  markMemoryPopupAutoQuietPeriod();
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
@@ -604,6 +605,29 @@ function getLocalDateKey(date){
   return year + '-' + month + '-' + day;
 }
 
+const MEMORY_POPUP_AUTO_KEY = 'lm-gw-memory-popup-auto-last-shown';
+const MEMORY_POPUP_AUTO_DAYS = 30;
+
+function getDateAgeInDays(dateKey){
+  if(!dateKey || !/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) return Infinity;
+  const parts = dateKey.split('-').map(Number);
+  const then = new Date(parts[0], parts[1] - 1, parts[2]).getTime();
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  return Math.floor((today - then) / 86400000);
+}
+
+function shouldShowMemoryPopupAutomatically(){
+  const lastShown = localStorage.getItem(MEMORY_POPUP_AUTO_KEY);
+  return getDateAgeInDays(lastShown) >= MEMORY_POPUP_AUTO_DAYS;
+}
+
+function markMemoryPopupAutoQuietPeriod(){
+  try{
+    localStorage.setItem(MEMORY_POPUP_AUTO_KEY, getLocalDateKey());
+  }catch(_error){}
+}
+
 function getTodayMemoryVerseData(lang){
   const plannedEntry = getDailyVersePlanEntry();
   if(plannedEntry && plannedEntry.memory){
@@ -772,6 +796,9 @@ function openTodayMemoryVersePopup(force){
   const storageKey = 'lm-gw-memory-popup-' + todayKey;
   const legacyEnglishKey = storageKey + '-en';
   const legacyKoreanKey = storageKey + '-ko';
+  if(!force && !shouldShowMemoryPopupAutomatically()){
+    return;
+  }
   if(!force && (
     localStorage.getItem(storageKey) === 'shown'
     || localStorage.getItem(legacyEnglishKey) === 'shown'
@@ -790,6 +817,7 @@ function openTodayMemoryVersePopup(force){
   document.getElementById('modal-overlay').classList.add('show');
   document.body.style.overflow = 'hidden';
   localStorage.setItem(storageKey, 'shown');
+  if(!force) markMemoryPopupAutoQuietPeriod();
 }
 window.openTodayMemoryVersePopup = openTodayMemoryVersePopup;
 
