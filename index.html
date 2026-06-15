@@ -251,14 +251,14 @@ gtag('config', 'G-2SJCBS84VD');
 
 <section class="home-update" id="popular-search-pages">
   <div class="home-update-inner">
-    <p class="home-update-kicker">Popular Search Pages</p>
-    <h2 class="home-update-title">Bible help for the moments people search most.</h2>
-    <p class="home-update-copy">These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.</p>
+    <p class="home-update-kicker" id="popular-pages-kicker">Popular Search Pages</p>
+    <h2 class="home-update-title" id="popular-pages-title">Bible help for the moments people search most.</h2>
+    <p class="home-update-copy" id="popular-pages-copy">These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.</p>
     <ul class="home-update-list" aria-label="Popular Bible verse pages">
-      <li><a href="bible-verses-for-anxiety.html">Bible Verses for Anxiety | 불안할 때 성경말씀</a></li>
-      <li><a href="bible-verses-for-grief.html">Bible Verses for Grief | 슬플 때 성경구절</a></li>
-      <li><a href="bible-verses-for-healing.html">Bible Verses for Healing | 치유를 위한 성경말씀</a></li>
-      <li><a href="prayers-for-healing.html">Prayers for Healing | 치유를 위한 기도문</a></li>
+      <li><a id="popular-pages-link-1" href="bible-verses-for-anxiety.html">Bible Verses for Anxiety</a></li>
+      <li><a id="popular-pages-link-2" href="bible-verses-for-grief.html">Bible Verses for Grief</a></li>
+      <li><a id="popular-pages-link-3" href="bible-verses-for-healing.html">Bible Verses for Healing</a></li>
+      <li><a id="popular-pages-link-4" href="prayers-for-healing.html">Prayers for Healing</a></li>
     </ul>
   </div>
 </section>
@@ -1195,6 +1195,12 @@ window.applyPageLanguage=function(lang){
           copy:'방문자들이 여러 AI 도구를 한곳에서 시험해 보고, 답을 비교하며, 오늘의 AI 자료에 자연스럽게 익숙해질 수 있도록 AI 놀이터를 간단한 AI 포털처럼 정리했습니다.',
           items:['하나의 질문으로 여러 AI 도구를 열어 보고, 각 도구가 어떻게 다르게 답하는지 비교해 볼 수 있습니다.','검색, 글쓰기, 음악, 디자인, 목소리, 학습, 창작 도구를 홈페이지를 떠나지 않고 편하게 체험할 수 있습니다.','더 좋은 질문을 만드는 법, 출처를 확인하는 법, AI를 지혜롭게 사용하는 법을 연습할 수 있는 친근한 공간입니다.','AI를 체험한 뒤에는 말씀, 기도, 묵상으로 다시 돌아와 더 깊은 지혜를 찾도록 돕습니다.']
         },
+        popularPages:{
+          kicker:'많이 찾는 말씀',
+          title:'사람들이 자주 찾는 삶의 순간을 위한 성경 도움',
+          copy:'불안, 슬픔, 치유, 어려운 계절 속에서 필요한 성경 말씀과 기도를 쉽게 찾을 수 있도록 정리했습니다.',
+          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문']
+        },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
         emotionCardTitles:['기쁨','슬픔','평안','소망','두려움','불안','외로움','분노','감사','죄책감과 후회','사랑','낙심'],
@@ -1261,6 +1267,12 @@ window.applyPageLanguage=function(lang){
           title:'AI Playground is now easier to try.',
           copy:'The AI Playground has been upgraded into a simple AI portal where visitors can test helpful tools, compare answers, and become familiar with today’s AI resources.',
           items:['Use one question to explore several AI tools and notice how each one answers differently.','Try search, writing, music, design, voice, learning, and creative tools without losing your place on this homepage.','This is a friendly place to practice asking better questions, checking sources, and using AI wisely.','After using AI, return to Scripture, prayer, and careful reflection for deeper wisdom.']
+        },
+        popularPages:{
+          kicker:'Popular Search Pages',
+          title:'Bible help for the moments people search most.',
+          copy:'These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.',
+          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing']
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
@@ -1497,6 +1509,13 @@ window.applyPageLanguage=function(lang){
   setText('#update-item-2', text.update.items[1]);
   setText('#update-item-3', text.update.items[2]);
   setText('#update-item-4', text.update.items[3]);
+  setText('#popular-pages-kicker', text.popularPages.kicker);
+  setText('#popular-pages-title', text.popularPages.title);
+  setText('#popular-pages-copy', text.popularPages.copy);
+  setText('#popular-pages-link-1', text.popularPages.links[0]);
+  setText('#popular-pages-link-2', text.popularPages.links[1]);
+  setText('#popular-pages-link-3', text.popularPages.links[2]);
+  setText('#popular-pages-link-4', text.popularPages.links[3]);
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
@@ -1685,7 +1704,7 @@ window.copySiteLink = async function(){
   if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
-<script src="assets/js/app.js?v=20260613d"></script>
+<script src="assets/js/app.js?v=20260615a"></script>
 <script src="assets/js/lang.js?v=20260604a"></script>
 <script src="assets/js/pwa.js?v=20260606b"></script>
 

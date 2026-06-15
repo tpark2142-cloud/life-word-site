@@ -246,8 +246,100 @@ function getKoreanEsvText(ref, fallback) {
   const normalizedRef = normalizeVerseRef(ref);
   return KOREAN_ESV_BY_REF[normalizedRef] || KOREAN_ESV_BY_REF[String(ref || '').trim()] || getKoreanVerseText(ref, fallback) || fallback || '';
 }
+
+const KOREAN_BOOK_NAMES = {
+  Genesis: '창세기',
+  Exodus: '출애굽기',
+  Leviticus: '레위기',
+  Numbers: '민수기',
+  Deuteronomy: '신명기',
+  Joshua: '여호수아',
+  Judges: '사사기',
+  Ruth: '룻기',
+  '1 Samuel': '사무엘상',
+  '2 Samuel': '사무엘하',
+  '1 Kings': '열왕기상',
+  '2 Kings': '열왕기하',
+  '1 Chronicles': '역대상',
+  '2 Chronicles': '역대하',
+  Ezra: '에스라',
+  Nehemiah: '느헤미야',
+  Esther: '에스더',
+  Job: '욥기',
+  Psalm: '시편',
+  Psalms: '시편',
+  Proverbs: '잠언',
+  Ecclesiastes: '전도서',
+  'Song of Solomon': '아가',
+  Isaiah: '이사야',
+  Jeremiah: '예레미야',
+  Lamentations: '예레미야애가',
+  Ezekiel: '에스겔',
+  Daniel: '다니엘',
+  Hosea: '호세아',
+  Joel: '요엘',
+  Amos: '아모스',
+  Obadiah: '오바댜',
+  Jonah: '요나',
+  Micah: '미가',
+  Nahum: '나훔',
+  Habakkuk: '하박국',
+  Zephaniah: '스바냐',
+  Haggai: '학개',
+  Zechariah: '스가랴',
+  Malachi: '말라기',
+  Matthew: '마태복음',
+  Mark: '마가복음',
+  Luke: '누가복음',
+  John: '요한복음',
+  Acts: '사도행전',
+  Romans: '로마서',
+  '1 Corinthians': '고린도전서',
+  '2 Corinthians': '고린도후서',
+  Galatians: '갈라디아서',
+  Ephesians: '에베소서',
+  Philippians: '빌립보서',
+  Colossians: '골로새서',
+  '1 Thessalonians': '데살로니가전서',
+  '2 Thessalonians': '데살로니가후서',
+  '1 Timothy': '디모데전서',
+  '2 Timothy': '디모데후서',
+  Titus: '디도서',
+  Philemon: '빌레몬서',
+  Hebrews: '히브리서',
+  James: '야고보서',
+  '1 Peter': '베드로전서',
+  '2 Peter': '베드로후서',
+  '1 John': '요한일서',
+  '2 John': '요한이서',
+  '3 John': '요한삼서',
+  Jude: '유다서',
+  Revelation: '요한계시록'
+};
+
+function getCurrentSiteLanguage(){
+  if(typeof window.getSiteLanguage === 'function'){
+    return window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
+  }
+  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+  if(htmlLang.startsWith('ko')) return 'ko';
+  try{
+    return localStorage.getItem('lifeword.siteLang') === 'ko' ? 'ko' : 'en';
+  }catch(_error){
+    return 'en';
+  }
+}
+
+function formatVerseRefForLanguage(ref, lang){
+  const normalizedRef = normalizeVerseRef(ref).replace(/\s*\(ESV\)\s*$/i, '');
+  if(lang !== 'ko') return normalizedRef;
+  const sortedBooks = Object.keys(KOREAN_BOOK_NAMES).sort((a, b) => b.length - a.length);
+  const book = sortedBooks.find(name => normalizedRef === name || normalizedRef.startsWith(name + ' '));
+  return book ? KOREAN_BOOK_NAMES[book] + normalizedRef.slice(book.length) : normalizedRef;
+}
+
 function getKjvLabel(){
-  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
+  const lang=getCurrentSiteLanguage();
   return lang==='ko' ? '킹 제임스' : 'KJV';
 }
 
@@ -642,7 +734,7 @@ function getTodayMemoryVerseData(lang){
       verse: lang === 'ko'
         ? getKoreanEsvText(ref, plannedEntry.memory.esv)
         : plannedEntry.memory.esv,
-      ref: (lang === 'ko' ? ref : plannedEntry.memory.ref) + ' (ESV)'
+      ref: formatVerseRefForLanguage(lang === 'ko' ? ref : plannedEntry.memory.ref, lang) + ' (ESV)'
     };
   }
   const pool = buildDailyMemoryVersePool();
@@ -658,7 +750,7 @@ function getTodayMemoryVerseData(lang){
         ? '오늘의 묵상 말씀입니다. 이 말씀으로 주님과 조용히 교제해 보세요.'
         : 'This is today’s meditation verse. Take a quiet moment to meet with the Lord through this passage.',
       verse: lang === 'ko' ? verse.koVerse : verse.enVerse,
-      ref: verse.ref + ' (ESV)'
+      ref: formatVerseRefForLanguage(verse.ref, lang) + ' (ESV)'
     };
   }
   const fallback = TODAY_MEMORY_VERSE_ROTATIONS[lang] || TODAY_MEMORY_VERSE_ROTATIONS.en;
@@ -708,7 +800,7 @@ function getRotatingMemoryVerseData(lang){
       ? '최근에 본 말씀과 겹치지 않도록 다른 구절을 골랐습니다.'
       : 'A fresh verse selected to avoid repeating recently viewed memory verses.',
     verse: lang === 'ko' ? selected.koVerse : selected.enVerse,
-    ref: selected.ref + ' (ESV)'
+    ref: formatVerseRefForLanguage(selected.ref, lang) + ' (ESV)'
   };
 }
 
@@ -775,7 +867,7 @@ function getTodayMeditationData(lang){
         verse: lang === 'ko'
           ? getKoreanEsvText(ref, plannedEntry.meditation.esv)
           : plannedEntry.meditation.esv,
-        ref: (lang === 'ko' ? ref : plannedEntry.meditation.ref) + ' (ESV)',
+        ref: formatVerseRefForLanguage(lang === 'ko' ? ref : plannedEntry.meditation.ref, lang) + ' (ESV)',
         note: getDailyMeditationNote(lang, category)
       };
     }
@@ -805,7 +897,7 @@ function getTodayMeditationData(lang){
     return {
       label: noteLabel,
       verse: lang === 'ko' ? selected.koEsv : selected.enEsv,
-      ref: selected.ref + ' (ESV)',
+      ref: formatVerseRefForLanguage(selected.ref, lang) + ' (ESV)',
       note: getDailyMeditationNote(lang, selected.category)
     };
   }
@@ -822,7 +914,7 @@ function getTodayMeditationData(lang){
 
 function applyHomepageDailyMeditation(){
   if(!document.querySelector('.votd-band')) return;
-  const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
+  const lang = getCurrentSiteLanguage();
   const data = getTodayMeditationData(lang);
   const labelEl = document.querySelector('.votd-lbl');
   const verseEl = document.querySelector('.votd-q');
@@ -838,7 +930,7 @@ window.refreshDailyHomepageVerse = applyHomepageDailyMeditation;
 
 function openTodayMemoryVersePopup(force){
   if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
-  const lang = typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en';
+  const lang = getCurrentSiteLanguage();
   const todayKey = getLocalDateKey();
   const storageKey = 'lm-gw-memory-popup-' + todayKey;
   const legacyEnglishKey = storageKey + '-en';
