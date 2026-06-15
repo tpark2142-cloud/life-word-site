@@ -34,7 +34,7 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260613a">
+<link rel="stylesheet" href="assets/css/app.css?v=20260615b">
 </head>
 <body>
 
@@ -255,11 +255,24 @@ gtag('config', 'G-2SJCBS84VD');
     <h2 class="home-update-title" id="popular-pages-title">Bible help for the moments people search most.</h2>
     <p class="home-update-copy" id="popular-pages-copy">These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.</p>
     <ul class="home-update-list" aria-label="Popular Bible verse pages">
-      <li><a id="popular-pages-link-1" href="bible-verses-for-anxiety.html">Bible Verses for Anxiety</a></li>
-      <li><a id="popular-pages-link-2" href="bible-verses-for-grief.html">Bible Verses for Grief</a></li>
-      <li><a id="popular-pages-link-3" href="bible-verses-for-healing.html">Bible Verses for Healing</a></li>
-      <li><a id="popular-pages-link-4" href="prayers-for-healing.html">Prayers for Healing</a></li>
+      <li><a id="popular-pages-link-1" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-anxiety.html', this); return false;">Bible Verses for Anxiety</a></li>
+      <li><a id="popular-pages-link-2" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">Bible Verses for Grief</a></li>
+      <li><a id="popular-pages-link-3" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">Bible Verses for Healing</a></li>
+      <li><a id="popular-pages-link-4" href="#popular-page-viewer" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
     </ul>
+  </div>
+</section>
+
+<section class="popular-page-frame" id="popular-page-viewer" aria-live="polite">
+  <div class="popular-page-frame-inner">
+    <div class="popular-page-frame-head">
+      <div>
+        <p class="popular-page-frame-kicker" id="popular-frame-kicker">Read Here</p>
+        <h2 id="popular-frame-title">Choose a Bible help page above.</h2>
+      </div>
+      <button class="popular-page-close" type="button" onclick="closePopularBiblePage()" id="popular-frame-close">Close</button>
+    </div>
+    <iframe id="popular-page-frame" title="Bible help page" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -1199,7 +1212,10 @@ window.applyPageLanguage=function(lang){
           kicker:'많이 찾는 말씀',
           title:'사람들이 자주 찾는 삶의 순간을 위한 성경 도움',
           copy:'불안, 슬픔, 치유, 어려운 계절 속에서 필요한 성경 말씀과 기도를 쉽게 찾을 수 있도록 정리했습니다.',
-          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문']
+          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문'],
+          frameKicker:'홈페이지 안에서 읽기',
+          frameTitle:'위의 성경 도움 메뉴를 선택해 주세요.',
+          frameClose:'닫기'
         },
         chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
         emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
@@ -1272,7 +1288,10 @@ window.applyPageLanguage=function(lang){
           kicker:'Popular Search Pages',
           title:'Bible help for the moments people search most.',
           copy:'These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.',
-          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing']
+          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing'],
+          frameKicker:'Read Here',
+          frameTitle:'Choose a Bible help page above.',
+          frameClose:'Close'
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
         emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
@@ -1516,6 +1535,11 @@ window.applyPageLanguage=function(lang){
   setText('#popular-pages-link-2', text.popularPages.links[1]);
   setText('#popular-pages-link-3', text.popularPages.links[2]);
   setText('#popular-pages-link-4', text.popularPages.links[3]);
+  setText('#popular-frame-kicker', text.popularPages.frameKicker);
+  if(!q('#popular-page-viewer')?.classList.contains('open')){
+    setText('#popular-frame-title', text.popularPages.frameTitle);
+  }
+  setText('#popular-frame-close', text.popularPages.frameClose);
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
@@ -1702,6 +1726,33 @@ window.copySiteLink = async function(){
   }catch(err){}
   window.prompt(lang === 'ko' ? '이 링크를 복사해 주세요.' : 'Copy this link:', url);
   if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
+};
+</script>
+<script>
+window.openPopularBiblePage = function(url, link){
+  const viewer = document.getElementById('popular-page-viewer');
+  const frame = document.getElementById('popular-page-frame');
+  const title = document.getElementById('popular-frame-title');
+  if(!viewer || !frame) return;
+  frame.setAttribute('src', url);
+  viewer.classList.add('open');
+  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
+  if(link){
+    link.classList.add('active');
+    if(title) title.textContent = link.textContent.trim();
+  }
+  viewer.scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+window.closePopularBiblePage = function(){
+  const viewer = document.getElementById('popular-page-viewer');
+  const frame = document.getElementById('popular-page-frame');
+  if(viewer) viewer.classList.remove('open');
+  if(frame) frame.removeAttribute('src');
+  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
+  if(typeof window.applyPageLanguage === 'function'){
+    window.applyPageLanguage(typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en');
+  }
 };
 </script>
 <script src="assets/js/app.js?v=20260615a"></script>
