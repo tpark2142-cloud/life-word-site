@@ -1493,6 +1493,57 @@ audio.living-word-media::-webkit-media-controls-enclosure{
   border-color:var(--gold);
   color:var(--deep);
 }
+#popular-search-pages .home-update-inner{max-width:1120px}
+#popular-search-pages .home-update-list{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  padding:0;
+  list-style:none;
+}
+#popular-search-pages .home-update-list li{
+  display:flex;
+  min-width:0;
+  font-size:15px;
+  line-height:1.35;
+}
+#popular-search-pages .home-update-list a{
+  width:100%;
+  min-height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 14px 13px 16px;
+  border:1px solid rgba(184,147,90,.38);
+  border-left:3px solid var(--gold);
+  border-radius:8px;
+  background:#fffaf1;
+  color:var(--deep);
+  text-decoration:none;
+  box-shadow:0 5px 14px rgba(28,46,36,.045);
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
+}
+#popular-search-pages .home-update-list a::after{
+  content:'→';
+  flex:0 0 auto;
+  color:var(--gold);
+  font-size:18px;
+  line-height:1;
+}
+#popular-search-pages .home-update-list a:hover,
+#popular-search-pages .home-update-list a:focus-visible,
+#popular-search-pages .home-update-list a.active{
+  background:var(--deep);
+  border-color:var(--deep);
+  color:#fff8ea;
+  transform:translateY(-1px);
+}
+#popular-search-pages .home-update-list a:hover::after,
+#popular-search-pages .home-update-list a:focus-visible::after,
+#popular-search-pages .home-update-list a.active::after{color:#f4d889}
+html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-height:1.45}
+@media(max-width:900px){#popular-search-pages .home-update-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){#popular-search-pages .home-update-inner{padding-left:18px;padding-right:18px}#popular-search-pages .home-update-list{grid-template-columns:1fr}#popular-search-pages .home-update-list a{min-height:54px}}
 .popular-page-frame{
   display:none;
   background:var(--cream);
