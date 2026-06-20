@@ -32,4 +32,9 @@ h2{font-size:28px;line-height:1.2;margin:0 0 10px;letter-spacing:0;color:var(--d
 .footer-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-bottom:12px}
 .footer-nav a{color:#f4d889;text-decoration:none}
 .site-footer p{margin:5px 0;font-size:13px}
+html.embedded body{background:var(--paper)}
+html.embedded .page-shell{display:block;min-height:0}
+html.embedded .site-sidebar,html.embedded .site-footer{display:none}
+html.embedded .content{max-width:920px;padding:22px 18px 42px}
+html.embedded .hero{margin-top:0}
 @media(max-width:820px){.page-shell{display:block}.site-sidebar{position:relative;height:auto;padding:14px 16px}.brand{margin-bottom:12px}.brand img{width:40px;height:40px}.site-nav{display:flex;overflow-x:auto;gap:4px;padding-bottom:4px}.site-nav a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent}.site-nav a:hover,.site-nav a:focus{border-left-color:transparent;border-bottom-color:var(--gold)}.language-link{position:absolute;right:16px;top:18px;margin:0;padding:6px 10px}.sidebar-verse{display:none}.content{padding:22px 14px 42px}.hero{padding:32px 22px}.related-links{grid-template-columns:1fr}}
