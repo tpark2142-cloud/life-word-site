@@ -255,10 +255,10 @@ gtag('config', 'G-2SJCBS84VD');
     <h2 class="home-update-title" id="popular-pages-title">Bible help for the moments people search most.</h2>
     <p class="home-update-copy" id="popular-pages-copy">These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.</p>
     <ul class="home-update-list" aria-label="Popular Bible verse pages">
-      <li><a id="popular-pages-link-1" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-anxiety.html', this); return false;">Bible Verses for Anxiety</a></li>
-      <li><a id="popular-pages-link-2" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">Bible Verses for Grief</a></li>
-      <li><a id="popular-pages-link-3" href="#popular-page-viewer" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">Bible Verses for Healing</a></li>
-      <li><a id="popular-pages-link-4" href="#popular-page-viewer" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
+      <li><a id="popular-pages-link-1" href="en/bible-verses-for-anxiety.html" onclick="openPopularBiblePage('bible-verses-for-anxiety.html', this); return false;">Bible Verses for Anxiety</a></li>
+      <li><a id="popular-pages-link-2" href="en/bible-verses-for-grief.html" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">Bible Verses for Grief</a></li>
+      <li><a id="popular-pages-link-3" href="en/bible-verses-for-healing.html" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">Bible Verses for Healing</a></li>
+      <li><a id="popular-pages-link-4" href="en/prayers-for-healing.html" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
     </ul>
   </div>
 </section>
@@ -1535,6 +1535,11 @@ window.applyPageLanguage=function(lang){
   setText('#popular-pages-link-2', text.popularPages.links[1]);
   setText('#popular-pages-link-3', text.popularPages.links[2]);
   setText('#popular-pages-link-4', text.popularPages.links[3]);
+  const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html'];
+  popularPageSlugs.forEach((slug,index)=>{
+    const link=q('#popular-pages-link-'+(index+1));
+    if(link) link.setAttribute('href',lang+'/'+slug);
+  });
   setText('#popular-frame-kicker', text.popularPages.frameKicker);
   if(!q('#popular-page-viewer')?.classList.contains('open')){
     setText('#popular-frame-title', text.popularPages.frameTitle);
@@ -1739,7 +1744,7 @@ window.openPopularBiblePage = function(url, link){
   if(!viewer || !frame) return;
   const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
   frame.dataset.pageUrl = url;
-  frame.setAttribute('src', url + (url.includes('?') ? '&' : '?') + 'lang=' + lang);
+  frame.setAttribute('src', lang + '/' + url);
   viewer.classList.add('open');
   document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
   if(link){
@@ -1754,7 +1759,7 @@ window.refreshPopularBibleFrameLanguage = function(){
   const frame = document.getElementById('popular-page-frame');
   if(!viewer || !frame || !viewer.classList.contains('open') || !frame.dataset.pageUrl) return;
   const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.setAttribute('src', frame.dataset.pageUrl + '?lang=' + lang);
+  frame.setAttribute('src', lang + '/' + frame.dataset.pageUrl);
 };
 
 window.closePopularBiblePage = function(){
