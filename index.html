@@ -1754,7 +1754,7 @@ window.openPopularBiblePage = function(url, link){
   if(!viewer || !frame) return;
   const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
   frame.dataset.pageUrl = url;
-  frame.setAttribute('src', lang + '/' + url + '?embed=1');
+  frame.setAttribute('src', lang + '/' + url + '?embed=1&content=20260620b');
   viewer.classList.add('open');
   document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
   if(link){
@@ -1769,7 +1769,7 @@ window.refreshPopularBibleFrameLanguage = function(){
   const frame = document.getElementById('popular-page-frame');
   if(!viewer || !frame || !viewer.classList.contains('open') || !frame.dataset.pageUrl) return;
   const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.setAttribute('src', lang + '/' + frame.dataset.pageUrl + '?embed=1');
+  frame.setAttribute('src', lang + '/' + frame.dataset.pageUrl + '?embed=1&content=20260620b');
 };
 
 window.closePopularBiblePage = function(){
