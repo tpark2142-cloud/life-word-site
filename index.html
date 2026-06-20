@@ -259,6 +259,11 @@ gtag('config', 'G-2SJCBS84VD');
       <li><a id="popular-pages-link-2" href="en/bible-verses-for-grief.html" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">Bible Verses for Grief</a></li>
       <li><a id="popular-pages-link-3" href="en/bible-verses-for-healing.html" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">Bible Verses for Healing</a></li>
       <li><a id="popular-pages-link-4" href="en/prayers-for-healing.html" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
+      <li><a id="popular-pages-link-5" href="en/bible-verses-for-loneliness.html" onclick="openPopularBiblePage('bible-verses-for-loneliness.html', this); return false;">Bible Verses for Loneliness</a></li>
+      <li><a id="popular-pages-link-6" href="en/bible-verses-for-fear.html" onclick="openPopularBiblePage('bible-verses-for-fear.html', this); return false;">Bible Verses for Fear</a></li>
+      <li><a id="popular-pages-link-7" href="en/bible-verses-for-sleep.html" onclick="openPopularBiblePage('bible-verses-for-sleep.html', this); return false;">Bible Verses for Sleep</a></li>
+      <li><a id="popular-pages-link-8" href="en/prayer-before-surgery.html" onclick="openPopularBiblePage('prayer-before-surgery.html', this); return false;">Prayer Before Surgery</a></li>
+      <li><a id="popular-pages-link-9" href="en/prayer-for-sick-family.html" onclick="openPopularBiblePage('prayer-for-sick-family.html', this); return false;">Prayer for a Sick Family Member</a></li>
     </ul>
   </div>
 </section>
@@ -1212,7 +1217,7 @@ window.applyPageLanguage=function(lang){
           kicker:'많이 찾는 말씀',
           title:'사람들이 자주 찾는 삶의 순간을 위한 성경 도움',
           copy:'불안, 슬픔, 치유, 어려운 계절 속에서 필요한 성경 말씀과 기도를 쉽게 찾을 수 있도록 정리했습니다.',
-          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문'],
+          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문','외로울 때 성경말씀','두려울 때 성경말씀','잠이 오지 않을 때 말씀','수술 전 기도','아픈 가족을 위한 기도'],
           frameKicker:'홈페이지 안에서 읽기',
           frameTitle:'위의 성경 도움 메뉴를 선택해 주세요.',
           frameClose:'닫기'
@@ -1288,7 +1293,7 @@ window.applyPageLanguage=function(lang){
           kicker:'Popular Search Pages',
           title:'Bible help for the moments people search most.',
           copy:'These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.',
-          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing'],
+          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing','Bible Verses for Loneliness','Bible Verses for Fear','Bible Verses for Sleep','Prayer Before Surgery','Prayer for a Sick Family Member'],
           frameKicker:'Read Here',
           frameTitle:'Choose a Bible help page above.',
           frameClose:'Close'
@@ -1535,7 +1540,12 @@ window.applyPageLanguage=function(lang){
   setText('#popular-pages-link-2', text.popularPages.links[1]);
   setText('#popular-pages-link-3', text.popularPages.links[2]);
   setText('#popular-pages-link-4', text.popularPages.links[3]);
-  const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html'];
+  setText('#popular-pages-link-5', text.popularPages.links[4]);
+  setText('#popular-pages-link-6', text.popularPages.links[5]);
+  setText('#popular-pages-link-7', text.popularPages.links[6]);
+  setText('#popular-pages-link-8', text.popularPages.links[7]);
+  setText('#popular-pages-link-9', text.popularPages.links[8]);
+  const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html','bible-verses-for-loneliness.html','bible-verses-for-fear.html','bible-verses-for-sleep.html','prayer-before-surgery.html','prayer-for-sick-family.html'];
   popularPageSlugs.forEach((slug,index)=>{
     const link=q('#popular-pages-link-'+(index+1));
     if(link) link.setAttribute('href',lang+'/'+slug);

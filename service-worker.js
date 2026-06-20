@@ -1,6 +1,6 @@
 ﻿self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('lifemoment-static-v101').then(cache => cache.addAll([
+    caches.open('lifemoment-static-v102').then(cache => cache.addAll([
       './',
       './index.html',
       './robots.txt',
@@ -14,14 +14,29 @@
       './bible-verses-for-grief.html',
       './bible-verses-for-healing.html',
       './prayers-for-healing.html',
+      './bible-verses-for-loneliness.html',
+      './bible-verses-for-fear.html',
+      './bible-verses-for-sleep.html',
+      './prayer-before-surgery.html',
+      './prayer-for-sick-family.html',
       './en/bible-verses-for-anxiety.html',
       './en/bible-verses-for-grief.html',
       './en/bible-verses-for-healing.html',
       './en/prayers-for-healing.html',
+      './en/bible-verses-for-loneliness.html',
+      './en/bible-verses-for-fear.html',
+      './en/bible-verses-for-sleep.html',
+      './en/prayer-before-surgery.html',
+      './en/prayer-for-sick-family.html',
       './ko/bible-verses-for-anxiety.html',
       './ko/bible-verses-for-grief.html',
       './ko/bible-verses-for-healing.html',
       './ko/prayers-for-healing.html',
+      './ko/bible-verses-for-loneliness.html',
+      './ko/bible-verses-for-fear.html',
+      './ko/bible-verses-for-sleep.html',
+      './ko/prayer-before-surgery.html',
+      './ko/prayer-for-sick-family.html',
       './manifest.json',
       './assets/css/app.css?v=20260615b',
       './assets/css/seo-pages.css?v=20260619a',
@@ -39,7 +54,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
       keys
-        .filter(key => key !== 'lifemoment-static-v101')
+        .filter(key => key !== 'lifemoment-static-v102')
         .map(key => caches.delete(key))
     )).then(() => self.clients.claim())
   );
@@ -56,7 +71,7 @@ self.addEventListener('fetch', event => {
       }
       return fetch(event.request).then(response => {
         const copy = response.clone();
-        caches.open('lifemoment-static-v101').then(cache => cache.put(event.request, copy));
+        caches.open('lifemoment-static-v102').then(cache => cache.put(event.request, copy));
         return response;
       }).catch(() => caches.match('./index.html'));
     })
