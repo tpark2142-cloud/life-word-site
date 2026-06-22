@@ -929,6 +929,7 @@ function applyHomepageDailyMeditation(){
 window.refreshDailyHomepageVerse = applyHomepageDailyMeditation;
 
 function openTodayMemoryVersePopup(force){
+  if(document.body.classList.contains('section-page') && !force) return;
   if(!document.getElementById('seniors') || !document.getElementById('modal-overlay')) return;
   const lang = getCurrentSiteLanguage();
   const todayKey = getLocalDateKey();

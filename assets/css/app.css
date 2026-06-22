@@ -1544,6 +1544,61 @@ audio.living-word-media::-webkit-media-controls-enclosure{
 html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-height:1.45}
 @media(max-width:900px){#popular-search-pages .home-update-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){#popular-search-pages .home-update-inner{padding-left:18px;padding-right:18px}#popular-search-pages .home-update-list{grid-template-columns:1fr}#popular-search-pages .home-update-list a{min-height:54px}}
+
+/* Focused homepage and dedicated feature pages */
+.home-page #home-spotlight,
+.home-page #homepage-update,
+.home-page #emotions,
+.home-page #situations,
+.home-page #topics,
+.home-page #seniors,
+.home-page #gallery,
+.home-page #ai-summary,
+.home-page #missions,
+.home-page #living-word,
+.home-page #fellowship{display:none!important}
+
+.section-page #home-start,
+.section-page #home-spotlight,
+.section-page #homepage-update,
+.section-page #popular-search-pages,
+.section-page #popular-page-viewer,
+.section-page #home-pathways,
+.section-page #results-section,
+.section-page .votd-band,
+.section-page .promise-band,
+.section-page #about,
+.section-page #english-word,
+.section-page #emotions,
+.section-page #situations,
+.section-page #topics,
+.section-page #seniors,
+.section-page #gallery,
+.section-page #ai-summary,
+.section-page #missions,
+.section-page #living-word,
+.section-page #fellowship{display:none!important}
+
+.section-page.page-topics #emotions,
+.section-page.page-topics #situations,
+.section-page.page-topics #topics,
+.section-page.page-topics #seniors,
+.section-page.page-gallery #gallery,
+.section-page.page-ai #ai-summary,
+.section-page.page-missions #missions,
+.section-page.page-living #living-word,
+.section-page.page-guestbook #fellowship{display:block!important}
+
+.section-page .main-content>header{position:sticky;top:0;z-index:30}
+.section-page #emotions,
+.section-page #situations,
+.section-page #topics,
+.section-page #seniors,
+.section-page #gallery,
+.section-page #ai-summary,
+.section-page #missions,
+.section-page #living-word,
+.section-page #fellowship{min-height:calc(100vh - 220px)}
 .popular-page-frame{
   display:none;
   background:var(--cream);
