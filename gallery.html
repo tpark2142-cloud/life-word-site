@@ -34,9 +34,17 @@ gtag('config', 'G-2SJCBS84VD');
 <link rel="apple-touch-icon" href="assets/img/app-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.css?v=20260622a">
+<script>
+(function(){
+  try{
+    var lang = localStorage.getItem('lifeword.siteLang') === 'ko' ? 'ko' : 'en';
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('data-site-lang', lang);
+  }catch(_e){}
+})();
+</script><link rel="stylesheet" href="assets/css/app.css?v=20260623c">
 </head>
-<body class="section-page page-gallery" data-title-en="Gallery | Life's Moments, God's Word" data-title-ko="??? | ?? ???, ???? ??">
+<body class="section-page page-gallery" data-title-en="Gallery | Life's Moments, God's Word" data-title-ko="갤러리 | 삶의 순간들, 하나님의 말씀">
 
 <!-- Mobile overlay -->
 <div class="sb-overlay" id="sb-overlay" onclick="closeSidebar()"></div>
@@ -87,7 +95,7 @@ gtag('config', 'G-2SJCBS84VD');
       <span class="sb-icon">&#10022;</span> AI Playground
     </a>
     <a class="sb-link ko-only" href="index.html#english-word" onclick="closeSidebar()">
-      <span class="sb-icon">&#127909;</span> ??? ??
+      <span class="sb-icon">&#127909;</span> 영어와 말씀
     </a>
     <a class="sb-link" href="missions.html" onclick="closeSidebar()">
       <span class="sb-icon">&#9993;</span> Missions
@@ -114,8 +122,8 @@ gtag('config', 'G-2SJCBS84VD');
 
   <!-- Sidebar footer verse -->
   <div class="sb-footer">
-    <p class="sb-footer-verse">?? ??? ? ?? ??? ? ?? ?????.</p>
-    <span class="sb-footer-ref">?? 119:105</span>
+    <p class="sb-footer-verse">주의 말씀은 내 발에 등이요 내 길에 빛이니이다.</p>
+    <span class="sb-footer-ref">시편 119:105</span>
   </div>
 </aside>
 
@@ -172,7 +180,7 @@ gtag('config', 'G-2SJCBS84VD');
 
   <div class="hero-search">
     <div class="search-wrap">
-      <input type="text" id="hero-input" placeholder="??: ??, ???, ??, ??, ??, ??&hellip;" autocomplete="off"/>
+      <input type="text" id="hero-input" placeholder="검색: 슬픔, 두려움, 질병, 소망, 용서, 결혼&hellip;" autocomplete="off"/>
       <button id="hero-clear" onclick="clearHeroSearch()" title="Clear">&#10005;</button>
       <button class="go" onclick="doHeroSearch()">Search Bible</button>
     </div>
@@ -244,7 +252,7 @@ gtag('config', 'G-2SJCBS84VD');
       <li id="update-item-1">Use one question to explore several AI tools and notice how each one answers differently.</li>
       <li id="update-item-2">Try search, writing, music, design, voice, learning, and creative tools without losing your place on this homepage.</li>
       <li id="update-item-3">This is a friendly place to practice asking better questions, checking sources, and using AI wisely.</li>
-      <li class="ko-update-only" id="update-item-4">AI? ??? ??? ??, ??, ???? ?? ??? ? ?? ??? ??? ????.</li>
+      <li class="ko-update-only" id="update-item-4">AI를 체험한 뒤에는 말씀, 기도, 묵상으로 다시 돌아와 더 깊은 지혜를 찾도록 돕습니다.</li>
     </ul>
   </div>
 </section>
@@ -293,7 +301,7 @@ gtag('config', 'G-2SJCBS84VD');
       <article class="home-pathway-card">
         <p class="home-pathway-eyebrow" id="pathway-1-eyebrow">Daily Reading</p>
         <h3 id="pathway-1-title">Devotion</h3>
-        <p id="pathway-1-copy">Begin the day in God�s Word with a short Scripture reading and reflection.</p>
+        <p id="pathway-1-copy">Begin the day in God’s Word with a short Scripture reading and reflection.</p>
         <a class="home-pathway-link" id="pathway-1-link" href="devotion.html">Open Devotion</a>
       </article>
 
@@ -332,7 +340,7 @@ gtag('config', 'G-2SJCBS84VD');
   </div>
 </section>
 
-<!-- ═══ EMOTIONS ═══ -->
+<!-- â•â•â• EMOTIONS â•â•â• -->
 <div class="divider" style="padding-top:58px;"><div class="dline"><span class="dsym">&#10022;</span></div></div>
 <section class="section" id="emotions">
   <p class="s-lbl">The Heart&rsquo;s Compass</p>
@@ -437,7 +445,7 @@ gtag('config', 'G-2SJCBS84VD');
   </div>
 </div>
 
-<!-- ═══ SITUATIONS ═══ -->
+<!-- â•â•â• SITUATIONS â•â•â• -->
 <div class="divider" style="padding-top:60px;"><div class="dline"><span class="dsym">&#10022;</span></div></div>
 <section class="section" id="situations">
   <p class="s-lbl">Real Life. Real Scripture.</p>
@@ -532,7 +540,7 @@ gtag('config', 'G-2SJCBS84VD');
   </div>
 </div>
 
-<!-- ═══ TOPICS (clickable) ═══ -->
+<!-- â•â•â• TOPICS (clickable) â•â•â• -->
 <div class="topics-bg" id="topics">
   <div class="topics-inner">
     <p class="s-lbl" style="text-align:center;">Bible Topic Search</p>
@@ -629,16 +637,16 @@ gtag('config', 'G-2SJCBS84VD');
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Depression &amp; Discouragement <span class="t-icon">+</span></button>
           <div class="topic-panel"><div class="tp-inner"><p class="tp-note">For those walking through depression, emotional heaviness, and the need for God&rsquo;s comfort.</p>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6105k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6105e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6105k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Why art thou cast down, O my soul? and why art thou disquieted in me? hope thou in God: for I shall yet praise him.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 42:11</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ???? ???? ??? ?? ?? ????? ????.</p></div><div class="dv-content" id="tp6105e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Why are you cast down, O my soul, and why are you in turmoil within me? Hope in God; for I shall again praise him.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 42:11 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ???? ???? ??? ?? ?? ????? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6106k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6106e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6106k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 41:10</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ????? ?? ???? ????? ? ???? ?????.</p></div><div class="dv-content" id="tp6106e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 41:10 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ????? ?? ???? ????? ? ???? ?????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6107k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6107e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6107k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Blessed be God... the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">2 Corinthians 1:3&ndash;4</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ?? ?? ?? ??? ????? ???? ????.</p></div><div class="dv-content" id="tp6107e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Blessed be... the Father of mercies and God of all comfort, who comforts us in all our affliction.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">2 Corinthians 1:3&ndash;4 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ?? ?? ?? ??? ????? ???? ????.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6105k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6105e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6105k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Why art thou cast down, O my soul? and why art thou disquieted in me? hope thou in God: for I shall yet praise him.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 42:11</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 낙심한 마음에도 하나님께 소망을 두고 다시 찬양하라는 뜻입니다.</p></div><div class="dv-content" id="tp6105e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Why are you cast down, O my soul, and why are you in turmoil within me? Hope in God; for I shall again praise him.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 42:11 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 낙심한 마음에도 하나님께 소망을 두고 다시 찬양하라는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6106k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6106e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6106k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 41:10</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 두려워하지 말고 하나님이 함께하시며 힘 주신다는 약속입니다.</p></div><div class="dv-content" id="tp6106e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 41:10 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 두려워하지 말고 하나님이 함께하시며 힘 주신다는 약속입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6107k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6107e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6107k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Blessed be God... the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">2 Corinthians 1:3&ndash;4</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 하나님은 모든 환난 중에 우리를 위로하시는 분이라는 뜻입니다.</p></div><div class="dv-content" id="tp6107e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Blessed be... the Father of mercies and God of all comfort, who comforts us in all our affliction.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">2 Corinthians 1:3&ndash;4 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 하나님은 모든 환난 중에 우리를 위로하시는 분이라는 뜻입니다.</p></div></div>
           </div></div>
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Sleep &amp; Insomnia <span class="t-icon">+</span></button>
           <div class="topic-panel"><div class="tp-inner"><p class="tp-note">For those struggling with sleeplessness, restless thoughts, and the need for God&rsquo;s peace.</p>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6108k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6108e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6108k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 4:8</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ??? ?? ?? ? ??? ????.</p></div><div class="dv-content" id="tp6108e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;In peace I will both lie down and sleep; for you alone, O Lord, make me dwell in safety.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 4:8 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ??? ?? ?? ? ??? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6109k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6109e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6109k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Come unto me, all ye that labour and are heavy laden, and I will give you rest.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 11:28</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ??? ??? ?? ?? ?? ???? ????.</p></div><div class="dv-content" id="tp6109e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Come to me, all who labor and are heavy laden, and I will give you rest.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 11:28 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ??? ??? ?? ?? ?? ???? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6110k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6110e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6110k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For so he giveth his beloved sleep.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 127:2</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ????? ??? ???? ?? ??? ???? ????.</p></div><div class="dv-content" id="tp6110e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;He gives to his beloved sleep.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 127:2 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ????? ??? ???? ?? ??? ???? ????.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6108k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6108e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6108k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in safety.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 4:8</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 하나님 안에서 평안히 눕고 잠들 수 있다는 뜻입니다.</p></div><div class="dv-content" id="tp6108e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;In peace I will both lie down and sleep; for you alone, O Lord, make me dwell in safety.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 4:8 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 하나님 안에서 평안히 눕고 잠들 수 있다는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6109k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6109e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6109k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Come unto me, all ye that labour and are heavy laden, and I will give you rest.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 11:28</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 무거운 마음을 주님께 가지고 가면 참된 쉼을 주신다는 뜻입니다.</p></div><div class="dv-content" id="tp6109e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Come to me, all who labor and are heavy laden, and I will give you rest.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 11:28 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 무거운 마음을 주님께 가지고 가면 참된 쉼을 주신다는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6110k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6110e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6110k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For so he giveth his beloved sleep.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 127:2</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 사랑하시는 자에게 하나님이 잠과 안식을 주신다는 뜻입니다.</p></div><div class="dv-content" id="tp6110e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;He gives to his beloved sleep.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Psalm 127:2 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 사랑하시는 자에게 하나님이 잠과 안식을 주신다는 뜻입니다.</p></div></div>
           </div></div>
         </div>
       </div>
@@ -669,16 +677,16 @@ gtag('config', 'G-2SJCBS84VD');
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Caregiving &amp; Support <span class="t-icon">+</span></button>
           <div class="topic-panel"><div class="tp-inner"><p class="tp-note">For caregivers who need strength, patience, and encouragement while supporting loved ones.</p>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6111k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6111e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6111k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;And even to your old age I am he... I have made, and I will bear; even I will carry, and will deliver you.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 46:4</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ??? ????? ???? ??? ??? ???? ???? ????.</p></div><div class="dv-content" id="tp6111e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Even to your old age I am he... I have made, and I will bear; I will carry and will save.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 46:4 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ??? ????? ???? ??? ??? ???? ???? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6112k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6112e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6112k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bear ye one another's burdens, and so fulfil the law of Christ.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Galatians 6:2</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ?? ?? ?? ?? ????? ????? ????.</p></div><div class="dv-content" id="tp6112e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bear one another's burdens, and so fulfill the law of Christ.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Galatians 6:2 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ??? ?? ?? ?? ?? ????? ????? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6113k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6113e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6113k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 25:40</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ?? ??? ??? ? ??? ??? ???? ????.</p></div><div class="dv-content" id="tp6113e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;As you did it to one of the least of these my brothers, you did it to me.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 25:40 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ?? ??? ??? ? ??? ??? ???? ????.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6111k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6111e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6111k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;And even to your old age I am he... I have made, and I will bear; even I will carry, and will deliver you.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 46:4</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 지친 돌봄의 자리에서도 하나님이 끝까지 붙들고 감당하게 하신다는 뜻입니다.</p></div><div class="dv-content" id="tp6111e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Even to your old age I am he... I have made, and I will bear; I will carry and will save.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Isaiah 46:4 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 지친 돌봄의 자리에서도 하나님이 끝까지 붙들고 감당하게 하신다는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6112k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6112e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6112k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bear ye one another's burdens, and so fulfil the law of Christ.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Galatians 6:2</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 서로의 무거운 짐을 함께 지는 것이 그리스도의 사랑이라는 뜻입니다.</p></div><div class="dv-content" id="tp6112e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bear one another's burdens, and so fulfill the law of Christ.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Galatians 6:2 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 서로의 무거운 짐을 함께 지는 것이 그리스도의 사랑이라는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6113k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6113e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6113k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 25:40</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 작은 자를 돌보는 섬김이 곧 주님을 섬기는 일이라는 뜻입니다.</p></div><div class="dv-content" id="tp6113e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;As you did it to one of the least of these my brothers, you did it to me.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Matthew 25:40 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 작은 자를 돌보는 섬김이 곧 주님을 섬기는 일이라는 뜻입니다.</p></div></div>
           </div></div>
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Addiction &amp; Recovery <span class="t-icon">+</span></button>
           <div class="topic-panel"><div class="tp-inner"><p class="tp-note">For those seeking freedom, healing, and restoration from addiction and destructive patterns.</p>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6114k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6114e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6114k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If the Son therefore shall make you free, ye shall be free indeed.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">John 8:36</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ??? ??? ?? ???? ??? ???? ??? ????.</p></div><div class="dv-content" id="tp6114e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;So if the Son sets you free, you will be free indeed.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">John 8:36 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ??? ??? ?? ???? ??? ???? ??? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6115k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6115e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6115k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For sin shall not have dominion over you: for ye are not under the law, but under grace.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 6:14</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ?? ?? ?? ?? ? ?? ?? ???? ???? ????.</p></div><div class="dv-content" id="tp6115e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For sin will have no dominion over you, since you are not under law but under grace.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 6:14 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ?? ?? ?? ?? ? ?? ?? ???? ???? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6116k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6116e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6116k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;There hath no temptation taken you but such as is common to man: but God is faithful... will with the temptation also make a way to escape.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">1 Corinthians 10:13</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ????? ???? ?? ?? ?????? ????.</p></div><div class="dv-content" id="tp6116e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;No temptation has overtaken you that is not common to man. God is faithful... and with the temptation he will also provide the way of escape.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">1 Corinthians 10:13 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ?? ????? ???? ?? ?? ?????? ????.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6114k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6114e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6114k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If the Son therefore shall make you free, ye shall be free indeed.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">John 8:36</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 예수님이 주시는 자유는 죄와 묶임에서 참으로 벗어나게 한다는 뜻입니다.</p></div><div class="dv-content" id="tp6114e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;So if the Son sets you free, you will be free indeed.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">John 8:36 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 예수님이 주시는 자유는 죄와 묶임에서 참으로 벗어나게 한다는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6115k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6115e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6115k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For sin shall not have dominion over you: for ye are not under the law, but under grace.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 6:14</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 은혜 안에 있는 자는 죄가 더 이상 삶을 지배하지 못한다는 뜻입니다.</p></div><div class="dv-content" id="tp6115e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;For sin will have no dominion over you, since you are not under law but under grace.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 6:14 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 은혜 안에 있는 자는 죄가 더 이상 삶을 지배하지 못한다는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6116k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6116e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6116k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;There hath no temptation taken you but such as is common to man: but God is faithful... will with the temptation also make a way to escape.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">1 Corinthians 10:13</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 시험 가운데서도 하나님이 피할 길을 예비하신다는 뜻입니다.</p></div><div class="dv-content" id="tp6116e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;No temptation has overtaken you that is not common to man. God is faithful... and with the temptation he will also provide the way of escape.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">1 Corinthians 10:13 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 시험 가운데서도 하나님이 피할 길을 예비하신다는 뜻입니다.</p></div></div>
           </div></div>
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Forgiveness <span class="t-icon">+</span></button>
@@ -697,9 +705,9 @@ gtag('config', 'G-2SJCBS84VD');
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Relationship Conflict <span class="t-icon">+</span></button>
           <div class="topic-panel"><div class="tp-inner"><p class="tp-note">For those facing conflict in family, friendship, work, or church relationships.</p>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6117k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6117e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6117k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If it be possible, as much as lieth in you, live peaceably with all men.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 12:18</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ? ? ?? ? ?? ??? ???? ???? ????.</p></div><div class="dv-content" id="tp6117e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If possible, so far as it depends on you, live peaceably with all.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 12:18 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ? ? ?? ? ?? ??? ???? ???? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6118k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6118e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6118k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Forbearing one another, and forgiving one another... even as Christ forgave you, so also do ye.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Colossians 3:13</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ???? ??? ?? ???? ????? ????.</p></div><div class="dv-content" id="tp6118e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bearing with one another and... forgiving each other; as the Lord has forgiven you, so you also must forgive.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Colossians 3:13 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ??? ???? ??? ?? ???? ????? ????.</p></div></div>
-            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6119k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6119e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6119k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;A soft answer turneth away wrath: but grievous words stir up anger.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Proverbs 15:1</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ??? ??? ??????? ????.</p></div><div class="dv-content" id="tp6119e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;A soft answer turns away wrath, but a harsh word stirs up anger.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Proverbs 15:1 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">?? ?? ?: ???? ??? ??? ??????? ????.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6117k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6117e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6117k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If it be possible, as much as lieth in you, live peaceably with all men.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 12:18</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 할 수 있는 한 모든 사람과 평화롭게 지내라는 뜻입니다.</p></div><div class="dv-content" id="tp6117e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;If possible, so far as it depends on you, live peaceably with all.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Romans 12:18 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 할 수 있는 한 모든 사람과 평화롭게 지내라는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6118k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6118e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6118k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Forbearing one another, and forgiving one another... even as Christ forgave you, so also do ye.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Colossians 3:13</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 주님이 용서하신 것처럼 서로 용납하고 용서하라는 뜻입니다.</p></div><div class="dv-content" id="tp6118e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;Bearing with one another and... forgiving each other; as the Lord has forgiven you, so you also must forgive.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Colossians 3:13 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 주님이 용서하신 것처럼 서로 용납하고 용서하라는 뜻입니다.</p></div></div>
+            <div style="margin-bottom:9px;border-radius:4px;overflow:hidden;border:1px solid var(--border);"><div class="dv-tabs" style="border-bottom:1px solid var(--border);"><button class="dv-tab active" onclick="switchTab(this,'tp6119k')" style="font-size:9px;padding:5px 10px;">KJV</button><button class="dv-tab" onclick="switchTab(this,'tp6119e')" style="font-size:9px;padding:5px 10px;">ESV</button></div><div class="dv-content active" id="tp6119k" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;A soft answer turneth away wrath: but grievous words stir up anger.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Proverbs 15:1</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 부드러운 대답이 분노를 누그러뜨린다는 뜻입니다.</p></div><div class="dv-content" id="tp6119e" style="padding:10px 14px;background:#fff;"><p style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--deep);line-height:1.5;margin-bottom:4px;">&ldquo;A soft answer turns away wrath, but a harsh word stirs up anger.&rdquo;</p><cite style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;color:var(--gold);">Proverbs 15:1 (ESV)</cite><p class="ko-key-note" style="margin-top:6px;font-size:12px;line-height:1.55;color:var(--ink);font-family:'Noto Serif KR',serif;">한글 핵심 뜻: 부드러운 대답이 분노를 누그러뜨린다는 뜻입니다.</p></div></div>
           </div></div>
         </div>
         <div class="topic-item"><button class="topic-btn" onclick="tgl(this)">Parenting &amp; Children <span class="t-icon">+</span></button>
@@ -961,7 +969,7 @@ gtag('config', 'G-2SJCBS84VD');
                 <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">7. Grok</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">Helpful for real-time questions, current topics, and quick idea exploration.</p><a class="ai-tool-open" href="open-grok.html">Open</a></div></details>
                 <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">8. Genspark</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A multi-tool AI workspace that can combine chat, search, and content tools in one place.</p><a class="ai-tool-open" href="https://www.genspark.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
                 <details class="ai-verse-card"><summary class="ai-verse-topic"><span class="ai-tool-name">9. Felo AI</span></summary><div class="ai-verse-detail"><p class="ai-verse-text ai-tool-desc">A useful AI search option for fast summaries, source-based browsing, and multilingual research.</p><a class="ai-tool-open" href="https://felo.ai/" target="_blank" rel="noopener noreferrer">Open</a></div></details>
-                <details class="ai-verse-card ko-only"><summary class="ai-verse-topic"><span class="ai-tool-name-ko">10. HyperCLOVA X</span></summary><div class="ai-verse-detail"><p class="ai-verse-text">???? ??? ???? ???? AI ?????.</p><a class="ai-tool-open" href="https://clova.ai/en/hyperclova" target="_blank" rel="noopener noreferrer">Open</a></div></details>
+                <details class="ai-verse-card ko-only"><summary class="ai-verse-topic"><span class="ai-tool-name-ko">10. HyperCLOVA X</span></summary><div class="ai-verse-detail"><p class="ai-verse-text">한국어에 특화된 네이버의 초대규모 AI 모델입니다.</p><a class="ai-tool-open" href="https://clova.ai/en/hyperclova" target="_blank" rel="noopener noreferrer">Open</a></div></details>
               </div>
             </div>
           </details>
@@ -993,42 +1001,42 @@ gtag('config', 'G-2SJCBS84VD');
 <section class="gallery-section ko-only" id="english-word">
   <div class="ai-inner">
     <p class="s-lbl">English &amp; Bible</p>
-    <h2 class="s-title">??? ??</h2>
-    <p class="s-intro">??? ??? ??? ? ?? ??? ? ??? ?? ?????. ?? ?? ??? ?? ?? ??? ??? ???? ??? ???.</p>
-    <div class="video-library" aria-label="?? ??? ?? ?? ??">
+    <h2 class="s-title">영어와 말씀</h2>
+    <p class="s-intro">영어를 배우며 말씀을 더 깊이 이해할 수 있도록 돕는 공간입니다. 영어 학습 영상과 함께 영어 성경을 천천히 따라가며 묵상해 보세요.</p>
+    <div class="video-library" aria-label="한글 사이트 추천 영상 모음">
       <div class="video-library-head">
-        <p class="guestbook-kicker">?? ??</p>
-        <h3>?? ??? ??</h3>
-        <p>?? ?? ?? ??? ??? ??? ?? ???? ??????.</p>
+        <p class="guestbook-kicker">영상 모음</p>
+        <h3>영어 배우기 비법</h3>
+        <p>짧게 눌러 보고 이어서 배우기 좋도록 연재 영상으로 정리했습니다.</p>
       </div>
       <div class="video-library-grid video-series-layout">
         <article class="video-card">
-          <a class="video-card-thumb" href="https://youtu.be/zD3lkch3n3w" target="_blank" rel="noopener noreferrer" aria-label="?? ??? ?? 1 ??">
-            <img src="https://img.youtube.com/vi/zD3lkch3n3w/hqdefault.jpg" alt="?? ??? ?? 1 ???">
-            <span>??</span>
+          <a class="video-card-thumb" href="https://youtu.be/zD3lkch3n3w" target="_blank" rel="noopener noreferrer" aria-label="영어 배우기 비법 1 보기">
+            <img src="https://img.youtube.com/vi/zD3lkch3n3w/hqdefault.jpg" alt="영어 배우기 비법 1 썸네일">
+            <span>보기</span>
           </a>
           <div class="video-card-copy">
-            <p class="guestbook-kicker">1?</p>
-            <h4>?? ?? ??? ????</h4>
-            <p>?? ??? ??? ??? ???? ?? ??? ??? ?? ???.</p>
-            <a href="https://youtu.be/zD3lkch3n3w" target="_blank" rel="noopener noreferrer">YouTube?? ??</a>
+            <p class="guestbook-kicker">1편</p>
+            <h4>우리 영어 무엇이 문제인가</h4>
+            <p>영어 공부가 막히는 이유를 돌아보고 다시 시작할 방향을 잡아 봅니다.</p>
+            <a href="https://youtu.be/zD3lkch3n3w" target="_blank" rel="noopener noreferrer">YouTube에서 보기</a>
           </div>
         </article>
-        <div class="video-series-list" aria-label="?? ??? ?? ?? ??">
+        <div class="video-series-list" aria-label="영어 배우기 비법 연재 목록">
           <a class="video-series-item" href="https://youtu.be/v4u3_kdEcHU" target="_blank" rel="noopener noreferrer">
-            <span class="video-series-number">2?</span>
-            <strong>?? ???</strong>
-            <em>?? ??? ??? ????? ??? ??</em>
+            <span class="video-series-number">2편</span>
+            <strong>발음 배우기</strong>
+            <em>영어 발음의 기초를 자연스럽게 익히는 강의</em>
           </a>
           <a class="video-series-item" href="https://youtu.be/yhhMTr6o4os" target="_blank" rel="noopener noreferrer">
-            <span class="video-series-number">3?</span>
-            <strong>??? 4?? ??</strong>
-            <em>??? ? ????? ????? ?? ?? ??</em>
+            <span class="video-series-number">3편</span>
+            <strong>영어의 4가지 감각</strong>
+            <em>영어를 더 입체적으로 이해하도록 돕는 연재 강의</em>
           </a>
           <a class="video-series-item" href="https://youtu.be/1Qp5mfb5hjs" target="_blank" rel="noopener noreferrer">
-            <span class="video-series-number">4?</span>
-            <strong>?? ??? ????1(??? ??)</strong>
-            <em>?? ??? ??? ?? ?? ?? ??</em>
+            <span class="video-series-number">4편</span>
+            <strong>서구 사고로 입문하기1(년대별 성경)</strong>
+            <em>영어 학습의 흐름을 이어 가는 연재 강의</em>
           </a>
         </div>
       </div>
@@ -1100,11 +1108,11 @@ gtag('config', 'G-2SJCBS84VD');
       <div class="guestbook-emoji-tools" aria-label="Guestbook quick emoji">
         <span class="guestbook-emoji-label">Quick Emoji</span>
         <div class="guestbook-emoji-row">
-          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('??')" aria-label="Add praying hands emoji">??</button>
-          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('??')" aria-label="Add heart emoji">??</button>
-          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('??')" aria-label="Add smile emoji">??</button>
-          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('?')" aria-label="Add sparkle emoji">?</button>
-          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('??')" aria-label="Add thumbs up emoji">??</button>
+          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('🙏')" aria-label="Add praying hands emoji">🙏</button>
+          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('❤️')" aria-label="Add heart emoji">❤️</button>
+          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('😊')" aria-label="Add smile emoji">😊</button>
+          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('✨')" aria-label="Add sparkle emoji">✨</button>
+          <button class="guestbook-emoji-btn" type="button" onclick="appendGuestbookEmoji('👍')" aria-label="Add thumbs up emoji">👍</button>
         </div>
       </div>
       <div class="guestbook-actions">
@@ -1154,6 +1162,8 @@ gtag('config', 'G-2SJCBS84VD');
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 window.applyPageLanguage=function(lang){
+  if(typeof window.syncDocumentLanguage==='function'){window.syncDocumentLanguage(lang);}else if(document.documentElement){document.documentElement.setAttribute('lang', lang==='ko' ? 'ko' : 'en');document.documentElement.setAttribute('data-site-lang', lang==='ko' ? 'ko' : 'en');}
+
   const q=(selector)=>document.querySelector(selector);
   const qa=(selector)=>Array.from(document.querySelectorAll(selector));
   const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};
@@ -1177,95 +1187,95 @@ window.applyPageLanguage=function(lang){
 
   const text=lang==='ko'
     ? {
-        sidebarGroups:['?? ??','???','? ??'],
-        sidebarLinks:['?? ??','??','??','??','??? ??','???','AI ???','??? ??','??','???? ??','???','??','??','??'],
-        sidebarVerse:'�?? ??? ? ?? ??? ? ?? ?????.�',
-        sidebarRef:'?? 119:105',
-        nav:['??','??','??','?? ??','??','??','??'],
-        heroEyebrow:'? ?? ?? ??? ?? ?? ?? ?',
-        pageTitle:'?? ??? ???? ?? | ?? ?? ??? ?? ?? ??',
-        heroTitle:'?? ???<br><em>???? ??</em>',
-        heroLead:'??? ?? ?? ??? ?? ??? ?? ??? ?????.',
-        heroWelcome:'??? ??, ??? ??? ?????.',
-        heroGuide:'??, ??, ?? ?? ? ???? ??? ???.',
-        backToStart:'???? ????',
-        heroPlaceholder:'??: ??, ???, ??, ??, ??, ??�',
-        heroButton:'?? ??',
-        heroQuick:['?? ??','???? ??','???'],
+        sidebarGroups:['성경 검색','갤러리','더 보기'],
+        sidebarLinks:['성경 검색','감정','상황','주제','황혼의 계절','갤러리','AI 놀이터','영어와 말씀','전도','말씀대로 살기','방명록','묵상','기도','위로'],
+        sidebarVerse:'“주의 말씀은 내 발에 등이요 내 길에 빛이니이다.”',
+        sidebarRef:'시편 119:105',
+        nav:['감정','상황','주제','황혼 시절','묵상','기도','위로'],
+        heroEyebrow:'✦ 삶의 모든 계절을 위한 성경 말씀 ✦',
+        pageTitle:'삶의 순간들 하나님의 말씀 | 삶의 모든 계절을 위한 성경 말씀',
+        heroTitle:'삶의 순간들<br><em>하나님의 말씀</em>',
+        heroLead:'감정과 삶의 상황 속에서 지금 필요한 성경 말씀을 찾아보세요.',
+        heroWelcome:'말씀과 기도, 위로를 만나는 공간입니다.',
+        heroGuide:'감정, 상황, 또는 주제 중 하나부터 시작해 보세요.',
+        backToStart:'처음으로 돌아가기',
+        heroPlaceholder:'검색: 슬픔, 두려움, 질병, 소망, 용서, 결혼…',
+        heroButton:'성경 검색',
+        heroQuick:['성경 찾기','말씀대로 살기','방명록'],
         pathways:{
-          kicker:'?? ? ??? ??',
-          title:'??, ??, ??? ? ?? ??? ???.',
-          copy:'???? ?? ? ??, ????, ?? ???.',
+          kicker:'조금 더 머무는 시간',
+          title:'묵상, 기도, 위로로 더 깊이 머물러 보세요.',
+          copy:'이곳에서 조금 더 읽고, 기도하고, 쉬어 보세요.',
           cards:[
-            ['??? ??','??','?? ?? ??? ???? ??? ???? ?? ??? ??? ???.','?? ??'],
-            ['??? ??','??','??? ??? ??, ??? ??? ???? ?? ????.','?? ??'],
-            ['???? ??','??','??? ?? ?? ??? ??? ??, ???? ?? ?? ???.','?? ??']
+            ['매일의 말씀','묵상','짧은 성경 읽기와 묵상으로 하루를 하나님의 말씀 안에서 시작해 보세요.','묵상 열기'],
+            ['조용한 기도','기도','마음의 필요와 감사, 간구를 차분히 하나님께 올려 드리세요.','기도 열기'],
+            ['부드러운 위로','위로','신중히 고른 말씀 안에서 평안과 소망, 부드러운 힘을 만나 보세요.','위로 열기']
           ]
         },
         spotlight:{
-          most:['?? ?? ??','?? ?? ?? ???? ?? ??? ???.','??','???','??','??'],
-          week:['?? ? ??','????? ??? ??? ???.','??? ????','??? ??','???? ??'],
-          share:['? ??? ???','?? ??? ??? ??? ?? ? ???? ?? ???.','SNS, ??, ??? ?? ?? ??? ?? ? ????.','? ??? ???','?? ??','https://www.lifemoment.site ? ?? ? ??? ????? ??? ??? ???. ??? ???, ???, ????? ?? ??? ???? ?? ? ? ????.']
+          most:['많이 찾는 말씀','가장 많이 찾는 말씀부터 바로 시작해 보세요.','불안','두려움','슬픔','소망'],
+          week:['이번 주 추천','여기서부터 천천히 시작해 보세요.','오늘의 암송구절','황혼의 계절','말씀대로 살기'],
+          share:['이 사이트 나누기','오늘 위로나 도움이 필요한 분께 이 페이지를 전해 보세요.','SNS, 문자, 이메일 또는 링크 복사로 나눌 수 있습니다.','이 사이트 나누기','링크 복사','https://www.lifemoment.site 를 열고 홈 화면에 추가하거나 앱으로 설치해 주세요. 그러면 휴대폰, 태블릿, 컴퓨터에서 일반 앱처럼 언제든지 바로 열 수 있습니다.']
         },
         update:{
-          kicker:'??',
-          title:'AI ???? ? ?? ??? ? ??? ????????.',
-          copy:'????? ?? AI ??? ???? ??? ??, ?? ????, ??? AI ??? ????? ???? ? ??? AI ???? ??? AI ???? ??????.',
-          items:['??? ???? ?? AI ??? ?? ??, ? ??? ??? ??? ???? ??? ? ? ????.','??, ???, ??, ???, ???, ??, ?? ??? ????? ??? ?? ??? ??? ? ????.','? ?? ??? ??? ?, ??? ???? ?, AI? ???? ???? ?? ??? ? ?? ??? ?????.','AI? ??? ??? ??, ??, ???? ?? ??? ? ?? ??? ??? ????.']
+          kicker:'알림',
+          title:'AI 놀이터를 더 쉽게 체험할 수 있도록 업데이트했습니다.',
+          copy:'방문자들이 여러 AI 도구를 한곳에서 시험해 보고, 답을 비교하며, 오늘의 AI 자료에 자연스럽게 익숙해질 수 있도록 AI 놀이터를 간단한 AI 포털처럼 정리했습니다.',
+          items:['하나의 질문으로 여러 AI 도구를 열어 보고, 각 도구가 어떻게 다르게 답하는지 비교해 볼 수 있습니다.','검색, 글쓰기, 음악, 디자인, 목소리, 학습, 창작 도구를 홈페이지를 떠나지 않고 편하게 체험할 수 있습니다.','더 좋은 질문을 만드는 법, 출처를 확인하는 법, AI를 지혜롭게 사용하는 법을 연습할 수 있는 친근한 공간입니다.','AI를 체험한 뒤에는 말씀, 기도, 묵상으로 다시 돌아와 더 깊은 지혜를 찾도록 돕습니다.']
         },
         popularPages:{
-          kicker:'?? ?? ??',
-          title:'???? ?? ?? ?? ??? ?? ?? ??',
-          copy:'??, ??, ??, ??? ?? ??? ??? ?? ??? ??? ?? ?? ? ??? ??????.',
-          links:['??? ? ????','?? ? ????','??? ?? ????','??? ?? ???','??? ? ????','??? ? ????','?? ?? ?? ? ??','?? ? ??','?? ??? ?? ??'],
-          frameKicker:'???? ??? ??',
-          frameTitle:'?? ?? ?? ??? ??? ???.',
-          frameClose:'??'
+          kicker:'많이 찾는 말씀',
+          title:'사람들이 자주 찾는 삶의 순간을 위한 성경 도움',
+          copy:'불안, 슬픔, 치유, 어려운 계절 속에서 필요한 성경 말씀과 기도를 쉽게 찾을 수 있도록 정리했습니다.',
+          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문','외로울 때 성경말씀','두려울 때 성경말씀','잠이 오지 않을 때 말씀','수술 전 기도','아픈 가족을 위한 기도'],
+          frameKicker:'홈페이지 안에서 읽기',
+          frameTitle:'위의 성경 도움 메뉴를 선택해 주세요.',
+          frameClose:'닫기'
         },
-        chips:['??','???','???','??','??','??','??','?','??','??','??','??'],
-        emotions:['??? ???','??? ??','??, ???, ???, ??, ??? ?? ?? ??? ??? ??? ?????.'],
-        emotionCardTitles:['??','??','??','??','???','??','???','??','??','???? ??','??','??'],
-        emotionHints:['�? ??? ?? ???? ?? ?? ???? ????.�','�???? ??? ?? ??? ??? ???.�','�???? ??? ?? ??? ?????.�','�??? ???? ?? ??? ??? ???? ???? ????.�','�????? ?? ?? ?? ??????.�','�?? ??? ? ?? ??? ?? ?? ??? ?????.�','�?? ?? ?? ??? ???? ??? ?????.�','�?? ??? ?? ?? ?? ?? ??? ?? ?? ??.�','�??? ????.�','�?? ??? ?? ?? ???? ?? ???? ???? ????.�','�???? ??? ??? ???? ???? ????.�','�?? ???? ???? ?? ? ?? ????.�'],
-        emotionTap:'?? ?? ??',
-        votd:['? ??? ?? ?','�?? ?? ??? ? ??? ?? ?? ?? ? ? ????.�','???? 4:13 (ESV)','???? ?? ?? ?? ?? ??? ?? ?????. ??? ??? ????? ??? ?? ???? ????, ??? ???? ? ??? ??? ??? ????.'],
-        situations:['??? ?, ??? ??','??? ??','??, ??, ??? ??, ??? ?? ?? ?? ??? ?? ?? ??? ?????.'],
-        situationTags:['??? ??','??? ??','??','??','?','??','??','?? ??','??? ??'],
-        situationTitles:['??? ??? ?','?? ??? ?? ?','??? ??? ?','???? ??? ?','???? ?? ?','????? ??? ?','??? ??? ?','?? ??? ??? ??? ?','??? ??? ?? ??'],
-        situationDescs:['??? ?? ?? ????? ?? ??? ?? ???? ???? ??? ?? ?????.','??? ??? ?? ???? ??? ? ??? ???? ?? ?????.','? ??? ???? ??? ?? ??? ???? ??? ?????.','?? ??? ??? ? ??? ?? ???? ??? ???? ?? ?????.','??? ??? ??? ??? ???? ??? ?? ?? ??? ?? ?????.','??? ????? ???? ????? ????? ?? ?????.','??? ?? ???? ???? ??? ??? ????? ?? ?????.','?? ??? ??? ???? ???? ?? ?? ??? ???? ??? ?????.','?? ???? ???? ??? ?? ??? ??? ?????.'],
-        promise:['??? ??? ??','?? ?? ??? ???','�??? ??? ?? ???? ??? ??? ?? ???. ???? ? ?? ?? ???? ?? ????.�','???? 6:33 (ESV)','? ??? 50?? ?? ?? ?? Tea Park? ?? ??? ? ?????. ??? ????, ?? ????, ??? ????, ??? ??? ?? ??? ??? ???? ??? ??????. ? ?????.'],
-        topics:['?? ?? ??','?? ?? ?? ??','?? ??? ?? ??? KJV/ESV ??? ?? ?????.'],
-        topicColHeads:['??','?? ??','?? ??'],
-        topicButtons:['??? ???','??? ???','??','???','??','???','??','??? ???','??? ??','???? ??','??','??? ?? ??','??? ??','??? ??','??? ??','??? ??','??? ??','??? ??','??? ??','??','??? ??','??? ??','??? ??','?? ???','??? ? ??','??? ??','??? ??','??? ???? ?','??? ??? ??','??? ??','??','??? ??','??? ??','??? ??','??? ????','???? ??','???','??? ??','??? ??','??? ??','???? ??? ??'],
-        topicNotes:['?? ??? ??? ??? ???? ?? ?? ??? ???.','??? ?? ?? ?? ???? ??? ? ??????.','???? ?? ??? ??? ??? ??? ??? ???? ?????.','???? ??? ????? ??? ? ???? ?? ????.','??? ??? ???? ???? ??? ???? ?????.','???? ??? ??? ??? ???? ???? ????.','???? ??? ??? ?? ???? ??? ?? ???.','??? ??? ???? ??? ??? ?? ?? ?????.','???? ??? ?? ??? ????, ? ??? ?? ???? ????.','???? ??? ???? ???, ???? ??? ??????.','?? ?? ????? ???? ?? ???? ??? ? ?? ????.','?? ??? ??? ?? ??? ???? ??? ???? ?? ??? ?? ?????.','??? ??? ??? ?? ?? ? ???? ?? ??? ??? ??? ?? ?????.','??? ???? ??? ??? ?? ?? ?? ?????.','??? ???? ? ??? ??? ???, ???? ??? ?? ?????.','? ????? ???? ?? ??? ?? ???? ??????.','?? ???? ???? ?? ??? ??? ??? ??? ?? ??? ?? ?????.','???? ??? ???? ??? ???? ?? ??? ??? ??? ??? ?? ?????.','?? ??? ??? ?? ??? ????? ???? ????.','??? ??? ??? ???? ??? ??? ??? ?????.','??? ?????? ??? ???? ????? ??? ????.','??, ??, ??, ?? ?? ?? ??? ??? ??? ??? ??? ?? ?????.','??? ????? ?? ????, ??? ??? ???? ???? ????.','?? ??? ??? ???? ??? ???? ?? ?? ? ?????.','???? ?? ?? ??? ???? ???? ??? ??? ??????.','??? ???? ????? ??? ??? ????. ???? ???? ?? ?????.','????? ??? ??? ???? ?? ??? ???? ??????.','???? ?? ??? ???? ?? ??? ????, ?? ??? ??? ??????.','??? ???? ??? ??? ???? ?? ?? ? ????.','??? ?? ??? ??? ???? ??? ?????.','??? ??? ???? ??? ???? ?? ?? ??????.','??? ?? ?????? ?? ?? ??? ?????.','??? ?? ??? ?? ???? ???? ???? ???? ??? ?????.','??? ???? ???? ???? ?? ????? ?? ???? ????.','??? ???? ???? ??? ???? ????? ????? ?????.','???? ???? ???? ??? ????? ?? ?? ????.','???? ?? ?? ???? ?????? ????? ??? ????.','??? ???? ?? ?? ? ??? ??? ?????.','??? ??? ?? ??? ?? ?? ?? ??? ??? ?? ?????.','??? ????, ????? ?? ??? ??? ????? ????.','???? ??? ??? ???? ??? ??? ?? ???? ????.'],
-        topicCta:'?? ?? ?? ?? ?',
-        seniors:['??? ???? ???? ???','??? ??? ?? ??','�??? ??? ????? ?? ??? ??? ? ???? ?? ??? ?? ???. ?? ???? ?? ?? ?? ??? ???? ?????.�','??? 46:4 (ESV)','??? ?? ??? ?','�?? ?? ????, ?? ??? ?? ?????. ?? ?? ?? ??? ?? ??? ??? ??? ?? ???????.�','?? 23:1-2 (ESV)','? ??? ??','�?? ??? ?? ??? ???? ??? ??????.�','?? 16:31 (ESV)','?? ??? ??? ??','�?? ?? ?? ?? ????? ?? ?? ?????.�','???? 1:21 (ESV)','??? ??? ??? ?','�???? ???? ?? ?? ?? ?? ??? ??? ??? ??? ??? ????? ???? ???? ??.�','???? 4:6 (ESV)'],
-        about:['??? ??','? ??','?? ???? ??? ?? ?? ??? ??, ?? ?? ?? ??? ???? ??? ???? ?? ?? ? ???? ?????.','??? ???? ??','????, ???, ???, ??? ?? ?? ? ??? ????? ??? ?? ??? ??? ????. ? ????? ?? ? ???? ???? ???? ????? ????.','?? ??','? ???? ?? ???? ?? ??? ?? ESV ???? ?? ????, ??? ? ?? ???? ??? ? ??? ????.','?? ?','Tea Park, B.A.<br>Eng. Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court, WCB<br>National Institute for LLE<br>NAIT','Agent Allstate Ins Co of Canada','??? ???','1970??? ?? ??? ??? ???, ???? ??? ???? Recreation Volunteer? ??? ????.'],
-        gallery:['??? ???','???','??? ??? ?? ??? ??? ??, ??? ??? ??? ?? ???? ?? ?????.','?? ??? ??? ??? ????.'],
-        ai:['??? AI ??','AI ???','??, ??, ???, ???, ???, ??? ??? ?? AI ??? ??? ??? ???. ? ??? ? ??? ???? ? ???? ?? ??? ? ????.','AI ?? ????','????, ???, ??? ?? ?? ?? ??? ??? ????? ?? ??? AI ??????.','AI ??? ??','?? AI ??','??? ???? AI?? ?? ?? ???? ??? ????.','??? ?????...','?? ????','AI? ? ??? ???, ? ????? ??? ?? ????.','??? ??? ???? ???.','??, ??, ??? ?? ?? ???.','?? ???? ??? ?????.'],
+        chips:['슬픔','두려움','외로움','질병','불안','용서','소망','힘','재정','평안','가정','죽음'],
+        emotions:['마음의 나침반','감정별 검색','기쁨, 두려움, 외로움, 불안, 감사와 같은 감정 속에서 하나님 말씀을 찾아보세요.'],
+        emotionCardTitles:['기쁨','슬픔','평안','소망','두려움','불안','외로움','분노','감사','죄책감과 후회','사랑','낙심'],
+        emotionHints:['“주 안에서 항상 기뻐하라 내가 다시 말하노니 기뻐하라.”','“여호와는 마음이 상한 자에게 가까이 하시고.”','“하나님의 평강이 너희 마음을 지키시리라.”','“소망의 하나님이 모든 기쁨과 평강을 너희에게 충만하게 하시기를.”','“두려워하지 말라 내가 너와 함께함이니라.”','“너희 염려를 다 주께 맡기라 이는 그가 너희를 돌보심이라.”','“내가 결코 너를 떠나지 아니하고 버리지 아니하리라.”','“분을 내어도 죄를 짓지 말며 해가 지도록 분을 품지 말라.”','“범사에 감사하라.”','“만일 우리가 우리 죄를 자백하면 그는 미쁘시고 의로우사 사하시며.”','“하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니.”','“오직 여호와를 앙망하는 자는 새 힘을 얻으리니.”'],
+        emotionTap:'전체 말씀 보기',
+        votd:['✦ 오늘의 말씀 ✦','“내게 능력 주시는 자 안에서 내가 모든 것을 할 수 있느니라.”','빌립보서 4:13 (ESV)','하나님은 우리 혼자 짐을 지고 가라고 하지 않으십니다. 우리의 연약함 가운데서도 주님의 힘은 온전하게 나타나며, 하루의 걸음마다 꼭 필요한 은혜를 공급해 주십니다.'],
+        situations:['현실의 삶, 실제의 성경','상황별 검색','병상, 결혼, 재정적 걱정, 상실과 같은 삶의 현실 속에서 맞는 성경 구절을 만나보세요.'],
+        situationTags:['질병과 건강','상실과 슬픔','관계','고립','힘','지혜','믿음','재정 걱정','장례의 위로'],
+        situationTitles:['치유가 필요할 때','슬픔 가운데 있을 때','용서가 필요할 때','혼자라고 느껴질 때','감당하기 벅찰 때','인도하심이 필요할 때','믿음이 약해질 때','돈이 무거운 짐처럼 느껴질 때','슬픔과 장례를 위한 말씀'],
+        situationDescs:['질병과 만성 통증 가운데서도 몸의 연약함 속에 임하시는 하나님의 평안을 위한 말씀입니다.','애도와 장례의 시간 속에서도 부활의 산 소망을 붙들도록 돕는 말씀입니다.','쓴 마음을 내려놓고 용서를 통해 자유를 누리도록 이끄는 말씀입니다.','지금 느끼는 것보다 더 가까이 계신 하나님의 임재를 기억하게 하는 말씀입니다.','정서적 탈진과 번아웃 속에서 하나님의 돌보심 안에 쉼을 찾도록 돕는 말씀입니다.','결정의 갈림길에서 하나님의 인도하심을 신뢰하도록 돕는 말씀입니다.','의심의 계절 속에서도 하나님의 넉넉한 은혜를 의지하도록 돕는 말씀입니다.','모든 필요를 아시는 하나님을 바라보며 먼저 그의 나라를 구하도록 이끄는 말씀입니다.','함께 슬퍼하고 기억하는 이들을 위한 영원한 소망의 말씀입니다.'],
+        promise:['붙드는 약속의 말씀','먼저 그의 나라를 구하라','“오히려 너희는 먼저 하나님의 나라와 그분의 의를 구하라. 그리하면 이 모든 것을 너희에게 더해 주시리라.”','마태복음 6:33 (ESV)','이 말씀은 50년이 넘는 시간 동안 Tea Park의 삶을 붙들어 준 말씀입니다. 이민의 시간에도, 교회 개척에도, 사역의 자리에도, 중요한 결정을 내릴 때마다 언제나 하나님의 나라가 먼저였습니다. 늘 그렇습니다.'],
+        topics:['성경 주제 검색','모든 성경 주제 보기','삶의 주제를 눌러 펼치고 KJV/ESV 말씀을 함께 살펴보세요.'],
+        topicColHeads:['감정','삶의 문제','영적 주제'],
+        topicButtons:['기쁨과 즐거움','분노와 답답함','슬픔','두려움','불안','외로움','평안','감사와 고마움','사랑과 긍휼','죄책감과 후회','낙심','우울과 깊은 침체','수면과 불면','자족과 만족','고난과 시련','질병과 아픔','돌봄과 간병','중독과 회복','죽음과 임종','용서','결혼과 가정','관계의 갈등','양육과 자녀','일과 부르심','재정과 돈 걱정','실패와 실망','결정과 지혜','노년과 시니어의 삶','새로운 시작과 변화','믿음과 신뢰','소망','기도와 중보','은혜와 자비','구원과 속량','순종과 내려놓음','거룩함과 성화','성령님','예배와 찬양','전도와 증언','천국과 영원','하나님의 임재와 위로'],
+        topicNotes:['참된 기쁨은 상황이 아니라 하나님의 임재 안에 뿌리를 둡니다.','분노가 죄가 되기 전에 하나님께 맡겨질 때 다스려집니다.','하나님은 상한 마음에 가까이 오시며 우리의 눈물을 외면하지 않으십니다.','하나님이 우리의 도움이심을 기억할 때 두려움은 힘을 잃습니다.','불안은 우리를 돌보시는 하나님께 염려를 맡기라는 초대입니다.','하나님의 임재는 거리와 질병과 고립으로 제한되지 않습니다.','하나님이 주시는 평안은 폭풍 속에서도 마음을 지켜 줍니다.','감사는 세상을 바라보는 시선을 새롭게 빚어 가는 훈련입니다.','하나님의 사랑은 모든 사랑의 기초이며, 그 사랑이 먼저 우리에게 왔습니다.','죄책감은 우리를 십자가로 이끌며, 거기에서 용서는 완전해집니다.','가장 낮은 자리에서도 하나님은 주를 기다리는 자에게 새 힘을 주십니다.','깊은 낙심과 무거운 마음 속에서 하나님의 위로와 붙드심을 찾는 이들을 위한 주제입니다.','잠들기 어렵고 마음이 쉬지 못할 때 하나님의 평안 안에서 안식을 찾도록 돕는 주제입니다.','자족은 타고나는 성격이 아니라 배워 가는 영적 훈련입니다.','고난은 하나님의 손 안에서 헛되지 않으며, 하나님은 그것을 통해 일하십니다.','병 가운데서도 하나님은 멀리 계시지 않고 붙드시며 함께하십니다.','아픈 가족이나 사랑하는 이를 돌보며 지치고 무거운 마음을 가진 이들을 위한 주제입니다.','반복되는 습관과 묶임에서 벗어나 하나님의 은혜 안에서 회복을 구하는 이들을 위한 주제입니다.','믿는 이에게 죽음은 끝이 아니라 하나님께로 들어가는 문입니다.','용서는 잘못을 붙들고 살아가는 무거운 짐에서 우리를 놓아줍니다.','결혼은 그리스도께서 교회를 사랑하신 자기희생적 사랑을 비춥니다.','가족, 친구, 직장, 교회 안의 갈등 속에서 지혜와 화해를 구하는 이들을 위한 주제입니다.','자녀는 하나님께서 주신 기업이며, 양육은 그들을 하나님께 인도하는 일입니다.','일은 우리가 날마다 하나님을 섬기고 영화롭게 하는 자리 중 하나입니다.','하나님은 먼저 그의 나라를 구하라고 부르시며 필요한 공급을 약속하십니다.','실패는 하나님의 이야기에서 마지막 결론이 아닙니다. 하나님은 넘어지는 자를 붙드십니다.','갈림길마다 자신의 명철만 의지하지 말고 멈추어 하나님을 바라보십시오.','하나님은 모든 계절을 지나도록 자기 백성을 품으시며, 특히 노년의 때에도 함께하십니다.','당신이 들어서는 새로운 장에도 하나님은 이미 먼저 가 계십니다.','믿음은 길이 보이지 않아도 하나님을 붙드는 신뢰입니다.','성경적 소망은 하나님의 약속에 뿌리내린 확신 있는 기다림입니다.','기도는 가장 단순하면서도 가장 깊은 믿음의 행위입니다.','은혜는 받을 자격이 없는 우리에게 하나님이 베푸시는 선물이며 믿음의 기초입니다.','구원은 전적으로 하나님의 선물이며 오직 그리스도를 믿는 믿음으로 받습니다.','순종은 하나님의 사랑으로 변화된 마음에서 자연스럽게 흘러나오는 열매입니다.','거룩함은 하나님께 구별되어 날마다 그리스도를 닮아 가는 삶입니다.','성령님은 우리 안에 거하시는 하나님으로서 인도하시고 능력을 주십니다.','예배는 하나님의 영광 앞에 삶 전체를 드리는 자세입니다.','복음을 전하는 일은 우리가 받은 것을 다른 이에게 나누는 기쁜 특권입니다.','천국은 실제이며, 하나님께서 자기 백성과 영원히 함께하시는 곳입니다.','하나님의 임재는 건물에 제한되지 않으며 언제나 우리 가까이에 있습니다.'],
+        topicCta:'모든 성경 주제 찾기 →',
+        seniors:['우리의 사랑하는 시니어를 위하여','황혼의 계절을 위한 말씀','“너희의 노년에 이르러서도 내가 너희를 백발이 될 때까지도 내가 너희를 품을 것이라. 내가 지었으니 내가 안고 품을 것이며 너희들을 건져내리라.”','이사야 46:4 (ESV)','질병과 함께 살아갈 때','“주는 나의 목자시니, 내가 부족한 것이 없으리로다. 그가 나를 푸른 초장에 눕게 하시며 잔잔한 물가로 나를 인도하시는도다.”','시편 23:1-2 (ESV)','긴 생명의 선물','“의의 길에서 얻게 된다면 흰머리는 영광의 면류관이니라.”','잠언 16:31 (ESV)','삶의 끝에서 붙드는 소망','“이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.”','빌립보서 1:21 (ESV)','날마다 드리는 기도와 쉼','“아무것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희의 구하는 것들을 감사함으로 하나님께 알려지게 하라.”','빌립보서 4:6 (ESV)'],
+        about:['우리의 비전','책 소개','장과 절만으로 말씀을 찾는 데서 멈추지 않고, 삶의 실제 경험 속에서 하나님의 말씀을 만나도록 돕는 것이 이 사이트의 마음입니다.','우리가 존재하는 이유','상처받고, 두렵고, 슬프고, 소망을 찾고 있을 때 성경을 어디서부터 읽어야 할지 모르는 분들이 많습니다. 이 웹사이트는 바로 그 자리에서 하나님의 말씀으로 함께하도록 돕습니다.','성경 번역','이 사이트는 한글 킹제임스 성경 본문과 한글 ESV 번역문을 함께 제공하여, 말씀을 더 쉽게 이해하고 묵상할 수 있도록 돕습니다.','만든 이','Tea Park, B.A.<br>Eng. Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court, WCB<br>National Institute for LLE<br>NAIT','Agent Allstate Ins Co of Canada','믿음과 공동체','1970년부터 교회 사역에 헌신해 왔으며, 에드몬튼 성요셉 병원에서 Recreation Volunteer로 섬기고 있습니다.'],
+        gallery:['함께한 순간들','갤러리','여행과 자연의 순간 속에서 평안과 감사, 그리고 조용한 감동이 담긴 사진들을 모아 두었습니다.','아직 게시된 갤러리 사진이 없습니다.'],
+        ai:['친근한 AI 도구','AI 놀이터','질문, 음악, 이미지, 목소리, 디자인, 학습에 도움이 되는 AI 도구를 편하게 시험해 보세요. 각 링크는 새 탭에서 열리므로 홈 페이지로 쉽게 돌아올 수 있습니다.','AI 도구 체험하기','질문하고, 만들고, 비교해 보며 다시 성경 중심의 자료로 돌아오도록 돕는 친근한 AI 놀이터입니다.','AI 놀이터 열기','추천 AI 도구','질문을 입력하면 AI에게 묻기 좋은 문장으로 정리해 드립니다.','질문을 입력하세요...','질문 정리하기','AI는 새 탭에서 열리며, 이 홈페이지는 그대로 남아 있습니다.','질문은 하나만 분명하게 쓰세요.','목적, 대상, 언어를 함께 알려 주세요.','답을 비교하고 출처를 확인하세요.'],
         aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Genspark','9. Felo AI','10. Suno AI','11. Canva AI','12. ElevenLabs','13. Runway','14. Google NotebookLM','15. Google AI Studio'],
-        aiToolDescs:['?? ??? ???? ??','??? ??? ?? ??','?? Google ??? ??','Microsoft ??? ?? ??','????? ?? ??','???, ??, ???? ??','??? ??? ?? ?? ??','??? ??? ?? ??','??? ??? ?? ??','??? ???? ?? ???? ???','??, ???, ?? ??? ???','???? ???? ???','??? ??? AI ??','??? ??? ???? ?? ??','Gemini ??? ???? Google AI ???'],
-        missions:['?? ??','??','??? ? ?? ?? ? ??? ?? ?? ??? ?? ???? ?????. ??? ???? ???, ??? ??? ??? ?? ?????.','??? ???? ???? ???? ??','Majestic Media? ?? ?? ???, ?? ??? ??? ??? ? ??? ??? ????? ???? ????.','? ??? ? ??? ???? ? ???? ??? ?? ??? ?? ??? ??? ? ????.','?? ??? ??','?? ???','M�Cheyne ?? ???','?? ??? ??? ?? ??? ??? ?? ???, ? ? ?? ??? ??? ????? ?? ?? ??????. ?? ?? ??, ?? ??, ?? ? ?? ??? ??? ???.','?? ??? ??'],
-        living:['?? ??? ???','???? ??','????, ?, ????? ??, ?? ?? ?? ?? ??? ?? ????? ?? ?? ??????.','?? ??? Living the Word ?? ????.'],
-        fellowship:['???','???','???? ?? ?? ?????. ??? ?? ??, ??? ?, ?? ??, ??? ??? ?? ?? ? ?? ???? ??? ?????. ???? ?? ??? ??? ????, ????, ???? ??? ??? ????.','?? ???','??','???','?? ??? ?? ???...','??? ???','?? ??? ???? ????. ? ?? ???? ?? ???.','??? ?? ?? ????? ???? ??? ??? ????? ?? ????.','?? ???'],
-        footerLinks:['??','??','??','??? ??','???','AI ???','??','???? ??','???','??','??','??'],
-        footerEsv:'?? ?? ??? King James Version? English Standard Version (ESV)?? ??????. ??? ????, ?? ?? ?? ?? ???? ?? ?????.',
+        aiToolDescs:['일반 질문과 이어지는 대화','출처가 보이는 자료 검색','빠른 Google 스타일 도움','Microsoft 검색과 일상 도움','프라이버시 중심 검색','글쓰기, 요약, 부드러운 표현','실시간 질문과 최신 이슈 탐색','검색과 콘텐츠 도구 모음','다국어 요약과 자료 탐색','간단한 문장으로 음악 아이디어 만들기','카드, 포스터, 소셜 디자인 만들기','목소리와 나레이션 만들기','영상과 움직임 AI 실험','자료와 문서를 정리하는 학습 도구','Gemini 모델을 시험하는 Google AI 실험실'],
+        missions:['전도 자료','전도','복음을 더 쉽게 전할 수 있도록 돕는 전도 자료와 성경 읽기표를 살펴보세요. 구원의 메시지를 나누고, 말씀을 꾸준히 읽도록 돕는 자료입니다.','영원한 생명으로 인도하는 하나님의 다리','Majestic Media의 영문 전도 자료로, 개인 전도와 나눔에 활용할 수 있도록 복음을 시각적으로 분명하게 전합니다.','이 자료는 새 탭에서 열리므로 홈 페이지를 그대로 두고 읽거나 인쇄 자료로 활용할 수 있습니다.','영문 전도지 열기','성경 읽기표','M’Cheyne 성경 읽기표','매일 정해진 본문을 따라 구약과 신약을 함께 읽으며, 한 해 동안 말씀을 꾸준히 묵상하도록 돕는 성경 읽기표입니다. 개인 경건 시간, 가정 예배, 전도 후 양육 자료로 활용해 보세요.','성경 읽기표 열기'],
+        living:['원본 가르침 콘텐츠','말씀대로 살기','팟캐스트, 글, 파워포인트 강의, 묵상 글을 통해 믿음 안에서 계속 자라가도록 돕는 공개 자료실입니다.','아직 게시된 Living the Word 글이 없습니다.'],
+        fellowship:['공동체','방명록','방명록에 오신 것을 환영합니다. 이곳은 기도 제목, 위로의 말, 짧은 간증, 믿음의 나눔을 함께 나눌 수 있는 따뜻하고 평안한 공간입니다. 하나님의 사랑 안에서 서로를 위로하고, 격려하고, 축복하는 자리가 되기를 바랍니다.','메모 남기기','이름','메시지','짧은 댓글을 남겨 주세요...','메시지 남기기','아직 방명록 메시지가 없습니다. 첫 번째 메시지를 남겨 보세요.','여기에 남긴 글은 온라인으로 저장되며 한국어 페이지 방문자들과 함께 보입니다.','빠른 이모지'],
+        footerLinks:['감정','상황','주제','황혼의 계절','갤러리','AI 놀이터','전도','말씀대로 살기','방명록','묵상','기도','위로'],
+        footerEsv:'모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고, 읽기 쉽고 품위 있는 번역으로 널리 사용됩니다.',
         createdBy:'Created by Tea Park',
-        copyright:'� 2026 Life�s Moments, God�s Word. All Rights Reserved.'
+        copyright:'© 2026 Life’s Moments, God’s Word. All Rights Reserved.'
       }
     : {
         sidebarGroups:['Bible Search','Gallery','More'],
         sidebarLinks:['Search Verses','Emotions','Situations','Topics','Twilight Season','Gallery','AI Playground','English & Bible','Missions','Living the Word','Guestbook','Devotion','Prayer','Comfort'],
-        sidebarVerse:'�Thy word is a lamp unto my feet, and a light unto my path.�',
+        sidebarVerse:'“Thy word is a lamp unto my feet, and a light unto my path.”',
         sidebarRef:'Psalm 119:105',
         nav:['Emotions','Situations','Topics','Twilight Season','Devotion','Prayer','Comfort'],
-        heroEyebrow:'? Bible Verses for Every Season of Life ?',
+        heroEyebrow:'✦ Bible Verses for Every Season of Life ✦',
         pageTitle:'Life\'s Moments, God\'s Word | Bible Verses for Every Season',
         heroTitle:'Life&rsquo;s Moments,<br><em>God&rsquo;s Word</em>',
         heroLead:'Search for the Bible verse you need for this moment of life.',
         heroWelcome:'A place for Scripture, prayer, and comfort.',
         heroGuide:'Start with a feeling, a situation, or a topic.',
         backToStart:'Back to Start',
-        heroPlaceholder:'Search: grief, fear, sick, hope, forgive, marriage�',
+        heroPlaceholder:'Search: grief, fear, sick, hope, forgive, marriage…',
         heroButton:'Search Bible',
         heroQuick:['Search Verses','Living the Word','Guestbook'],
         pathways:{
@@ -1273,7 +1283,7 @@ window.applyPageLanguage=function(lang){
           title:'Go deeper with Devotion, Prayer, and Comfort.',
           copy:'Read, pray, and rest a little longer here.',
           cards:[
-            ['Daily Reading','Devotion','Begin the day in God�s Word with a short Scripture reading and reflection.','Open Devotion'],
+            ['Daily Reading','Devotion','Begin the day in God’s Word with a short Scripture reading and reflection.','Open Devotion'],
             ['Quiet Prayer','Prayer','Bring your heart, needs, and thanksgiving before God in a calm place.','Open Prayer'],
             ['Gentle Hope','Comfort','Find peace, hope, and gentle strength through carefully chosen verses.','Open Comfort']
           ]
@@ -1286,7 +1296,7 @@ window.applyPageLanguage=function(lang){
         update:{
           kicker:'Notice',
           title:'AI Playground is now easier to try.',
-          copy:'The AI Playground has been upgraded into a simple AI portal where visitors can test helpful tools, compare answers, and become familiar with today�s AI resources.',
+          copy:'The AI Playground has been upgraded into a simple AI portal where visitors can test helpful tools, compare answers, and become familiar with today’s AI resources.',
           items:['Use one question to explore several AI tools and notice how each one answers differently.','Try search, writing, music, design, voice, learning, and creative tools without losing your place on this homepage.','This is a friendly place to practice asking better questions, checking sources, and using AI wisely.','After using AI, return to Scripture, prayer, and careful reflection for deeper wisdom.']
         },
         popularPages:{
@@ -1299,150 +1309,150 @@ window.applyPageLanguage=function(lang){
           frameClose:'Close'
         },
         chips:['Grief','Fear','Lonely','Sick','Anxiety','Forgiveness','Hope','Strength','Money','Peace','Marriage','Death'],
-        emotions:['The Heart�s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
+        emotions:['The Heart’s Compass','Explore by Emotion','Find Bible verses for the feelings people carry most deeply, from joy and gratitude to fear and loneliness.'],
         emotionCardTitles:['Joy','Sorrow','Peace','Hope','Fear','Anxiety','Loneliness','Anger','Gratitude','Guilt & Regret','Love','Discouragement'],
-        emotionHints:['�Rejoice in the Lord always; again I will say, rejoice.�','�The Lord is near to the brokenhearted.�','�The peace of God will guard your hearts.�','�The God of hope fill you with joy and peace.�','�Fear not, for I am with you; I am your God.�','�Cast all your anxieties on him, because he cares.�','�I will never leave you nor forsake you.�','�Be angry and do not sin; do not let the sun go down.�','�Give thanks in all circumstances.�','�If we confess our sins, he is faithful to forgive.�','�God so loved the world that he gave his only Son.�','�They who wait for the Lord shall renew their strength.�'],
+        emotionHints:['“Rejoice in the Lord always; again I will say, rejoice.”','“The Lord is near to the brokenhearted.”','“The peace of God will guard your hearts.”','“The God of hope fill you with joy and peace.”','“Fear not, for I am with you; I am your God.”','“Cast all your anxieties on him, because he cares.”','“I will never leave you nor forsake you.”','“Be angry and do not sin; do not let the sun go down.”','“Give thanks in all circumstances.”','“If we confess our sins, he is faithful to forgive.”','“God so loved the world that he gave his only Son.”','“They who wait for the Lord shall renew their strength.”'],
         emotionTap:'Tap for full verses',
-        votd:['? Verse of the Day ?','�I can do all things through him who strengthens me.�','Philippians 4:13 (ESV)','God does not call us to carry our burdens alone. His strength is made perfect in our weakness, and He provides exactly what we need for each day�s journey.'],
+        votd:['✦ Verse of the Day ✦','“I can do all things through him who strengthens me.”','Philippians 4:13 (ESV)','God does not call us to carry our burdens alone. His strength is made perfect in our weakness, and He provides exactly what we need for each day’s journey.'],
         situations:['Real Life. Real Scripture.','Find by Life Situation','Open a life situation to discover Bible verses that speak into sickness, grief, family, money, and more.'],
         situationTags:['Illness & Health','Loss & Grief','Relationships','Isolation','Strength','Wisdom','Faith','Financial Worry','Comfort at a Funeral'],
         situationTitles:['When You Need Healing','When You Are Grieving','When You Need to Forgive','When You Feel Alone','When You Feel Overwhelmed','When You Need Guidance','When Your Faith Is Weak','When Money Is a Burden','Words for Grief & Burial'],
-        situationDescs:['For sickness, chronic pain, and finding God�s peace through the body�s weakness.','For mourning, funerals, and the living hope of resurrection.','For releasing bitterness and finding freedom through forgiveness.','God�s presence is closer than you feel right now.','For emotional exhaustion, burnout, and finding rest in God�s care.','For decisions, crossroads, and trusting God�s direction.','For seasons of doubt and learning to depend on God�s sufficient grace.','God knows your every need. He calls you to seek His kingdom first.','Eternal hope for those gathered to grieve and remember.'],
-        promise:['A Promise to Stand On','Seek First His Kingdom','�But seek first the kingdom of God and his righteousness, and all these things will be added to you.�','Matthew 6:33 (ESV)','This is the verse that has anchored our founder Tea Park�s life for over 50 years � through immigration, church planting, ministry, and every decision that mattered. God�s kingdom first. Always.'],
+        situationDescs:['For sickness, chronic pain, and finding God’s peace through the body’s weakness.','For mourning, funerals, and the living hope of resurrection.','For releasing bitterness and finding freedom through forgiveness.','God’s presence is closer than you feel right now.','For emotional exhaustion, burnout, and finding rest in God’s care.','For decisions, crossroads, and trusting God’s direction.','For seasons of doubt and learning to depend on God’s sufficient grace.','God knows your every need. He calls you to seek His kingdom first.','Eternal hope for those gathered to grieve and remember.'],
+        promise:['A Promise to Stand On','Seek First His Kingdom','“But seek first the kingdom of God and his righteousness, and all these things will be added to you.”','Matthew 6:33 (ESV)','This is the verse that has anchored our founder Tea Park’s life for over 50 years — through immigration, church planting, ministry, and every decision that mattered. God’s kingdom first. Always.'],
         topics:['Bible Topic Search','Browse Every Topic','Open a topic to explore Scripture in both KJV and ESV for the questions people search most often.'],
         topicColHeads:['Emotions','Life Issues','Spiritual Themes'],
-        topicButtons:['Joy & Delight','Anger & Frustration','Grief','Fear','Anxiety','Loneliness','Peace','Gratitude & Thankfulness','Love & Compassion','Guilt & Regret','Discouragement','Depression & Discouragement','Sleep & Insomnia','Contentment & Satisfaction','Suffering & Trials','Illness & Sickness','Caregiving & Support','Addiction & Recovery','Death & Dying','Forgiveness','Marriage & Family','Relationship Conflict','Parenting & Children','Work & Calling','Money & Financial Worry','Failure & Disappointment','Decision-Making & Wisdom','Aging & Senior Life','New Beginnings & Change','Faith & Trust','Hope','Prayer & Intercession','Grace & Mercy','Salvation & Redemption','Obedience & Surrender','Holiness & Sanctification','The Holy Spirit','Worship & Praise','Evangelism & Witness','Heaven & Eternity','God�s Presence & Comfort'],
-        topicNotes:['True joy rests on God�s presence, not our circumstances.','Anger surrendered to God before it becomes sin.','God draws near to the broken and does not ignore our tears.','Fear loses its grip when we remember God is with us as our helper.','Anxiety is an invitation to cast our worries on the God who cares.','God�s presence is not limited by distance, illness, or isolation.','The peace God gives guards the heart within the storm.','Gratitude is a practice that reshapes how we see everything.','God�s love is the foundation of all love � it came to us first.','Guilt points us to the cross � where forgiveness is complete.','When we are at our lowest, God renews those who wait on Him.','For those walking through depression, emotional heaviness, and the need for God�s comfort.','For those struggling with sleeplessness, restless thoughts, and the need for God�s peace.','Contentment is a learned discipline, not a personality type.','Suffering is not wasted in God�s hands � He works through it.','In sickness, God is not absent. He sustains and is present.','For caregivers who need strength, patience, and encouragement while supporting loved ones.','For those seeking freedom, healing, and restoration from addiction and destructive patterns.','For the believer, death is not the end � it is the doorway to God.','Forgiveness releases you from the burden of carrying the wrong.','Marriage reflects Christ�s own self-giving love for His church.','For those facing conflict in family, friendship, work, or church relationships.','Children are a heritage from God � parenting points them toward Him.','Work is one of the places we serve and glorify God each day.','God calls us to seek His kingdom first � and promises His provision.','Failure is not final in God�s story. He upholds those who stumble.','At every crossroads, stop leaning on your own understanding.','God carries His people through every season � especially the later years.','God is already in the new chapter you are stepping into.','Faith is trust that holds on even when we cannot see the way.','Biblical hope is confident expectation rooted in God�s promises.','Prayer is the simplest and most profound act of faith.','Grace is God giving us what we do not deserve � the foundation of faith.','Salvation is entirely God�s gift, received through faith in Christ alone.','Obedience is the natural overflow of a heart changed by God�s love.','Holiness is being set apart for God, shaped daily into Christ�s likeness.','The Holy Spirit is God dwelling within us � guiding and empowering.','Worship is the posture of a whole life surrendered to God�s glory.','Sharing the Gospel is a joy � offering to others what we ourselves received.','Heaven is real � where God will dwell with His people forever.','God�s presence is not limited to a building � He is always near.'],
-        topicCta:'Search All Bible Topics ?',
-        seniors:['For Our Beloved Seniors','Scripture for the Twilight Season of Life','�Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.�','Isaiah 46:4 (ESV)','Living with Illness','�The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.�','Psalm 23:1-2 (ESV)','The Gift of Long Life','�Gray hair is a crown of glory; it is gained in a righteous life.�','Proverbs 16:31 (ESV)','End-of-Life Hope','�For to me to live is Christ, and to die is gain.�','Philippians 1:21 (ESV)','Daily Prayer & Rest','�Do not be anxious about anything, but in everything by prayer let your requests be made known to God.�','Philippians 4:6 (ESV)'],
+        topicButtons:['Joy & Delight','Anger & Frustration','Grief','Fear','Anxiety','Loneliness','Peace','Gratitude & Thankfulness','Love & Compassion','Guilt & Regret','Discouragement','Depression & Discouragement','Sleep & Insomnia','Contentment & Satisfaction','Suffering & Trials','Illness & Sickness','Caregiving & Support','Addiction & Recovery','Death & Dying','Forgiveness','Marriage & Family','Relationship Conflict','Parenting & Children','Work & Calling','Money & Financial Worry','Failure & Disappointment','Decision-Making & Wisdom','Aging & Senior Life','New Beginnings & Change','Faith & Trust','Hope','Prayer & Intercession','Grace & Mercy','Salvation & Redemption','Obedience & Surrender','Holiness & Sanctification','The Holy Spirit','Worship & Praise','Evangelism & Witness','Heaven & Eternity','God’s Presence & Comfort'],
+        topicNotes:['True joy rests on God’s presence, not our circumstances.','Anger surrendered to God before it becomes sin.','God draws near to the broken and does not ignore our tears.','Fear loses its grip when we remember God is with us as our helper.','Anxiety is an invitation to cast our worries on the God who cares.','God’s presence is not limited by distance, illness, or isolation.','The peace God gives guards the heart within the storm.','Gratitude is a practice that reshapes how we see everything.','God’s love is the foundation of all love — it came to us first.','Guilt points us to the cross — where forgiveness is complete.','When we are at our lowest, God renews those who wait on Him.','For those walking through depression, emotional heaviness, and the need for God’s comfort.','For those struggling with sleeplessness, restless thoughts, and the need for God’s peace.','Contentment is a learned discipline, not a personality type.','Suffering is not wasted in God’s hands — He works through it.','In sickness, God is not absent. He sustains and is present.','For caregivers who need strength, patience, and encouragement while supporting loved ones.','For those seeking freedom, healing, and restoration from addiction and destructive patterns.','For the believer, death is not the end — it is the doorway to God.','Forgiveness releases you from the burden of carrying the wrong.','Marriage reflects Christ’s own self-giving love for His church.','For those facing conflict in family, friendship, work, or church relationships.','Children are a heritage from God — parenting points them toward Him.','Work is one of the places we serve and glorify God each day.','God calls us to seek His kingdom first — and promises His provision.','Failure is not final in God’s story. He upholds those who stumble.','At every crossroads, stop leaning on your own understanding.','God carries His people through every season — especially the later years.','God is already in the new chapter you are stepping into.','Faith is trust that holds on even when we cannot see the way.','Biblical hope is confident expectation rooted in God’s promises.','Prayer is the simplest and most profound act of faith.','Grace is God giving us what we do not deserve — the foundation of faith.','Salvation is entirely God’s gift, received through faith in Christ alone.','Obedience is the natural overflow of a heart changed by God’s love.','Holiness is being set apart for God, shaped daily into Christ’s likeness.','The Holy Spirit is God dwelling within us — guiding and empowering.','Worship is the posture of a whole life surrendered to God’s glory.','Sharing the Gospel is a joy — offering to others what we ourselves received.','Heaven is real — where God will dwell with His people forever.','God’s presence is not limited to a building — He is always near.'],
+        topicCta:'Search All Bible Topics →',
+        seniors:['For Our Beloved Seniors','Scripture for the Twilight Season of Life','“Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.”','Isaiah 46:4 (ESV)','Living with Illness','“The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.”','Psalm 23:1-2 (ESV)','The Gift of Long Life','“Gray hair is a crown of glory; it is gained in a righteous life.”','Proverbs 16:31 (ESV)','End-of-Life Hope','“For to me to live is Christ, and to die is gain.”','Philippians 1:21 (ESV)','Daily Prayer & Rest','“Do not be anxious about anything, but in everything by prayer let your requests be made known to God.”','Philippians 4:6 (ESV)'],
         about:['Our Vision','About This Website','Helping people find God&rsquo;s Word not just by book or chapter &mdash; but through the real experiences of their lives.','Why We Exist','Many people do not know where to begin in the Bible when they are hurting, afraid, grieving, or searching for hope. This website meets you exactly where you are &mdash; with the Word of God.','Bible Translation','All verses are from the King James and English Standard Version (ESV) &mdash; known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.','Created By','Tea Park, B.A.<br>Eng. Language &amp; Literature<br>Korean Interpreter<br>Alberta Provincial Court, WCB<br>National Institute for LLE<br>NAIT','Agent Allstate Ins Co of Canada','Faith &amp; Community','Dedicated to Church Ministry since 1970 and a proud Recreation Volunteer at St. Joseph&rsquo;s Hospital in Edmonton.'],
         gallery:['Shared Moments','Gallery','A collection of peaceful travel moments, beautiful landscapes, and quiet reflections gathered with gratitude.','No gallery photos have been published yet.'],
         ai:['Friendly AI Tools','AI Playground','Try friendly AI tools for questions, music, images, voice, design, and learning. Each link opens in a new tab so your Home page remains easy to return to.','AI Tools to Try','A simple place to test useful AI tools, compare answers, and return again to your Bible-centered resources.','Open AI Playground','Recommended AI Tools','Type your question, then prepare it for AI.','Type your question here...','Prepare Question','AI opens in a new tab. This homepage will stay open.','Ask one clear question.','Add your purpose, audience, and language.','Compare answers and check sources.'],
         aiToolNames:['1. ChatGPT Search','2. Perplexity','3. Google Gemini','4. Microsoft Copilot','5. Brave Search / Ask Brave','6. Claude','7. Grok','8. Genspark','9. Felo AI','10. Suno AI','11. Canva AI','12. ElevenLabs','13. Runway','14. Google NotebookLM','15. Google AI Studio'],
         aiToolDescs:['General questions and follow-up conversation','Research with sources','Quick Google-style help','Microsoft search and everyday help','Privacy-focused search','Writing, summaries, and gentle wording','Real-time questions and current topics','Search and content tools in one place','Multilingual summaries and source browsing','Music ideas from simple prompts','Cards, posts, flyers, and simple designs','Voice and narration generation','Video and motion AI experiments','Research and learning with documents','Google Gemini model playground'],
-        missions:['Outreach','Missions','Explore gospel outreach resources and a Bible reading plan that can help you share salvation clearly and encourage steady Scripture reading.','God�s Bridge to Eternal Life','An evangelism resource from Majestic Media that presents the gospel in a clear, visual way for personal sharing and outreach.','This external page opens in a new tab so you can read, share, or print the tract while keeping your home page easy to return to.','Open English Tract','Bible Reading Plan','M�Cheyne Bible Reading Plan','A daily Bible reading schedule that helps readers walk through the Old and New Testaments with steady, prayerful discipline throughout the year. It can be used for personal devotion, family worship, or follow-up after outreach.','Open Bible Reading Plan'],
+        missions:['Outreach','Missions','Explore gospel outreach resources and a Bible reading plan that can help you share salvation clearly and encourage steady Scripture reading.','God’s Bridge to Eternal Life','An evangelism resource from Majestic Media that presents the gospel in a clear, visual way for personal sharing and outreach.','This external page opens in a new tab so you can read, share, or print the tract while keeping your home page easy to return to.','Open English Tract','Bible Reading Plan','M’Cheyne Bible Reading Plan','A daily Bible reading schedule that helps readers walk through the Old and New Testaments with steady, prayerful discipline throughout the year. It can be used for personal devotion, family worship, or follow-up after outreach.','Open Bible Reading Plan'],
         living:['Original Teaching Content','Living the Word','A public library for your podcasts, articles, PowerPoint teachings, and journal writing so people can keep growing in faith through your original content.','No Living the Word posts are published yet.'],
         fellowship:['Community','Guestbook','Welcome to the Guestbook. This is a warm and peaceful space where you can share a prayer request, a word of encouragement, a short testimony, or a message of faith. May we comfort, strengthen, and bless one another in God\'s love.','Leave a Note','Name','Message','Write a short comment...','Post Message','No guestbook messages yet. Be the first to leave a note.','Messages posted here are stored online and shared with visitors on the English page.','Quick Emoji'],
         footerLinks:['Emotions','Situations','Topics','Twilight Season','Gallery','AI Playground','Missions','Living the Word','Guestbook','Devotion','Prayer','Comfort'],
-        footerEsv:'All verses are from the King James and English Standard Version (ESV) � known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
+        footerEsv:'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
         createdBy:'Created by Tea Park',
-        copyright:'� 2026 Life�s Moments, God�s Word. All Rights Reserved.'
+        copyright:'© 2026 Life’s Moments, God’s Word. All Rights Reserved.'
       };
 
   const twilightRotations={
     ko:[
       {
-        featuredVerse:'�??? ??? ????? ?? ??? ??? ? ???? ?? ??? ?? ???. ?? ???? ?? ?? ?? ??? ???? ?????.�',
-        featuredRef:'??? 46:4 (ESV)',
-        memoryLabel:'????',
-        memoryTitle:'?? ?? ??? ??? ??',
-        memoryVerse:'�???? ???? ?? ??? ??? ???? ??? ?? ???.�',
-        memoryRef:'??? 33:27 (ESV)',
+        featuredVerse:'“너희의 노년에 이르러서도 내가 너희를 백발이 될 때까지도 내가 너희를 품을 것이라. 내가 지었으니 내가 안고 품을 것이며 너희들을 건져내리라.”',
+        featuredRef:'이사야 46:4 (ESV)',
+        memoryLabel:'암송구절',
+        memoryTitle:'이번 주에 마음에 간직할 말씀',
+        memoryVerse:'“영원하신 하나님이 너의 거처가 되시며 아래에는 영원한 팔이 있도다.”',
+        memoryRef:'신명기 33:27 (ESV)',
         cards:[
-          ['??? ?? ??? ?','�?? ?? ????, ?? ??? ?? ?????. ?? ?? ?? ??? ?? ??? ??? ??? ?? ???????.�','?? 23:1-2 (ESV)'],
-          ['? ??? ??','�?? ??? ?? ??? ???? ??? ??????.�','?? 16:31 (ESV)'],
-          ['?? ??? ??? ??','�?? ?? ?? ?? ????? ?? ?? ?????.�','???? 1:21 (ESV)'],
-          ['??? ??? ??? ?','�???? ???? ?? ?? ?? ?? ??? ??? ??? ??? ??? ????? ???? ???? ??.�','???? 4:6 (ESV)']
+          ['질병과 함께 살아갈 때','“주는 나의 목자시니, 내가 부족한 것이 없으리로다. 그가 나를 푸른 초장에 눕게 하시며 잔잔한 물가로 나를 인도하시는도다.”','시편 23:1-2 (ESV)'],
+          ['긴 생명의 선물','“의의 길에서 얻게 된다면 흰머리는 영광의 면류관이니라.”','잠언 16:31 (ESV)'],
+          ['삶의 끝에서 붙드는 소망','“이는 내게 사는 것이 그리스도니 죽는 것도 유익함이라.”','빌립보서 1:21 (ESV)'],
+          ['날마다 드리는 기도와 쉼','“아무것도 염려하지 말고 다만 모든 일에 기도와 간구로 너희의 구하는 것들을 감사함으로 하나님께 알려지게 하라.”','빌립보서 4:6 (ESV)']
         ]
       },
       {
-        featuredVerse:'�? ??? ? ??? ???? ???? ? ??? ???? ? ???? ??? ??????.�',
-        featuredRef:'?? 73:26 (ESV)',
-        memoryLabel:'????',
-        memoryTitle:'?? ?? ??? ??',
-        memoryVerse:'�????? ??, ?? ?? ?????. ??? ??, ?? ? ??????.�',
-        memoryRef:'??? 41:10 (ESV)',
+        featuredVerse:'“내 육체와 내 마음이 쇠잔하나 하나님은 내 마음의 힘이시요 내 몫이시니 영원히 그러하시도다.”',
+        featuredRef:'시편 73:26 (ESV)',
+        memoryLabel:'암송구절',
+        memoryTitle:'이번 주에 되새길 말씀',
+        memoryVerse:'“두려워하지 말라, 내가 너와 함께함이라. 놀라지 말라, 내가 네 하나님이니라.”',
+        memoryRef:'이사야 41:10 (ESV)',
         cards:[
-          ['?? ??? ??? ?','�? ??? ? ??? ???? ???? ? ??? ???? ? ???? ??? ??????.�','?? 73:26 (ESV)'],
-          ['?? ??? ?','�? ?? ?? ???. ?? ?? ????. ???? ?? ????.�','?? 37:5 (ESV)'],
-          ['?? ?? ??? ??? ?','�?? ?? ?? ??? ???? ??? ?????.�','???? 13:5 (ESV)'],
-          ['?? ? ?? ??? ?','�?? ???? ???? ?? ? ?? ????.�','??? 40:31 (ESV)']
+          ['몸과 마음이 약해질 때','“내 육체와 내 마음이 쇠잔하나 하나님은 내 마음의 힘이시요 내 몫이시니 영원히 그러하시도다.”','시편 73:26 (ESV)'],
+          ['길이 흐려질 때','“네 길을 주께 맡기라. 또한 그를 신뢰하라. 그리하면 그가 이루시고.”','시편 37:5 (ESV)'],
+          ['홀로 있는 시간이 길어질 때','“내가 결코 너를 떠나지 아니하고 버리지 아니하리라.”','히브리서 13:5 (ESV)'],
+          ['매일 새 힘이 필요할 때','“오직 여호와를 앙망하는 자는 새 힘을 얻으리니.”','이사야 40:31 (ESV)']
         ]
       },
       {
-        featuredVerse:'�??? ???? ?? ???? ???? ??? ?? ?????... ??? ???? ??? ??? ??? ??? ???? ??????.�',
-        featuredRef:'?? 92:12-14 (ESV)',
-        memoryLabel:'????',
-        memoryTitle:'?? ? ?? ??',
-        memoryVerse:'�??? ???? ?? ???? ???? ??? ?? ?????.�',
-        memoryRef:'?? 92:12 (ESV)',
+        featuredVerse:'“의인은 종려나무 같이 번성하며 레바논의 백향목 같이 자라리로다... 그들은 늙어서도 여전히 열매를 맺으며 진액이 풍족하고 푸르를지어다.”',
+        featuredRef:'시편 92:12-14 (ESV)',
+        memoryLabel:'암송구절',
+        memoryTitle:'이번 주 암송 말씀',
+        memoryVerse:'“의인은 종려나무 같이 번성하며 레바논의 백향목 같이 자라리로다.”',
+        memoryRef:'시편 92:12 (ESV)',
         cards:[
-          ['???? ?? ?? ?','�??? ???? ??? ??? ??? ??? ???? ??????.�','?? 92:14 (ESV)'],
-          ['??? ??? ?','�??? ???? ????? ?? ??? ????.�','?? 16:31 (KJV)'],
-          ['??? ??? ?','�?? ????? ??? ?????. ???? ???? ?????.�','?? 25:6 (ESV)'],
-          ['??? ??? ??? ?','�?? ?? ??? ??? ??? ?? ??? ??? ???? ????.�','?????? 3:26 (ESV)']
+          ['노년에도 열매 맺는 삶','“그들은 늙어서도 여전히 열매를 맺으며 진액이 풍족하고 푸르를지어다.”','시편 92:14 (ESV)'],
+          ['지혜가 깊어질 때','“백발은 영화로운 면류관이라 의의 길에서 얻으리라.”','잠언 16:31 (KJV)'],
+          ['기억이 흐려질 때','“주의 인자하심과 긍휼을 기억하소서. 그것들은 예로부터 있었나이다.”','시편 25:6 (ESV)'],
+          ['조용히 주님을 기다릴 때','“좋은 것이 있으니 사람이 잠잠히 주의 구원을 바라고 기다리는 것이로다.”','예레미야애가 3:26 (ESV)']
         ]
       },
       {
-        featuredVerse:'�??? ???? ???? ???? ?? ??????.�',
-        featuredRef:'????? 4:16 (ESV)',
-        memoryLabel:'????',
-        memoryTitle:'?? ? ?? ??',
-        memoryVerse:'�??? ???? ???? ??? ???? ?? ??????.�',
-        memoryRef:'????? 4:16 (ESV)',
+        featuredVerse:'“우리의 겉사람은 후패하나 속사람은 날로 새로워지도다.”',
+        featuredRef:'고린도후서 4:16 (ESV)',
+        memoryLabel:'암송구절',
+        memoryTitle:'이번 주 붙들 말씀',
+        memoryVerse:'“우리의 겉사람은 후패하나 우리의 속사람은 날로 새로워지도다.”',
+        memoryRef:'고린도후서 4:16 (ESV)',
         cards:[
-          ['?? ???? ??? ???? ?','�???? ??? ???? ????? ??? ???? ???? ???? ?? ??????.�','????? 4:16 (ESV)'],
-          ['????? ??? ?','�?? ??? ???? ????? ?? ?? ????.�','?? 23:6 (ESV)'],
-          ['??? ?? ??? ?','�? ??? ?? ?? ?? ???.�','???? 14:2 (ESV)'],
-          ['??? ?? ?? ?','�???? ??? ? ? ???, ? ??? ??. ??? ?? ???? ?? ???.�','???? 11:28 (KJV)']
+          ['몸은 약해져도 마음은 새로워질 때','“그러므로 우리가 낙심하지 아니하노니 우리의 겉사람은 후패하나 속사람은 날로 새로워지도다.”','고린도후서 4:16 (ESV)'],
+          ['뒤돌아보며 감사할 때','“나의 평생에 선하심과 인자하심이 정녕 나를 따르리니.”','시편 23:6 (ESV)'],
+          ['하늘의 집을 바라볼 때','“내 아버지 집에 거할 곳이 많도다.”','요한복음 14:2 (ESV)'],
+          ['평안히 쉬고 싶을 때','“수고하고 무거운 짐 진 자들아, 다 내게로 오라. 그러면 내가 너희에게 쉼을 주리라.”','마태복음 11:28 (KJV)']
         ]
       }
     ],
     en:[
       {
-        featuredVerse:'�Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.�',
+        featuredVerse:'“Even to your old age I am he, and to gray hairs I will carry you. I have made, and I will bear; I will carry and will save.”',
         featuredRef:'Isaiah 46:4 (ESV)',
         memoryLabel:'Memory Verse',
         memoryTitle:'Carry This Promise This Week',
-        memoryVerse:'�The eternal God is your dwelling place, and underneath are the everlasting arms.�',
+        memoryVerse:'“The eternal God is your dwelling place, and underneath are the everlasting arms.”',
         memoryRef:'Deuteronomy 33:27 (ESV)',
         cards:[
-          ['Living with Illness','�The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.�','Psalm 23:1-2 (ESV)'],
-          ['The Gift of Long Life','�Gray hair is a crown of glory; it is gained in a righteous life.�','Proverbs 16:31 (ESV)'],
-          ['End-of-Life Hope','�For to me to live is Christ, and to die is gain.�','Philippians 1:21 (ESV)'],
-          ['Daily Prayer & Rest','�Do not be anxious about anything, but in everything by prayer let your requests be made known to God.�','Philippians 4:6 (ESV)']
+          ['Living with Illness','“The Lord is my shepherd; I shall not want. He makes me lie down in green pastures.”','Psalm 23:1-2 (ESV)'],
+          ['The Gift of Long Life','“Gray hair is a crown of glory; it is gained in a righteous life.”','Proverbs 16:31 (ESV)'],
+          ['End-of-Life Hope','“For to me to live is Christ, and to die is gain.”','Philippians 1:21 (ESV)'],
+          ['Daily Prayer & Rest','“Do not be anxious about anything, but in everything by prayer let your requests be made known to God.”','Philippians 4:6 (ESV)']
         ]
       },
       {
-        featuredVerse:'�My flesh and my heart may fail, but God is the strength of my heart and my portion forever.�',
+        featuredVerse:'“My flesh and my heart may fail, but God is the strength of my heart and my portion forever.”',
         featuredRef:'Psalm 73:26 (ESV)',
         memoryLabel:'Memory Verse',
         memoryTitle:'Hold This Word Through the Week',
-        memoryVerse:'�Fear not, for I am with you; be not dismayed, for I am your God.�',
+        memoryVerse:'“Fear not, for I am with you; be not dismayed, for I am your God.”',
         memoryRef:'Isaiah 41:10 (ESV)',
         cards:[
-          ['When Body and Heart Feel Weak','�My flesh and my heart may fail, but God is the strength of my heart and my portion forever.�','Psalm 73:26 (ESV)'],
-          ['When the Path Feels Unclear','�Commit your way to the Lord; trust in him, and he will act.�','Psalm 37:5 (ESV)'],
-          ['When the Days Feel Lonely','�I will never leave you nor forsake you.�','Hebrews 13:5 (ESV)'],
-          ['When You Need Fresh Strength','�They that wait upon the Lord shall renew their strength.�','Isaiah 40:31 (ESV)']
+          ['When Body and Heart Feel Weak','“My flesh and my heart may fail, but God is the strength of my heart and my portion forever.”','Psalm 73:26 (ESV)'],
+          ['When the Path Feels Unclear','“Commit your way to the Lord; trust in him, and he will act.”','Psalm 37:5 (ESV)'],
+          ['When the Days Feel Lonely','“I will never leave you nor forsake you.”','Hebrews 13:5 (ESV)'],
+          ['When You Need Fresh Strength','“They that wait upon the Lord shall renew their strength.”','Isaiah 40:31 (ESV)']
         ]
       },
       {
-        featuredVerse:'�The righteous flourish like the palm tree and grow like a cedar in Lebanon... they still bear fruit in old age.�',
+        featuredVerse:'“The righteous flourish like the palm tree and grow like a cedar in Lebanon... they still bear fruit in old age.”',
         featuredRef:'Psalm 92:12-14 (ESV)',
         memoryLabel:'Memory Verse',
-        memoryTitle:'This Week�s Verse to Remember',
-        memoryVerse:'�The righteous flourish like the palm tree and grow like a cedar in Lebanon.�',
+        memoryTitle:'This Week’s Verse to Remember',
+        memoryVerse:'“The righteous flourish like the palm tree and grow like a cedar in Lebanon.”',
         memoryRef:'Psalm 92:12 (ESV)',
         cards:[
-          ['Still Bearing Fruit','�They still bear fruit in old age; they are ever full of sap and green.�','Psalm 92:14 (ESV)'],
-          ['Wisdom with Years','�The hoary head is a crown of glory, if it be found in the way of righteousness.�','Proverbs 16:31 (KJV)'],
-          ['When Memory Feels Fragile','�Remember, O Lord, your mercy and your steadfast love, for they have been from of old.�','Psalm 25:6 (ESV)'],
-          ['Learning Quiet Waiting','�It is good that one should wait quietly for the salvation of the Lord.�','Lamentations 3:26 (ESV)']
+          ['Still Bearing Fruit','“They still bear fruit in old age; they are ever full of sap and green.”','Psalm 92:14 (ESV)'],
+          ['Wisdom with Years','“The hoary head is a crown of glory, if it be found in the way of righteousness.”','Proverbs 16:31 (KJV)'],
+          ['When Memory Feels Fragile','“Remember, O Lord, your mercy and your steadfast love, for they have been from of old.”','Psalm 25:6 (ESV)'],
+          ['Learning Quiet Waiting','“It is good that one should wait quietly for the salvation of the Lord.”','Lamentations 3:26 (ESV)']
         ]
       },
       {
-        featuredVerse:'�Though our outer self is wasting away, our inner self is being renewed day by day.�',
+        featuredVerse:'“Though our outer self is wasting away, our inner self is being renewed day by day.”',
         featuredRef:'2 Corinthians 4:16 (ESV)',
         memoryLabel:'Memory Verse',
         memoryTitle:'Keep This Verse Close',
-        memoryVerse:'�Though our outer self is wasting away, our inner self is being renewed day by day.�',
+        memoryVerse:'“Though our outer self is wasting away, our inner self is being renewed day by day.”',
         memoryRef:'2 Corinthians 4:16 (ESV)',
         cards:[
-          ['Renewed Within','�Though our outer self is wasting away, our inner self is being renewed day by day.�','2 Corinthians 4:16 (ESV)'],
-          ['Looking Back with Gratitude','�Surely goodness and mercy shall follow me all the days of my life.�','Psalm 23:6 (KJV)'],
-          ['Looking Toward Heaven','�In my Father�s house are many mansions.�','John 14:2 (KJV)'],
-          ['Rest for the Weary Soul','�Come unto me, all ye that labour and are heavy laden, and I will give you rest.�','Matthew 11:28 (KJV)']
+          ['Renewed Within','“Though our outer self is wasting away, our inner self is being renewed day by day.”','2 Corinthians 4:16 (ESV)'],
+          ['Looking Back with Gratitude','“Surely goodness and mercy shall follow me all the days of my life.”','Psalm 23:6 (KJV)'],
+          ['Looking Toward Heaven','“In my Father’s house are many mansions.”','John 14:2 (KJV)'],
+          ['Rest for the Weary Soul','“Come unto me, all ye that labour and are heavy laden, and I will give you rest.”','Matthew 11:28 (KJV)']
         ]
       }
     ]
@@ -1594,7 +1604,7 @@ window.applyPageLanguage=function(lang){
     } else {
       button.insertBefore(document.createTextNode(text.topicButtons[index] + ' '), button.firstChild);
     }
-    if(icon) icon.textContent = button.classList.contains('open') ? '-' : '+';
+    if(icon) icon.textContent = button.classList.contains('open') ? '−' : '+';
   });
   setList('#topics .tp-note', text.topicNotes);
   const topicCta=q('#topics a[href="#topics"]');
@@ -1715,21 +1725,21 @@ window.applyPageLanguage=function(lang){
 window.shareSite = async function(){
   const lang = (document.documentElement.getAttribute('lang') || 'en').startsWith('ko') ? 'ko' : 'en';
   const url = 'https://www.lifemoment.site';
-  const title = lang === 'ko' ? '?? ???, ???? ??' : "Life's Moments, God's Word";
+  const title = lang === 'ko' ? '삶의 순간들, 하나님의 말씀' : "Life's Moments, God's Word";
   const shareText = lang === 'ko'
-    ? '?? ??? ??, ??? ??? ?? ?? ? ?? ???????.'
+    ? '성경 말씀과 기도, 위로와 소망을 함께 찾을 수 있는 홈페이지입니다.'
     : 'A homepage for Bible verses, prayer, comfort, and hope.';
   const feedback = document.getElementById('spot-feedback');
   try{
     if(navigator.share){
       await navigator.share({title:title, text:shareText, url:url});
-      if(feedback) feedback.textContent = lang === 'ko' ? '?? ?? ?????.' : 'Share window opened.';
+      if(feedback) feedback.textContent = lang === 'ko' ? '공유 창을 열었습니다.' : 'Share window opened.';
       return;
     }
     await window.copySiteLink();
   }catch(err){
     if(err && err.name === 'AbortError') return;
-    if(feedback) feedback.textContent = lang === 'ko' ? '??? ?? ?????. ??? ??? ??? ???.' : 'Could not open share. Please use the copied link.';
+    if(feedback) feedback.textContent = lang === 'ko' ? '공유를 열지 못했습니다. 링크를 복사해 사용해 주세요.' : 'Could not open share. Please use the copied link.';
   }
 };
 
@@ -1740,12 +1750,12 @@ window.copySiteLink = async function(){
   try{
     if(navigator.clipboard && window.isSecureContext){
       await navigator.clipboard.writeText(url);
-      if(feedback) feedback.textContent = lang === 'ko' ? '??? ??????.' : 'Link copied.';
+      if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사했습니다.' : 'Link copied.';
       return;
     }
   }catch(err){}
-  window.prompt(lang === 'ko' ? '? ??? ??? ???.' : 'Copy this link:', url);
-  if(feedback) feedback.textContent = lang === 'ko' ? '??? ??? ??? ???.' : 'Copy the link and share it.';
+  window.prompt(lang === 'ko' ? '이 링크를 복사해 주세요.' : 'Copy this link:', url);
+  if(feedback) feedback.textContent = lang === 'ko' ? '링크를 복사해 사용해 주세요.' : 'Copy the link and share it.';
 };
 </script>
 <script>
@@ -1786,7 +1796,7 @@ window.closePopularBiblePage = function(){
   }
 };
 </script>
-<script src="assets/js/app.js?v=20260623a"></script>
+<script src="assets/js/app.js?v=20260623c"></script>
 <script src="assets/js/lang.js?v=20260604a"></script>
 <script src="assets/js/pwa.js?v=20260606b"></script>
 

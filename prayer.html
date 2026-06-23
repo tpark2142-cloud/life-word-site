@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -415,6 +415,8 @@ const prayerEnglishSnapshot = {
 };
 
 window.applyPageLanguage=function(lang){
+  if(typeof window.syncDocumentLanguage==='function'){window.syncDocumentLanguage(lang);}else if(document.documentElement){document.documentElement.setAttribute('lang', lang==='ko' ? 'ko' : 'en');document.documentElement.setAttribute('data-site-lang', lang==='ko' ? 'ko' : 'en');}
+
   const q=(selector)=>document.querySelector(selector);
   const qa=(selector)=>Array.from(document.querySelectorAll(selector));
   const setText=(selector,value)=>{const el=q(selector); if(el) el.textContent=value;};

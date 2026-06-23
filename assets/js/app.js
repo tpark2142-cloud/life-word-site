@@ -330,6 +330,42 @@ function getCurrentSiteLanguage(){
   }
 }
 
+function syncDocumentLanguage(lang){
+  const next = lang === 'ko' ? 'ko' : 'en';
+  if(document.documentElement){
+    document.documentElement.setAttribute('lang', next);
+    document.documentElement.setAttribute('data-site-lang', next);
+  }
+}
+
+function applyDocumentLanguageFromState(){
+  syncDocumentLanguage(getCurrentSiteLanguage());
+}
+
+if(typeof window.getSiteLanguage !== 'function'){
+  window.getSiteLanguage = getCurrentSiteLanguage;
+}
+window.syncDocumentLanguage = syncDocumentLanguage;
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', applyDocumentLanguageFromState, { once:true });
+}else{
+  applyDocumentLanguageFromState();
+}
+
+window.addEventListener('load', applyDocumentLanguageFromState);
+window.addEventListener('storage', event => {
+  if(event.key === 'lifeword.siteLang'){
+    applyDocumentLanguageFromState();
+  }
+});
+document.addEventListener('click', event => {
+  const langButton = event.target && event.target.closest ? event.target.closest('[data-lang-btn]') : null;
+  if(langButton){
+    window.setTimeout(applyDocumentLanguageFromState, 0);
+  }
+});
+
 function formatVerseRefForLanguage(ref, lang){
   const normalizedRef = normalizeVerseRef(ref).replace(/\s*\(ESV\)\s*$/i, '');
   if(lang !== 'ko') return normalizedRef;

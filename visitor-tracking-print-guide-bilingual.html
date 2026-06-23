@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Tracking Print Guide</title>
+  <style>
+    :root{
+      --bg:#f8f4ea;
+      --card:#fffdf8;
+      --ink:#173629;
+      --accent:#c99b47;
+      --line:#e6d4b3;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    .page{
+      max-width:1100px;
+      margin:0 auto;
+      padding:32px 28px 48px;
+    }
+    h1,h2{
+      margin:0 0 12px;
+      color:var(--ink);
+    }
+    h1{
+      font-size:34px;
+      text-align:center;
+    }
+    .sub{
+      text-align:center;
+      margin:0 0 24px;
+      color:#5d6b63;
+      font-size:17px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px 20px 22px;
+      margin-bottom:20px;
+      box-shadow:0 8px 24px rgba(23,54,41,.06);
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+    }
+    th,td{
+      border:1px solid var(--line);
+      padding:12px 14px;
+      vertical-align:top;
+      text-align:left;
+      font-size:16px;
+    }
+    th{
+      background:#f5ead2;
+      color:var(--ink);
+      font-size:16px;
+    }
+    .step{
+      width:70px;
+      white-space:nowrap;
+      color:#8f6a28;
+      font-weight:700;
+    }
+    .label{
+      display:block;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .note{
+      margin-top:10px;
+      padding:12px 14px;
+      background:#fff6df;
+      border-left:4px solid var(--accent);
+      border-radius:10px;
+      font-size:15px;
+    }
+    code{
+      font-family:Consolas, monospace;
+      background:#f4efe3;
+      padding:1px 4px;
+      border-radius:4px;
+      font-size:.95em;
+    }
+    .print-line{
+      margin-top:24px;
+      font-size:14px;
+      color:#6f7c75;
+      text-align:center;
+    }
+    @media print{
+      body{background:#fff}
+      .page{max-width:none;padding:14mm}
+      .card{box-shadow:none;break-inside:avoid}
+      a{text-decoration:none;color:inherit}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Visitor Tracking Guide</h1>
+    <p class="sub">방문자 숫자 / 그래프 확인, Supabase / Google Analytics 확인용 인쇄 안내</p>
+
+    <div class="card">
+      <h2>1. What Each Tool Is For / 1. 각 도구의 역할</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>English</th>
+            <th>한글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>Best for simple homepage visit counts separated into <strong>English</strong> and <strong>Korean</strong>.</td>
+            <td><strong>영문 / 한글</strong> 홈페이지 방문 숫자를 간단히 구분해서 보기 좋습니다.</td>
+          </tr>
+          <tr>
+            <td><strong>Google Analytics</strong></td>
+            <td>Best for full traffic analysis such as pages, users, devices, countries, and real-time activity.</td>
+            <td>페이지별 조회, 사용자 수, 기기, 국가, 실시간 활동 등 전체 분석에 좋습니다.</td>
+          </tr>
+          <tr>
+            <td><strong>Admin Page Graph</strong></td>
+            <td>Shows English/Korean daily, monthly, and yearly visit bars from Supabase data.</td>
+            <td>Supabase 데이터를 바탕으로 영문/한글 일간, 월간, 연간 그래프를 보여줍니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>2. Check EN/KR Visit Counts and Graphs / 2. EN/KR 방문 숫자와 그래프 확인</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="step">Step</th>
+            <th>English</th>
+            <th>한글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step">1</td>
+            <td>
+              <span class="label">Open the public homepage</span>
+              Open <code>https://www.lifemoment.site</code>.
+            </td>
+            <td>
+              <span class="label">공개 홈페이지 열기</span>
+              <code>https://www.lifemoment.site</code> 를 엽니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">2</td>
+            <td>
+              <span class="label">Test English</span>
+              View the homepage once in <strong>EN</strong>.
+            </td>
+            <td>
+              <span class="label">영문 테스트</span>
+              홈페이지를 <strong>EN</strong> 상태로 한 번 봅니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">3</td>
+            <td>
+              <span class="label">Test Korean</span>
+              Click <strong>KR</strong> on the same homepage and refresh once.
+            </td>
+            <td>
+              <span class="label">한글 테스트</span>
+              같은 홈페이지에서 <strong>KR</strong> 를 누르고 새로고침 1번 합니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">4</td>
+            <td>
+              <span class="label">Open the admin page</span>
+              Open <code>gallery-admin.html</code> and go to the homepage visit section.
+            </td>
+            <td>
+              <span class="label">관리자 페이지 열기</span>
+              <code>gallery-admin.html</code> 을 열고 홈페이지 방문 기록 부분을 봅니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">5</td>
+            <td>
+              <span class="label">Check the numbers</span>
+              Confirm <strong>English Today</strong> and <strong>Korean Today</strong> are both increasing.
+            </td>
+            <td>
+              <span class="label">숫자 확인</span>
+              <strong>English Today</strong> 와 <strong>Korean Today</strong> 가 각각 올라가는지 확인합니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">6</td>
+            <td>
+              <span class="label">Check the graphs</span>
+              Confirm the daily, monthly, and yearly charts show both English and Korean bars.
+            </td>
+            <td>
+              <span class="label">그래프 확인</span>
+              일간, 월간, 연간 그래프에 영문과 한글 막대가 모두 보이는지 확인합니다.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        If both numbers stay at <strong>0</strong>, first test on the online homepage, not a local <code>file://</code> page.
+        <br>숫자가 둘 다 <strong>0</strong>이면, 먼저 로컬 <code>file://</code> 파일이 아니라 온라인 홈페이지에서 테스트했는지 확인하세요.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>3. Check Supabase Records / 3. Supabase 기록 확인</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="step">Step</th>
+            <th>English</th>
+            <th>한글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step">1</td>
+            <td>
+              <span class="label">Open SQL Editor</span>
+              In Supabase, open <strong>SQL Editor</strong>.
+            </td>
+            <td>
+              <span class="label">SQL Editor 열기</span>
+              Supabase에서 <strong>SQL Editor</strong> 를 엽니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">2</td>
+            <td>
+              <span class="label">Run this query</span>
+              <code>select id, visited_at, language, page_path, session_key from public.homepage_visits order by visited_at desc limit 20;</code>
+            </td>
+            <td>
+              <span class="label">이 쿼리 실행</span>
+              <code>select id, visited_at, language, page_path, session_key from public.homepage_visits order by visited_at desc limit 20;</code>
+            </td>
+          </tr>
+          <tr>
+            <td class="step">3</td>
+            <td>
+              <span class="label">Read the result</span>
+              You should see rows with <code>language = en</code> and <code>language = ko</code>.
+            </td>
+            <td>
+              <span class="label">결과 읽기</span>
+              결과에 <code>language = en</code> 과 <code>language = ko</code> 가 보여야 합니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">4</td>
+            <td>
+              <span class="label">Check page path</span>
+              A normal online visit should look like <code>/</code> or <code>/index.html</code>, not <code>C:/Users/...</code>.
+            </td>
+            <td>
+              <span class="label">페이지 경로 확인</span>
+              정상 온라인 방문이면 <code>/</code> 또는 <code>/index.html</code> 처럼 보이고, <code>C:/Users/...</code> 는 나오지 않아야 합니다.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>4. Check Google Analytics / 4. Google Analytics 확인</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="step">Step</th>
+            <th>English</th>
+            <th>한글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="step">1</td>
+            <td>
+              <span class="label">Open Analytics</span>
+              Go to <code>https://analytics.google.com/</code>.
+            </td>
+            <td>
+              <span class="label">Analytics 열기</span>
+              <code>https://analytics.google.com/</code> 로 갑니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">2</td>
+            <td>
+              <span class="label">Realtime</span>
+              Open <strong>Reports &gt; Realtime</strong> to see active users now.
+            </td>
+            <td>
+              <span class="label">실시간 보기</span>
+              <strong>Reports &gt; Realtime</strong> 에서 지금 접속 중인 사용자를 봅니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">3</td>
+            <td>
+              <span class="label">Pages and screens</span>
+              Open <strong>Reports &gt; Engagement &gt; Pages and screens</strong>.
+            </td>
+            <td>
+              <span class="label">페이지별 보기</span>
+              <strong>Reports &gt; Engagement &gt; Pages and screens</strong> 를 엽니다.
+            </td>
+          </tr>
+          <tr>
+            <td class="step">4</td>
+            <td>
+              <span class="label">Read key metrics</span>
+              Focus on <strong>Views</strong>, <strong>Users</strong>, and <strong>Average engagement time</strong>.
+            </td>
+            <td>
+              <span class="label">핵심 숫자 읽기</span>
+              <strong>Views</strong>, <strong>Users</strong>, <strong>Average engagement time</strong> 를 중심으로 봅니다.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        Google Analytics is best for full traffic analysis. Supabase is best for simple EN/KR homepage counting.
+        <br>Google Analytics는 전체 트래픽 분석에 좋고, Supabase는 EN/KR 홈페이지 방문 숫자를 간단히 보는 데 좋습니다.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>5. Quick Meaning of the Numbers / 5. 숫자 뜻 빠르게 보기</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>English</th>
+            <th>한글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>English Today</strong></td>
+            <td>How many English homepage visits were counted today.</td>
+            <td>오늘 영문 홈페이지 방문이 몇 번 기록되었는지.</td>
+          </tr>
+          <tr>
+            <td><strong>Korean Today</strong></td>
+            <td>How many Korean homepage visits were counted today.</td>
+            <td>오늘 한글 홈페이지 방문이 몇 번 기록되었는지.</td>
+          </tr>
+          <tr>
+            <td><strong>Monthly Visits</strong></td>
+            <td>A month-by-month bar summary.</td>
+            <td>월별 막대 그래프 요약입니다.</td>
+          </tr>
+          <tr>
+            <td><strong>Yearly Visits</strong></td>
+            <td>A year-by-year bar summary.</td>
+            <td>연도별 막대 그래프 요약입니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="print-line">Open this file in your browser and print with <strong>Ctrl + P</strong>. / 이 파일을 브라우저에서 열고 <strong>Ctrl + P</strong> 로 인쇄하세요.</p>
+  </div>
+</body>
+</html>

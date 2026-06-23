@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Administration | Life's Moments, God's Word</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.css">
+<style>
+  body.admin-body{background:#f5efe4;color:#223a2c;}
+  .admin-shell{max-width:980px;margin:0 auto;padding:48px 24px 96px;}
+  .admin-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:28px;}
+  .admin-kicker{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;color:#b88a45;text-transform:uppercase;margin-bottom:10px;}
+  .admin-title{font-family:'Cormorant Garamond',serif;font-size:60px;line-height:.95;margin:0 0 10px;}
+  .admin-intro{max-width:720px;font-size:25px;line-height:1.5;font-style:italic;color:#5c6b62;margin:0;}
+  .admin-return,.admin-btn{border:none;border-radius:10px;padding:12px 20px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.14em;cursor:pointer;text-transform:uppercase;transition:transform .2s ease,opacity .2s ease,background .2s ease;}
+  .admin-return,.admin-btn.secondary{background:#fff;color:#223a2c;border:1px solid rgba(34,58,44,.14);}
+  .admin-btn.primary{background:#c39a54;color:#fff;}
+  .admin-btn.danger{background:#8f473f;color:#fff;}
+  .admin-btn:hover,.admin-return:hover{transform:translateY(-1px);}
+  .admin-card{background:#fff;border:1px solid rgba(195,154,84,.28);border-radius:22px;box-shadow:0 18px 40px rgba(34,58,44,.08);}
+  .login-card{max-width:560px;margin:48px auto 0;padding:36px 34px;}
+  .login-card h2,.admin-panel h2{font-family:'Cormorant Garamond',serif;font-size:40px;line-height:1;margin:0 0 14px;}
+  .login-card p,.admin-note,.admin-panel p{font-size:21px;line-height:1.55;color:#5c6b62;}
+  .admin-note strong{color:#223a2c;}
+  .admin-field{display:grid;gap:8px;margin-top:18px;}
+  .admin-field label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b88a45;}
+  .admin-field input,.admin-field select,.admin-field textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(34,58,44,.12);font-family:'Cormorant Garamond',serif;font-size:24px;background:#fcfaf5;color:#223a2c;box-sizing:border-box;}
+  .admin-field textarea{min-height:140px;resize:vertical;line-height:1.5;}
+  .admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+  .admin-error{margin-top:16px;color:#8f473f;font-size:19px;display:none;}
+  .admin-dashboard{display:none;}
+  .admin-panel{padding:28px;}
+  .admin-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:16px;}
+  .admin-subtext{font-size:20px;line-height:1.5;color:#5c6b62;margin:0;}
+  .admin-list{display:grid;gap:16px;margin-top:22px;}
+  .admin-item{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:start;padding:16px;border:1px solid rgba(195,154,84,.22);border-radius:16px;background:#fcfaf5;}
+  .admin-thumb{width:112px;height:112px;border-radius:14px;object-fit:cover;background:#ece3d0;}
+  .admin-item h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;margin:0 0 6px;}
+  .admin-item p{font-size:20px;line-height:1.5;margin:0 0 8px;}
+  .admin-meta{font-size:17px;color:#7b6e58;}
+  .admin-item-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .admin-preview{margin-top:14px;display:none;border-radius:16px;overflow:hidden;border:1px solid rgba(195,154,84,.24);}
+  .admin-preview img{display:block;width:100%;max-height:340px;object-fit:cover;}
+  .admin-empty{padding:24px;border:1px dashed rgba(195,154,84,.35);border-radius:16px;text-align:center;color:#7b6e58;font-size:21px;font-style:italic;background:#fcfaf5;}
+  .admin-session{font-size:18px;color:#5c6b62;margin:0;}
+  .stats-summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:20px;}
+  .stats-card{padding:18px;border:1px solid rgba(195,154,84,.22);border-radius:16px;background:#fcfaf5;}
+  .stats-card h3{font-family:'Cormorant Garamond',serif;font-size:34px;line-height:1;margin:0 0 8px;}
+  .stats-card p{font-size:16px;line-height:1.45;color:#7b6e58;margin:0;}
+  .stats-explain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px;}
+  .stats-explain-card{padding:16px 18px;border:1px solid rgba(195,154,84,.22);border-radius:16px;background:#fffdfa;}
+  .stats-explain-card h3{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a57a3a;margin:0 0 8px;}
+  .stats-explain-card p{font-size:15px;line-height:1.65;color:#5f5a4c;margin:0;}
+  .stats-chart-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px;}
+  .stats-chart-card{padding:18px;border:1px solid rgba(195,154,84,.22);border-radius:16px;background:#fcfaf5;}
+  .stats-chart-card h3{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1;margin:0 0 6px;}
+  .stats-chart-card p{font-size:15px;line-height:1.5;color:#7b6e58;margin:0 0 14px;}
+  .stats-legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+  .stats-legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#5c6b62;}
+  .stats-legend i{display:inline-block;width:12px;height:12px;border-radius:999px;}
+  .stats-legend .legend-en{background:#d6b06f;}
+  .stats-legend .legend-ko{background:#3d6d53;}
+  .stats-bars{display:flex;align-items:flex-end;gap:8px;height:180px;padding-top:10px;}
+  .stats-bar-wrap{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;height:100%;}
+  .stats-bar-values{display:flex;gap:8px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;color:#8b6a3d;}
+  .stats-bar-group{display:flex;align-items:flex-end;justify-content:center;gap:6px;width:100%;height:150px;}
+  .stats-bar{width:18px;border-radius:10px 10px 4px 4px;min-height:8px;}
+  .stats-bar-en{background:#d6b06f;}
+  .stats-bar-ko{background:#3d6d53;}
+  .stats-bar-label{font-size:12px;line-height:1.2;color:#5c6b62;text-align:center;word-break:break-word;}
+  @media (max-width: 900px){
+    .admin-title{font-size:48px;}
+    .admin-item{grid-template-columns:1fr;}
+    .admin-thumb{width:100%;height:220px;}
+    .stats-summary-grid,.stats-chart-grid,.stats-explain-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body class="admin-body">
+  <div class="admin-shell">
+    <div class="admin-top">
+      <div>
+        <p class="admin-kicker">Private Gallery Control</p>
+        <h1 class="admin-title">Gallery Administration</h1>
+        <p class="admin-intro">This private page controls the public Gallery. Upload photos from your PC or cell phone, edit captions, or delete photos without showing any admin controls on the public website.</p>
+      </div>
+      <a class="admin-return" href="index.html">Return to Website</a>
+    </div>
+
+    <div class="admin-card login-card" id="login-card">
+      <h2>Administrator Login</h2>
+      <p>Sign in with your Supabase admin email and password to manage Gallery, Fellowship Corner, and Living the Word safely online.</p>
+      <p class="admin-note"><strong>Important:</strong> only your authenticated admin account can edit or hide the public Supabase content.</p>
+      <div class="admin-field">
+        <label for="admin-email">Email</label>
+        <input type="email" id="admin-email" placeholder="Enter administrator email">
+      </div>
+      <div class="admin-field">
+        <label for="admin-password">Password</label>
+        <input type="password" id="admin-password" placeholder="Enter administrator password">
+      </div>
+      <div class="admin-actions">
+        <button class="admin-btn primary" id="login-button">Unlock Admin Page</button>
+      </div>
+      <p class="admin-error" id="login-error">That email or password did not match.</p>
+    </div>
+
+    <div class="admin-dashboard" id="admin-dashboard">
+      <div class="admin-card admin-panel">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Gallery Manager</h2>
+            <p class="admin-subtext">Upload and manage the photos that appear on the public Gallery section.</p>
+          </div>
+          <div class="admin-actions" style="margin-top:0;">
+            <button class="admin-btn secondary" id="refresh-public-button">Refresh List</button>
+            <button class="admin-btn danger" id="logout-button">Log Out</button>
+          </div>
+        </div>
+        <p class="admin-session">Changes save to this browser’s gallery storage and appear on the public homepage after refresh.</p>
+
+        <input type="hidden" id="gallery-edit-id">
+        <div class="admin-field">
+          <label for="gallery-language">Language</label>
+          <select id="gallery-language">
+            <option value="en">English Site</option>
+            <option value="ko">Korean Site</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label for="gallery-image">Photo</label>
+          <input type="file" id="gallery-image" accept="image/*" capture="environment">
+        </div>
+        <div class="admin-preview" id="gallery-preview"><img id="gallery-preview-img" alt="Gallery preview"></div>
+        <div class="admin-field">
+          <label for="gallery-caption">Caption</label>
+          <input type="text" id="gallery-caption" placeholder="e.g. Banff — Mountain View">
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn primary" id="gallery-save-button">Save Gallery Photo</button>
+          <button class="admin-btn secondary" id="gallery-clear-button">Clear Form</button>
+        </div>
+
+        <div class="admin-list" id="gallery-admin-list"></div>
+      </div>
+
+      <div class="admin-card admin-panel" style="margin-top:24px;">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Homepage Visits</h2>
+            <p class="admin-subtext">A simple homepage visit summary, separated into English and Korean.</p>
+          </div>
+        </div>
+        <p class="admin-session">If Supabase is connected, these numbers come from all devices. If not, this panel falls back to this browser only.</p>
+        <div class="stats-explain-grid">
+          <article class="stats-explain-card">
+            <h3>Supabase Counts</h3>
+            <p>Use this panel when you want a simple English and Korean homepage count across phones, tablets, and computers.</p>
+          </article>
+          <article class="stats-explain-card">
+            <h3>Google Analytics</h3>
+            <p>Use Google Analytics for broader traffic details like traffic sources, pages, and longer visitor trends.</p>
+          </article>
+        </div>
+        <div class="admin-list" id="homepage-visits-list"></div>
+        <div class="stats-summary-grid" id="homepage-visits-summary"></div>
+        <div class="stats-chart-grid">
+          <div class="stats-chart-card">
+            <h3>Daily Visits</h3>
+            <p>Last 7 days</p>
+            <div class="stats-legend"><span><i class="legend-en"></i>English</span><span><i class="legend-ko"></i>Korean</span></div>
+            <div class="stats-bars" id="daily-visits-chart"></div>
+          </div>
+          <div class="stats-chart-card">
+            <h3>Monthly Visits</h3>
+            <p>Last 6 months</p>
+            <div class="stats-legend"><span><i class="legend-en"></i>English</span><span><i class="legend-ko"></i>Korean</span></div>
+            <div class="stats-bars" id="monthly-visits-chart"></div>
+          </div>
+          <div class="stats-chart-card">
+            <h3>Yearly Visits</h3>
+            <p>Last 5 years</p>
+            <div class="stats-legend"><span><i class="legend-en"></i>English</span><span><i class="legend-ko"></i>Korean</span></div>
+            <div class="stats-bars" id="yearly-visits-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card admin-panel" style="margin-top:24px;">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Guestbook Moderation</h2>
+            <p class="admin-subtext">Review Fellowship Corner messages and delete any bad words or unwanted public comments.</p>
+          </div>
+        </div>
+        <p class="admin-session">Guestbook messages are shown publicly on the homepage. Delete any message here to remove it from this website copy.</p>
+        <div class="admin-list" id="guestbook-admin-list"></div>
+      </div>
+
+      <div class="admin-card admin-panel" style="margin-top:24px;">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Living the Word Manager</h2>
+            <p class="admin-subtext">Post podcasts, articles, PowerPoint lessons, and journal writing for the public Living the Word section.</p>
+          </div>
+        </div>
+        <p class="admin-session">Create, edit, or delete your Living the Word posts here. Public visitors will only see the published content.</p>
+
+        <input type="hidden" id="living-edit-id">
+        <div class="admin-field">
+          <label for="living-language">Language</label>
+          <select id="living-language">
+            <option value="en">English Site</option>
+            <option value="ko">Korean Site</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label for="living-type">Content Type</label>
+          <select id="living-type">
+            <option value="Podcast">Podcast</option>
+            <option value="Article">Article</option>
+            <option value="PowerPoint">PowerPoint</option>
+            <option value="Journal">Journal</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label for="living-title">Title</label>
+          <input type="text" id="living-title" placeholder="e.g. Walking with God in Grief">
+        </div>
+        <div class="admin-field">
+          <label for="living-summary">Summary</label>
+          <textarea id="living-summary" placeholder="Write a short description for this podcast or article..."></textarea>
+        </div>
+        <div class="admin-field">
+          <label for="living-link">Link or File Path</label>
+          <input type="text" id="living-link" placeholder="e.g. https://... or file.pdf">
+        </div>
+        <div class="admin-field">
+          <label for="living-media">Upload Audio, Video, or PDF</label>
+          <input type="file" id="living-media" accept="audio/*,video/*,application/pdf" capture="environment">
+          <p class="admin-session" style="margin-top:8px;">You can upload audio files like MP3 or M4A, video files, or PDF files from your PC or cellphone. Shorter files save more reliably on this local website.</p>
+        </div>
+        <div id="living-media-preview" style="display:none;margin-top:12px;">
+          <audio id="living-audio-preview" controls style="display:none;width:100%;"></audio>
+          <video id="living-video-preview" controls playsinline style="display:none;width:100%;max-height:320px;background:#000;"></video>
+          <p id="living-pdf-preview" class="admin-session" style="display:none;margin-top:8px;"></p>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn primary" id="living-save-button">Save Living the Word Post</button>
+          <button class="admin-btn secondary" id="living-clear-button">Clear Form</button>
+        </div>
+
+        <div class="admin-list" id="living-admin-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/travel-admin.js?v=20260520b"></script>
+</body>
+</html>
