@@ -1739,6 +1739,12 @@ function updateSidebarActiveLinkFromView(){
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
   setActiveSidebarLink(cur?('#'+cur):'');
 }
+function normalizeSectionBackLinks(){
+  if(!document.body.classList.contains('section-page'))return;
+  document.querySelectorAll('.section-return-btn[href="#home-start"]').forEach(link=>{
+    link.setAttribute('href','index.html#home-start');
+  });
+}
 sbLinks.forEach(link=>{
   link.addEventListener('click',()=>{
     const href=link.getAttribute('href')||'';
@@ -1748,6 +1754,7 @@ sbLinks.forEach(link=>{
 window.addEventListener('hashchange',updateSidebarActiveLinkFromView);
 window.addEventListener('scroll',updateSidebarActiveLinkFromView,{passive:true});
 updateSidebarActiveLinkFromView();
+normalizeSectionBackLinks();
 bindTopicButtons();
 injectTopicBonusVerses();
 updateStaticKjvCards();
