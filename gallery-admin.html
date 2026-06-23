@@ -143,11 +143,12 @@
           <select id="gallery-photo-stem">
             <option value="">Choose the matching gallery photo</option>
           </select>
-          <p class="admin-session">Use this to connect each caption to the correct Supabase Storage photo.</p>
+          <p class="admin-session">Choose the matching photo stem here. The upload flow will create both thumbnail and regular files in Supabase Storage.</p>
         </div>
         <div class="admin-field">
           <label for="gallery-image">Photo</label>
           <input type="file" id="gallery-image" accept="image/*" capture="environment">
+          <p class="admin-session" style="margin-top:8px;">One upload creates both `thumbnails/stem-thumb.webp` and `regular/stem-regular.webp`.</p>
         </div>
         <div class="admin-preview" id="gallery-preview"><img id="gallery-preview-img" alt="Gallery preview"></div>
         <div class="admin-field">
@@ -274,6 +275,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/travel-admin.js?v=20260606a"></script>
+  <script src="assets/js/travel-admin.js?v=20260623a"></script>
 </body>
 </html>
