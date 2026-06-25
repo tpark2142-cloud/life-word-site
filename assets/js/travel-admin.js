@@ -1241,4 +1241,3 @@ window.removeLivingEntry = async function(id){
   renderLivingAdminList();
   clearLivingForm();
 };
-

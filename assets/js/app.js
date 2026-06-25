@@ -2970,9 +2970,11 @@ function renderGallery(){
     const grid=document.getElementById('gallery-grid');
     const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
     const visibleItems=galleryItems.filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
+    const fallbackItems=normalizeGalleryItems(DEFAULT_GALLERY_ITEMS).filter(item => (item.language === 'ko' ? 'ko' : 'en') === lang);
+    const itemsToRender=visibleItems.length ? visibleItems : fallbackItems;
     if(!grid)return;
     grid.classList.toggle('gallery-editing',galleryEditMode);
-    grid.innerHTML=visibleItems.map(item=>{
+    grid.innerHTML=itemsToRender.map(item=>{
       const fullSrc=(item.src||'').trim();
       const thumbSrc=(item.thumbSrc||item.src||'').trim();
       const label=(item.title||item.summary||item.caption||'Gallery photo').trim();
@@ -2993,8 +2995,8 @@ function renderGallery(){
         }
       });
     });
-    updateGalleryCount(visibleItems.length);
-    checkGalleryEmpty(visibleItems.length);
+    updateGalleryCount(itemsToRender.length);
+    checkGalleryEmpty(itemsToRender.length);
     updateGalleryEditButton();
 }
 
