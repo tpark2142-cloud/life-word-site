@@ -1614,7 +1614,7 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
 .section-page.page-missions #missions,
 .section-page.page-living #living-word,
 .section-page.page-guestbook #fellowship{
-  padding-top:38px;
+  padding-top:0;
 }
 
 .section-page.page-gallery #gallery,
@@ -1634,7 +1634,7 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
   .section-page.page-missions #missions,
   .section-page.page-living #living-word,
   .section-page.page-guestbook #fellowship{
-    padding-top:28px;
+    padding-top:0;
   }
 }
 .popular-page-frame{
