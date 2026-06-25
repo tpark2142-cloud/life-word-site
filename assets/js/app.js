@@ -318,16 +318,14 @@ const KOREAN_BOOK_NAMES = {
 };
 
 function getCurrentSiteLanguage(){
-  if(typeof window.getSiteLanguage === 'function'){
-    return window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  }
+  try{
+    if(localStorage.getItem('lifeword.siteLang') === 'ko') return 'ko';
+  }catch(_error){}
   const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
   if(htmlLang.startsWith('ko')) return 'ko';
-  try{
-    return localStorage.getItem('lifeword.siteLang') === 'ko' ? 'ko' : 'en';
-  }catch(_error){
-    return 'en';
-  }
+  const dataLang = (document.documentElement.getAttribute('data-site-lang') || '').toLowerCase();
+  if(dataLang.startsWith('ko')) return 'ko';
+  return 'en';
 }
 
 function syncDocumentLanguage(lang){
@@ -2633,18 +2631,22 @@ function getLivingWordLinkLabel(type){
 }
 
 function recordHomepageVisit(){
-  if(window.__homepageVisitRecorded){
-    return;
+  try{
+    if(window.__homepageVisitRecorded){
+      return;
+    }
+    const lang=getHomepageVisitLanguage();
+    recordHomepageVisitForLanguage(lang);
+    if(!sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY)){
+      const stats=loadVisitStats();
+      stats.browserSessions=(stats.browserSessions||0)+1;
+      saveVisitStats(stats);
+      sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
+    }
+    window.__homepageVisitRecorded=true;
+  }catch(_error){
+    window.__homepageVisitRecorded=true;
   }
-  const lang=getHomepageVisitLanguage();
-  recordHomepageVisitForLanguage(lang);
-  if(!sessionStorage.getItem(HOMEPAGE_VISIT_SESSION_KEY)){
-    const stats=loadVisitStats();
-    stats.browserSessions=(stats.browserSessions||0)+1;
-    saveVisitStats(stats);
-    sessionStorage.setItem(HOMEPAGE_VISIT_SESSION_KEY,'true');
-  }
-  window.__homepageVisitRecorded=true;
 }
 
 function getHomepageVisitLanguage(){
@@ -2766,10 +2768,10 @@ function markHomepageVisitLanguageRecorded(lang){
 }
 
 async function recordHomepageVisitRemote(nowIso, lang){
-  if(!supabaseClient){
-    return;
-  }
   try{
+    if(!supabaseClient){
+      return;
+    }
     const sessionKey=getHomepageVisitRemoteSessionKey();
     const payload={
       visited_at: nowIso,
