@@ -1598,6 +1598,8 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
 .section-page.page-living #living-word,
 .section-page.page-guestbook #fellowship{display:block!important}
 
+.section-page .main-content>header,
+.section-page .divider{display:none!important}
 .section-page .main-content>header{position:sticky;top:0;z-index:30}
 .section-page #emotions,
 .section-page #situations,
