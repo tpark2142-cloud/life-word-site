@@ -1608,6 +1608,35 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
 .section-page #missions,
 .section-page #living-word,
 .section-page #fellowship{min-height:calc(100vh - 220px)}
+
+.section-page.page-gallery #gallery,
+.section-page.page-ai #ai-summary,
+.section-page.page-missions #missions,
+.section-page.page-living #living-word,
+.section-page.page-guestbook #fellowship{
+  padding-top:38px;
+}
+
+.section-page.page-gallery #gallery,
+.section-page.page-ai #ai-summary,
+.section-page.page-missions #missions{
+  padding-bottom:56px;
+}
+
+.section-page.page-living #living-word,
+.section-page.page-guestbook #fellowship{
+  padding-bottom:56px;
+}
+
+@media (max-width: 760px){
+  .section-page.page-gallery #gallery,
+  .section-page.page-ai #ai-summary,
+  .section-page.page-missions #missions,
+  .section-page.page-living #living-word,
+  .section-page.page-guestbook #fellowship{
+    padding-top:28px;
+  }
+}
 .popular-page-frame{
   display:none;
   background:var(--cream);
