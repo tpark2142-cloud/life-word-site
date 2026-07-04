@@ -225,6 +225,11 @@ gtag('config', 'G-2SJCBS84VD');
       <li><a id="popular-pages-link-7" href="en/bible-verses-for-sleep.html" onclick="openPopularBiblePage('bible-verses-for-sleep.html', this); return false;">Bible Verses for Sleep</a></li>
       <li><a id="popular-pages-link-8" href="en/prayer-before-surgery.html" onclick="openPopularBiblePage('prayer-before-surgery.html', this); return false;">Prayer Before Surgery</a></li>
       <li><a id="popular-pages-link-9" href="en/prayer-for-sick-family.html" onclick="openPopularBiblePage('prayer-for-sick-family.html', this); return false;">Prayer for a Sick Family Member</a></li>
+      <li><a id="popular-pages-link-10" href="en/bible-verses-for-forgiveness.html" onclick="openPopularBiblePage('bible-verses-for-forgiveness.html', this); return false;">Bible Verses for Forgiveness</a></li>
+      <li><a id="popular-pages-link-11" href="en/bible-verses-for-depression.html" onclick="openPopularBiblePage('bible-verses-for-depression.html', this); return false;">Bible Verses for Depression</a></li>
+      <li><a id="popular-pages-link-12" href="en/prayer-for-anxiety.html" onclick="openPopularBiblePage('prayer-for-anxiety.html', this); return false;">Prayer for Anxiety</a></li>
+      <li><a id="popular-pages-link-13" href="en/prayer-for-family.html" onclick="openPopularBiblePage('prayer-for-family.html', this); return false;">Prayer for Family</a></li>
+      <li><a id="popular-pages-link-14" href="en/bible-verses-before-surgery.html" onclick="openPopularBiblePage('bible-verses-before-surgery.html', this); return false;">Bible Verses Before Surgery</a></li>
     </ul>
   </div>
 </section>
@@ -513,7 +518,7 @@ window.applyPageLanguage=function(lang){
           kicker:'많이 찾는 말씀',
           title:'사람들이 자주 찾는 삶의 순간을 위한 성경 도움',
           copy:'불안, 슬픔, 치유, 어려운 계절 속에서 필요한 성경 말씀과 기도를 쉽게 찾을 수 있도록 정리했습니다.',
-          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문','외로울 때 성경말씀','두려울 때 성경말씀','잠이 오지 않을 때 말씀','수술 전 기도','아픈 가족을 위한 기도'],
+          links:['불안할 때 성경말씀','슬플 때 성경구절','치유를 위한 성경말씀','치유를 위한 기도문','외로울 때 성경말씀','두려울 때 성경말씀','잠이 오지 않을 때 말씀','수술 전 기도','아픈 가족을 위한 기도','용서를 위한 성경말씀','우울할 때 성경말씀','불안할 때 드리는 기도','가정을 위한 기도','수술 전 성경말씀'],
           frameKicker:'홈페이지 안에서 읽기',
           frameTitle:'위의 성경 도움 메뉴를 선택해 주세요.',
           frameClose:'닫기'
@@ -589,7 +594,7 @@ window.applyPageLanguage=function(lang){
           kicker:'Popular Search Pages',
           title:'Bible help for the moments people search most.',
           copy:'These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.',
-          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing','Bible Verses for Loneliness','Bible Verses for Fear','Bible Verses for Sleep','Prayer Before Surgery','Prayer for a Sick Family Member'],
+          links:['Bible Verses for Anxiety','Bible Verses for Grief','Bible Verses for Healing','Prayers for Healing','Bible Verses for Loneliness','Bible Verses for Fear','Bible Verses for Sleep','Prayer Before Surgery','Prayer for a Sick Family Member','Bible Verses for Forgiveness','Bible Verses for Depression','Prayer for Anxiety','Prayer for Family','Bible Verses Before Surgery'],
           frameKicker:'Read Here',
           frameTitle:'Choose a Bible help page above.',
           frameClose:'Close'
@@ -843,7 +848,12 @@ window.applyPageLanguage=function(lang){
   setText('#popular-pages-link-7', text.popularPages.links[6]);
   setText('#popular-pages-link-8', text.popularPages.links[7]);
   setText('#popular-pages-link-9', text.popularPages.links[8]);
-  const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html','bible-verses-for-loneliness.html','bible-verses-for-fear.html','bible-verses-for-sleep.html','prayer-before-surgery.html','prayer-for-sick-family.html'];
+  setText('#popular-pages-link-10', text.popularPages.links[9]);
+  setText('#popular-pages-link-11', text.popularPages.links[10]);
+  setText('#popular-pages-link-12', text.popularPages.links[11]);
+  setText('#popular-pages-link-13', text.popularPages.links[12]);
+  setText('#popular-pages-link-14', text.popularPages.links[13]);
+  const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html','bible-verses-for-loneliness.html','bible-verses-for-fear.html','bible-verses-for-sleep.html','prayer-before-surgery.html','prayer-for-sick-family.html','bible-verses-for-forgiveness.html','bible-verses-for-depression.html','prayer-for-anxiety.html','prayer-for-family.html','bible-verses-before-surgery.html'];
   popularPageSlugs.forEach((slug,index)=>{
     const link=q('#popular-pages-link-'+(index+1));
     if(link) link.setAttribute('href',lang+'/'+slug);
