@@ -3059,7 +3059,6 @@ function renderGuestbook(){
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   const visibleEntries=guestbookEntries.filter(entry => (entry.language === 'ko' ? 'ko' : 'en') === lang);
   const replyLabel=lang==='ko'?'운영자 답글':'Reply from Admin';
-  const readMoreLabel=lang==='ko'?'전체 보기':'Read More';
   if(!list||!empty)return;
   if(!visibleEntries.length){
     if(leftList)leftList.innerHTML='';
@@ -3071,8 +3070,6 @@ function renderGuestbook(){
   empty.style.display='none';
   if(listCard)listCard.style.display='block';
   const buildGuestbookEntry=entry=>{
-    const messagePreview=getGuestbookPreview(entry.message||'');
-    const replyPreview=getGuestbookPreview(entry.replyText||'');
     return '<article class="guestbook-entry">'
       +'<div class="guestbook-entry-head">'
       +'<div class="guestbook-entry-topline">'
@@ -3081,9 +3078,8 @@ function renderGuestbook(){
       +'</div>'
       +'<div class="guestbook-entry-date">'+formatGuestbookDate(entry.createdAt)+'</div>'
       +'</div>'
-      +'<div class="guestbook-entry-message guestbook-entry-preview">'+escapeHtml(messagePreview.preview)+'</div>'
-      +(messagePreview.isLong?'<div class="guestbook-entry-message guestbook-entry-full">'+escapeHtml(entry.message||'')+'</div><button class="guestbook-read-more" type="button" aria-expanded="false" onclick="toggleGuestbookEntry(this)">'+escapeHtml(readMoreLabel)+'</button>':'')
-      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text guestbook-reply-preview">'+escapeHtml(replyPreview.preview)+'</div>'+(replyPreview.isLong?'<div class="guestbook-entry-reply-text guestbook-reply-full">'+escapeHtml(entry.replyText||'')+'</div><button class="guestbook-read-more guestbook-reply-more" type="button" aria-expanded="false" onclick="toggleGuestbookReply(this)">'+escapeHtml(readMoreLabel)+'</button>':'')+'</div>':'')
+      +'<div class="guestbook-entry-message">'+escapeHtml(entry.message||'')+'</div>'
+      +(entry.replyText?'<div class="guestbook-entry-reply"><span class="guestbook-entry-reply-label">'+escapeHtml(replyLabel)+'</span><div class="guestbook-entry-reply-text">'+escapeHtml(entry.replyText||'')+'</div></div>':'')
       +'</article>';
   };
   const leftCount=leftList?Math.min(visibleEntries.length,Math.max(1,Math.ceil(visibleEntries.length/2)-1)):0;
@@ -3278,6 +3274,8 @@ applyHomepageDailyMeditation();
   scheduleDailyVerseRefresh();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
+
+
 
 
 
