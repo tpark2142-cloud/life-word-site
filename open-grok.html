@@ -8,29 +8,41 @@
 <style>
   :root{--gold:#b8935a;--deep:#1c2e24;--cream:#fdf8f0;--border:#e0d0b0}
   *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(180deg,#fffdfa 0%,var(--cream) 100%);color:var(--deep);font-family:Georgia,serif;padding:24px}
-  main{width:min(620px,100%);background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px 26px;box-shadow:0 18px 42px rgba(28,46,36,.08)}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(180deg,#fffdfa 0%,var(--cream) 100%);color:var(--deep);font-family:Georgia,'Noto Serif KR',serif;padding:24px}
+  main{width:min(680px,100%);background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px 26px;box-shadow:0 18px 42px rgba(28,46,36,.08)}
   .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
   h1{font-size:clamp(30px,7vw,48px);line-height:1.05;margin:0 0 14px;font-weight:500}
   p{font-size:18px;line-height:1.7;margin:0 0 16px;color:#4f594f}
+  textarea{width:100%;min-height:120px;border:1px solid var(--border);border-radius:12px;padding:14px;background:#fffdfa;color:var(--deep);font:17px/1.65 Georgia,'Noto Serif KR',serif;resize:vertical;outline:none}
   .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-  a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:999px;text-decoration:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-  .primary{background:var(--gold);color:#fff}
-  .secondary{border:1px solid var(--border);color:var(--deep);background:#fff}
-  .url{margin-top:18px;padding:12px;border-radius:10px;background:#fbf1df;border:1px solid rgba(184,147,90,.22);font-size:15px;word-break:break-all;color:#5c4a2f}
+  a,button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:999px;text-decoration:none;font:inherit;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border:0}
+  .primary{background:var(--gold);color:#fff}.secondary{border:1px solid var(--border);color:var(--deep);background:#fff}.copy{border:1px solid var(--gold);background:#fbf1df;color:#5c4a2f}
+  .url{margin-top:18px;padding:14px;border-radius:10px;background:#fbf1df;border:1px solid rgba(184,147,90,.22);font-size:16px;word-break:break-all;color:#5c4a2f;user-select:all}
+  .note{font-size:15px;color:#7a684d}
 </style>
 </head>
 <body>
 <main>
   <p class="kicker">AI Playground</p>
   <h1>Open Grok</h1>
-  <p>Some phones may show movement or flashing while Grok loads. Use the button below, then paste your copied question after Grok opens.</p>
-  <p lang="ko">일부 휴대폰에서는 Grok이 열릴 때 화면이나 검색창이 깜빡일 수 있습니다. 아래 버튼을 누른 뒤 Grok이 열리면 복사한 질문을 붙여 넣어 주세요.</p>
+  <p>Grok may not accept a question automatically from another website, especially on phones. Select the prepared question below, copy it, open Grok, and paste it into Grok.</p>
+  <p lang="ko">Grok&#51008; &#53945;&#55176; &#55092;&#45824;&#54256;&#50640;&#49436; &#45796;&#47480; &#50937;&#49324;&#51060;&#53944;&#51032; &#51656;&#47928;&#51012; &#51088;&#46041;&#51004;&#47196; &#48155;&#51648; &#47803;&#54624; &#49688; &#51080;&#49845;&#45768;&#45796;. &#50500;&#47000; &#51656;&#47928;&#51012; &#49440;&#53469;&#54644; &#48373;&#49324;&#54620; &#46244; Grok&#51012; &#50676;&#44256; &#48537;&#50668; &#45347;&#50612; &#51452;&#49464;&#50836;.</p>
+  <textarea id="prepared-question" readonly onclick="this.focus();this.select();" aria-label="Prepared question"></textarea>
   <div class="actions">
-    <a class="primary" href="https://grok.com/">Open Grok</a>
-    <a class="secondary" href="index.html#ai-summary">Back to AI Playground</a>
+    <button class="copy" type="button" onclick="selectQuestion()">Select Question</button>
+    <a class="primary" href="https://grok.com/" target="_blank" rel="noopener">Open Grok</a>
+    <a class="secondary" href="ai-playground.html">Back to AI Playground</a>
   </div>
   <div class="url">https://grok.com/</div>
+  <p class="note">Tip: if Grok opens blank or flickers, open it first and paste the selected question after it finishes loading.</p>
+  <p class="note" lang="ko">&#54017;: Grok&#51060; &#48712; &#54868;&#47732;&#51004;&#47196; &#50676;&#47532;&#44144;&#45208; &#44636;&#48737;&#51060;&#47732; &#47676;&#51200; &#50756;&#51204;&#55176; &#50676;&#47536; &#46244; &#49440;&#53469;&#54620; &#51656;&#47928;&#51012; &#48537;&#50668; &#45347;&#50612; &#51452;&#49464;&#50836;.</p>
 </main>
+<script>
+  const params = new URLSearchParams(location.search);
+  const question = params.get('q') || 'Please answer this question clearly.';
+  const field = document.getElementById('prepared-question');
+  field.value = question;
+  function selectQuestion(){ field.focus(); field.select(); }
+</script>
 </body>
 </html>

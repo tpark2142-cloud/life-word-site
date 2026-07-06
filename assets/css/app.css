@@ -1122,6 +1122,9 @@ html[lang="ko"] .gallery-copy-summary{
 .ai-tool-launch-card span{display:block;font-size:14px;line-height:1.45;color:var(--text-soft)}
 .ai-tool-launch-button{display:inline-flex;align-items:center;justify-content:center;min-width:82px;min-height:38px;border:0;border-radius:8px;background:var(--gold);color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .ai-tool-launch-button:hover{background:var(--deep)}
+.ai-tool-launch-intro{display:grid;gap:6px;margin:0 0 16px;padding:12px 14px;border:1px solid rgba(184,147,90,.26);border-radius:10px;background:#fffdfa;color:var(--text-soft)}
+.ai-tool-launch-intro strong{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.ai-tool-launch-intro span{font-size:14px;line-height:1.55}
 #ai-summary .ai-hub-panel{
   background:linear-gradient(180deg,#fffdfa 0%,#fbf1df 100%);
   border:1px solid rgba(184,147,90,.28);
