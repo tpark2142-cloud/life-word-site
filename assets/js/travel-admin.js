@@ -3,6 +3,7 @@ const ADMIN_SESSION_KEY = 'lifeword.galleryAdmin.auth';
 const STORAGE_GALLERY = 'lifeword.travelGallery.v2';
 const STORAGE_GUESTBOOK = 'lifeword.guestbook.v1';
 const STORAGE_LIVING = 'lifeword.livingWord.v1';
+const LIVING_ARTICLE_TEXT_LIMIT = 50000;
 const STORAGE_HOMEPAGE_VISITS = 'lifeword.homepageVisits.v1';
 const SUPABASE_PROJECT_URL = 'https://ytfjmlhfkgvdoifhknxq.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_LBT8442LBjSc0ZOvaUxkFg_MIIBacTw';
@@ -1094,7 +1095,7 @@ async function saveLivingEntry(){
   const link = document.getElementById('living-link').value.trim();
 
   if (!title || !summary) {
-    alert('Please enter both a title and a summary.');
+    alert('Please enter both a title and article text.');
     return;
   }
 
@@ -1104,7 +1105,7 @@ async function saveLivingEntry(){
       language,
       type,
       title: title.slice(0, 120),
-      summary: summary.slice(0, 700),
+      summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link: link.slice(0, 500),
       mediaSrc: livingPendingMedia.src || item.mediaSrc || '',
       mediaKind: livingPendingMedia.kind || item.mediaKind || '',
@@ -1117,7 +1118,7 @@ async function saveLivingEntry(){
       language,
       type,
       title: title.slice(0, 120),
-      summary: summary.slice(0, 700),
+      summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link: link.slice(0, 500),
       mediaSrc: livingPendingMedia.src || '',
       mediaKind: livingPendingMedia.kind || '',
@@ -1132,7 +1133,7 @@ async function saveLivingEntry(){
       language,
       content_type: normalizeLivingWordTypeForDatabase(type),
       title: title.slice(0, 120),
-      summary: summary.slice(0, 700),
+      summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link_url: link.slice(0, 500),
       media_url: livingPendingMedia.src || '',
       is_visible: true
