@@ -27,7 +27,7 @@
   .admin-field{display:grid;gap:8px;margin-top:18px;}
   .admin-field label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b88a45;}
   .admin-field input,.admin-field select,.admin-field textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(34,58,44,.12);font-family:'Cormorant Garamond',serif;font-size:24px;background:#fcfaf5;color:#223a2c;box-sizing:border-box;}
-  .admin-field textarea{min-height:140px;resize:vertical;line-height:1.5;}
+  .admin-field textarea{min-height:140px;resize:vertical;line-height:1.5;}#living-summary{min-height:360px;font-size:21px;line-height:1.7;}
   .admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
   .admin-error{margin-top:16px;color:#8f473f;font-size:19px;display:none;}
   .admin-dashboard{display:none;}
@@ -247,8 +247,8 @@
           <input type="text" id="living-title" placeholder="e.g. Walking with God in Grief">
         </div>
         <div class="admin-field">
-          <label for="living-summary">Summary</label>
-          <textarea id="living-summary" placeholder="Write a short description for this podcast or article..."></textarea>
+          <label for="living-summary">Summary / Full Article Text</label>
+          <textarea id="living-summary" placeholder="Write a short summary or paste the full article text here..."></textarea>
         </div>
         <div class="admin-field">
           <label for="living-link">Link or File Path</label>
@@ -275,6 +275,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/travel-admin.js?v=20260624a"></script>
+  <script src="assets/js/travel-admin.js?v=20260707a"></script>
 </body>
 </html>
