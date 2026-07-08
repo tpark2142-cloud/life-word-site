@@ -90,6 +90,8 @@ document.getElementById('gallery-image').addEventListener('change', handleGaller
 document.getElementById('gallery-save-button').addEventListener('click', saveGalleryEntry);
 document.getElementById('gallery-clear-button').addEventListener('click', clearGalleryForm);
 document.getElementById('living-save-button').addEventListener('click', saveLivingEntry);
+const livingSummaryInput = document.getElementById('living-summary');
+if (livingSummaryInput) livingSummaryInput.addEventListener('input', updateLivingSummaryCount);
 document.getElementById('living-clear-button').addEventListener('click', clearLivingForm);
 document.getElementById('living-media').addEventListener('change', handleLivingMedia);
 
@@ -996,6 +998,14 @@ window.removeGuestbookEntry = async function(id){
   renderGuestbookAdminList();
 };
 
+function updateLivingSummaryCount(){
+  const field = document.getElementById('living-summary');
+  const count = document.getElementById('living-summary-count');
+  if (!field || !count) return;
+  const length = (field.value || '').length;
+  count.textContent = `${length.toLocaleString()} / ${LIVING_ARTICLE_TEXT_LIMIT.toLocaleString()} characters`;
+  count.style.color = length > LIVING_ARTICLE_TEXT_LIMIT ? '#8f473f' : '';
+}
 function clearLivingForm(){
   document.getElementById('living-edit-id').value = '';
   document.getElementById('living-language').value = 'en';
@@ -1007,6 +1017,7 @@ function clearLivingForm(){
   livingPendingMedia = { src:'', kind:'', mime:'', name:'' };
   setLivingMediaPreview(null);
   document.getElementById('living-save-button').textContent = 'Save Living the Word Entry';
+  updateLivingSummaryCount();
 }
 
 function handleLivingMedia(event){
@@ -1092,6 +1103,7 @@ async function saveLivingEntry(){
   const type = document.getElementById('living-type').value.trim() || 'Article';
   const title = document.getElementById('living-title').value.trim();
   const summary = document.getElementById('living-summary').value.trim();
+  updateLivingSummaryCount();
   const link = document.getElementById('living-link').value.trim();
 
   if (!title || !summary) {
@@ -1214,6 +1226,7 @@ window.editLivingEntry = function(id){
   };
   setLivingMediaPreview(livingPendingMedia.src ? livingPendingMedia : null);
   document.getElementById('living-save-button').textContent = 'Update Living the Word Entry';
+  updateLivingSummaryCount();
   const formTop = document.getElementById('living-edit-id');
   if (formTop) {
     formTop.scrollIntoView({ behavior: 'smooth', block: 'center' });
