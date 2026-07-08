@@ -1203,10 +1203,8 @@ function renderLivingAdminList(){
       <div>
         <h3>${escapeHtml(item.title || 'Untitled Entry')}</h3>
         <p class="admin-meta">${escapeHtml(item.language === 'ko' ? 'Korean Site' : 'English Site')} &middot; ${escapeHtml(item.type || 'Article')}${item.createdAt ? ' &middot; ' + escapeHtml(formatGuestbookDate(item.createdAt)) : ''}</p>
-        <p class="admin-meta">Saved article text: ${getLivingSummaryLength(item.summary).toLocaleString()} characters</p>
         <p>${escapeHtml(item.summary || '')}</p>
         ${item.mediaKind ? `<p class="admin-meta">Media: ${escapeHtml(item.mediaKind)}${item.mediaName ? ' &middot; ' + escapeHtml(item.mediaName) : ''}</p>` : ''}
-        ${item.link ? `<p class="admin-meta">Link: <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.link)}</a></p>` : '<p class="admin-meta">No external link attached.</p>'}
         <div class="admin-item-actions">
           <button class="admin-btn secondary" type="button" onclick="editLivingEntry('${item.id}')">Edit</button>
           <button class="admin-btn danger" type="button" onclick="removeLivingEntry('${item.id}')">Delete</button>
