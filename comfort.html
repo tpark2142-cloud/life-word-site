@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -61,12 +61,12 @@ nav ul li a:hover{color:var(--gold)}
 .section-intro{font-size:17px;color:var(--text-soft);text-align:center;max-width:680px;margin:0 auto 48px;font-style:italic;line-height:1.75}
 .section-card h3,.psalm23-box h3{display:flex;align-items:center;justify-content:flex-start;gap:.42em}
 .section-card h3::before,.psalm23-box h3::before{line-height:1}
-.psalm23-box h3::before{content:'🐑';font-size:.78em}
-.section-card:nth-of-type(1) h3::before{content:'🤍';}
-.section-card:nth-of-type(2) h3::before{content:'🌅';}
-.section-card:nth-of-type(3) h3::before{content:'☁';}
-.section-card:nth-of-type(4) h3::before{content:'🤲';}
-.section-card:nth-of-type(5) h3::before{content:'✝️';}
+.psalm23-box h3::before{content:'ðŸ‘';font-size:.78em}
+.section-card:nth-of-type(1) h3::before{content:'ðŸ¤';}
+.section-card:nth-of-type(2) h3::before{content:'ðŸŒ…';}
+.section-card:nth-of-type(3) h3::before{content:'â˜';}
+.section-card:nth-of-type(4) h3::before{content:'ðŸ¤²';}
+.section-card:nth-of-type(5) h3::before{content:'âœï¸';}
 footer{background:var(--deep);color:rgba(255,255,255,.5);text-align:center;padding:44px 28px;border-top:1px solid rgba(255,255,255,.07)}
 .footer-logo{font-family:'Cinzel',serif;font-size:18px;color:#fff;margin-bottom:12px;display:block;letter-spacing:.04em}
 .footer-logo span{color:var(--gold-light)}
@@ -222,7 +222,7 @@ footer a:hover{color:var(--gold-light)}
 
 <section class="hero">
   <p class="hero-badge">&#10022; Scripture for Grief &amp; Loss &#10022;</p>
-  <h1><span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em></h1>
+  <h1><span class="hero-title-icon">ðŸ¤</span>When Words<br><em>Fail Us</em></h1>
   <p class="hero-sub">God&rsquo;s Word holds comfort for every kind of loss &mdash; at funerals, at bedsides, and in the quiet of grief.</p>
 </section>
 
@@ -237,7 +237,7 @@ footer a:hover{color:var(--gold-light)}
 
   <!-- PSALM 23 -->
   <div class="psalm23-box">
-    <h3>🐑 The Shepherd&rsquo;s Psalm</h3>
+    <h3>ðŸ‘ The Shepherd&rsquo;s Psalm</h3>
     <p>&ldquo;The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He leads me in paths of righteousness for his name&rsquo;s sake. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff, they comfort me.&rdquo;</p>
     <cite>Psalm 23:1&ndash;4 (ESV)</cite>
   </div>
@@ -472,7 +472,7 @@ window.applyPageLanguage = function(lang){
   const setVersionTabs = (nextLang) => {
     qa('.dv-tabs').forEach((tabs) => {
       const buttons = tabs.querySelectorAll('.dv-tab');
-      if (buttons[0]) buttons[0].textContent = nextLang === 'ko' ? '킹 제임스' : 'KJV';
+      if (buttons[0]) buttons[0].textContent = nextLang === 'ko' ? 'í‚¹ ì œìž„ìŠ¤' : 'KJV';
       if (buttons[1]) buttons[1].textContent = 'ESV';
     });
   };
@@ -491,40 +491,40 @@ window.applyPageLanguage = function(lang){
 
   const t = lang === 'ko'
     ? {
-        sidebarGroups: ['탐색', '나의 여정', '더 보기'],
-        sidebarLinks: ['홈', '감정', '상황', '주제', '황혼의 계절', '갤러리', 'AI 놀이터', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
-        nav: ['홈', '감정', '상황', '주제', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
-        heroBadge: '✦ 슬픔과 상실을 위한 말씀 ✦',
-        heroTitle: '<span class="hero-title-icon">🤍</span>힘들 때에도<br><em>하나님은 위로하십니다</em>',
-        heroSub: '장례식과 병상, 조용한 슬픔의 시간 속에 머무는 위로의 말씀입니다.',
-        goBack: '홈 시작으로',
-        comfortLabel: '✦ 위로의 말씀 ✦',
-        comfortPrayer: '마치는 기도',
-        footerLinks: ['홈', '감정', '갤러리', 'AI 놀이터', '전도', '말씀대로 살기', '방명록', '묵상', '기도', '위로'],
-        footerEsv: '모든 성경 구절은 King James Version과 English Standard Version (ESV)에서 인용했습니다. 원문에 충실하고 읽기 쉬운 번역으로 널리 사용됩니다.',
+        sidebarGroups: ['íƒìƒ‰', 'ë‚˜ì˜ ì—¬ì •', 'ë” ë³´ê¸°'],
+        sidebarLinks: ['í™ˆ', 'ê°ì •', 'ìƒí™©', 'ì£¼ì œ', 'í™©í˜¼ì˜ ê³„ì ˆ', 'ê°¤ëŸ¬ë¦¬', 'AI ë†€ì´í„°', 'ì „ë„', 'ë§ì”€ëŒ€ë¡œ ì‚´ê¸°', 'ë°©ëª…ë¡', 'ë¬µìƒ', 'ê¸°ë„', 'ìœ„ë¡œ'],
+        nav: ['í™ˆ', 'ê°ì •', 'ìƒí™©', 'ì£¼ì œ', 'ë§ì”€ëŒ€ë¡œ ì‚´ê¸°', 'ë°©ëª…ë¡', 'ë¬µìƒ', 'ê¸°ë„', 'ìœ„ë¡œ'],
+        heroBadge: 'âœ¦ ìŠ¬í””ê³¼ ìƒì‹¤ì„ ìœ„í•œ ë§ì”€ âœ¦',
+        heroTitle: '<span class="hero-title-icon">ðŸ¤</span>íž˜ë“¤ ë•Œì—ë„<br><em>í•˜ë‚˜ë‹˜ì€ ìœ„ë¡œí•˜ì‹­ë‹ˆë‹¤</em>',
+        heroSub: 'ìž¥ë¡€ì‹ê³¼ ë³‘ìƒ, ì¡°ìš©í•œ ìŠ¬í””ì˜ ì‹œê°„ ì†ì— ë¨¸ë¬´ëŠ” ìœ„ë¡œì˜ ë§ì”€ìž…ë‹ˆë‹¤.',
+        goBack: 'í™ˆ ì‹œìž‘ìœ¼ë¡œ',
+        comfortLabel: 'âœ¦ ìœ„ë¡œì˜ ë§ì”€ âœ¦',
+        comfortPrayer: 'ë§ˆì¹˜ëŠ” ê¸°ë„',
+        footerLinks: ['í™ˆ', 'ê°ì •', 'ê°¤ëŸ¬ë¦¬', 'AI ë†€ì´í„°', 'ì „ë„', 'ë§ì”€ëŒ€ë¡œ ì‚´ê¸°', 'ë°©ëª…ë¡', 'ë¬µìƒ', 'ê¸°ë„', 'ìœ„ë¡œ'],
+        footerEsv: 'ëª¨ë“  ì„±ê²½ êµ¬ì ˆì€ King James Versionê³¼ English Standard Version (ESV)ì—ì„œ ì¸ìš©í–ˆìŠµë‹ˆë‹¤. ì›ë¬¸ì— ì¶©ì‹¤í•˜ê³  ì½ê¸° ì‰¬ìš´ ë²ˆì—­ìœ¼ë¡œ ë„ë¦¬ ì‚¬ìš©ë©ë‹ˆë‹¤.',
         created: 'Created by Tea Park'
       }
     : {
         sidebarGroups: ['Explore', 'My Journey', 'More'],
         sidebarLinks: ['Home', 'Emotions', 'Situations', 'Topics', 'Twilight Season', 'Gallery', 'AI Playground', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
         nav: ['Home', 'Emotions', 'Situations', 'Topics', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
-        heroBadge: '✦ Scripture for Grief & Loss ✦',
-        heroTitle: '<span class="hero-title-icon">🤍</span>When Words<br><em>Fail Us</em>',
+        heroBadge: 'âœ¦ Scripture for Grief & Loss âœ¦',
+        heroTitle: '<span class="hero-title-icon">ðŸ¤</span>When Words<br><em>Fail Us</em>',
         heroSub: 'Words of comfort for funerals, bedside moments, and quiet seasons of grief.',
         goBack: 'Back to Home',
-        comfortLabel: '✦ A Word of Comfort ✦',
+        comfortLabel: 'âœ¦ A Word of Comfort âœ¦',
         comfortPrayer: 'Closing Prayer',
         footerLinks: ['Home', 'Emotions', 'Gallery', 'AI Playground', 'Missions', 'Living the Word', 'Guestbook', 'Devotion', 'Prayer', 'Comfort'],
-        footerEsv: 'All verses are from the King James and English Standard Version (ESV) — known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
+        footerEsv: 'All verses are from the King James and English Standard Version (ESV) â€” known for accuracy to the original texts and readable, dignified prose. Published in 2001 and widely used in churches and Bible study worldwide.',
         created: 'Created by Tea Park'
       };
 
   setList('.sb-group-label', t.sidebarGroups);
   setSidebarLinks(t.sidebarLinks);
-  setHTML('.sb-brand-name', lang === 'ko' ? '삶의 순간들<span>하나님의 말씀</span>' : 'Life&rsquo;s Moments<span>God&rsquo;s Word</span>');
-  setText('.sb-brand-sub', lang === 'ko' ? '삶의 모든 계절을 위한 성경 말씀' : 'Bible verses for every season of life.');
-  setText('.sb-footer-verse', lang === 'ko' ? '주의 말씀은 내 발에 등이요 내 길에 빛이니이다.' : 'Thy word is a lamp unto my feet, and a light unto my path.');
-  setText('.sb-footer-ref', lang === 'ko' ? '시편 119:105' : 'Psalm 119:105');
+  setHTML('.sb-brand-name', lang === 'ko' ? 'ì‚¶ì˜ ìˆœê°„ë“¤<span>í•˜ë‚˜ë‹˜ì˜ ë§ì”€</span>' : 'Life&rsquo;s Moments<span>God&rsquo;s Word</span>');
+  setText('.sb-brand-sub', lang === 'ko' ? 'ì‚¶ì˜ ëª¨ë“  ê³„ì ˆì„ ìœ„í•œ ì„±ê²½ ë§ì”€' : 'Bible verses for every season of life.');
+  setText('.sb-footer-verse', lang === 'ko' ? 'ì£¼ì˜ ë§ì”€ì€ ë‚´ ë°œì— ë“±ì´ìš” ë‚´ ê¸¸ì— ë¹›ì´ë‹ˆì´ë‹¤.' : 'Thy word is a lamp unto my feet, and a light unto my path.');
+  setText('.sb-footer-ref', lang === 'ko' ? 'ì‹œíŽ¸ 119:105' : 'Psalm 119:105');
   setVersionTabs(lang);
   setList('header nav ul li a', t.nav);
   setText('.hero-badge', t.heroBadge);
@@ -535,85 +535,85 @@ window.applyPageLanguage = function(lang){
   setText('.comfort-band .section-lbl', t.comfortLabel);
 
   if (lang === 'ko') {
-    setText('.comfort-band .lead', '슬픔은 사람이 설 수 있는 가장 정직한 자리 중 하나입니다. 사랑하는 이를 잃을 때 우리는 감당할 수 있는 한계 끝에 서게 됩니다. 바로 그 자리에서 하나님은 우리를 만나 주십니다.');
-    setText('.psalm23-box h3', '목자의 시편');
-    setText('.psalm23-box p', '“여호와는 나의 목자시니 내게 부족함이 없으리로다. 그가 나를 푸른 초장에 누이시며 쉴 만한 물가로 인도하시는도다. 내 영혼을 소생시키시고 자기 이름을 위하여 의의 길로 인도하시는도다. 내가 사망의 음침한 골짜기로 다닐지라도 해를 두려워하지 않을 것은 주께서 나와 함께하심이라. 주의 지팡이와 막대기가 나를 안위하시나이다.”');
-    setText('.psalm23-box cite', '시편 23:1-4');
+    setText('.comfort-band .lead', 'ìŠ¬í””ì€ ì‚¬ëžŒì´ ì„¤ ìˆ˜ ìžˆëŠ” ê°€ìž¥ ì •ì§í•œ ìžë¦¬ ì¤‘ í•˜ë‚˜ìž…ë‹ˆë‹¤. ì‚¬ëž‘í•˜ëŠ” ì´ë¥¼ ìžƒì„ ë•Œ ìš°ë¦¬ëŠ” ê°ë‹¹í•  ìˆ˜ ìžˆëŠ” í•œê³„ ëì— ì„œê²Œ ë©ë‹ˆë‹¤. ë°”ë¡œ ê·¸ ìžë¦¬ì—ì„œ í•˜ë‚˜ë‹˜ì€ ìš°ë¦¬ë¥¼ ë§Œë‚˜ ì£¼ì‹­ë‹ˆë‹¤.');
+    setText('.psalm23-box h3', 'ëª©ìžì˜ ì‹œíŽ¸');
+    setText('.psalm23-box p', 'â€œì—¬í˜¸ì™€ëŠ” ë‚˜ì˜ ëª©ìžì‹œë‹ˆ ë‚´ê²Œ ë¶€ì¡±í•¨ì´ ì—†ìœ¼ë¦¬ë¡œë‹¤. ê·¸ê°€ ë‚˜ë¥¼ í‘¸ë¥¸ ì´ˆìž¥ì— ëˆ„ì´ì‹œë©° ì‰´ ë§Œí•œ ë¬¼ê°€ë¡œ ì¸ë„í•˜ì‹œëŠ”ë„ë‹¤. ë‚´ ì˜í˜¼ì„ ì†Œìƒì‹œí‚¤ì‹œê³  ìžê¸° ì´ë¦„ì„ ìœ„í•˜ì—¬ ì˜ì˜ ê¸¸ë¡œ ì¸ë„í•˜ì‹œëŠ”ë„ë‹¤. ë‚´ê°€ ì‚¬ë§ì˜ ìŒì¹¨í•œ ê³¨ì§œê¸°ë¡œ ë‹¤ë‹ì§€ë¼ë„ í•´ë¥¼ ë‘ë ¤ì›Œí•˜ì§€ ì•Šì„ ê²ƒì€ ì£¼ê»˜ì„œ ë‚˜ì™€ í•¨ê»˜í•˜ì‹¬ì´ë¼. ì£¼ì˜ ì§€íŒ¡ì´ì™€ ë§‰ëŒ€ê¸°ê°€ ë‚˜ë¥¼ ì•ˆìœ„í•˜ì‹œë‚˜ì´ë‹¤.â€');
+    setText('.psalm23-box cite', 'ì‹œíŽ¸ 23:1-4');
     setList('.section-card h3', [
-      '하나님은 우리의 아픔에서 멀리 서 계시지 않습니다',
-      '부활의 소망',
-      '천국의 약속',
-      '남겨진 이들을 위한 위로',
-      '그리스도 안에서 잠든 이들을 위하여'
+      'í•˜ë‚˜ë‹˜ì€ ìš°ë¦¬ì˜ ì•„í””ì—ì„œ ë©€ë¦¬ ì„œ ê³„ì‹œì§€ ì•ŠìŠµë‹ˆë‹¤',
+      'ë¶€í™œì˜ ì†Œë§',
+      'ì²œêµ­ì˜ ì•½ì†',
+      'ë‚¨ê²¨ì§„ ì´ë“¤ì„ ìœ„í•œ ìœ„ë¡œ',
+      'ê·¸ë¦¬ìŠ¤ë„ ì•ˆì—ì„œ ìž ë“  ì´ë“¤ì„ ìœ„í•˜ì—¬'
     ]);
     setList('.section-card .note', [
-      '하나님은 특별히 상한 마음과 짓눌린 영혼 가까이 오십니다. 이 말씀들은 슬픔이 믿음이 약하다는 증거가 아니라, 더 깊이 하나님을 신뢰하도록 초대하시는 자리임을 일깨워 줍니다.',
-      '믿는 자에게 죽음은 끝이 아니라 문입니다. 이것은 예수님께서 친히 하신 말씀이며, 주 안에 있는 자들을 기다리는 약속입니다.',
-      '죽음에 대한 하나님의 마지막 선언은 슬픔이 아니라 영광입니다. 이 말씀들은 모든 눈물을 닦아 주실 장차 올 세상을 바라보게 합니다.',
-      '슬픔은 무덤가에서 끝나지 않습니다. 남겨진 이들에게도 하나님은 애통하는 가운데 버리지 않으신다는 약속을 주십니다.',
-      '그리스도인에게 죽은 자들을 위한 소망은 침묵이 아니라 부활입니다. 그리스도 안에서 죽은 자들이 다시 일어날 것입니다.'
+      'í•˜ë‚˜ë‹˜ì€ íŠ¹ë³„ížˆ ìƒí•œ ë§ˆìŒê³¼ ì§“ëˆŒë¦° ì˜í˜¼ ê°€ê¹Œì´ ì˜¤ì‹­ë‹ˆë‹¤. ì´ ë§ì”€ë“¤ì€ ìŠ¬í””ì´ ë¯¿ìŒì´ ì•½í•˜ë‹¤ëŠ” ì¦ê±°ê°€ ì•„ë‹ˆë¼, ë” ê¹Šì´ í•˜ë‚˜ë‹˜ì„ ì‹ ë¢°í•˜ë„ë¡ ì´ˆëŒ€í•˜ì‹œëŠ” ìžë¦¬ìž„ì„ ì¼ê¹¨ì›Œ ì¤ë‹ˆë‹¤.',
+      'ë¯¿ëŠ” ìžì—ê²Œ ì£½ìŒì€ ëì´ ì•„ë‹ˆë¼ ë¬¸ìž…ë‹ˆë‹¤. ì´ê²ƒì€ ì˜ˆìˆ˜ë‹˜ê»˜ì„œ ì¹œížˆ í•˜ì‹  ë§ì”€ì´ë©°, ì£¼ ì•ˆì— ìžˆëŠ” ìžë“¤ì„ ê¸°ë‹¤ë¦¬ëŠ” ì•½ì†ìž…ë‹ˆë‹¤.',
+      'ì£½ìŒì— ëŒ€í•œ í•˜ë‚˜ë‹˜ì˜ ë§ˆì§€ë§‰ ì„ ì–¸ì€ ìŠ¬í””ì´ ì•„ë‹ˆë¼ ì˜ê´‘ìž…ë‹ˆë‹¤. ì´ ë§ì”€ë“¤ì€ ëª¨ë“  ëˆˆë¬¼ì„ ë‹¦ì•„ ì£¼ì‹¤ ìž¥ì°¨ ì˜¬ ì„¸ìƒì„ ë°”ë¼ë³´ê²Œ í•©ë‹ˆë‹¤.',
+      'ìŠ¬í””ì€ ë¬´ë¤ê°€ì—ì„œ ëë‚˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‚¨ê²¨ì§„ ì´ë“¤ì—ê²Œë„ í•˜ë‚˜ë‹˜ì€ ì• í†µí•˜ëŠ” ê°€ìš´ë° ë²„ë¦¬ì§€ ì•Šìœ¼ì‹ ë‹¤ëŠ” ì•½ì†ì„ ì£¼ì‹­ë‹ˆë‹¤.',
+      'ê·¸ë¦¬ìŠ¤ë„ì¸ì—ê²Œ ì£½ì€ ìžë“¤ì„ ìœ„í•œ ì†Œë§ì€ ì¹¨ë¬µì´ ì•„ë‹ˆë¼ ë¶€í™œìž…ë‹ˆë‹¤. ê·¸ë¦¬ìŠ¤ë„ ì•ˆì—ì„œ ì£½ì€ ìžë“¤ì´ ë‹¤ì‹œ ì¼ì–´ë‚  ê²ƒìž…ë‹ˆë‹¤.'
     ]);
-    setText('#v1k .vt', '“우리 주 예수 그리스도의 하나님, 곧 자비의 아버지시요 모든 위로의 하나님을 찬송하리로다. 그분께서 우리의 모든 환난 중에서 우리를 위로하시는도다.”');
-    setText('#v1k cite', '고린도후서 1:3-4');
-    setText('#v2k .vt', '“주께서는 마음이 상한 자에게 가까이하시며 참회하는 영이 있는 자를 구원하시는도다.”');
-    setText('#v2k cite', '시편 34:18');
-    setText('#v3k .vt', '“애통하는 자들은 복이 있나니 그들이 위로를 받을 것임이요.”');
-    setText('#v3k cite', '마태복음 5:4');
-    setText('#v4k .vt', '“예수님께서 우시더라.”');
-    setText('#v4k cite', '요한복음 11:35');
-    setText('#v5k .vt', '“예수께서 그녀에게 말씀하시기를 나는 부활이요 생명이니, 나를 믿는 자는 죽었을지라도 살리라.”');
-    setText('#v5k cite', '요한복음 11:25');
-    setText('#v6k .vt', '“이는 내게 사는 것이 그리스도시니 죽는 것도 유익함이라.”');
-    setText('#v6k cite', '빌립보서 1:21');
-    setText('#v7k .vt', '“우리는 자신이 있고, 몸을 떠나 주와 함께 거하는 것을 더 원하노라.”');
-    setText('#v7k cite', '고린도후서 5:8');
-    setText('#v8k .vt', '“하나님께서 그들의 눈에서 모든 눈물을 닦아 주시리니 다시는 사망이 없고 슬픔도 울부짖음도 다시 있지 아니하리니 이는 이전 것들이 다 지나갔음이라.”');
-    setText('#v8k cite', '요한계시록 21:4');
-    setText('#v9k .vt', '“내 아버지 집에는 거할 곳이 많도다. 그렇지 아니하였더라면 내가 너희에게 말하였으리라. 내가 너희를 위하여 처소를 예비하러 가노라.”');
-    setText('#v9k cite', '요한복음 14:2');
-    setText('#v10k .vt', '“내가 확신하노니 사망이나 생명이나 천사들이나 정사들이나 권능들이나 현재 있는 것들이나 장래 있는 것들이나 높음이나 깊음이나 다른 어떤 피조물도 우리 주 그리스도 예수 안에 있는 하나님의 사랑에서 우리를 끊을 수 없으리라.”');
-    setText('#v10k cite', '로마서 8:38-39');
-    setText('#v11k .vt', '“주여, 주는 대대에 우리의 거처가 되셨나이다.”');
-    setText('#v11k cite', '시편 90:1');
-    setText('#v12k .vt', '“울음은 밤 동안 머무를지라도 기쁨은 아침에 오리로다.”');
-    setText('#v12k cite', '시편 30:5');
-    setText('#v13k .vt', '“주께서 베푸신 긍휼로 인하여 우리가 진멸되지 아니함은 그분의 불쌍히 여기심이 없어지지 아니함이니이다. 이것들이 아침마다 새로우니 주의 신실하심이 크시도소이다.”');
-    setText('#v13k cite', '예레미야애가 3:22-23');
-    setText('#v14k .vt', '“주께서 친히 호령과 천사장의 음성과 하나님의 나팔 소리와 함께 하늘로부터 내려오시리니 그리스도 안에서 죽은 자들이 먼저 일어나고.”');
-    setText('#v14k cite', '데살로니가전서 4:16');
-    setText('#v15k .vt', '“내가 내 영을 주의 손에 부탁하나이다. 오 주 진리의 하나님이여, 주께서 나를 구속하셨나이다.”');
-    setText('#v15k cite', '시편 31:5');
-    setText('#v1e .vt', '“하나님은 자비의 아버지시며 모든 위로의 하나님이십니다. 그분은 우리의 모든 환난 가운데서 우리를 위로하십니다.”');
-    setText('#v1e cite', '고린도후서 1:3-4 (ESV)');
-    setText('#v2e .vt', '“주께서는 마음이 상한 자에게 가까이하시고 영이 짓눌린 자를 구원하시는도다.”');
-    setText('#v2e cite', '시편 34:18 (ESV)');
-    setText('#v3e .vt', '“애통하는 자는 복이 있나니, 그들이 위로를 받을 것임이라.”');
-    setText('#v3e cite', '마태복음 5:4 (ESV)');
-    setText('#v4e .vt', '“예수께서 우시더라.”');
-    setText('#v4e cite', '요한복음 11:35 (ESV)');
-    setText('#v5e .vt', '“예수께서 그녀에게 이르시되, 나는 부활이요 생명이니, 나를 믿는 자는 죽어도 살겠고.”');
-    setText('#v5e cite', '요한복음 11:25 (ESV)');
-    setText('#v6e .vt', '“이는 내게 사는 것이 그리스도요 죽는 것도 유익함이라.”');
-    setText('#v6e cite', '빌립보서 1:21 (ESV)');
-    setText('#v7e .vt', '“우리는 차라리 몸을 떠나 주와 함께 거하기를 더 원하노라.”');
-    setText('#v7e cite', '고린도후서 5:8 (ESV)');
-    setText('#v8e .vt', '“그가 그들의 눈에서 모든 눈물을 닦아 주시리니, 다시는 사망이 없고 슬픔도 울부짖음도 아픔도 다시 있지 아니하리라. 처음 것들이 다 지나갔음이라.”');
-    setText('#v8e cite', '요한계시록 21:4 (ESV)');
-    setText('#v9e .vt', '“내 아버지 집에 거할 곳이 많도다. 그렇지 아니하면 내가 너희에게 말하였으리라. 내가 너희를 위하여 처소를 예비하러 가노라.”');
-    setText('#v9e cite', '요한복음 14:2 (ESV)');
-    setText('#v10e .vt', '“내가 확신하노니 사망이나 생명이나 천사들이나 통치자들이나 현재 일들이나 장래 일들이나 권능들이나 높음이나 깊음이나 다른 어떤 피조물이라도 우리 주 그리스도 예수 안에 있는 하나님의 사랑에서 우리를 끊을 수 없으리라.”');
-    setText('#v10e cite', '로마서 8:38-39 (ESV)');
-    setText('#v11e .vt', '“주여, 주는 대대에 우리의 거처가 되셨나이다.”');
-    setText('#v11e cite', '시편 90:1 (ESV)');
-    setText('#v12e .vt', '“울음은 밤새 머물 수 있으나 기쁨은 아침에 오느니라.”');
-    setText('#v12e cite', '시편 30:5 (ESV)');
-    setText('#v13e .vt', '“주의 변함없는 사랑이 끊어지지 아니하며 그의 긍휼이 다함이 없나니, 이것들이 아침마다 새로우니 주의 신실하심이 크시도다.”');
-    setText('#v13e cite', '예레미야애가 3:22-23 (ESV)');
-    setText('#v14e .vt', '“주께서 호령과 천사장의 음성과 하나님의 나팔 소리와 함께 하늘로부터 친히 내려오시리니, 그리스도 안에서 죽은 자들이 먼저 일어나고.”');
-    setText('#v14e cite', '데살로니가전서 4:16 (ESV)');
-    setText('#v15e .vt', '“내 영을 주의 손에 부탁하나이다. 진실하신 하나님 여호와여, 주께서 나를 구속하셨나이다.”');
-    setText('#v15e cite', '시편 31:5 (ESV)');
-    setText('.closing-prayer p:last-child', '주 하나님, 우리는 상실의 그늘 아래 서 있습니다. 때로는 할 말을 찾지 못하지만, 주님은 말로 다할 수 없는 슬픔까지도 들으십니다. 주님은 부활이요 생명이시며, 모든 눈물을 닦아 주시는 분이십니다. 애통하는 자들을 위로하시고, 상한 마음을 붙들어 주시며, 이것이 끝이 아님을 다시 깨닫게 하소서. 예수님 때문에 무덤은 마지막 말을 하지 못합니다. 우리가 주님을 신뢰합니다. 아멘.');
+    setText('#v1k .vt', 'â€œìš°ë¦¬ ì£¼ ì˜ˆìˆ˜ ê·¸ë¦¬ìŠ¤ë„ì˜ í•˜ë‚˜ë‹˜, ê³§ ìžë¹„ì˜ ì•„ë²„ì§€ì‹œìš” ëª¨ë“  ìœ„ë¡œì˜ í•˜ë‚˜ë‹˜ì„ ì°¬ì†¡í•˜ë¦¬ë¡œë‹¤. ê·¸ë¶„ê»˜ì„œ ìš°ë¦¬ì˜ ëª¨ë“  í™˜ë‚œ ì¤‘ì—ì„œ ìš°ë¦¬ë¥¼ ìœ„ë¡œí•˜ì‹œëŠ”ë„ë‹¤.â€');
+    setText('#v1k cite', 'ê³ ë¦°ë„í›„ì„œ 1:3-4');
+    setText('#v2k .vt', 'â€œì£¼ê»˜ì„œëŠ” ë§ˆìŒì´ ìƒí•œ ìžì—ê²Œ ê°€ê¹Œì´í•˜ì‹œë©° ì°¸íšŒí•˜ëŠ” ì˜ì´ ìžˆëŠ” ìžë¥¼ êµ¬ì›í•˜ì‹œëŠ”ë„ë‹¤.â€');
+    setText('#v2k cite', 'ì‹œíŽ¸ 34:18');
+    setText('#v3k .vt', 'â€œì• í†µí•˜ëŠ” ìžë“¤ì€ ë³µì´ ìžˆë‚˜ë‹ˆ ê·¸ë“¤ì´ ìœ„ë¡œë¥¼ ë°›ì„ ê²ƒìž„ì´ìš”.â€');
+    setText('#v3k cite', 'ë§ˆíƒœë³µìŒ 5:4');
+    setText('#v4k .vt', 'â€œì˜ˆìˆ˜ë‹˜ê»˜ì„œ ìš°ì‹œë”ë¼.â€');
+    setText('#v4k cite', 'ìš”í•œë³µìŒ 11:35');
+    setText('#v5k .vt', 'â€œì˜ˆìˆ˜ê»˜ì„œ ê·¸ë…€ì—ê²Œ ë§ì”€í•˜ì‹œê¸°ë¥¼ ë‚˜ëŠ” ë¶€í™œì´ìš” ìƒëª…ì´ë‹ˆ, ë‚˜ë¥¼ ë¯¿ëŠ” ìžëŠ” ì£½ì—ˆì„ì§€ë¼ë„ ì‚´ë¦¬ë¼.â€');
+    setText('#v5k cite', 'ìš”í•œë³µìŒ 11:25');
+    setText('#v6k .vt', 'â€œì´ëŠ” ë‚´ê²Œ ì‚¬ëŠ” ê²ƒì´ ê·¸ë¦¬ìŠ¤ë„ì‹œë‹ˆ ì£½ëŠ” ê²ƒë„ ìœ ìµí•¨ì´ë¼.â€');
+    setText('#v6k cite', 'ë¹Œë¦½ë³´ì„œ 1:21');
+    setText('#v7k .vt', 'â€œìš°ë¦¬ëŠ” ìžì‹ ì´ ìžˆê³ , ëª¸ì„ ë– ë‚˜ ì£¼ì™€ í•¨ê»˜ ê±°í•˜ëŠ” ê²ƒì„ ë” ì›í•˜ë…¸ë¼.â€');
+    setText('#v7k cite', 'ê³ ë¦°ë„í›„ì„œ 5:8');
+    setText('#v8k .vt', 'â€œí•˜ë‚˜ë‹˜ê»˜ì„œ ê·¸ë“¤ì˜ ëˆˆì—ì„œ ëª¨ë“  ëˆˆë¬¼ì„ ë‹¦ì•„ ì£¼ì‹œë¦¬ë‹ˆ ë‹¤ì‹œëŠ” ì‚¬ë§ì´ ì—†ê³  ìŠ¬í””ë„ ìš¸ë¶€ì§–ìŒë„ ë‹¤ì‹œ ìžˆì§€ ì•„ë‹ˆí•˜ë¦¬ë‹ˆ ì´ëŠ” ì´ì „ ê²ƒë“¤ì´ ë‹¤ ì§€ë‚˜ê°”ìŒì´ë¼.â€');
+    setText('#v8k cite', 'ìš”í•œê³„ì‹œë¡ 21:4');
+    setText('#v9k .vt', 'â€œë‚´ ì•„ë²„ì§€ ì§‘ì—ëŠ” ê±°í•  ê³³ì´ ë§Žë„ë‹¤. ê·¸ë ‡ì§€ ì•„ë‹ˆí•˜ì˜€ë”ë¼ë©´ ë‚´ê°€ ë„ˆí¬ì—ê²Œ ë§í•˜ì˜€ìœ¼ë¦¬ë¼. ë‚´ê°€ ë„ˆí¬ë¥¼ ìœ„í•˜ì—¬ ì²˜ì†Œë¥¼ ì˜ˆë¹„í•˜ëŸ¬ ê°€ë…¸ë¼.â€');
+    setText('#v9k cite', 'ìš”í•œë³µìŒ 14:2');
+    setText('#v10k .vt', 'â€œë‚´ê°€ í™•ì‹ í•˜ë…¸ë‹ˆ ì‚¬ë§ì´ë‚˜ ìƒëª…ì´ë‚˜ ì²œì‚¬ë“¤ì´ë‚˜ ì •ì‚¬ë“¤ì´ë‚˜ ê¶ŒëŠ¥ë“¤ì´ë‚˜ í˜„ìž¬ ìžˆëŠ” ê²ƒë“¤ì´ë‚˜ ìž¥ëž˜ ìžˆëŠ” ê²ƒë“¤ì´ë‚˜ ë†’ìŒì´ë‚˜ ê¹ŠìŒì´ë‚˜ ë‹¤ë¥¸ ì–´ë–¤ í”¼ì¡°ë¬¼ë„ ìš°ë¦¬ ì£¼ ê·¸ë¦¬ìŠ¤ë„ ì˜ˆìˆ˜ ì•ˆì— ìžˆëŠ” í•˜ë‚˜ë‹˜ì˜ ì‚¬ëž‘ì—ì„œ ìš°ë¦¬ë¥¼ ëŠì„ ìˆ˜ ì—†ìœ¼ë¦¬ë¼.â€');
+    setText('#v10k cite', 'ë¡œë§ˆì„œ 8:38-39');
+    setText('#v11k .vt', 'â€œì£¼ì—¬, ì£¼ëŠ” ëŒ€ëŒ€ì— ìš°ë¦¬ì˜ ê±°ì²˜ê°€ ë˜ì…¨ë‚˜ì´ë‹¤.â€');
+    setText('#v11k cite', 'ì‹œíŽ¸ 90:1');
+    setText('#v12k .vt', 'â€œìš¸ìŒì€ ë°¤ ë™ì•ˆ ë¨¸ë¬´ë¥¼ì§€ë¼ë„ ê¸°ì¨ì€ ì•„ì¹¨ì— ì˜¤ë¦¬ë¡œë‹¤.â€');
+    setText('#v12k cite', 'ì‹œíŽ¸ 30:5');
+    setText('#v13k .vt', 'â€œì£¼ê»˜ì„œ ë² í‘¸ì‹  ê¸íœ¼ë¡œ ì¸í•˜ì—¬ ìš°ë¦¬ê°€ ì§„ë©¸ë˜ì§€ ì•„ë‹ˆí•¨ì€ ê·¸ë¶„ì˜ ë¶ˆìŒížˆ ì—¬ê¸°ì‹¬ì´ ì—†ì–´ì§€ì§€ ì•„ë‹ˆí•¨ì´ë‹ˆì´ë‹¤. ì´ê²ƒë“¤ì´ ì•„ì¹¨ë§ˆë‹¤ ìƒˆë¡œìš°ë‹ˆ ì£¼ì˜ ì‹ ì‹¤í•˜ì‹¬ì´ í¬ì‹œë„ì†Œì´ë‹¤.â€');
+    setText('#v13k cite', 'ì˜ˆë ˆë¯¸ì•¼ì• ê°€ 3:22-23');
+    setText('#v14k .vt', 'â€œì£¼ê»˜ì„œ ì¹œížˆ í˜¸ë ¹ê³¼ ì²œì‚¬ìž¥ì˜ ìŒì„±ê³¼ í•˜ë‚˜ë‹˜ì˜ ë‚˜íŒ” ì†Œë¦¬ì™€ í•¨ê»˜ í•˜ëŠ˜ë¡œë¶€í„° ë‚´ë ¤ì˜¤ì‹œë¦¬ë‹ˆ ê·¸ë¦¬ìŠ¤ë„ ì•ˆì—ì„œ ì£½ì€ ìžë“¤ì´ ë¨¼ì € ì¼ì–´ë‚˜ê³ .â€');
+    setText('#v14k cite', 'ë°ì‚´ë¡œë‹ˆê°€ì „ì„œ 4:16');
+    setText('#v15k .vt', 'â€œë‚´ê°€ ë‚´ ì˜ì„ ì£¼ì˜ ì†ì— ë¶€íƒí•˜ë‚˜ì´ë‹¤. ì˜¤ ì£¼ ì§„ë¦¬ì˜ í•˜ë‚˜ë‹˜ì´ì—¬, ì£¼ê»˜ì„œ ë‚˜ë¥¼ êµ¬ì†í•˜ì…¨ë‚˜ì´ë‹¤.â€');
+    setText('#v15k cite', 'ì‹œíŽ¸ 31:5');
+    setText('#v1e .vt', 'â€œí•˜ë‚˜ë‹˜ì€ ìžë¹„ì˜ ì•„ë²„ì§€ì‹œë©° ëª¨ë“  ìœ„ë¡œì˜ í•˜ë‚˜ë‹˜ì´ì‹­ë‹ˆë‹¤. ê·¸ë¶„ì€ ìš°ë¦¬ì˜ ëª¨ë“  í™˜ë‚œ ê°€ìš´ë°ì„œ ìš°ë¦¬ë¥¼ ìœ„ë¡œí•˜ì‹­ë‹ˆë‹¤.â€');
+    setText('#v1e cite', 'ê³ ë¦°ë„í›„ì„œ 1:3-4 (ESV)');
+    setText('#v2e .vt', 'â€œì£¼ê»˜ì„œëŠ” ë§ˆìŒì´ ìƒí•œ ìžì—ê²Œ ê°€ê¹Œì´í•˜ì‹œê³  ì˜ì´ ì§“ëˆŒë¦° ìžë¥¼ êµ¬ì›í•˜ì‹œëŠ”ë„ë‹¤.â€');
+    setText('#v2e cite', 'ì‹œíŽ¸ 34:18 (ESV)');
+    setText('#v3e .vt', 'â€œì• í†µí•˜ëŠ” ìžëŠ” ë³µì´ ìžˆë‚˜ë‹ˆ, ê·¸ë“¤ì´ ìœ„ë¡œë¥¼ ë°›ì„ ê²ƒìž„ì´ë¼.â€');
+    setText('#v3e cite', 'ë§ˆíƒœë³µìŒ 5:4 (ESV)');
+    setText('#v4e .vt', 'â€œì˜ˆìˆ˜ê»˜ì„œ ìš°ì‹œë”ë¼.â€');
+    setText('#v4e cite', 'ìš”í•œë³µìŒ 11:35 (ESV)');
+    setText('#v5e .vt', 'â€œì˜ˆìˆ˜ê»˜ì„œ ê·¸ë…€ì—ê²Œ ì´ë¥´ì‹œë˜, ë‚˜ëŠ” ë¶€í™œì´ìš” ìƒëª…ì´ë‹ˆ, ë‚˜ë¥¼ ë¯¿ëŠ” ìžëŠ” ì£½ì–´ë„ ì‚´ê² ê³ .â€');
+    setText('#v5e cite', 'ìš”í•œë³µìŒ 11:25 (ESV)');
+    setText('#v6e .vt', 'â€œì´ëŠ” ë‚´ê²Œ ì‚¬ëŠ” ê²ƒì´ ê·¸ë¦¬ìŠ¤ë„ìš” ì£½ëŠ” ê²ƒë„ ìœ ìµí•¨ì´ë¼.â€');
+    setText('#v6e cite', 'ë¹Œë¦½ë³´ì„œ 1:21 (ESV)');
+    setText('#v7e .vt', 'â€œìš°ë¦¬ëŠ” ì°¨ë¼ë¦¬ ëª¸ì„ ë– ë‚˜ ì£¼ì™€ í•¨ê»˜ ê±°í•˜ê¸°ë¥¼ ë” ì›í•˜ë…¸ë¼.â€');
+    setText('#v7e cite', 'ê³ ë¦°ë„í›„ì„œ 5:8 (ESV)');
+    setText('#v8e .vt', 'â€œê·¸ê°€ ê·¸ë“¤ì˜ ëˆˆì—ì„œ ëª¨ë“  ëˆˆë¬¼ì„ ë‹¦ì•„ ì£¼ì‹œë¦¬ë‹ˆ, ë‹¤ì‹œëŠ” ì‚¬ë§ì´ ì—†ê³  ìŠ¬í””ë„ ìš¸ë¶€ì§–ìŒë„ ì•„í””ë„ ë‹¤ì‹œ ìžˆì§€ ì•„ë‹ˆí•˜ë¦¬ë¼. ì²˜ìŒ ê²ƒë“¤ì´ ë‹¤ ì§€ë‚˜ê°”ìŒì´ë¼.â€');
+    setText('#v8e cite', 'ìš”í•œê³„ì‹œë¡ 21:4 (ESV)');
+    setText('#v9e .vt', 'â€œë‚´ ì•„ë²„ì§€ ì§‘ì— ê±°í•  ê³³ì´ ë§Žë„ë‹¤. ê·¸ë ‡ì§€ ì•„ë‹ˆí•˜ë©´ ë‚´ê°€ ë„ˆí¬ì—ê²Œ ë§í•˜ì˜€ìœ¼ë¦¬ë¼. ë‚´ê°€ ë„ˆí¬ë¥¼ ìœ„í•˜ì—¬ ì²˜ì†Œë¥¼ ì˜ˆë¹„í•˜ëŸ¬ ê°€ë…¸ë¼.â€');
+    setText('#v9e cite', 'ìš”í•œë³µìŒ 14:2 (ESV)');
+    setText('#v10e .vt', 'â€œë‚´ê°€ í™•ì‹ í•˜ë…¸ë‹ˆ ì‚¬ë§ì´ë‚˜ ìƒëª…ì´ë‚˜ ì²œì‚¬ë“¤ì´ë‚˜ í†µì¹˜ìžë“¤ì´ë‚˜ í˜„ìž¬ ì¼ë“¤ì´ë‚˜ ìž¥ëž˜ ì¼ë“¤ì´ë‚˜ ê¶ŒëŠ¥ë“¤ì´ë‚˜ ë†’ìŒì´ë‚˜ ê¹ŠìŒì´ë‚˜ ë‹¤ë¥¸ ì–´ë–¤ í”¼ì¡°ë¬¼ì´ë¼ë„ ìš°ë¦¬ ì£¼ ê·¸ë¦¬ìŠ¤ë„ ì˜ˆìˆ˜ ì•ˆì— ìžˆëŠ” í•˜ë‚˜ë‹˜ì˜ ì‚¬ëž‘ì—ì„œ ìš°ë¦¬ë¥¼ ëŠì„ ìˆ˜ ì—†ìœ¼ë¦¬ë¼.â€');
+    setText('#v10e cite', 'ë¡œë§ˆì„œ 8:38-39 (ESV)');
+    setText('#v11e .vt', 'â€œì£¼ì—¬, ì£¼ëŠ” ëŒ€ëŒ€ì— ìš°ë¦¬ì˜ ê±°ì²˜ê°€ ë˜ì…¨ë‚˜ì´ë‹¤.â€');
+    setText('#v11e cite', 'ì‹œíŽ¸ 90:1 (ESV)');
+    setText('#v12e .vt', 'â€œìš¸ìŒì€ ë°¤ìƒˆ ë¨¸ë¬¼ ìˆ˜ ìžˆìœ¼ë‚˜ ê¸°ì¨ì€ ì•„ì¹¨ì— ì˜¤ëŠë‹ˆë¼.â€');
+    setText('#v12e cite', 'ì‹œíŽ¸ 30:5 (ESV)');
+    setText('#v13e .vt', 'â€œì£¼ì˜ ë³€í•¨ì—†ëŠ” ì‚¬ëž‘ì´ ëŠì–´ì§€ì§€ ì•„ë‹ˆí•˜ë©° ê·¸ì˜ ê¸íœ¼ì´ ë‹¤í•¨ì´ ì—†ë‚˜ë‹ˆ, ì´ê²ƒë“¤ì´ ì•„ì¹¨ë§ˆë‹¤ ìƒˆë¡œìš°ë‹ˆ ì£¼ì˜ ì‹ ì‹¤í•˜ì‹¬ì´ í¬ì‹œë„ë‹¤.â€');
+    setText('#v13e cite', 'ì˜ˆë ˆë¯¸ì•¼ì• ê°€ 3:22-23 (ESV)');
+    setText('#v14e .vt', 'â€œì£¼ê»˜ì„œ í˜¸ë ¹ê³¼ ì²œì‚¬ìž¥ì˜ ìŒì„±ê³¼ í•˜ë‚˜ë‹˜ì˜ ë‚˜íŒ” ì†Œë¦¬ì™€ í•¨ê»˜ í•˜ëŠ˜ë¡œë¶€í„° ì¹œížˆ ë‚´ë ¤ì˜¤ì‹œë¦¬ë‹ˆ, ê·¸ë¦¬ìŠ¤ë„ ì•ˆì—ì„œ ì£½ì€ ìžë“¤ì´ ë¨¼ì € ì¼ì–´ë‚˜ê³ .â€');
+    setText('#v14e cite', 'ë°ì‚´ë¡œë‹ˆê°€ì „ì„œ 4:16 (ESV)');
+    setText('#v15e .vt', 'â€œë‚´ ì˜ì„ ì£¼ì˜ ì†ì— ë¶€íƒí•˜ë‚˜ì´ë‹¤. ì§„ì‹¤í•˜ì‹  í•˜ë‚˜ë‹˜ ì—¬í˜¸ì™€ì—¬, ì£¼ê»˜ì„œ ë‚˜ë¥¼ êµ¬ì†í•˜ì…¨ë‚˜ì´ë‹¤.â€');
+    setText('#v15e cite', 'ì‹œíŽ¸ 31:5 (ESV)');
+    setText('.closing-prayer p:last-child', 'ì£¼ í•˜ë‚˜ë‹˜, ìš°ë¦¬ëŠ” ìƒì‹¤ì˜ ê·¸ëŠ˜ ì•„ëž˜ ì„œ ìžˆìŠµë‹ˆë‹¤. ë•Œë¡œëŠ” í•  ë§ì„ ì°¾ì§€ ëª»í•˜ì§€ë§Œ, ì£¼ë‹˜ì€ ë§ë¡œ ë‹¤í•  ìˆ˜ ì—†ëŠ” ìŠ¬í””ê¹Œì§€ë„ ë“¤ìœ¼ì‹­ë‹ˆë‹¤. ì£¼ë‹˜ì€ ë¶€í™œì´ìš” ìƒëª…ì´ì‹œë©°, ëª¨ë“  ëˆˆë¬¼ì„ ë‹¦ì•„ ì£¼ì‹œëŠ” ë¶„ì´ì‹­ë‹ˆë‹¤. ì• í†µí•˜ëŠ” ìžë“¤ì„ ìœ„ë¡œí•˜ì‹œê³ , ìƒí•œ ë§ˆìŒì„ ë¶™ë“¤ì–´ ì£¼ì‹œë©°, ì´ê²ƒì´ ëì´ ì•„ë‹˜ì„ ë‹¤ì‹œ ê¹¨ë‹«ê²Œ í•˜ì†Œì„œ. ì˜ˆìˆ˜ë‹˜ ë•Œë¬¸ì— ë¬´ë¤ì€ ë§ˆì§€ë§‰ ë§ì„ í•˜ì§€ ëª»í•©ë‹ˆë‹¤. ìš°ë¦¬ê°€ ì£¼ë‹˜ì„ ì‹ ë¢°í•©ë‹ˆë‹¤. ì•„ë©˜.');
   } else {
     setText('.comfort-band .lead', comfortEnglishSnapshot.lead);
     setText('.psalm23-box h3', comfortEnglishSnapshot.psalmTitle);
@@ -674,9 +674,9 @@ window.openPageLanguagePopup=function(){
   const overlay=document.getElementById('page-memory-overlay');
   if(!overlay)return;
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
-  document.getElementById('page-memory-cat').textContent=lang==='ko'?'위로 말씀':'Comfort Verse';
-  document.getElementById('page-memory-title').textContent=lang==='ko'?'오늘의 위로 말씀입니다':'Today\'s Comfort Verse';
-  document.getElementById('page-memory-note').textContent=lang==='ko'?'이 말씀으로 마음을 조용히 쉬게 해 보세요.':'Receive this verse quietly and let it steady your heart.';
+  document.getElementById('page-memory-cat').textContent=lang==='ko'?'ìœ„ë¡œ ë§ì”€':'Comfort Verse';
+  document.getElementById('page-memory-title').textContent=lang==='ko'?'ì˜¤ëŠ˜ì˜ ìœ„ë¡œ ë§ì”€ìž…ë‹ˆë‹¤':'Today\'s Comfort Verse';
+  document.getElementById('page-memory-note').textContent=lang==='ko'?'ì´ ë§ì”€ìœ¼ë¡œ ë§ˆìŒì„ ì¡°ìš©ížˆ ì‰¬ê²Œ í•´ ë³´ì„¸ìš”.':'Receive this verse quietly and let it steady your heart.';
   document.getElementById('page-memory-verse').textContent=(document.querySelector('.psalm23-box p')?.textContent||'').trim();
   document.getElementById('page-memory-ref').textContent=(document.querySelector('.psalm23-box cite')?.textContent||'').trim();
   overlay.classList.add('show');
@@ -688,5 +688,6 @@ window.openPageLanguagePopup=function(){
 </div>
 </body>
 </html>
+
 
 

@@ -1244,6 +1244,12 @@ html[lang="ko"] .guestbook-read-more{font-family:'Malgun Gothic','Apple SD Gothi
 .living-word-type{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
 .living-word-card h3{font-family:'Cormorant Garamond',serif;font-size:32px;line-height:1.05;color:var(--deep)}
 .living-word-card p{font-size:16px;line-height:1.75;color:var(--text-soft)}
+.living-word-copy p{white-space:pre-wrap}
+.living-word-full{display:none}
+.living-word-card.is-expanded .living-word-preview{display:none}
+.living-word-card.is-expanded .living-word-full{display:block}
+.living-word-toggle{align-self:flex-start;margin-top:2px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;cursor:pointer}
+.living-word-toggle:hover{background:var(--gold-pale);color:var(--deep)}
 .living-word-media-shell{
   margin-top:4px;
   padding:10px 12px;

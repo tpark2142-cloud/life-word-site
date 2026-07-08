@@ -2531,6 +2531,7 @@ const HOMEPAGE_VISIT_REMOTE_ID_KEY='lifeword.homepageVisit.remoteId';
 const HOMEPAGE_VISIT_LANGUAGES_KEY='lifeword.homepageVisit.languages.v1';
 const HOMEPAGE_VISIT_REMOTE_SESSION_VALUE_KEY='lifeword.homepageVisit.remoteSessionValue.v1';
 const SITE_LANGUAGE_STORAGE='lifeword.siteLang';
+const LIVING_WORD_PREVIEW_LIMIT=320;
 const DEFAULT_LIVING_WORD_ITEMS=[
   {
     id:'lw1',
@@ -2569,15 +2570,58 @@ function renderLivingWord(){
   grid.innerHTML=visibleItems.map(item=>{
     const media=getLivingWordMediaMarkup(item);
     const link=getLivingWordActionMarkup(item);
+    const copy=getLivingWordCopyMarkup(item.summary||'');
     return '<article class="living-word-card">'
       +'<p class="living-word-type">'+escapeHtml(item.type||'Article')+'</p>'
       +'<h3>'+escapeHtml(item.title||'Untitled Entry')+'</h3>'
-      +'<p>'+escapeHtml(item.summary||'')+'</p>'
+      +copy
       +media
       +link
       +'</article>';
   }).join('');
 }
+
+function getLivingWordCopyMarkup(summary){
+  const text=String(summary||'').trim();
+  if(!text)return '';
+  const preview=getLivingWordPreview(text);
+  if(!preview.isLong){
+    return '<div class="living-word-copy"><p>'+escapeHtml(text)+'</p></div>';
+  }
+  return '<div class="living-word-copy">'
+    +'<p class="living-word-preview">'+escapeHtml(preview.text)+'</p>'
+    +'<p class="living-word-full">'+escapeHtml(text)+'</p>'
+    +'<button class="living-word-toggle" type="button" onclick="toggleLivingWordFull(this)" aria-expanded="false">'
+    +escapeHtml(getLivingWordReadMoreLabel())
+    +'</button>'
+    +'</div>';
+}
+
+function getLivingWordPreview(text){
+  const normalized=String(text||'').replace(/\s+/g,' ').trim();
+  if(normalized.length<=LIVING_WORD_PREVIEW_LIMIT){
+    return {text:normalized,isLong:false};
+  }
+  return {text:normalized.slice(0,LIVING_WORD_PREVIEW_LIMIT).trimEnd()+'...',isLong:true};
+}
+
+function getLivingWordReadMoreLabel(){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  return lang==='ko'?'전체 보기':'Read More';
+}
+
+function getLivingWordCloseLabel(){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  return lang==='ko'?'접기':'Show Less';
+}
+
+window.toggleLivingWordFull=function(button){
+  const card=button&&button.closest?button.closest('.living-word-card'):null;
+  if(!card)return;
+  const expanded=card.classList.toggle('is-expanded');
+  button.setAttribute('aria-expanded',expanded?'true':'false');
+  button.textContent=expanded?getLivingWordCloseLabel():getLivingWordReadMoreLabel();
+};
 
 function getLivingWordMediaMarkup(item){
   if(!item||!item.mediaSrc||!item.mediaKind)return '';
