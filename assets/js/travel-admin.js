@@ -1006,6 +1006,11 @@ function updateLivingSummaryCount(){
   count.textContent = `${length.toLocaleString()} / ${LIVING_ARTICLE_TEXT_LIMIT.toLocaleString()} characters`;
   count.style.color = length > LIVING_ARTICLE_TEXT_LIMIT ? '#8f473f' : '';
 }
+
+function getLivingSummaryLength(summary){
+  return String(summary || '').length;
+}
+
 function clearLivingForm(){
   document.getElementById('living-edit-id').value = '';
   document.getElementById('living-language').value = 'en';
@@ -1166,6 +1171,7 @@ async function saveLivingEntry(){
       }
       clearLivingForm();
       await loadLivingAdminItems();
+      alert(`Living the Word entry saved. Article text saved: ${getLivingSummaryLength(summary).toLocaleString()} characters.`);
       return;
     } catch (error) {
       alert(`Supabase could not save this Living the Word entry. Falling back to browser-only storage.\n\n${formatSupabaseError(error)}`);
@@ -1181,6 +1187,7 @@ async function saveLivingEntry(){
   }
   clearLivingForm();
   renderLivingAdminList();
+  alert(`Living the Word entry saved in this browser. Article text saved: ${getLivingSummaryLength(summary).toLocaleString()} characters.`);
 }
 
 function renderLivingAdminList(){
@@ -1196,6 +1203,7 @@ function renderLivingAdminList(){
       <div>
         <h3>${escapeHtml(item.title || 'Untitled Entry')}</h3>
         <p class="admin-meta">${escapeHtml(item.language === 'ko' ? 'Korean Site' : 'English Site')} &middot; ${escapeHtml(item.type || 'Article')}${item.createdAt ? ' &middot; ' + escapeHtml(formatGuestbookDate(item.createdAt)) : ''}</p>
+        <p class="admin-meta">Saved article text: ${getLivingSummaryLength(item.summary).toLocaleString()} characters</p>
         <p>${escapeHtml(item.summary || '')}</p>
         ${item.mediaKind ? `<p class="admin-meta">Media: ${escapeHtml(item.mediaKind)}${item.mediaName ? ' &middot; ' + escapeHtml(item.mediaName) : ''}</p>` : ''}
         ${item.link ? `<p class="admin-meta">Link: <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.link)}</a></p>` : '<p class="admin-meta">No external link attached.</p>'}
