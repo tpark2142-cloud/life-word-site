@@ -1156,22 +1156,35 @@ async function saveLivingEntry(){
       is_visible: true
     };
     try {
+      let savedRow = null;
       if (editId) {
         const numericId = String(editId).startsWith('lw-') ? String(editId).slice(3) : String(editId);
-        const { error } = await supabaseClient
+        const { data, error } = await supabaseClient
           .from('living_word_posts')
           .update(payload)
-          .eq('id', numericId);
+          .eq('id', numericId)
+          .select('id, summary')
+          .single();
         if (error) throw error;
+        savedRow = data;
       } else {
-        const { error } = await supabaseClient
+        const { data, error } = await supabaseClient
           .from('living_word_posts')
-          .insert(payload);
+          .insert(payload)
+          .select('id, summary')
+          .single();
         if (error) throw error;
+        savedRow = data;
       }
+      const sentLength = getLivingSummaryLength(summary);
+      const storedLength = getLivingSummaryLength(savedRow && savedRow.summary);
       clearLivingForm();
       await loadLivingAdminItems();
-      alert(`Living the Word entry saved. Article text saved: ${getLivingSummaryLength(summary).toLocaleString()} characters.`);
+      if (storedLength < sentLength) {
+        alert(`Living the Word entry was saved, but Supabase stored only ${storedLength.toLocaleString()} of ${sentLength.toLocaleString()} characters. Please check the Supabase summary column or use the newest admin page.`);
+      } else {
+        alert(`Living the Word entry saved. Supabase stored ${storedLength.toLocaleString()} characters.`);
+      }
       return;
     } catch (error) {
       alert(`Supabase could not save this Living the Word entry. Falling back to browser-only storage.\n\n${formatSupabaseError(error)}`);
