@@ -2625,6 +2625,10 @@ window.toggleLivingWordFull=function(button){
 
 function getLivingWordMediaMarkup(item){
   if(!item||!item.mediaSrc||!item.mediaKind)return '';
+  if(item.mediaKind==='image'){
+    const label=(item.title||'Living the Word image').trim();
+    return '<div class="living-word-media-shell living-word-image-shell"><img class="living-word-image" src="'+escapeAttr(item.mediaSrc)+'" alt="'+escapeAttr(label)+'"></div>';
+  }
   if(item.mediaKind==='video'){
     return '<div class="living-word-media-shell"><video class="living-word-media" controls playsinline preload="metadata" src="'+escapeAttr(item.mediaSrc)+'"></video></div>';
   }
@@ -3247,6 +3251,7 @@ function inferLivingWordMediaKind(url, type){
   const normalizedType=(type||'').toLowerCase();
   if(normalizedType==='podcast') return 'audio';
   const value=(url||'').toLowerCase();
+  if(value.startsWith('data:image/') || /\.(jpg|jpeg|png|webp|gif)(\?|#|$)/.test(value)) return 'image';
   if(/\.(mp4|webm|mov|m4v)(\?|#|$)/.test(value)) return 'video';
   if(/\.(mp3|m4a|wav|ogg|aac)(\?|#|$)/.test(value)) return 'audio';
   if(value.startsWith('data:application/pdf') || /\.(pdf)(\?|#|$)/.test(value)) return 'pdf';

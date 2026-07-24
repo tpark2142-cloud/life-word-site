@@ -350,6 +350,9 @@ function normalizeLivingWordTypeForDatabase(type){
 function inferMediaKind(value){
   const source = String(value || '').trim().toLowerCase();
   if (!source) return '';
+  if (source.startsWith('data:image/') || source.includes('.jpg') || source.includes('.jpeg') || source.includes('.png') || source.includes('.webp') || source.includes('.gif')) {
+    return 'image';
+  }
   if (source.startsWith('data:video/') || source.includes('.mp4') || source.includes('.mov') || source.includes('.webm')) {
     return 'video';
   }
@@ -1030,9 +1033,9 @@ function handleLivingMedia(event){
   if (!file) return;
   const kind = file.type === 'application/pdf'
     ? 'pdf'
-    : (file.type.startsWith('video/') ? 'video' : (file.type.startsWith('audio/') ? 'audio' : ''));
+    : (file.type.startsWith('image/') ? 'image' : (file.type.startsWith('video/') ? 'video' : (file.type.startsWith('audio/') ? 'audio' : '')));
   if (!kind) {
-    alert('Please choose an audio, video, or PDF file.');
+    alert('Please choose a JPG, PNG, audio, video, or PDF file.');
     event.target.value = '';
     return;
   }
@@ -1067,15 +1070,18 @@ function setLivingMediaPreview(media){
   const audio = document.getElementById('living-audio-preview');
   const video = document.getElementById('living-video-preview');
   const pdf = document.getElementById('living-pdf-preview');
-  if (!wrapper || !audio || !video || !pdf) return;
+  const image = document.getElementById('living-image-preview');
+  if (!wrapper || !audio || !video || !pdf || !image) return;
   audio.style.display = 'none';
   video.style.display = 'none';
   pdf.style.display = 'none';
+  image.style.display = 'none';
   pdf.textContent = '';
   audio.pause();
   video.pause();
   audio.removeAttribute('src');
   video.removeAttribute('src');
+  image.removeAttribute('src');
   audio.load();
   video.load();
 
@@ -1085,6 +1091,12 @@ function setLivingMediaPreview(media){
   }
 
   wrapper.style.display = 'block';
+  if (media.kind === 'image') {
+    image.src = media.src;
+    image.alt = media.name || 'Living the Word image preview';
+    image.style.display = 'block';
+    return;
+  }
   if (media.kind === 'video') {
     video.src = media.src;
     video.style.display = 'block';
@@ -1104,12 +1116,17 @@ function setLivingMediaPreview(media){
 
 async function saveLivingEntry(){
   const editId = document.getElementById('living-edit-id').value.trim();
+  const existingItem = editId ? livingWordItems.find(item => item.id === editId) : null;
   const language = document.getElementById('living-language').value === 'ko' ? 'ko' : 'en';
   const type = document.getElementById('living-type').value.trim() || 'Article';
   const title = document.getElementById('living-title').value.trim();
   const summary = document.getElementById('living-summary').value.trim();
   updateLivingSummaryCount();
   const link = document.getElementById('living-link').value.trim();
+  const mediaSrc = livingPendingMedia.src || (existingItem && existingItem.mediaSrc) || '';
+  const mediaKind = livingPendingMedia.kind || (existingItem && existingItem.mediaKind) || inferMediaKind(mediaSrc);
+  const mediaMime = livingPendingMedia.mime || (existingItem && existingItem.mediaMime) || '';
+  const mediaName = livingPendingMedia.name || (existingItem && existingItem.mediaName) || '';
 
   if (!title || !summary) {
     alert('Please enter both a title and article text.');
@@ -1124,10 +1141,10 @@ async function saveLivingEntry(){
       title: title.slice(0, 120),
       summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link: link.slice(0, 500),
-      mediaSrc: livingPendingMedia.src || item.mediaSrc || '',
-      mediaKind: livingPendingMedia.kind || item.mediaKind || '',
-      mediaMime: livingPendingMedia.mime || item.mediaMime || '',
-      mediaName: livingPendingMedia.name || item.mediaName || ''
+      mediaSrc,
+      mediaKind,
+      mediaMime,
+      mediaName
     } : item);
   } else {
     livingWordItems.unshift({
@@ -1137,10 +1154,10 @@ async function saveLivingEntry(){
       title: title.slice(0, 120),
       summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link: link.slice(0, 500),
-      mediaSrc: livingPendingMedia.src || '',
-      mediaKind: livingPendingMedia.kind || '',
-      mediaMime: livingPendingMedia.mime || '',
-      mediaName: livingPendingMedia.name || '',
+      mediaSrc,
+      mediaKind,
+      mediaMime,
+      mediaName,
       createdAt: new Date().toISOString()
     });
   }
@@ -1152,7 +1169,7 @@ async function saveLivingEntry(){
       title: title.slice(0, 120),
       summary: summary.slice(0, LIVING_ARTICLE_TEXT_LIMIT),
       link_url: link.slice(0, 500),
-      media_url: livingPendingMedia.src || '',
+      media_url: mediaSrc,
       is_visible: true
     };
     try {
