@@ -114,6 +114,17 @@ html[lang="ko"] .hero-search::before{content:'여기서 시작';font-size:10.5px
 .home-update-copy{font-size:17px;line-height:1.78;color:var(--text-soft);max-width:760px;margin-bottom:16px}
 .home-update-list{display:grid;gap:8px;margin:0;padding-left:20px;color:var(--deep)}
 .home-update-list li{font-size:15.5px;line-height:1.65;color:var(--text-soft)}
+.en-only{display:block}
+html[lang="ko"] .en-only{display:none}
+.music-update{background:linear-gradient(180deg,#fffdfa 0%,#fcf4e7 100%)}
+.music-update-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);gap:26px;align-items:center}
+.music-update-copy .home-update-copy{margin-bottom:18px}
+.music-update-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:11px 18px;border-radius:999px;background:var(--gold);color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 12px 26px rgba(28,46,36,.12);transition:transform .18s,background .18s}
+.music-update-link:hover{background:var(--deep);transform:translateY(-1px)}
+.music-update-thumb{position:relative;display:block;overflow:hidden;border-radius:14px;border:1px solid rgba(184,147,90,.32);background:#102117;text-decoration:none;box-shadow:0 16px 32px rgba(28,46,36,.12)}
+.music-update-thumb img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .22s,filter .22s}
+.music-update-thumb:hover img{transform:scale(1.04);filter:saturate(1.06)}
+.music-update-thumb span{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:7px 12px;border-radius:999px;background:rgba(16,33,23,.88);color:#fff;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 .ko-update-only{display:none}
 html[lang="ko"] .ko-update-only{display:list-item}
 html[lang="ko"] .home-update-copy{font-size:16px;line-height:1.85}
@@ -1564,6 +1575,7 @@ audio.living-word-media::-webkit-media-controls-enclosure{
 html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-height:1.45}
 @media(max-width:900px){#popular-search-pages .home-update-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){#popular-search-pages .home-update-inner{padding-left:18px;padding-right:18px}#popular-search-pages .home-update-list{grid-template-columns:1fr}#popular-search-pages .home-update-list a{min-height:54px}}
+@media(max-width:760px){.music-update-inner{grid-template-columns:1fr}.music-update-thumb{max-width:320px}}
 
 /* Focused homepage and dedicated feature pages */
 .home-page #home-spotlight,
