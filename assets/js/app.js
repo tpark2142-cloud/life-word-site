@@ -2444,18 +2444,6 @@ function saveJournalEntry(){
   form.classList.remove('open');
   if(!saveStoredItems(STORAGE_JOURNAL,journalItems))showTravelStorageNotice();
 }
-function renderGallery(){
-  const grid=document.getElementById('gallery-grid');
-  if(!grid)return;
-  grid.classList.toggle('gallery-editing',galleryEditMode);
-  grid.innerHTML=galleryItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-    <img src="${escapeAttr(item.src)}" alt="${escapeAttr(item.caption)}" loading="lazy" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr(item.caption)}')">
-    <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
-  </div>`).join('');
-  updateGalleryCount();
-  checkGalleryEmpty();
-  updateGalleryEditButton();
-}
 function toggleGalleryEditMode(){
   galleryEditMode=!galleryEditMode;
   renderGallery();
@@ -2467,14 +2455,6 @@ function deletePhoto(id){
   galleryItems=galleryItems.filter(entry=>entry.id!==id);
   renderGallery();
   if(!saveStoredItems(STORAGE_GALLERY,galleryItems))showTravelStorageNotice();
-}
-function updateGalleryCount(){
-  const el=document.getElementById('gallery-count');
-  if(el)el.textContent=getLocalizedPhotoCount(galleryItems.length);
-}
-function checkGalleryEmpty(){
-  const empty=document.getElementById('gallery-empty');
-  if(empty)empty.style.display=galleryItems.length===0?'block':'none';
 }
 function renderJournal(){
   const grid=document.getElementById('journal-entries');
@@ -2496,24 +2476,6 @@ function renderJournal(){
   }).join('');
   if(empty)empty.style.display=journalItems.length===0?'block':'none';
 }
-function renderGallery(){
-  const grid=document.getElementById('gallery-grid');
-  if(!grid)return;
-  grid.innerHTML=galleryItems.map(item=>`<div class="gallery-item" data-id="${escapeAttr(item.id)}">
-    <img src="${escapeAttr(item.src)}" alt="${escapeAttr(item.caption)}" loading="lazy" onclick="openLightbox('${escapeAttr(item.src)}','${escapeAttr(item.caption)}')">
-    <div class="gallery-overlay"><span class="gallery-caption">${escapeHtml(item.caption)}</span></div>
-  </div>`).join('');
-  updateGalleryCount();
-  checkGalleryEmpty();
-}
-function updateGalleryCount(){
-  const el=document.getElementById('gallery-count');
-  if(el)el.textContent=galleryItems.length+' photo'+(galleryItems.length!==1?'s':'');
-}
-function checkGalleryEmpty(){
-  const empty=document.getElementById('gallery-empty');
-  if(empty)empty.style.display=galleryItems.length===0?'block':'none';
-}
 function toggleJournalForm(){ return false; }
 function saveJournalEntry(){ return false; }
 function toggleJournalEditMode(){ return false; }
@@ -2526,9 +2488,6 @@ function previewGalleryFile(){ return false; }
 function saveGalleryPhoto(){ return false; }
 function toggleGalleryEditMode(){ return false; }
 function deletePhoto(){ return false; }
-
-renderJournal();
-renderGallery();
 
 const LIVING_WORD_STORAGE='lifeword.livingWord.v1';
 const HOMEPAGE_VISITS_STORAGE='lifeword.homepageVisits.v1';
