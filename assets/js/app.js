@@ -3463,8 +3463,7 @@ async function loadGalleryItems(){
   }
 }
 
-loadGalleryItems();
-loadGalleryFeedback();
+loadGalleryItems().then(()=>loadGalleryFeedback());
 
 bindTopicButtons();
 
