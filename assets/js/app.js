@@ -3023,15 +3023,15 @@ function buildGalleryFeedbackHtml(item){
   const selectedLabel=lang==='ko'?'선택됨':'Selected';
   return `<div class="gallery-feedback" data-gallery-feedback="${escapeAttr(feedbackId)}">
     <div class="gallery-feedback-counts" aria-label="${escapeAttr(lang==='ko'?'사진 반응':'Photo reactions')}">
-      ${counts.length?counts.map(entry=>`<span>${entry.emoji} ${entry.count}</span>`).join(''):`<span>${escapeHtml(lang==='ko'?'첫 반응을 남겨 주세요':'Be the first to respond')}</span>`}
+      ${counts.length?counts.map(entry=>`<span>${entry.emoji} ${entry.count}</span>`).join(''):''}
     </div>
     ${messages.length?`<div class="gallery-feedback-notes">${messages.map(entry=>`<p>${escapeHtml(entry.message)}</p>`).join('')}</div>`:''}
     <div class="gallery-feedback-form" data-gallery-feedback-form data-gallery-key="${escapeAttr(feedbackId)}" data-gallery-lang="${escapeAttr(lang)}">
       <div class="gallery-feedback-emoji-row">
         ${GALLERY_FEEDBACK_EMOJIS.map(emoji=>`<button type="button" class="gallery-feedback-emoji" data-emoji="${escapeAttr(emoji)}" onclick="setGalleryFeedbackEmoji('${escapeAttr(feedbackId)}','${escapeAttr(emoji)}')" aria-label="${escapeAttr(emoji+' '+selectedLabel)}">${escapeHtml(emoji)}</button>`).join('')}
       </div>
-      <textarea class="gallery-feedback-message" rows="2" maxlength="220" placeholder="${escapeAttr(lang==='ko'?'짧은 글을 남겨 주세요':'Leave a short note')}"></textarea>
-      <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'남기기':'Send')}</button>
+      <textarea class="gallery-feedback-message" rows="2" maxlength="220" placeholder="${escapeAttr(lang==='ko'?'이 사진에서 느낀 마음을 짧게 나눠 보세요':'Share a small thought this photo brings to mind')}"></textarea>
+      <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'살짝 남기기':'Share')}</button>
     </div>
   </div>`;
 }
@@ -3043,10 +3043,21 @@ function findGalleryFeedbackForm(feedbackId){
 window.setGalleryFeedbackEmoji=function(feedbackId,emoji){
   const form=findGalleryFeedbackForm(String(feedbackId||''));
   if(!form)return;
-  form.dataset.selectedEmoji=emoji||'';
+  const value=emoji||'';
+  form.dataset.selectedEmoji=value;
   form.querySelectorAll('.gallery-feedback-emoji').forEach(button=>{
-    button.classList.toggle('selected',button.dataset.emoji===emoji);
+    button.classList.toggle('selected',button.dataset.emoji===value);
   });
+  const field=form.querySelector('.gallery-feedback-message');
+  if(field && value){
+    const start=typeof field.selectionStart==='number'?field.selectionStart:field.value.length;
+    const end=typeof field.selectionEnd==='number'?field.selectionEnd:field.value.length;
+    const spacer=start>0 && !/\s$/.test(field.value.slice(0,start))?' ':'';
+    field.value=field.value.slice(0,start)+spacer+value+' '+field.value.slice(end);
+    const next=start+spacer.length+value.length+1;
+    field.focus();
+    field.setSelectionRange(next,next);
+  }
 };
 
 window.submitGalleryFeedback=async function(feedbackId,language){
@@ -3059,7 +3070,7 @@ window.submitGalleryFeedback=async function(feedbackId,language){
   const reactionEmoji=String(form.dataset.selectedEmoji||'').trim();
   const message=String((messageField && messageField.value) || '').trim();
   if(!reactionEmoji && !message){
-    alert(lang==='ko'?'이모지를 선택하거나 짧은 글을 남겨 주세요.':'Choose an emoji or leave a short note.');
+    alert(lang==='ko'?'이모지 하나나 짧은 마음을 편하게 남겨 보세요.':'Choose an emoji or share a small thought whenever you like.');
     return;
   }
   const entry={

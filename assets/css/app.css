@@ -1,4 +1,4 @@
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+﻿*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#b8935a;--gold-light:#d4aa70;--gold-pale:#faf3e8;
   --deep:#1c2e24;--green:#2f5d42;--green-mid:#4a8060;
@@ -877,6 +877,8 @@ html[lang="ko"] .gallery-copy-summary{
   font-size:13px;
   line-height:1.4;
 }
+
+.gallery-feedback-counts:empty{display:none;margin:0}
 .gallery-feedback-counts span{
   display:inline-flex;
   align-items:center;
