@@ -863,6 +863,104 @@ html[lang="ko"] .gallery-copy-summary{
   line-height:1.72;
   word-break:keep-all;
 }
+.gallery-feedback{
+  padding:12px 14px 14px;
+  background:rgba(9,22,16,.94);
+  border-top:1px solid rgba(222,189,116,.12);
+}
+.gallery-feedback-counts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:10px;
+  color:#d8c9a0;
+  font-size:13px;
+  line-height:1.4;
+}
+.gallery-feedback-counts span{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:3px 9px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(222,189,116,.14);
+}
+.gallery-feedback-notes{
+  display:grid;
+  gap:6px;
+  margin-bottom:10px;
+}
+.gallery-feedback-notes p{
+  margin:0;
+  color:#f0dfb8;
+  font-size:14px;
+  line-height:1.55;
+}
+.gallery-feedback-emoji-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:8px;
+}
+.gallery-feedback-emoji{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid rgba(222,189,116,.22);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.gallery-feedback-emoji:hover,
+.gallery-feedback-emoji.selected{
+  transform:translateY(-1px);
+  background:rgba(184,147,90,.38);
+  border-color:rgba(222,189,116,.72);
+}
+.gallery-feedback-message{
+  width:100%;
+  min-height:62px;
+  resize:vertical;
+  border-radius:10px;
+  border:1px solid rgba(222,189,116,.18);
+  background:rgba(255,255,255,.08);
+  color:#fff5d6;
+  padding:10px 11px;
+  font-family:'EB Garamond',serif;
+  font-size:16px;
+  line-height:1.45;
+}
+.gallery-feedback-message::placeholder{color:rgba(246,232,192,.58)}
+.gallery-feedback-message:focus{
+  outline:none;
+  border-color:rgba(222,189,116,.66);
+  background:rgba(255,255,255,.12);
+}
+.gallery-feedback-submit{
+  margin-top:8px;
+  padding:8px 13px;
+  border-radius:999px;
+  border:1px solid rgba(222,189,116,.42);
+  background:rgba(184,147,90,.92);
+  color:#fff;
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.gallery-feedback-submit:disabled{opacity:.62;cursor:wait}
+html[lang="ko"] .gallery-feedback-message,
+html[lang="ko"] .gallery-feedback-submit{
+  font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  letter-spacing:0;
+}
+html[lang="ko"] .gallery-feedback-submit{
+  font-size:13px;
+  font-weight:600;
+}
 .gallery-card-actions {
   position: absolute;
   top: 10px;

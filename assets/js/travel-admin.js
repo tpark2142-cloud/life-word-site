@@ -22,7 +22,14 @@ const SUPABASE_GALLERY_FILE_STEMS = [
   'IMG_1462',
   'IMG_8519',
   '20250927_133835',
-  '20250927_133219'
+  '20250927_133219',
+  'southbrook-01',
+  'southbrook-02',
+  'southbrook-03',
+  'southbrook-04',
+  'southbrook-05',
+  'southbrook-06',
+  'southbrook-07'
 ];
 const TRAVEL_IMAGE_MAX_WIDTH = 1600;
 const TRAVEL_IMAGE_MAX_HEIGHT = 1600;

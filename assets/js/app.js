@@ -2868,6 +2868,10 @@ const supabaseClient=window.supabase && SUPABASE_PROJECT_URL && SUPABASE_PUBLISH
   : null;
 let guestbookEntries=loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES);
 let guestbookUsesSupabase=Boolean(supabaseClient);
+const GALLERY_FEEDBACK_STORAGE='lifeword.galleryFeedback.v1';
+const GALLERY_FEEDBACK_EMOJIS=['🙏','❤️','😊','✨','👍'];
+let galleryFeedback=loadStoredItems(GALLERY_FEEDBACK_STORAGE,[]);
+let galleryFeedbackUsesSupabase=Boolean(supabaseClient);
 
 async function loadGuestbookEntries(){
   if(!supabaseClient){
@@ -3015,6 +3019,120 @@ function normalizeGuestbookEntries(items){
       ${showSummary?`<p class="gallery-copy-summary">${escapeHtml(displaySummary)}</p>`:''}
     </div>`;
   }
+
+function normalizeGalleryFeedback(items){
+  return (Array.isArray(items)?items:[]).map(item=>({
+    ...item,
+    id:item && item.id ? String(item.id) : makeId('gf'),
+    galleryId:item && item.galleryId ? String(item.galleryId) : '',
+    language:item && item.language==='ko' ? 'ko' : 'en',
+    reactionEmoji:item && item.reactionEmoji ? String(item.reactionEmoji) : '',
+    message:item && item.message ? String(item.message) : '',
+    createdAt:item && item.createdAt ? String(item.createdAt) : new Date().toISOString()
+  })).filter(item=>item.galleryId && (item.reactionEmoji || item.message));
+}
+
+galleryFeedback=normalizeGalleryFeedback(galleryFeedback);
+
+function getGalleryFeedbackId(item){
+  return String((item && (item.stem || item.id)) || '').trim();
+}
+
+function getGalleryFeedbackForItem(item){
+  const id=getGalleryFeedbackId(item);
+  const lang=item && item.language==='ko' ? 'ko' : 'en';
+  return galleryFeedback.filter(entry=>entry.galleryId===id && entry.language===lang);
+}
+
+function buildGalleryFeedbackHtml(item){
+  const lang=item && item.language==='ko' ? 'ko' : 'en';
+  const feedbackId=getGalleryFeedbackId(item);
+  if(!feedbackId)return '';
+  const entries=getGalleryFeedbackForItem(item);
+  const counts=GALLERY_FEEDBACK_EMOJIS.map(emoji=>({
+    emoji,
+    count:entries.filter(entry=>entry.reactionEmoji===emoji).length
+  })).filter(entry=>entry.count>0);
+  const messages=entries.filter(entry=>entry.message).slice(0,2);
+  const selectedLabel=lang==='ko'?'선택됨':'Selected';
+  return `<div class="gallery-feedback" data-gallery-feedback="${escapeAttr(feedbackId)}">
+    <div class="gallery-feedback-counts" aria-label="${escapeAttr(lang==='ko'?'사진 반응':'Photo reactions')}">
+      ${counts.length?counts.map(entry=>`<span>${entry.emoji} ${entry.count}</span>`).join(''):`<span>${escapeHtml(lang==='ko'?'첫 반응을 남겨 주세요':'Be the first to respond')}</span>`}
+    </div>
+    ${messages.length?`<div class="gallery-feedback-notes">${messages.map(entry=>`<p>${escapeHtml(entry.message)}</p>`).join('')}</div>`:''}
+    <div class="gallery-feedback-form" data-gallery-feedback-form data-gallery-key="${escapeAttr(feedbackId)}" data-gallery-lang="${escapeAttr(lang)}">
+      <div class="gallery-feedback-emoji-row">
+        ${GALLERY_FEEDBACK_EMOJIS.map(emoji=>`<button type="button" class="gallery-feedback-emoji" data-emoji="${escapeAttr(emoji)}" onclick="setGalleryFeedbackEmoji('${escapeAttr(feedbackId)}','${escapeAttr(emoji)}')" aria-label="${escapeAttr(emoji+' '+selectedLabel)}">${escapeHtml(emoji)}</button>`).join('')}
+      </div>
+      <textarea class="gallery-feedback-message" rows="2" maxlength="220" placeholder="${escapeAttr(lang==='ko'?'짧은 글을 남겨 주세요':'Leave a short note')}"></textarea>
+      <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'남기기':'Send')}</button>
+    </div>
+  </div>`;
+}
+
+function findGalleryFeedbackForm(feedbackId){
+  return Array.from(document.querySelectorAll('[data-gallery-feedback-form]')).find(form=>form.dataset.galleryKey===feedbackId) || null;
+}
+
+window.setGalleryFeedbackEmoji=function(feedbackId,emoji){
+  const form=findGalleryFeedbackForm(String(feedbackId||''));
+  if(!form)return;
+  form.dataset.selectedEmoji=emoji||'';
+  form.querySelectorAll('.gallery-feedback-emoji').forEach(button=>{
+    button.classList.toggle('selected',button.dataset.emoji===emoji);
+  });
+};
+
+window.submitGalleryFeedback=async function(feedbackId,language){
+  const id=String(feedbackId||'').trim();
+  const lang=language==='ko'?'ko':'en';
+  const form=findGalleryFeedbackForm(id);
+  if(!form)return;
+  const messageField=form.querySelector('.gallery-feedback-message');
+  const button=form.querySelector('.gallery-feedback-submit');
+  const reactionEmoji=String(form.dataset.selectedEmoji||'').trim();
+  const message=String((messageField && messageField.value) || '').trim();
+  if(!reactionEmoji && !message){
+    alert(lang==='ko'?'이모지를 선택하거나 짧은 글을 남겨 주세요.':'Choose an emoji or leave a short note.');
+    return;
+  }
+  const entry={
+    id:makeId('gf'),
+    galleryId:id,
+    language:lang,
+    reactionEmoji:reactionEmoji,
+    message:message.slice(0,220),
+    createdAt:new Date().toISOString()
+  };
+  if(button)button.disabled=true;
+  if(supabaseClient && galleryFeedbackUsesSupabase){
+    try{
+      const {error}=await supabaseClient
+        .from('gallery_feedback')
+        .insert({
+          gallery_id:entry.galleryId,
+          language:entry.language,
+          reaction_emoji:entry.reactionEmoji,
+          message:entry.message,
+          is_visible:true
+        });
+      if(error)throw error;
+      await loadGalleryFeedback();
+      return;
+    }catch(_error){
+      galleryFeedbackUsesSupabase=false;
+      alert(lang==='ko'
+        ? '온라인 저장이 아직 준비되지 않아 이 브라우저에만 임시 저장됩니다. Supabase gallery_feedback 테이블을 만든 뒤에는 모두에게 보입니다.'
+        : 'Online saving is not ready yet, so this is saved only in this browser for now. After the Supabase gallery_feedback table is created, visitors will see it.');
+    }
+  }
+  galleryFeedback.unshift(entry);
+  saveStoredItems(GALLERY_FEEDBACK_STORAGE,galleryFeedback);
+  if(messageField)messageField.value='';
+  form.dataset.selectedEmoji='';
+  if(button)button.disabled=false;
+  renderGallery();
+};
   
 function renderGallery(){
     const grid=document.getElementById('gallery-grid');
@@ -3033,6 +3151,7 @@ function renderGallery(){
         <img src="${escapeAttr(thumbSrc)}" data-fallback-src="${escapeAttr(fullSrc)}" alt="${escapeAttr(label)}" loading="lazy" onerror="handleGalleryImageError(this)">
       </a>
       ${buildGalleryCaptionHtml(item)}
+      ${buildGalleryFeedbackHtml(item)}
     </div>`;
     }).join('');
     grid.querySelectorAll('.gallery-thumb').forEach(btn=>{
@@ -3293,6 +3412,36 @@ async function loadLivingWordItems(){
 
 loadLivingWordItems();
 
+async function loadGalleryFeedback(){
+  if(!supabaseClient){
+    galleryFeedback=normalizeGalleryFeedback(loadStoredItems(GALLERY_FEEDBACK_STORAGE,[]));
+    renderGallery();
+    return;
+  }
+  try{
+    const {data,error}=await supabaseClient
+      .from('gallery_feedback')
+      .select('id,gallery_id,language,reaction_emoji,message,created_at,is_visible')
+      .eq('is_visible',true)
+      .order('created_at',{ascending:false})
+      .limit(300);
+    if(error)throw error;
+    galleryFeedback=normalizeGalleryFeedback((data||[]).map(entry=>({
+      id:'gf-'+String(entry.id),
+      galleryId:entry.gallery_id||'',
+      language:entry.language==='ko'?'ko':'en',
+      reactionEmoji:entry.reaction_emoji||'',
+      message:entry.message||'',
+      createdAt:entry.created_at||new Date().toISOString()
+    })));
+    renderGallery();
+  }catch(_error){
+    galleryFeedbackUsesSupabase=false;
+    galleryFeedback=normalizeGalleryFeedback(loadStoredItems(GALLERY_FEEDBACK_STORAGE,[]));
+    renderGallery();
+  }
+}
+
 async function loadGalleryItems(){
   if(!supabaseClient){
     galleryItems=normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY,SUPABASE_STORAGE_GALLERY_ITEMS));
@@ -3315,6 +3464,7 @@ async function loadGalleryItems(){
 }
 
 loadGalleryItems();
+loadGalleryFeedback();
 
 bindTopicButtons();
 
