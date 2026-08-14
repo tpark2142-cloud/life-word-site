@@ -3031,7 +3031,7 @@ function buildGalleryFeedbackHtml(item){
         ${GALLERY_FEEDBACK_EMOJIS.map(emoji=>`<button type="button" class="gallery-feedback-emoji" data-emoji="${escapeAttr(emoji)}" onclick="setGalleryFeedbackEmoji('${escapeAttr(feedbackId)}','${escapeAttr(emoji)}')" aria-label="${escapeAttr(emoji+' '+selectedLabel)}">${escapeHtml(emoji)}</button>`).join('')}
       </div>
       <textarea class="gallery-feedback-message" rows="2" maxlength="220" placeholder="${escapeAttr(lang==='ko'?'이 사진에서 느낀 마음을 짧게 나눠 보세요':'Share a small thought this photo brings to mind')}"></textarea>
-      <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'살짝 남기기':'Share')}</button>
+      <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'글쓰기':'Share')}</button>
     </div>
   </div>`;
 }
