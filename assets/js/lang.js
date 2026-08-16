@@ -1,4 +1,4 @@
-﻿(function(){
+(function(){
   const STORAGE_KEY='lifeword.siteLang';
   const POSITION_KEY='lifeword.langSwitcherPosition.v1';
   const DRAG_THRESHOLD=6;
@@ -9,13 +9,18 @@
   }
 
   function getSiteLanguage(){
+    const runtimeLang = window.__lifewordSiteLang;
+    const dataLang = document.documentElement.getAttribute('data-site-lang');
+    const htmlLang = document.documentElement.getAttribute('lang');
+    if(runtimeLang === 'ko' || runtimeLang === 'en')return normalizeLanguage(runtimeLang);
+    if(dataLang === 'ko' || dataLang === 'en')return normalizeLanguage(dataLang);
     try{
-      return normalizeLanguage(localStorage.getItem(STORAGE_KEY) || 'en');
-    }catch(_error){
-      return 'en';
-    }
+      const storedLang = localStorage.getItem(STORAGE_KEY);
+      if(storedLang === 'ko' || storedLang === 'en')return normalizeLanguage(storedLang);
+    }catch(_error){}
+    if(htmlLang === 'ko' || htmlLang === 'en')return normalizeLanguage(htmlLang);
+    return 'en';
   }
-
   function updateButtons(lang){
     document.querySelectorAll('[data-lang-btn]').forEach(button => {
       const active = button.getAttribute('data-lang-btn') === lang;

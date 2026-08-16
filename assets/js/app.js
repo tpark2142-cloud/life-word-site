@@ -1,4 +1,4 @@
-﻿// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // MODAL (for emotion cards)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const EMOTION_MODAL_KO = {
@@ -16,6 +16,59 @@ const EMOTION_MODAL_KO = {
   Discouragement: { title:'낙심', note:'가장 낮은 자리에서도 하나님은 멀리 계시지 않으며 새 힘을 주십니다.' }
 };
 
+
+const EMOTION_CARD_KO = {
+  Joy: { title:'기쁨', hint:'“주 안에서 항상 기뻐하라. 내가 다시 말하노니 기뻐하라.”', tap:'전체 말씀 보기' },
+  Sorrow: { title:'슬픔', hint:'“주께서는 마음이 상한 자들을 가까이하십니다.”', tap:'전체 말씀 보기' },
+  Peace: { title:'평안', hint:'“하나님의 평강이 너희 마음과 생각을 지키시리라.”', tap:'전체 말씀 보기' },
+  Hope: { title:'소망', hint:'“소망의 하나님께서 기쁨과 평강으로 너희를 채우시기를 원합니다.”', tap:'전체 말씀 보기' },
+  Fear: { title:'두려움', hint:'“두려워하지 말라. 내가 너와 함께함이라.”', tap:'전체 말씀 보기' },
+  Anxiety: { title:'불안', hint:'“너희 염려를 다 주께 맡기라. 이는 그분께서 너희를 돌보심이라.”', tap:'전체 말씀 보기' },
+  Loneliness: { title:'외로움', hint:'“내가 결코 너를 떠나지 아니하고 버리지 아니하리라.”', tap:'전체 말씀 보기' },
+  Anger: { title:'분노', hint:'“분을 내어도 죄를 짓지 말라.”', tap:'전체 말씀 보기' },
+  Gratitude: { title:'감사', hint:'“모든 일에 감사하라.”', tap:'전체 말씀 보기' },
+  Guilt: { title:'죄책감과 후회', hint:'“우리가 죄를 자백하면 그는 신실하시고 의로우사 용서하십니다.”', tap:'전체 말씀 보기' },
+  Love: { title:'사랑', hint:'“하나님이 세상을 이처럼 사랑하사 독생자를 주셨습니다.”', tap:'전체 말씀 보기' },
+  Discouragement: { title:'낙심', hint:'“주를 앙망하는 자는 새 힘을 얻으리라.”', tap:'전체 말씀 보기' }
+};
+
+const EMOTION_CARD_EN = {
+  Joy: { title:'Joy', hint:'“Rejoice in the Lord always; again I will say, rejoice.”', tap:'Tap for full verses' },
+  Sorrow: { title:'Sorrow', hint:'“The Lord is near to the brokenhearted.”', tap:'Tap for full verses' },
+  Peace: { title:'Peace', hint:'“The peace of God will guard your hearts.”', tap:'Tap for full verses' },
+  Hope: { title:'Hope', hint:'“The God of hope fill you with joy and peace.”', tap:'Tap for full verses' },
+  Fear: { title:'Fear', hint:'“Fear not, for I am with you; I am your God.”', tap:'Tap for full verses' },
+  Anxiety: { title:'Anxiety', hint:'“Cast all your anxieties on him, because he cares.”', tap:'Tap for full verses' },
+  Loneliness: { title:'Loneliness', hint:'“I will never leave you nor forsake you.”', tap:'Tap for full verses' },
+  Anger: { title:'Anger', hint:'“Be angry and do not sin; do not let the sun go down.”', tap:'Tap for full verses' },
+  Gratitude: { title:'Gratitude', hint:'“Give thanks in all circumstances.”', tap:'Tap for full verses' },
+  Guilt: { title:'Guilt & Regret', hint:'“If we confess our sins, he is faithful to forgive.”', tap:'Tap for full verses' },
+  Love: { title:'Love', hint:'“God so loved the world that he gave his only Son.”', tap:'Tap for full verses' },
+  Discouragement: { title:'Discouragement', hint:'“They who wait for the Lord shall renew their strength.”', tap:'Tap for full verses' }
+};
+
+function refreshEmotionCardsForLanguage(){
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():getCurrentSiteLanguage();
+  const copy=lang==='ko'?EMOTION_CARD_KO:EMOTION_CARD_EN;
+  document.querySelectorAll('.emotion-grid .ec[onclick]').forEach(card=>{
+    const onclick=card.getAttribute('onclick') || '';
+    const match=onclick.match(/openEmotion\('([^']+)'\)/);
+    if(!match || !copy[match[1]])return;
+    const item=copy[match[1]];
+    const title=card.querySelector('h3');
+    const hint=card.querySelector('.ec-hint');
+    const tap=card.querySelector('.ec-tap');
+    if(title)title.textContent=item.title;
+    if(hint)hint.textContent=item.hint;
+    if(tap)tap.textContent=item.tap;
+  });
+  const label=document.querySelector('#emotions .s-lbl');
+  const title=document.querySelector('#emotions .s-title');
+  const intro=document.querySelector('#emotions .s-intro');
+  if(label)label.textContent=lang==='ko'?'마음의 나침반':'The Heart’s Compass';
+  if(title)title.textContent=lang==='ko'?'감정별로 말씀 찾기':'Explore by Emotion';
+  if(intro)intro.textContent=lang==='ko'?'아래 감정을 선택하면 그 마음에 직접 말해 주는 성경구절을 볼 수 있습니다.':'Click any emotion below — and see the actual Bible verses that speak directly to that feeling.';
+}
 const KOREAN_VERSE_BY_REF = {
   'Philippians 4:13': '내게 능력 주시는 그리스도를 통하여 내가 모든 것을 할 수 있느니라.',
   'Philippians 4:4': '주 안에서 항상 기뻐하라. 내가 다시 말하노니 기뻐하라.',
@@ -359,15 +412,19 @@ const KOREAN_BOOK_NAMES = {
 };
 
 function getCurrentSiteLanguage(){
-  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
-  if(htmlLang.startsWith('ko')) return 'ko';
-  if(htmlLang.startsWith('en')) return 'en';
+  const runtimeLang = (window.__lifewordSiteLang || '').toLowerCase();
+  if(runtimeLang.startsWith('ko')) return 'ko';
+  if(runtimeLang.startsWith('en')) return 'en';
   const dataLang = (document.documentElement.getAttribute('data-site-lang') || '').toLowerCase();
   if(dataLang.startsWith('ko')) return 'ko';
   if(dataLang.startsWith('en')) return 'en';
   try{
-    if(localStorage.getItem('lifeword.siteLang') === 'ko') return 'ko';
+    const storedLang = localStorage.getItem('lifeword.siteLang');
+    if(storedLang === 'ko') return 'ko';
+    if(storedLang === 'en') return 'en';
   }catch(_error){}
+  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+  if(htmlLang.startsWith('ko')) return 'ko';
   return 'en';
 }
 
@@ -559,7 +616,8 @@ function getLocalizedTopicResult(topic, lang){
 
 function openEmotion(name){
   const d=EMOTIONS[name];if(!d)return;
-  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  window.__lifewordOpenEmotionName = name;
+  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():getCurrentSiteLanguage();
   const localized=lang==='ko' ? (EMOTION_MODAL_KO[name] || null) : null;
   document.getElementById('m-icon').textContent=d.icon;
   document.getElementById('m-cat').textContent=lang==='ko'?'감정':'Emotion';
@@ -591,6 +649,8 @@ function refreshOpenEmotionModalForLanguage(){
   openEmotion(window.__lifewordOpenEmotionName);
 }
 window.addEventListener('lifeword:languagechange', refreshOpenEmotionModalForLanguage);
+window.addEventListener('lifeword:languagechange', refreshEmotionCardsForLanguage);
+document.addEventListener('DOMContentLoaded', refreshEmotionCardsForLanguage);
 
 function closeModal(e){
   if(e&&e.target!==document.getElementById('modal-overlay')&&e.type==='click'&&e.currentTarget===document.getElementById('modal-overlay')){
