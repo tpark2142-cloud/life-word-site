@@ -1226,7 +1226,8 @@ function getHeroIntentScore(query, topicName){
   }, 0);
 }
 
-function doHeroSearch(){
+function doHeroSearch(options){
+  const settings=options||{};
   const q=inp.value.trim().toLowerCase();
   const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
   if(!q){clearHeroSearch();return;}
@@ -1292,7 +1293,13 @@ function doHeroSearch(){
       rg.appendChild(c);
     });
   }
-  rs.scrollIntoView({behavior:'smooth',block:'start'});
+  if(!settings.preserveScroll){
+    rs.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function refreshHeroSearchForLanguage(){
+  if(!inp || !rs || rs.style.display!=='block' || !inp.value.trim())return;
+  doHeroSearch({preserveScroll:true});
 }
 // Self-contained tab switcher for search results â€” uses pure DOM traversal, no getElementById
 function rTab(btn){
@@ -1797,6 +1804,7 @@ window.addEventListener('lifeword:languagechange', injectTopicBonusVerses);
 window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
 window.addEventListener('lifeword:languagechange', updateStaticTopicEsvCards);
 window.addEventListener('lifeword:languagechange', applyHomepageDailyMeditation);
+window.addEventListener('lifeword:languagechange', refreshHeroSearchForLanguage);
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
@@ -3449,8 +3457,6 @@ applyHomepageDailyMeditation();
   scheduleDailyVerseRefresh();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
-
-
 
 
 
