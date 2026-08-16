@@ -136,6 +136,22 @@ const KOREAN_VERSE_BY_REF = {
   ,'Psalm 95:6': '오라, 우리가 경배하며 몸을 굽히고 우리를 지으신 주 앞에 무릎을 꿇자.'
   ,'Matthew 28:19': '그러므로 너희는 가서 모든 민족들을 가르치고 아버지와 아들과 성령의 이름으로 그들에게 침례를 주며'
   ,'John 14:2': '내 아버지 집에는 거할 곳이 많도다. 그렇지 않으면 내가 너희에게 말하였으리라. 내가 너희를 위하여 처소를 마련하러 가노니'
+  ,'Acts 1:8': '오직 성령님께서 너희에게 임하신 뒤에 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 되리라.'
+  ,'Colossians 3:12': '그러므로 너희는 하나님의 택하신 자요 거룩하고 사랑받는 자로서 긍휼과 친절과 겸손과 온유와 오래 참음을 입으라.'
+  ,'Hebrews 13:15': '그러므로 우리가 그분으로 말미암아 항상 찬양의 희생을 하나님께 드리자. 이것은 그분의 이름에 감사하는 우리 입술의 열매니라.'
+  ,'Isaiah 43:19': '보라, 내가 새 일을 행하리니 이제 그것이 나타날 것이라. 너희가 그것을 알지 못하겠느냐? 내가 광야에 길을, 사막에 강들을 내리라.'
+  ,'John 13:34': '내가 너희에게 새 명령을 주노니, 서로 사랑하라. 내가 너희를 사랑한 것 같이 너희도 서로 사랑하라.'
+  ,'Matthew 28:19-20': '그러므로 너희는 가서 모든 민족들을 가르치고 아버지와 아들과 성령의 이름으로 그들에게 침례를 주며, 내가 너희에게 명령한 모든 것을 가르쳐 지키게 하라. 보라, 내가 세상 끝까지 너희와 항상 함께 있으리라.'
+  ,'Proverbs 3:5': '네 마음을 다하여 주를 신뢰하고 네 자신의 명철을 의지하지 말라.'
+  ,'Psalm 100:2': '즐거움으로 주를 섬기고 노래하며 그분 앞에 나아갈지어다.'
+  ,'Psalm 139:7-8': '내가 주의 영으로부터 벗어나 어디로 가며 주의 면전에서 벗어나 어디로 피하리이까? 내가 하늘로 올라갈지라도 주께서 거기 계시며 지옥에 내 자리를 펼지라도, 보소서, 주께서 거기 계시나이다.'
+  ,'Psalm 92:14': '그들은 늙어서도 여전히 열매를 맺으며 기름지고 번성하리로다.'
+  ,'Romans 8:26': '이와 같이 성령께서도 우리의 연약함을 도우시느니라.'
+
+  ,'2 Corinthians 5:8': '우리는 확신에 차 있으며 차라리 몸을 떠나 주와 함께 있기를 원하노라.'
+  ,'Isaiah 40:29': '그는 피곤한 자에게 능력을 주시며 무능한 자에게 힘을 더하시나니'
+  ,'James 1:2-3': '나의 형제들아, 너희가 여러 가지 시험에 빠질 때면 그것을 모두 기쁨으로 여기라. 이는 너희 믿음의 시련이 인내를 이루는 줄 너희가 앎이라.'
+  ,'Romans 6:23': '죄의 삯은 사망이나 하나님의 선물은 예수 그리스도 우리 주를 통한 영원한 생명이니라.'
 };
 
 const KOREAN_ESV_BY_REF = {
@@ -228,6 +244,31 @@ const KOREAN_ESV_BY_REF = {
   'Psalm 30:5': '울음은 밤새도록 머물 수 있으나 기쁨은 아침에 옵니다.',
   'Proverbs 18:22': '아내를 얻는 자는 좋은 것을 얻고 주께 은총을 받습니다.',
   'Ecclesiastes 4:9': '두 사람이 한 사람보다 나음은 그들이 수고함으로 좋은 보상을 얻기 때문입니다.'
+  ,'1 Samuel 15:22': '여호와께서 번제와 제사를 여호와의 음성에 순종하는 것만큼 기뻐하시겠습니까? 순종이 제사보다 낫고 듣는 것이 숫양의 기름보다 낫습니다.'
+  ,'1 Timothy 6:6': '그러나 자족하는 마음이 있으면 경건은 큰 유익이 됩니다.'
+  ,'2 Corinthians 1:3-4': '긍휼의 아버지이시며 모든 위로의 하나님을 찬송합시다. 그는 우리의 모든 환난 가운데서 우리를 위로하십니다.'
+  ,'Colossians 3:13': '서로 용납하고 누가 누구에게 불평할 일이 있거든 서로 용서하십시오. 주께서 여러분을 용서하신 것처럼 여러분도 용서하십시오.'
+  ,'Ephesians 5:25': '남편들이여, 그리스도께서 교회를 사랑하시고 교회를 위하여 자신을 주신 것처럼 아내를 사랑하십시오.'
+  ,'Galatians 6:2': '서로의 짐을 지십시오. 그리하여 그리스도의 법을 이루십시오.'
+  ,'Isaiah 46:4': '너희가 늙어도 나는 그이며, 너희가 백발이 되어도 내가 너희를 품을 것이다. 내가 지었으니 내가 안고 품으며 구원할 것이다.'
+  ,'John 11:35': '예수께서 눈물을 흘리셨습니다.'
+  ,'John 14:15': '너희가 나를 사랑하면 내 계명을 지킬 것이다.'
+  ,'Matthew 6:33': '너희는 먼저 하나님의 나라와 그의 의를 구하라. 그리하면 이 모든 것을 너희에게 더하실 것이다.'
+  ,'Philippians 4:11': '내가 궁핍해서 말하는 것이 아닙니다. 나는 어떤 형편에 있든지 만족하는 법을 배웠습니다.'
+  ,'Philippians 4:13': '내게 능력 주시는 이 안에서 내가 모든 것을 할 수 있습니다.'
+  ,'Philippians 4:19': '나의 하나님께서 그리스도 예수 안에서 영광 가운데 그의 풍성함을 따라 여러분의 모든 필요를 채워 주실 것입니다.'
+  ,'Psalm 32:8': '내가 네가 가야 할 길을 네게 가르치고 훈계하겠으며 내 눈으로 너를 지도하겠다.'
+  ,'Acts 1:8': '오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아와 땅 끝까지 이르러 내 증인이 될 것이다.'
+  ,'Colossians 3:12': '그러므로 너희는 하나님께 택함 받은 거룩하고 사랑받는 자로서 긍휼과 친절과 겸손과 온유와 오래 참음을 입으십시오.'
+  ,'Hebrews 13:15': '그러므로 우리는 예수로 말미암아 항상 찬양의 제사를 하나님께 드립시다. 이는 그의 이름을 고백하는 입술의 열매입니다.'
+  ,'Isaiah 43:19': '보라, 내가 새 일을 행하고 있다. 이제 그것이 나타나니 너희가 알지 못하겠느냐? 내가 광야에 길을, 사막에 강을 내겠다.'
+  ,'John 13:34': '내가 너희에게 새 계명을 준다. 서로 사랑하라. 내가 너희를 사랑한 것처럼 너희도 서로 사랑하라.'
+  ,'Matthew 28:19-20': '그러므로 너희는 가서 모든 민족을 제자로 삼고 아버지와 아들과 성령의 이름으로 세례를 베풀며, 내가 너희에게 명령한 모든 것을 지키도록 가르치라. 보라, 내가 세상 끝날까지 너희와 항상 함께 있을 것이다.'
+  ,'Proverbs 3:5': '너는 마음을 다하여 여호와를 신뢰하고 네 명철을 의지하지 말라.'
+  ,'Psalm 100:2': '기쁨으로 여호와를 섬기며 노래하면서 그의 앞에 나아가라.'
+  ,'Psalm 139:7-8': '내가 주의 영을 떠나 어디로 가며 주의 임재를 떠나 어디로 피하겠습니까? 내가 하늘에 올라가도 주께서 거기 계시며 스올에 내 자리를 펴도 주께서 거기 계십니다.'
+  ,'Psalm 92:14': '그들은 늙어서도 여전히 열매를 맺으며 진액이 풍족하고 푸르를 것입니다.'
+  ,'Romans 8:26': '이와 같이 성령도 우리의 연약함을 도우십니다.'
 };
 
 function normalizeVerseRef(ref) {
@@ -318,13 +359,15 @@ const KOREAN_BOOK_NAMES = {
 };
 
 function getCurrentSiteLanguage(){
+  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+  if(htmlLang.startsWith('ko')) return 'ko';
+  if(htmlLang.startsWith('en')) return 'en';
+  const dataLang = (document.documentElement.getAttribute('data-site-lang') || '').toLowerCase();
+  if(dataLang.startsWith('ko')) return 'ko';
+  if(dataLang.startsWith('en')) return 'en';
   try{
     if(localStorage.getItem('lifeword.siteLang') === 'ko') return 'ko';
   }catch(_error){}
-  const htmlLang = (document.documentElement.getAttribute('lang') || '').toLowerCase();
-  if(htmlLang.startsWith('ko')) return 'ko';
-  const dataLang = (document.documentElement.getAttribute('data-site-lang') || '').toLowerCase();
-  if(dataLang.startsWith('ko')) return 'ko';
   return 'en';
 }
 
@@ -334,6 +377,7 @@ function syncDocumentLanguage(lang){
     document.documentElement.setAttribute('lang', next);
     document.documentElement.setAttribute('data-site-lang', next);
   }
+  window.__lifewordSiteLang = next;
 }
 
 function applyDocumentLanguageFromState(){
@@ -541,6 +585,13 @@ function openEmotion(name){
   document.getElementById('modal-overlay').classList.add('show');
   document.body.style.overflow='hidden';
 }
+function refreshOpenEmotionModalForLanguage(){
+  const overlay=document.getElementById('modal-overlay');
+  if(!overlay || !overlay.classList.contains('show') || !window.__lifewordOpenEmotionName)return;
+  openEmotion(window.__lifewordOpenEmotionName);
+}
+window.addEventListener('lifeword:languagechange', refreshOpenEmotionModalForLanguage);
+
 function closeModal(e){
   if(e&&e.target!==document.getElementById('modal-overlay')&&e.type==='click'&&e.currentTarget===document.getElementById('modal-overlay')){
     if(!document.getElementById('modal-overlay').contains(e.target)||e.target===document.getElementById('modal-overlay')){

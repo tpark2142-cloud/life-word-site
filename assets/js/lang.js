@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const STORAGE_KEY='lifeword.siteLang';
   const POSITION_KEY='lifeword.langSwitcherPosition.v1';
   const DRAG_THRESHOLD=6;
@@ -28,6 +28,8 @@
     const settings = options || {};
     const next = normalizeLanguage(lang);
     document.documentElement.lang = next;
+    document.documentElement.setAttribute('data-site-lang', next);
+    window.__lifewordSiteLang = next;
     updateButtons(next);
     if(typeof window.applyPageLanguage === 'function'){
       window.applyPageLanguage(next);
