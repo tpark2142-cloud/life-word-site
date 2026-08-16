@@ -1229,7 +1229,7 @@ function getHeroIntentScore(query, topicName){
 function doHeroSearch(options){
   const settings=options||{};
   const q=inp.value.trim().toLowerCase();
-  const lang=typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en';
+  const lang=settings.lang==='ko'?'ko':(settings.lang==='en'?'en':(typeof window.getSiteLanguage==='function'?window.getSiteLanguage():'en'));
   if(!q){clearHeroSearch();return;}
   cb.style.display='block';
   const words=typeof normalizeWords==='function'
@@ -1297,9 +1297,10 @@ function doHeroSearch(options){
     rs.scrollIntoView({behavior:'smooth',block:'start'});
   }
 }
-function refreshHeroSearchForLanguage(){
+function refreshHeroSearchForLanguage(event){
   if(!inp || !rs || rs.style.display!=='block' || !inp.value.trim())return;
-  doHeroSearch({preserveScroll:true});
+  const nextLang=event && event.detail && event.detail.lang==='ko' ? 'ko' : 'en';
+  doHeroSearch({preserveScroll:true,lang:nextLang});
 }
 // Self-contained tab switcher for search results â€” uses pure DOM traversal, no getElementById
 function rTab(btn){
