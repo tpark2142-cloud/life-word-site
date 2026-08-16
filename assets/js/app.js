@@ -1750,58 +1750,6 @@ function updateStaticTopicEsvCards(){
   });
 }
 
-function localizeDiscouragementTopicText(){
-  const lang=typeof window.getSiteLanguage==='function' ? window.getSiteLanguage() : 'en';
-  const isKo=lang==='ko';
-  const setOriginalText=(el, koText)=>{
-    if(!el)return;
-    if(!el.dataset.enOriginal){
-      el.dataset.enOriginal=el.textContent.trim();
-    }
-    el.textContent=isKo ? koText : el.dataset.enOriginal;
-  };
-  const setOriginalVerse=(id, koText)=>{
-    const verse=document.querySelector('#'+id+' p');
-    setOriginalText(verse, koText);
-  };
-
-  document.querySelectorAll(".ec[onclick=\"openEmotion('Discouragement')\"]").forEach(card=>{
-    setOriginalText(card.querySelector('h3'), '낙심');
-    setOriginalText(card.querySelector('.ec-hint'), '“주를 바라는 자는 새 힘을 얻습니다.”');
-    setOriginalText(card.querySelector('.ec-tap'), '전체 말씀 보기');
-  });
-
-  document.querySelectorAll('.topic-item').forEach(item=>{
-    const button=item.querySelector('.topic-btn');
-    const note=item.querySelector('.tp-note');
-    if(!button || !note)return;
-    const buttonText=(button.textContent||'').replace(/\s*\+\s*$/,'').trim();
-    const noteText=(note.dataset.enOriginal || note.textContent || '').trim();
-    if(buttonText!=='Discouragement' && buttonText!=='낙심' && !noteText.includes('God renews those who wait on Him')){
-      return;
-    }
-    if(!button.dataset.enOriginal){
-      button.dataset.enOriginal='Discouragement';
-    }
-    const icon=button.querySelector('.t-icon');
-    button.childNodes.forEach(node=>{
-      if(node.nodeType===Node.TEXT_NODE){
-        node.nodeValue=isKo ? '낙심 ' : button.dataset.enOriginal + ' ';
-      }
-    });
-    if(icon){
-      button.appendChild(icon);
-    }
-    setOriginalText(note, '가장 낮은 자리에서도 하나님은 주를 기다리는 자에게 새 힘을 주십니다.');
-  });
-
-  setOriginalVerse('tp6030k', '오직 주를 앙망하는 자는 자기의 힘을 새롭게 하리니 독수리처럼 날개로 치솟을 것이요, 그들이 달려도 피곤치 않으며 걸어도 곤비치 아니하리라.');
-  setOriginalVerse('tp6030e', '오직 주를 바라는 자는 새 힘을 얻어 독수리처럼 날개 치며 올라갈 것입니다.');
-  setOriginalVerse('tp6031k', '오 내 혼아, 어찌하여 네가 낙담하느냐? 너는 하나님을 바라라. 내가 여전히 그분을 찬양하리라.');
-  setOriginalVerse('tp6031e', '내 영혼아, 네가 어찌하여 낙심하는가? 하나님을 바라라. 내가 다시 그를 찬양할 것이다.');
-  setOriginalVerse('tp6032k', '강건하고 담대하라. 무서워 말고 낙심치 말라. 주 네 하나님이 네가 어디로 가든지 너와 함께하느니라.');
-  setOriginalVerse('tp6032e', '강하고 담대하라. 두려워하지 말라. 네가 어디로 가든지 주 네 하나님이 너와 함께하신다.');
-}
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // SIDEBAR TOGGLE (MOBILE)
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -1854,13 +1802,11 @@ bindTopicButtons();
 injectTopicBonusVerses();
 updateStaticKjvCards();
 updateStaticTopicEsvCards();
-localizeDiscouragementTopicText();
 window.addEventListener('lifeword:languagechange', injectTopicBonusVerses);
 window.addEventListener('lifeword:languagechange', updateStaticKjvCards);
 window.addEventListener('lifeword:languagechange', updateStaticTopicEsvCards);
 window.addEventListener('lifeword:languagechange', applyHomepageDailyMeditation);
 window.addEventListener('lifeword:languagechange', refreshHeroSearchForLanguage);
-window.addEventListener('lifeword:languagechange', localizeDiscouragementTopicText);
 
 // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // TRAVEL GALLERY â€” LIGHTBOX
