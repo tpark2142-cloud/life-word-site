@@ -1507,19 +1507,19 @@ function runAiWorkspaceSearch(){
   const workspaceResult=document.getElementById('ai-workspace-result');
   const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
   const preparedQuestion=lang==='ko'
-    ? '다음 질문에 대해 이해하기 쉽게 답해 주세요. 핵심 내용을 짧게 정리하고, 필요하면 성경적 관점에서 생각해 볼 질문도 제안해 주세요: "'+query+'"'
-    : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest a few thoughtful follow-up questions when helpful: "'+query+'"';
+    ? '다음 질문에 대해 이해하기 쉽게 답해 주세요. 핵심을 짧게 정리하고, 실제로 도움이 되는 다음 단계도 알려 주세요. 성경이나 신앙과 관련된 질문이라면 관련 성경적 관점도 함께 제안해 주세요: "'+query+'"'
+    : 'Please answer this question clearly. Give a short summary, explain the key points step by step, and suggest practical next steps. If the question relates to faith or the Bible, include a thoughtful Bible-based perspective: "'+query+'"';
   const encodedPrompt=encodeURIComponent(preparedQuestion);
   const searchRows=[
-    {name:'ChatGPT',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 로그인 상태나 기기에 따라 비어 있으면 위 질문을 선택해 붙여 넣어 주세요.':'Opens with your question when the device allows it. If it opens blank, select and paste the prepared question above.',href:'https://chatgpt.com/?q='+encodedPrompt},
-    {name:'Perplexity',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 출처 확인에 좋습니다.':'Opens with your question. Good for source-based answers.',href:'https://www.perplexity.ai/search/new?q='+encodedPrompt},
-    {name:'Microsoft Copilot',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 기기에 따라 비어 있으면 위 질문을 붙여 넣어 주세요.':'Opens with your question when supported. If it opens blank, paste the prepared question above.',href:'https://copilot.microsoft.com/?q='+encodedPrompt},
+    {name:'ChatGPT',kind:'auto',note:lang==='ko'?'대부분 질문이 함께 열립니다. 비어 있으면 복사된 질문을 붙여 넣어 주세요.':'Usually opens with your question. If it opens blank, paste the copied question.',href:'https://chatgpt.com/?q='+encodedPrompt},
+    {name:'Perplexity',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 출처가 있는 답변을 비교할 때 좋습니다.':'Opens with your question. Good for comparing answers with sources.',href:'https://www.perplexity.ai/search/new?q='+encodedPrompt},
+    {name:'Microsoft Copilot',kind:'auto',note:lang==='ko'?'질문이 함께 열립니다. 일상 질문과 웹 검색을 함께 볼 때 좋습니다.':'Opens with your question when supported. Good for everyday questions and web help.',href:'https://copilot.microsoft.com/?q='+encodedPrompt},
     {name:'Brave Search',kind:'auto',note:lang==='ko'?'질문으로 검색 결과가 열립니다. 빠른 자료 확인에 좋습니다.':'Opens search results for your question. Useful for quick web checking.',href:'https://search.brave.com/search?q='+encodedPrompt},
-    {name:'Felo AI',kind:'auto',note:lang==='ko'?'질문 검색 화면으로 열립니다. 다국어 자료 탐색에 좋습니다.':'Opens a search page for your question. Useful for multilingual research.',href:'https://felo.ai/search?q='+encodedPrompt},
-    {name:'Claude',kind:'paste',note:lang==='ko'?'Claude는 외부 사이트 보안 때문에 자동 입력이 제한될 수 있습니다. 위 질문을 선택해 붙여 넣어 주세요.':'Claude may block website pre-filled text. Select the prepared question above, then paste it after opening.',href:'https://claude.ai/'},
-    {name:'Genspark',kind:'paste',note:lang==='ko'?'도구가 열린 뒤 위 질문을 붙여 넣어 주세요.':'Open the tool, then paste the prepared question above.',href:'https://www.genspark.ai/'},
-    {name:'Gemini',kind:'paste',note:lang==='ko'?'Gemini는 휴대폰/태블릿에서 자동 입력이 자주 막힙니다. 위 질문을 선택해 복사한 뒤 새 탭에서 붙여 넣어 주세요.':'Gemini often blocks pre-filled text on phones and tablets. Select and copy the prepared question above, then paste it in the new tab.',href:'open-gemini.html?q='+encodedPrompt},
-    {name:'Grok',kind:'paste',note:lang==='ko'?'Grok은 휴대폰에서 자동 입력이 불안정합니다. 위 질문을 선택해 복사한 뒤 새 탭에서 붙여 넣어 주세요.':'Grok auto-fill is unstable on phones. Select and copy the prepared question above, then paste it in the new tab.',href:'open-grok.html?q='+encodedPrompt}
+    {name:'Felo AI',kind:'auto',note:lang==='ko'?'질문 검색 화면으로 열립니다. 영어/한글 자료를 함께 찾을 때 좋습니다.':'Opens a search page for your question. Useful for multilingual research.',href:'https://felo.ai/search?q='+encodedPrompt},
+    {name:'Claude',kind:'paste',note:lang==='ko'?'자동 입력이 제한될 수 있습니다. 먼저 질문 복사를 누른 뒤 Claude에 붙여 넣어 주세요.':'Auto-fill may be blocked. Copy the question first, then paste it into Claude.',href:'https://claude.ai/'},
+    {name:'Genspark',kind:'paste',note:lang==='ko'?'먼저 질문 복사를 누른 뒤 도구가 열리면 붙여 넣어 주세요.':'Copy the question first, then paste it after the tool opens.',href:'https://www.genspark.ai/'},
+    {name:'Gemini',kind:'paste',note:lang==='ko'?'자동 입력이 막힐 수 있습니다. 질문 복사를 누른 뒤 새 탭에서 붙여 넣어 주세요.':'Auto-fill may be blocked. Copy the question, then paste it in the new tab.',href:'open-gemini.html?q='+encodedPrompt},
+    {name:'Grok',kind:'paste',note:lang==='ko'?'자동 입력이 불안정할 수 있습니다. 질문 복사를 누른 뒤 붙여 넣어 주세요.':'Auto-fill can be inconsistent. Copy the question, then paste it after opening.',href:'open-grok.html?q='+encodedPrompt}
   ];
   const creativeRows=[
     {name:'Suno AI',kind:'paste',note:lang==='ko'?'음악 아이디어나 가사를 붙여 넣어 실험해 보세요.':'Paste a music idea or lyric prompt to experiment.',href:'https://suno.com/'},
@@ -1556,14 +1556,14 @@ function runAiWorkspaceSearch(){
     workspaceResult.innerHTML=''
       +'<div class="ai-workspace-box">'
       +'<h3 class="ai-workspace-title">'+(lang==='ko'?'AI 놀이터 질문':'AI Playground Question')+'</h3>'
-      +'<p class="ai-workspace-copy">'+(lang==='ko'?'가능한 AI 도구는 질문이 함께 열립니다. 자동 입력이 막히는 도구는 아래 질문을 선택해 복사한 뒤 붙여 넣어 주세요.':'Tools that allow it will open with your question. If an AI tool blocks automatic text, select and copy the question below, then paste it.')+'</p>'
+      +'<p class="ai-workspace-copy">'+(lang==='ko'?'성경 말씀, 글쓰기, 음악 아이디어, 생활 질문까지 한 문장으로 준비해 여러 AI 도구에서 바로 비교해 볼 수 있습니다.':'Prepare one question for Bible help, writing, music ideas, everyday questions, or learning, then compare answers across AI tools.')+'</p>'
       +'<div class="ai-workspace-prompt">'
       +'<div class="ai-workspace-kicker">'+(lang==='ko'?'묻기 좋은 문장':'Ready to Ask')+'</div>'
       +'<textarea id="ai-prepared-question-text" class="ai-prepared-question-field" readonly onclick="this.focus();this.select();">'+escapeHtmlAi(preparedQuestion)+'</textarea>'
       +'</div>'
-      +'<div class="ai-tool-launch-intro"><strong>'+(lang==='ko'?'사용 안내':'How it works')+'</strong><span>'+(lang==='ko'?'질문 자동 도구는 바로 답변 화면으로 이동합니다. 직접 붙여넣기 도구는 외부 사이트 보안 때문에 자동 입력이 제한됩니다.':'Auto Ask tools open with the question. Manual Paste tools cannot always receive text from another website because of outside-site security.')+'</span></div>'
+      +'<div class="ai-tool-launch-intro"><strong>'+(lang==='ko'?'사용 안내':'How it works')+'</strong><span>'+(lang==='ko'?'질문 자동 도구는 가능한 경우 질문이 함께 열립니다. 직접 붙여넣기 도구는 보안상 자동 입력이 어려우므로 먼저 질문 복사를 누르고 새 탭에 붙여 넣으면 됩니다.':'Auto Ask tools open with the question when possible. Manual Paste tools block outside text for security, so copy the question first and paste it in the new tab.')+'</span></div>'
       +'<div class="ai-workspace-links">'
-      +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="selectAiPreparedQuestion()">'+(lang==='ko'?'질문 선택':'Select Question')+'</button>'
+      +'<button class="ai-submit" id="ai-copy-question-btn" type="button" onclick="selectAiPreparedQuestion()">'+(lang==='ko'?'질문 복사':'Copy Question')+'</button>'
       +'</div>'
       +'<div class="ai-tool-launch-list">'+searchLaunchList+'</div>'
       +'</div>';
@@ -1652,17 +1652,25 @@ function selectAiPreparedQuestion(){
   const field=document.getElementById('ai-prepared-question-text');
   const button=document.getElementById('ai-copy-question-btn');
   const lang=typeof getSiteLanguage==='function' && getSiteLanguage()==='ko' ? 'ko' : 'en';
+  const showCopied=()=>{
+    if(!button)return;
+    const original=button.textContent;
+    button.textContent=lang==='ko'?'복사됨':'Copied';
+    window.setTimeout(()=>{button.textContent=original;},1800);
+  };
   if(field){
     field.focus();
     field.select();
     field.setSelectionRange(0,field.value.length);
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(field.value).then(showCopied).catch(()=>{});
+    } else {
+      try{
+        document.execCommand('copy');
+        showCopied();
+      }catch(err){}
+    }
   }
-  if(button){
-    const original=button.textContent;
-    button.textContent=lang==='ko'?'선택됨':'Selected';
-    window.setTimeout(()=>{button.textContent=original;},1600);
-  }
-  window.alert(lang==='ko'?'질문이 선택되었습니다. Ctrl+C 또는 휴대폰의 복사 버튼으로 복사해 주세요.':'Question selected. Press Ctrl+C or use your phone copy button.');
 }
 function openAiToolWithFallback(url){
   const opened=window.open(url,'_blank','noopener,noreferrer');
@@ -3570,6 +3578,5 @@ applyHomepageDailyMeditation();
   scheduleDailyVerseRefresh();
   window.setTimeout(()=>openTodayMemoryVersePopup(false), 700);
 });
-
 
 
