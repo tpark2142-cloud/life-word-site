@@ -163,7 +163,7 @@
 
   window.addEventListener('load', () => {
     if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('service-worker.js?v=160').catch(() => {});
+      navigator.serviceWorker.register('service-worker.js?v=161').catch(() => {});
     }
     setTimeout(showPrompt, 1200);
   });
