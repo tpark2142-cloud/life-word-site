@@ -232,34 +232,21 @@ gtag('config', 'G-2SJCBS84VD');
     <h2 class="home-update-title" id="popular-pages-title">자주 찾는 삶의 순간을 위한 말씀</h2>
     <p class="home-update-copy" id="popular-pages-copy">불안, 슬픔, 치유와 어려운 시기에 필요한 성경 말씀과 기도를 찾아보세요.</p>
     <ul class="home-update-list" aria-label="Popular Bible verse pages">
-      <li><a id="popular-pages-link-1" href="../ko/bible-verses-for-anxiety.html" onclick="openPopularBiblePage('bible-verses-for-anxiety.html', this); return false;">불안할 때 성경 말씀</a></li>
-      <li><a id="popular-pages-link-2" href="../ko/bible-verses-for-grief.html" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">슬플 때 성경구절</a></li>
-      <li><a id="popular-pages-link-3" href="../ko/bible-verses-for-healing.html" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">치유를 위한 성경 말씀</a></li>
-      <li><a id="popular-pages-link-4" href="../en/prayers-for-healing.html" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
-      <li><a id="popular-pages-link-5" href="../en/bible-verses-for-loneliness.html" onclick="openPopularBiblePage('bible-verses-for-loneliness.html', this); return false;">Bible Verses for Loneliness</a></li>
-      <li><a id="popular-pages-link-6" href="../en/bible-verses-for-fear.html" onclick="openPopularBiblePage('bible-verses-for-fear.html', this); return false;">Bible Verses for Fear</a></li>
-      <li><a id="popular-pages-link-7" href="../en/bible-verses-for-sleep.html" onclick="openPopularBiblePage('bible-verses-for-sleep.html', this); return false;">Bible Verses for Sleep</a></li>
-      <li><a id="popular-pages-link-8" href="../en/prayer-before-surgery.html" onclick="openPopularBiblePage('prayer-before-surgery.html', this); return false;">Prayer Before Surgery</a></li>
-      <li><a id="popular-pages-link-9" href="../en/prayer-for-sick-family.html" onclick="openPopularBiblePage('prayer-for-sick-family.html', this); return false;">Prayer for a Sick Family Member</a></li>
-      <li><a id="popular-pages-link-10" href="../en/bible-verses-for-forgiveness.html" onclick="openPopularBiblePage('bible-verses-for-forgiveness.html', this); return false;">Bible Verses for Forgiveness</a></li>
-      <li><a id="popular-pages-link-11" href="../en/bible-verses-for-depression.html" onclick="openPopularBiblePage('bible-verses-for-depression.html', this); return false;">Bible Verses for Depression</a></li>
-      <li><a id="popular-pages-link-12" href="../en/prayer-for-anxiety.html" onclick="openPopularBiblePage('prayer-for-anxiety.html', this); return false;">Prayer for Anxiety</a></li>
-      <li><a id="popular-pages-link-13" href="../en/prayer-for-family.html" onclick="openPopularBiblePage('prayer-for-family.html', this); return false;">Prayer for Family</a></li>
-      <li><a id="popular-pages-link-14" href="../en/bible-verses-before-surgery.html" onclick="openPopularBiblePage('bible-verses-before-surgery.html', this); return false;">Bible Verses Before Surgery</a></li>
+      <li><a id="popular-pages-link-1" href="../ko/bible-verses-for-anxiety.html">불안할 때 성경 말씀</a></li>
+      <li><a id="popular-pages-link-2" href="../ko/bible-verses-for-grief.html">슬플 때 성경구절</a></li>
+      <li><a id="popular-pages-link-3" href="../ko/bible-verses-for-healing.html">치유를 위한 성경 말씀</a></li>
+      <li><a id="popular-pages-link-4" href="../ko/prayers-for-healing.html">치유를 위한 기도문</a></li>
+      <li><a id="popular-pages-link-5" href="../ko/bible-verses-for-loneliness.html">외로울 때 성경 말씀</a></li>
+      <li><a id="popular-pages-link-6" href="../ko/bible-verses-for-fear.html">두려울 때 성경 말씀</a></li>
+      <li><a id="popular-pages-link-7" href="../ko/bible-verses-for-sleep.html">잠이 오지 않을 때 성경 말씀</a></li>
+      <li><a id="popular-pages-link-8" href="../ko/prayer-before-surgery.html">수술 전 기도</a></li>
+      <li><a id="popular-pages-link-9" href="../ko/prayer-for-sick-family.html">아픈 가족을 위한 기도</a></li>
+      <li><a id="popular-pages-link-10" href="../ko/bible-verses-for-forgiveness.html">용서를 위한 성경 말씀</a></li>
+      <li><a id="popular-pages-link-11" href="../ko/bible-verses-for-depression.html">우울할 때 성경 말씀</a></li>
+      <li><a id="popular-pages-link-12" href="../ko/prayer-for-anxiety.html">불안할 때 드리는 기도</a></li>
+      <li><a id="popular-pages-link-13" href="../ko/prayer-for-family.html">가정을 위한 기도</a></li>
+      <li><a id="popular-pages-link-14" href="../ko/bible-verses-before-surgery.html">수술 전 성경 말씀</a></li>
     </ul>
-  </div>
-</section>
-
-<section class="popular-page-frame" id="popular-page-viewer" aria-live="polite">
-  <div class="popular-page-frame-inner">
-    <div class="popular-page-frame-head">
-      <div>
-        <p class="popular-page-frame-kicker" id="popular-frame-kicker">Read Here</p>
-        <h2 id="popular-frame-title">Choose a Bible help page above.</h2>
-      </div>
-      <button class="popular-page-close" type="button" onclick="closePopularBiblePage()" id="popular-frame-close">Close</button>
-    </div>
-    <iframe id="popular-page-frame" title="Bible help page" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -941,16 +928,8 @@ window.applyPageLanguage=function(lang){
   const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html','bible-verses-for-loneliness.html','bible-verses-for-fear.html','bible-verses-for-sleep.html','prayer-before-surgery.html','prayer-for-sick-family.html','bible-verses-for-forgiveness.html','bible-verses-for-depression.html','prayer-for-anxiety.html','prayer-for-family.html','bible-verses-before-surgery.html'];
   popularPageSlugs.forEach((slug,index)=>{
     const link=q('#popular-pages-link-'+(index+1));
-    if(link) link.setAttribute('href',lang+'/'+slug);
+    if(link) link.setAttribute('href','/'+lang+'/'+slug);
   });
-  setText('#popular-frame-kicker', text.popularPages.frameKicker);
-  if(!q('#popular-page-viewer')?.classList.contains('open')){
-    setText('#popular-frame-title', text.popularPages.frameTitle);
-  }
-  setText('#popular-frame-close', text.popularPages.frameClose);
-  if(typeof window.refreshPopularBibleFrameLanguage === 'function'){
-    window.refreshPopularBibleFrameLanguage();
-  }
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
@@ -1140,42 +1119,6 @@ window.copySiteLink = async function(){
 };
 </script>
 <script>
-window.openPopularBiblePage = function(url, link){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  const title = document.getElementById('popular-frame-title');
-  if(!viewer || !frame) return;
-  const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.dataset.pageUrl = url;
-  frame.setAttribute('src', '../' + lang + '/' + url + '?embed=1&content=20260620c');
-  viewer.classList.add('open');
-  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
-  if(link){
-    link.classList.add('active');
-    if(title) title.textContent = link.textContent.trim();
-  }
-  viewer.scrollIntoView({behavior:'smooth', block:'start'});
-};
-
-window.refreshPopularBibleFrameLanguage = function(){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  if(!viewer || !frame || !viewer.classList.contains('open') || !frame.dataset.pageUrl) return;
-  const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.setAttribute('src', '../' + lang + '/' + frame.dataset.pageUrl + '?embed=1&content=20260620c');
-};
-
-window.closePopularBiblePage = function(){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  if(viewer) viewer.classList.remove('open');
-  if(frame) frame.removeAttribute('src');
-  if(frame) delete frame.dataset.pageUrl;
-  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
-  if(typeof window.applyPageLanguage === 'function'){
-    window.applyPageLanguage(typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en');
-  }
-};
 </script>
 <script src="../assets/js/app.js?v=20261114j"></script>
 <script>

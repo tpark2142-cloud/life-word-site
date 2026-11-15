@@ -232,34 +232,21 @@ gtag('config', 'G-2SJCBS84VD');
     <h2 class="home-update-title" id="popular-pages-title">Bible help for the moments people search most.</h2>
     <p class="home-update-copy" id="popular-pages-copy">These focused pages help visitors find Scripture and prayer for anxiety, grief, healing, and difficult seasons.</p>
     <ul class="home-update-list" aria-label="Popular Bible verse pages">
-      <li><a id="popular-pages-link-1" href="en/bible-verses-for-anxiety.html" onclick="openPopularBiblePage('bible-verses-for-anxiety.html', this); return false;">Bible Verses for Anxiety</a></li>
-      <li><a id="popular-pages-link-2" href="en/bible-verses-for-grief.html" onclick="openPopularBiblePage('bible-verses-for-grief.html', this); return false;">Bible Verses for Grief</a></li>
-      <li><a id="popular-pages-link-3" href="en/bible-verses-for-healing.html" onclick="openPopularBiblePage('bible-verses-for-healing.html', this); return false;">Bible Verses for Healing</a></li>
-      <li><a id="popular-pages-link-4" href="en/prayers-for-healing.html" onclick="openPopularBiblePage('prayers-for-healing.html', this); return false;">Prayers for Healing</a></li>
-      <li><a id="popular-pages-link-5" href="en/bible-verses-for-loneliness.html" onclick="openPopularBiblePage('bible-verses-for-loneliness.html', this); return false;">Bible Verses for Loneliness</a></li>
-      <li><a id="popular-pages-link-6" href="en/bible-verses-for-fear.html" onclick="openPopularBiblePage('bible-verses-for-fear.html', this); return false;">Bible Verses for Fear</a></li>
-      <li><a id="popular-pages-link-7" href="en/bible-verses-for-sleep.html" onclick="openPopularBiblePage('bible-verses-for-sleep.html', this); return false;">Bible Verses for Sleep</a></li>
-      <li><a id="popular-pages-link-8" href="en/prayer-before-surgery.html" onclick="openPopularBiblePage('prayer-before-surgery.html', this); return false;">Prayer Before Surgery</a></li>
-      <li><a id="popular-pages-link-9" href="en/prayer-for-sick-family.html" onclick="openPopularBiblePage('prayer-for-sick-family.html', this); return false;">Prayer for a Sick Family Member</a></li>
-      <li><a id="popular-pages-link-10" href="en/bible-verses-for-forgiveness.html" onclick="openPopularBiblePage('bible-verses-for-forgiveness.html', this); return false;">Bible Verses for Forgiveness</a></li>
-      <li><a id="popular-pages-link-11" href="en/bible-verses-for-depression.html" onclick="openPopularBiblePage('bible-verses-for-depression.html', this); return false;">Bible Verses for Depression</a></li>
-      <li><a id="popular-pages-link-12" href="en/prayer-for-anxiety.html" onclick="openPopularBiblePage('prayer-for-anxiety.html', this); return false;">Prayer for Anxiety</a></li>
-      <li><a id="popular-pages-link-13" href="en/prayer-for-family.html" onclick="openPopularBiblePage('prayer-for-family.html', this); return false;">Prayer for Family</a></li>
-      <li><a id="popular-pages-link-14" href="en/bible-verses-before-surgery.html" onclick="openPopularBiblePage('bible-verses-before-surgery.html', this); return false;">Bible Verses Before Surgery</a></li>
+      <li><a id="popular-pages-link-1" href="en/bible-verses-for-anxiety.html">Bible Verses for Anxiety</a></li>
+      <li><a id="popular-pages-link-2" href="en/bible-verses-for-grief.html">Bible Verses for Grief</a></li>
+      <li><a id="popular-pages-link-3" href="en/bible-verses-for-healing.html">Bible Verses for Healing</a></li>
+      <li><a id="popular-pages-link-4" href="en/prayers-for-healing.html">Prayers for Healing</a></li>
+      <li><a id="popular-pages-link-5" href="en/bible-verses-for-loneliness.html">Bible Verses for Loneliness</a></li>
+      <li><a id="popular-pages-link-6" href="en/bible-verses-for-fear.html">Bible Verses for Fear</a></li>
+      <li><a id="popular-pages-link-7" href="en/bible-verses-for-sleep.html">Bible Verses for Sleep</a></li>
+      <li><a id="popular-pages-link-8" href="en/prayer-before-surgery.html">Prayer Before Surgery</a></li>
+      <li><a id="popular-pages-link-9" href="en/prayer-for-sick-family.html">Prayer for a Sick Family Member</a></li>
+      <li><a id="popular-pages-link-10" href="en/bible-verses-for-forgiveness.html">Bible Verses for Forgiveness</a></li>
+      <li><a id="popular-pages-link-11" href="en/bible-verses-for-depression.html">Bible Verses for Depression</a></li>
+      <li><a id="popular-pages-link-12" href="en/prayer-for-anxiety.html">Prayer for Anxiety</a></li>
+      <li><a id="popular-pages-link-13" href="en/prayer-for-family.html">Prayer for Family</a></li>
+      <li><a id="popular-pages-link-14" href="en/bible-verses-before-surgery.html">Bible Verses Before Surgery</a></li>
     </ul>
-  </div>
-</section>
-
-<section class="popular-page-frame" id="popular-page-viewer" aria-live="polite">
-  <div class="popular-page-frame-inner">
-    <div class="popular-page-frame-head">
-      <div>
-        <p class="popular-page-frame-kicker" id="popular-frame-kicker">Read Here</p>
-        <h2 id="popular-frame-title">Choose a Bible help page above.</h2>
-      </div>
-      <button class="popular-page-close" type="button" onclick="closePopularBiblePage()" id="popular-frame-close">Close</button>
-    </div>
-    <iframe id="popular-page-frame" title="Bible help page" loading="lazy"></iframe>
   </div>
 </section>
 
@@ -941,16 +928,8 @@ window.applyPageLanguage=function(lang){
   const popularPageSlugs=['bible-verses-for-anxiety.html','bible-verses-for-grief.html','bible-verses-for-healing.html','prayers-for-healing.html','bible-verses-for-loneliness.html','bible-verses-for-fear.html','bible-verses-for-sleep.html','prayer-before-surgery.html','prayer-for-sick-family.html','bible-verses-for-forgiveness.html','bible-verses-for-depression.html','prayer-for-anxiety.html','prayer-for-family.html','bible-verses-before-surgery.html'];
   popularPageSlugs.forEach((slug,index)=>{
     const link=q('#popular-pages-link-'+(index+1));
-    if(link) link.setAttribute('href',lang+'/'+slug);
+    if(link) link.setAttribute('href','/'+lang+'/'+slug);
   });
-  setText('#popular-frame-kicker', text.popularPages.frameKicker);
-  if(!q('#popular-page-viewer')?.classList.contains('open')){
-    setText('#popular-frame-title', text.popularPages.frameTitle);
-  }
-  setText('#popular-frame-close', text.popularPages.frameClose);
-  if(typeof window.refreshPopularBibleFrameLanguage === 'function'){
-    window.refreshPopularBibleFrameLanguage();
-  }
   setList('.chip-row .chip', text.chips);
   setText('#emotions .s-lbl', text.emotions[0]);
   setText('#emotions .s-title', text.emotions[1]);
@@ -1140,42 +1119,6 @@ window.copySiteLink = async function(){
 };
 </script>
 <script>
-window.openPopularBiblePage = function(url, link){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  const title = document.getElementById('popular-frame-title');
-  if(!viewer || !frame) return;
-  const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.dataset.pageUrl = url;
-  frame.setAttribute('src', lang + '/' + url + '?embed=1&content=20260620c');
-  viewer.classList.add('open');
-  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
-  if(link){
-    link.classList.add('active');
-    if(title) title.textContent = link.textContent.trim();
-  }
-  viewer.scrollIntoView({behavior:'smooth', block:'start'});
-};
-
-window.refreshPopularBibleFrameLanguage = function(){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  if(!viewer || !frame || !viewer.classList.contains('open') || !frame.dataset.pageUrl) return;
-  const lang = typeof window.getSiteLanguage === 'function' && window.getSiteLanguage() === 'ko' ? 'ko' : 'en';
-  frame.setAttribute('src', lang + '/' + frame.dataset.pageUrl + '?embed=1&content=20260620c');
-};
-
-window.closePopularBiblePage = function(){
-  const viewer = document.getElementById('popular-page-viewer');
-  const frame = document.getElementById('popular-page-frame');
-  if(viewer) viewer.classList.remove('open');
-  if(frame) frame.removeAttribute('src');
-  if(frame) delete frame.dataset.pageUrl;
-  document.querySelectorAll('.home-update-list a').forEach(item => item.classList.remove('active'));
-  if(typeof window.applyPageLanguage === 'function'){
-    window.applyPageLanguage(typeof window.getSiteLanguage === 'function' ? window.getSiteLanguage() : 'en');
-  }
-};
 </script>
 <script src="assets/js/app.js?v=20261114j"></script>
 <script>
