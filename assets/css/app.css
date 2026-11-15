@@ -942,6 +942,7 @@ html[lang="ko"] .gallery-copy-summary{
   background:rgba(184,147,90,.38);
   border-color:rgba(222,189,116,.72);
 }
+.gallery-feedback-icon-image{width:22px;height:22px;object-fit:contain;display:block}
 .gallery-feedback-message{
   width:100%;
   min-height:62px;
@@ -1858,3 +1859,16 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
     min-height:500px;
   }
 }
+
+.gallery-feedback{margin-top:12px;padding:12px 14px 14px;background:rgba(9,22,16,.94);border-top:1px solid rgba(222,189,116,.12);color:#f0dfb8}
+.gallery-feedback-counts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;color:#f3e6cc;font-size:13px;line-height:1.4}
+.gallery-feedback-counts:empty{display:none;margin:0}
+.gallery-feedback-counts span{display:inline-flex;align-items:center;gap:5px;min-height:28px;padding:3px 9px;border:1px solid rgba(222,189,116,.2);border-radius:999px;background:rgba(255,255,255,.06)}
+.gallery-feedback-notes{display:grid;gap:6px;margin-bottom:10px}
+.gallery-feedback-notes p{margin:0;color:#f0dfb8;font-size:14px;line-height:1.55}
+.gallery-feedback-emoji-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+.gallery-feedback-emoji{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border-radius:999px;border:1px solid rgba(222,189,116,.22);background:rgba(255,255,255,.08);color:#fff;font-size:21px;cursor:pointer}
+.gallery-feedback-emoji:hover,.gallery-feedback-emoji.selected{transform:translateY(-1px);background:rgba(184,147,90,.38);border-color:rgba(222,189,116,.72)}
+.gallery-feedback-message{width:100%;min-height:62px;resize:vertical;border-radius:10px;border:1px solid rgba(222,189,116,.22);padding:9px 11px;background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:15px;line-height:1.5;box-sizing:border-box}
+.gallery-feedback-message::placeholder{color:rgba(240,223,184,.68)}
+.gallery-feedback-submit{margin-top:8px;border:0;border-radius:999px;padding:8px 16px;background:#b8935a;color:#fff;font:inherit;font-size:14px;font-weight:600;cursor:pointer}

@@ -2081,6 +2081,14 @@ const DEFAULT_GALLERY_ITEMS=[
 ];
 const SUPABASE_GALLERY_BUCKET_BASE='https://ytfjmlhfkgvdoifhknxq.supabase.co/storage/v1/object/public/gallery';
 const SUPABASE_GALLERY_FILE_STEMS=[
+  'turkiye-01',
+  'turkiye-02',
+  'turkiye-03',
+  'turkiye-04',
+  'turkiye-05',
+  '20261029_155517',
+  '20261030_105918',
+  '20261030_115640',
   '1',
   '1765669348028',
   '2',
@@ -2108,7 +2116,12 @@ const HIDDEN_GALLERY_FILE_STEMS=new Set([
   'DSC04349',
   'n'
 ]);
-const GALLERY_CAPTION_OVERRIDES={};
+const GALLERY_CAPTION_OVERRIDES={
+  'turkiye-01':{en:'Pamukkale, Türkiye',ko:'파묵칼레, 튀르키예'},
+  '20261029_155517':{en:'Ephesus: The Colonnaded Street',ko:'에베소의 기둥 거리'},
+  '20261030_105918':{en:'Ephesus: The Great Theatre',ko:'에베소 대극장'},
+  '20261030_115640':{en:'Ephesus: The Library of Celsus',ko:'에베소의 켈수스 도서관'}
+};
 const HIDDEN_GALLERY_TEXT_PATTERNS=[];
 
 function getGalleryStorageItems(){
@@ -2964,9 +2977,43 @@ const supabaseClient=window.supabase && SUPABASE_PROJECT_URL && SUPABASE_PUBLISH
 let guestbookEntries=loadStoredItems(GUESTBOOK_STORAGE,DEFAULT_GUESTBOOK_ENTRIES);
 let guestbookUsesSupabase=Boolean(supabaseClient);
 const GALLERY_FEEDBACK_STORAGE='lifeword.galleryFeedback.v1';
-const GALLERY_FEEDBACK_EMOJIS=['🙏','❤️','😊','✨','👍'];
+const GALLERY_FEEDBACK_ICON_SETTINGS_PATH='site-settings/gallery-feedback-icons.json';
+const DEFAULT_GALLERY_FEEDBACK_ICONS=['🙏','❤️','😊','✨','👍'].map(emoji=>({emoji,imagePath:'',useImage:false}));
+let galleryFeedbackIcons=DEFAULT_GALLERY_FEEDBACK_ICONS.map(icon=>({...icon}));
+let galleryFeedbackIconsVersion=Date.now();
 let galleryFeedback=loadStoredItems(GALLERY_FEEDBACK_STORAGE,[]);
 let galleryFeedbackUsesSupabase=Boolean(supabaseClient);
+
+function getGalleryFeedbackIconUrl(imagePath){
+  const encodedPath=String(imagePath||'').split('/').map(encodeURIComponent).join('/');
+  return `${SUPABASE_GALLERY_BUCKET_BASE}/${encodedPath}?v=${galleryFeedbackIconsVersion}`;
+}
+function getGalleryFeedbackIconMarkup(icon){
+  if(icon && icon.useImage && icon.imagePath){
+    return `<span class="gallery-feedback-custom-icon"><img class="gallery-feedback-icon-image" src="${escapeAttr(getGalleryFeedbackIconUrl(icon.imagePath))}" alt="" style="width:22px;height:22px;object-fit:contain;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span style="display:none;">${escapeHtml(icon.emoji||'✨')}</span></span>`;
+  }
+  return escapeHtml(icon && icon.emoji || '✨');
+}
+async function loadGalleryFeedbackIconSettings(){
+  try{
+    const response=await fetch(`${SUPABASE_GALLERY_BUCKET_BASE}/${GALLERY_FEEDBACK_ICON_SETTINGS_PATH}?v=${Date.now()}`,{cache:'no-store'});
+    if(!response.ok)return;
+    const settings=await response.json();
+    if(!Array.isArray(settings.icons))return;
+    galleryFeedbackIcons=Array.from({length:5},(_,index)=>{
+      const saved=settings.icons[index]||{};
+      return {
+        emoji:String(saved.emoji||DEFAULT_GALLERY_FEEDBACK_ICONS[index].emoji),
+        imagePath:String(saved.imagePath||''),
+        useImage:Boolean(saved.useImage&&saved.imagePath)
+      };
+    });
+    galleryFeedbackIconsVersion=Number(settings.version)||Date.now();
+    renderGallery();
+  }catch(_error){
+    // Keep the built-in reaction icons if the optional settings file is unavailable.
+  }
+}
 
 async function loadGuestbookEntries(){
   if(!supabaseClient){
@@ -3083,9 +3130,9 @@ function normalizeGalleryItems(items){
         src:fullSrc,
         thumbSrc:thumbSrc||fullSrc,
         language: item && item.language === 'ko' ? 'ko' : 'en',
-        title: (item && item.title ? String(item.title) : '').trim(),
-        summary: (item && (item.summary || item.caption) ? String(item.summary || item.caption) : '').trim(),
-        caption: (item && item.caption ? String(item.caption) : '').trim()
+        title: (item && item.title ? String(item.title) : '').replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim(),
+        summary: (item && (item.summary || item.caption) ? String(item.summary || item.caption) : '').replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim(),
+        caption: (item && item.caption ? String(item.caption) : '').replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim()
       };
     });
   }
@@ -3144,20 +3191,21 @@ function buildGalleryFeedbackHtml(item){
   const feedbackId=getGalleryFeedbackId(item);
   if(!feedbackId)return '';
   const entries=getGalleryFeedbackForItem(item);
-  const counts=GALLERY_FEEDBACK_EMOJIS.map(emoji=>({
-    emoji,
+  const reactionValues=[...new Set([...galleryFeedbackIcons.map(icon=>icon.emoji),...entries.map(entry=>entry.reactionEmoji).filter(Boolean)])];
+  const counts=reactionValues.map(emoji=>({
+    ...(galleryFeedbackIcons.find(icon=>icon.emoji===emoji)||{emoji,imagePath:'',useImage:false}),
     count:entries.filter(entry=>entry.reactionEmoji===emoji).length
   })).filter(entry=>entry.count>0);
   const messages=entries.filter(entry=>entry.message).slice(0,2);
   const selectedLabel=lang==='ko'?'선택됨':'Selected';
   return `<div class="gallery-feedback" data-gallery-feedback="${escapeAttr(feedbackId)}">
     <div class="gallery-feedback-counts" aria-label="${escapeAttr(lang==='ko'?'사진 반응':'Photo reactions')}">
-      ${counts.length?counts.map(entry=>`<span>${entry.emoji} ${entry.count}</span>`).join(''):''}
+      ${counts.length?counts.map(entry=>`<span>${getGalleryFeedbackIconMarkup(entry)} ${entry.count}</span>`).join(''):''}
     </div>
-    ${messages.length?`<div class="gallery-feedback-notes">${messages.map(entry=>`<p>${escapeHtml(entry.message)}</p>`).join('')}</div>`:''}
+      ${messages.length?`<div class="gallery-feedback-notes">${messages.map(entry=>`<p>${escapeHtml(String(entry.message||'').replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim())}</p>`).join('')}</div>`:''}
     <div class="gallery-feedback-form" data-gallery-feedback-form data-gallery-key="${escapeAttr(feedbackId)}" data-gallery-lang="${escapeAttr(lang)}">
       <div class="gallery-feedback-emoji-row">
-        ${GALLERY_FEEDBACK_EMOJIS.map(emoji=>`<button type="button" class="gallery-feedback-emoji" data-emoji="${escapeAttr(emoji)}" onclick="setGalleryFeedbackEmoji('${escapeAttr(feedbackId)}','${escapeAttr(emoji)}')" aria-label="${escapeAttr(emoji+' '+selectedLabel)}">${escapeHtml(emoji)}</button>`).join('')}
+        ${galleryFeedbackIcons.map(icon=>`<button type="button" class="gallery-feedback-emoji" data-emoji="${escapeAttr(icon.emoji)}" onclick="setGalleryFeedbackEmoji('${escapeAttr(feedbackId)}','${escapeAttr(icon.emoji)}')" aria-label="${escapeAttr(icon.emoji+' '+selectedLabel)}">${getGalleryFeedbackIconMarkup(icon)}</button>`).join('')}
       </div>
       <textarea class="gallery-feedback-message" rows="2" maxlength="220" placeholder="${escapeAttr(lang==='ko'?'이 사진에서 느낀 마음을 짧게 나눠 보세요':'Share a small thought this photo brings to mind')}"></textarea>
       <button type="button" class="gallery-feedback-submit" onclick="submitGalleryFeedback('${escapeAttr(feedbackId)}','${escapeAttr(lang)}')">${escapeHtml(lang==='ko'?'글쓰기':'Share')}</button>
@@ -3231,6 +3279,8 @@ window.submitGalleryFeedback=async function(feedbackId,language){
         ? '온라인 저장이 아직 준비되지 않아 이 브라우저에만 임시 저장됩니다. Supabase gallery_feedback 테이블을 만든 뒤에는 모두에게 보입니다.'
         : 'Online saving is not ready yet, so this is saved only in this browser for now. After the Supabase gallery_feedback table is created, visitors will see it.');
     }
+  }else if(supabaseClient){
+    alert(lang==='ko'?'온라인 저장이 아직 불가능합니다. 지금 남긴 글은 이 브라우저에만 저장됩니다. 관리자에게 Supabase 설정 상태를 확인해 달라고 알려 주세요.':'Online saving is unavailable. This message will be saved only in this browser. Please ask the site administrator to check the Supabase setup.');
   }
   galleryFeedback.unshift(entry);
   saveStoredItems(GALLERY_FEEDBACK_STORAGE,galleryFeedback);
@@ -3570,6 +3620,7 @@ async function loadGalleryItems(){
 }
 
 loadGalleryItems().then(()=>loadGalleryFeedback());
+loadGalleryFeedbackIconSettings();
 
 bindTopicButtons();
 

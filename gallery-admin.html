@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,6 +27,7 @@
   .admin-field{display:grid;gap:8px;margin-top:18px;}
   .admin-field label{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b88a45;}
   .admin-field input,.admin-field select,.admin-field textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(34,58,44,.12);font-family:'Cormorant Garamond',serif;font-size:24px;background:#fcfaf5;color:#223a2c;box-sizing:border-box;}
+  .password-input-row{display:flex;align-items:stretch;gap:8px}.password-input-row input{flex:1;min-width:0;width:auto}.password-input-row .password-toggle{flex:0 0 auto;min-width:82px}
   .admin-field textarea{min-height:140px;resize:vertical;line-height:1.5;}#living-summary{min-height:360px;font-size:21px;line-height:1.7;}
   .admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
   .admin-error{margin-top:16px;color:#8f473f;font-size:19px;display:none;}
@@ -104,11 +105,14 @@
       <p class="admin-note"><strong>Important:</strong> only your authenticated admin account can edit or hide the public Supabase content.</p>
       <div class="admin-field">
         <label for="admin-email">Email</label>
-        <input type="email" id="admin-email" placeholder="Enter administrator email">
+        <input type="email" id="admin-email" value="tpark2142@gmail.com" autocomplete="username" placeholder="Enter administrator email">
       </div>
       <div class="admin-field">
         <label for="admin-password">Password</label>
-        <input type="password" id="admin-password" placeholder="Enter administrator password">
+        <div class="password-input-row">
+          <input type="password" id="admin-password" autocomplete="current-password" placeholder="Enter administrator password">
+          <button class="admin-btn secondary password-toggle" id="toggle-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
       </div>
       <div class="admin-actions">
         <button class="admin-btn primary" id="login-button">Unlock Admin Page</button>
@@ -132,28 +136,34 @@
 
         <input type="hidden" id="gallery-edit-id">
         <div class="admin-field">
-          <label for="gallery-language">Language</label>
-          <select id="gallery-language">
-            <option value="en">English Site</option>
-            <option value="ko">Korean Site</option>
-          </select>
-        </div>
-        <div class="admin-field">
           <label for="gallery-photo-stem">Gallery Photo File</label>
           <select id="gallery-photo-stem">
             <option value="">Choose the matching gallery photo</option>
           </select>
-          <p class="admin-session">Choose the matching photo stem here. The upload flow will create both thumbnail and regular files in Supabase Storage.</p>
+          <p class="admin-session" id="gallery-storage-status">Photo files are loaded from the gallery/regular folder in Supabase after sign-in.</p>
+          <p class="admin-session">Choose a photo file to preview it, then add its English and Korean captions.</p>
         </div>
         <div class="admin-field">
           <label for="gallery-image">Photo</label>
           <input type="file" id="gallery-image" accept="image/*" capture="environment">
-          <p class="admin-session" style="margin-top:8px;">One upload creates both `thumbnails/stem-thumb.webp` and `regular/stem-regular.webp`.</p>
+          <p class="admin-session" style="margin-top:8px;">Storage upload is done separately. This form links the selected file number to the English and Korean captions.</p>
         </div>
-        <div class="admin-preview" id="gallery-preview"><img id="gallery-preview-img" alt="Gallery preview"></div>
+        <div class="admin-preview" id="gallery-preview"><img id="gallery-preview-img" alt="Gallery preview"><p id="gallery-preview-status" class="admin-session" style="padding:0 16px 12px;"></p></div>
         <div class="admin-field">
-          <label for="gallery-caption">Caption</label>
-          <input type="text" id="gallery-caption" placeholder="e.g. Banff â€” Mountain View">
+          <label for="gallery-title-en">English photo title</label>
+          <input type="text" id="gallery-title-en" placeholder="e.g. Pamukkale’s Warm Thermal Waters">
+        </div>
+        <div class="admin-field">
+          <label for="gallery-reflection-en">English reflection</label>
+          <textarea id="gallery-reflection-en" rows="3" placeholder="Write the thought or reflection you want shown with this photo."></textarea>
+        </div>
+        <div class="admin-field">
+          <label for="gallery-title-ko">한국어 사진 제목</label>
+          <input type="text" id="gallery-title-ko" placeholder="예: 파묵칼레의 따뜻한 온천수">
+        </div>
+        <div class="admin-field">
+          <label for="gallery-reflection-ko">한국어 느낀 글</label>
+          <textarea id="gallery-reflection-ko" rows="3" placeholder="사진과 함께 보여 줄 묵상이나 느낀 점을 적어 주세요."></textarea>
         </div>
         <div class="admin-actions">
           <button class="admin-btn primary" id="gallery-save-button">Save Gallery Photo</button>
@@ -161,6 +171,20 @@
         </div>
 
         <div class="admin-list" id="gallery-admin-list"></div>
+      </div>
+
+      <div class="admin-card admin-panel" style="margin-top:24px;">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Gallery Reaction Icons</h2>
+            <p class="admin-subtext">Change the five reaction icons shown below gallery photos. Use an emoji or upload your own image.</p>
+          </div>
+        </div>
+        <div id="gallery-reaction-icons-editor"></div>
+        <p class="admin-session" id="gallery-reaction-icons-status" role="status">Sign in, then load or change the reaction icons.</p>
+        <div class="admin-actions">
+          <button class="admin-btn primary" id="save-gallery-reaction-icons" type="button">Save Reaction Icons</button>
+        </div>
       </div>
 
       <div class="admin-card admin-panel" style="margin-top:24px;">
@@ -203,6 +227,18 @@
             <div class="stats-bars" id="yearly-visits-chart"></div>
           </div>
         </div>
+      </div>
+
+      <div class="admin-card admin-panel" style="margin-top:24px;">
+        <div class="admin-panel-head">
+          <div>
+            <h2>Visitor Photo Reflections</h2>
+            <p class="admin-subtext">Review messages left under gallery photos. Edit the visitor’s words or choose an emoji, then save.</p>
+          </div>
+          <button class="admin-btn secondary" id="refresh-gallery-feedback" type="button">Refresh Reflections</button>
+        </div>
+        <p class="admin-session" id="gallery-feedback-admin-status" role="status">Visitor reflections will appear here when the Supabase table is ready. If needed, run supabase-gallery-feedback.sql once in the Supabase SQL Editor.</p>
+        <div class="admin-list" id="gallery-feedback-admin-list"></div>
       </div>
 
       <div class="admin-card admin-panel" style="margin-top:24px;">
@@ -277,6 +313,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="assets/js/travel-admin.js?v=20260731b"></script>
+  <script src="assets/js/travel-admin.js?v=20261114j"></script>
 </body>
 </html>

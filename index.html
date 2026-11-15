@@ -16,6 +16,9 @@ gtag('config', 'G-2SJCBS84VD');
 <meta name="keywords" content="Bible verses, Christian devotion, prayer, comfort, AI search, Christian podcast, Bible PowerPoint, faith journal, fellowship, guest book"/>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
 <link rel="canonical" href="https://www.lifemoment.site/"/>
+<link rel="alternate" hreflang="en" href="https://www.lifemoment.site/"/>
+<link rel="alternate" hreflang="ko" href="https://www.lifemoment.site/ko/"/>
+<link rel="alternate" hreflang="x-default" href="https://www.lifemoment.site/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Life's Moments, God's Word | Bible Verses for Every Season"/>
 <meta property="og:description" content="Find Bible verses for every emotion, life situation, and spiritual need. Discover Scripture, devotion, prayer, comfort, and faith-building resources."/>
@@ -70,7 +73,7 @@ gtag('config', 'G-2SJCBS84VD');
     document.documentElement.setAttribute('data-site-lang', lang);
   }catch(_e){}
 })();
-</script><link rel="stylesheet" href="assets/css/app.css?v=20261001b">
+</script><link rel="stylesheet" href="assets/css/app.css?v=20261114d">
 </head>
 <body class="home-page">
 
@@ -1189,9 +1192,18 @@ window.closePopularBiblePage = function(){
   }
 };
 </script>
-<script src="assets/js/app.js?v=20260904a"></script>
+<script src="assets/js/app.js?v=20261114j"></script>
+<script>
+document.addEventListener('click',function(event){
+  const button=event.target.closest('[data-lang-btn]');
+  if(!button || button.getAttribute('data-lang-btn')!=='ko')return;
+  event.preventDefault();event.stopImmediatePropagation();
+  try{localStorage.setItem('lifeword.siteLang','ko');}catch(_error){}
+  location.href='/ko/';
+},true);
+</script>
 <script src="assets/js/lang.js?v=20260815c"></script>
-<script src="assets/js/pwa.js?v=20261002b"></script>
+<script src="assets/js/pwa.js?v=20261114c"></script>
 
 </body>
 </html>

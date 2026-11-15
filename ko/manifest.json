@@ -1,0 +1,19 @@
+{
+  "name": "삶의 순간들, 하나님의 말씀",
+  "short_name": "삶의 순간들",
+  "description": "삶의 여러 순간에 필요한 성경 말씀과 기도, 위로를 찾아보세요.",
+  "start_url": "/ko/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#102117",
+  "theme_color": "#102117",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "../assets/img/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

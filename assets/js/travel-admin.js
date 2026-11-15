@@ -9,6 +9,14 @@ const SUPABASE_PROJECT_URL = 'https://ytfjmlhfkgvdoifhknxq.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_LBT8442LBjSc0ZOvaUxkFg_MIIBacTw';
 const SUPABASE_GALLERY_BUCKET_BASE = 'https://ytfjmlhfkgvdoifhknxq.supabase.co/storage/v1/object/public/gallery';
 const SUPABASE_GALLERY_FILE_STEMS = [
+  'turkiye-01',
+  'turkiye-02',
+  'turkiye-03',
+  'turkiye-04',
+  'turkiye-05',
+  '20261029_155517',
+  '20261030_105918',
+  '20261030_115640',
   '1',
   '1765669348028',
   '2',
@@ -34,6 +42,8 @@ const SUPABASE_GALLERY_FILE_STEMS = [
 const TRAVEL_IMAGE_MAX_WIDTH = 1600;
 const TRAVEL_IMAGE_MAX_HEIGHT = 1600;
 const TRAVEL_IMAGE_QUALITY = 0.82;
+const GALLERY_REACTION_SETTINGS_PATH = 'site-settings/gallery-feedback-icons.json';
+const DEFAULT_GALLERY_REACTION_ICONS = ['🙏','❤️','😊','✨','👍'].map(emoji => ({ emoji, imagePath:'', useImage:false }));
 
 const DEFAULT_GALLERY_ITEMS = [
   {id:'g1',language:'en',src:'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=500&q=75',caption:'Turkiye - Ancient Churches'},
@@ -67,11 +77,13 @@ const DEFAULT_LIVING_ITEMS = [
 
 let galleryItems = normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY, DEFAULT_GALLERY_ITEMS));
 let guestbookEntries = normalizeGuestbookEntries(loadStoredItems(STORAGE_GUESTBOOK, []));
+let galleryFeedbackAdminEntries = [];
 let livingWordItems = normalizeLivingWordItems(loadStoredItems(STORAGE_LIVING, DEFAULT_LIVING_ITEMS));
 let galleryPendingImage = '';
 let galleryPreviewValid = false;
 let livingPendingMedia = { src:'', kind:'', mime:'', name:'' };
 const GUESTBOOK_EMOJI_CHOICES = ['🙏','❤️','😊','✨','👍','🎉'];
+const GALLERY_FEEDBACK_ADMIN_EMOJIS = ['🙏','❤️','😊','✨','👍','🎉','🌿','✝️'];
 const supabaseClient = window.supabase && SUPABASE_PROJECT_URL && SUPABASE_PUBLISHABLE_KEY
   ? window.supabase.createClient(SUPABASE_PROJECT_URL, SUPABASE_PUBLISHABLE_KEY)
   : null;
@@ -82,9 +94,18 @@ const dashboard = document.getElementById('admin-dashboard');
 const ADMIN_EMAIL = 'tpark2142@gmail.com';
 const emailInput = document.getElementById('admin-email');
 const passwordInput = document.getElementById('admin-password');
+const passwordToggleButton = document.getElementById('toggle-password');
 const loginError = document.getElementById('login-error');
 
+function setPasswordVisibility(visible){
+  passwordInput.type = visible ? 'text' : 'password';
+  passwordToggleButton.textContent = visible ? 'Hide' : 'Show';
+  passwordToggleButton.setAttribute('aria-pressed', String(visible));
+  passwordToggleButton.setAttribute('aria-label', `${visible ? 'Hide' : 'Show'} password`);
+}
+
 document.getElementById('login-button').addEventListener('click', login);
+passwordToggleButton.addEventListener('click', () => setPasswordVisibility(passwordInput.type === 'password'));
 emailInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') login();
 });
@@ -93,9 +114,17 @@ passwordInput.addEventListener('keydown', event => {
 });
 document.getElementById('logout-button').addEventListener('click', logout);
 document.getElementById('refresh-public-button').addEventListener('click', refreshData);
+document.getElementById('refresh-gallery-feedback').addEventListener('click', loadGalleryFeedbackAdminEntries);
+document.getElementById('gallery-photo-stem').addEventListener('change', event => {
+  const stem = event.target.value.trim();
+  galleryPendingImage = '';
+  setPreview(stem ? getGalleryRegularUrl(stem) : '');
+});
 document.getElementById('gallery-image').addEventListener('change', handleGalleryImage);
 document.getElementById('gallery-save-button').addEventListener('click', saveGalleryEntry);
 document.getElementById('gallery-clear-button').addEventListener('click', clearGalleryForm);
+document.getElementById('save-gallery-reaction-icons').addEventListener('click', saveGalleryReactionIcons);
+document.getElementById('gallery-reaction-icons-editor').addEventListener('change', handleGalleryReactionIconEditorChange);
 document.getElementById('living-save-button').addEventListener('click', saveLivingEntry);
 const livingSummaryInput = document.getElementById('living-summary');
 if (livingSummaryInput) livingSummaryInput.addEventListener('input', updateLivingSummaryCount);
@@ -106,6 +135,7 @@ init();
 
 async function init(){
   populateGalleryPhotoStemOptions();
+  renderGalleryReactionIconEditor(DEFAULT_GALLERY_REACTION_ICONS);
   if (supabaseClient) {
     try {
       await supabaseClient.auth.signOut();
@@ -116,12 +146,43 @@ async function init(){
   showLogin();
 }
 
-function populateGalleryPhotoStemOptions(){
+function populateGalleryPhotoStemOptions(stems = SUPABASE_GALLERY_FILE_STEMS){
   const select = document.getElementById('gallery-photo-stem');
   if (!select) return;
-  select.innerHTML = '<option value="">Choose the matching gallery photo</option>' + SUPABASE_GALLERY_FILE_STEMS.map((stem, index) => (
-    `<option value="${escapeAttr(stem)}">${index + 1}. ${escapeHtml(stem)}</option>`
+  select.innerHTML = '<option value="">Choose the matching gallery photo</option>' + stems.map((stem, index) => (
+    `<option value="${escapeAttr(stem)}">${stem.startsWith('turkiye-') ? `Türkiye ${stem.slice(-2)} · ${stem}` : `${index + 1}. ${escapeHtml(stem)}`}</option>`
   )).join('');
+}
+
+async function loadGalleryPhotoStems(){
+  const status = document.getElementById('gallery-storage-status');
+  if (!supabaseClient) {
+    populateGalleryPhotoStemOptions();
+    if (status) status.textContent = 'Using the saved photo list. Supabase is not connected in this browser.';
+    return;
+  }
+
+  try {
+    const { data, error } = await supabaseClient.storage
+      .from('gallery')
+      .list('regular', { limit:1000, sortBy:{ column:'name', order:'asc' } });
+    if (error) throw error;
+    const stems = (data || [])
+      .map(file => file && file.name ? file.name.match(/^(.+)-regular\.webp$/i) : null)
+      .filter(Boolean)
+      .map(match => match[1]);
+    const availableStems = [...new Set([...SUPABASE_GALLERY_FILE_STEMS, ...stems])];
+    if (!stems.length) {
+      populateGalleryPhotoStemOptions(availableStems);
+      if (status) status.textContent = 'No matching regular WebP files were listed. The saved photo list is still available.';
+      return;
+    }
+    populateGalleryPhotoStemOptions(availableStems);
+    if (status) status.textContent = `${stems.length} photo file(s) found in Supabase Storage.`;
+  } catch (error) {
+    populateGalleryPhotoStemOptions();
+    if (status) status.textContent = `Could not read gallery/regular from Supabase: ${formatSupabaseError(error)}`;
+  }
 }
 
 function getGalleryRegularUrl(stem){
@@ -145,29 +206,31 @@ function getGalleryStemFromUrl(value){
   return fileMatch ? fileMatch[1] : '';
 }
 
+function showLoginError(message){
+  loginError.textContent = message;
+  loginError.style.display = 'block';
+}
+
 async function login(){
   if (!supabaseClient || !emailInput || !passwordInput) {
-    loginError.style.display = 'block';
+    showLoginError('Supabase could not start. Check the internet connection and reload this page.');
     return;
   }
   const email = (emailInput.value || '').trim().toLowerCase();
   const password = passwordInput.value || '';
-  if (!email || !password || email !== ADMIN_EMAIL.toLowerCase()) {
-    loginError.style.display = 'block';
+  if (!email || !password) {
+    showLoginError('Enter the administrator email and its Supabase password.');
     return;
   }
   try {
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    const userEmail = data && data.user ? data.user.email : '';
-    if (!userEmail || userEmail.toLowerCase() !== ADMIN_EMAIL.toLowerCase()) {
-      throw new Error('Unauthorized admin email');
-    }
     passwordInput.value = '';
+    setPasswordVisibility(false);
     loginError.style.display = 'none';
     showDashboard();
-  } catch (_error) {
-    loginError.style.display = 'block';
+  } catch (error) {
+    showLoginError('Supabase sign-in failed: ' + (error && error.message ? error.message : 'Check the email and password.'));
   }
 }
 
@@ -180,6 +243,7 @@ async function logout(){
     }
   }
   if (passwordInput) passwordInput.value = '';
+  setPasswordVisibility(false);
   showLogin();
 }
 
@@ -196,12 +260,200 @@ function showDashboard(){
 }
 
 async function refreshData(){
+  await loadGalleryPhotoStems();
+  await loadGalleryReactionIcons();
   await renderHomepageVisitStats();
   await Promise.all([
     loadGalleryAdminItems(),
     loadLivingAdminItems(),
-    loadGuestbookAdminEntries()
+    loadGuestbookAdminEntries(),
+    loadGalleryFeedbackAdminEntries()
   ]);
+  renderGalleryFeedbackAdminEntries();
+}
+
+async function loadGalleryFeedbackAdminEntries(){
+  const status = document.getElementById('gallery-feedback-admin-status');
+  if (!supabaseClient) {
+    galleryFeedbackAdminEntries = [];
+    renderGalleryFeedbackAdminEntries();
+    if (status) status.textContent = 'Supabase is not connected. Visitor feedback cannot be loaded.';
+    return;
+  }
+  try {
+    const { data, error } = await supabaseClient
+      .from('gallery_feedback')
+      .select('id,gallery_id,language,reaction_emoji,message,created_at,is_visible')
+      .eq('is_visible', true)
+      .order('created_at', { ascending:false })
+      .limit(300);
+    if (error) throw error;
+    galleryFeedbackAdminEntries = (data || []).map(entry => ({
+      id:`gf-${entry.id}`,
+      galleryId:entry.gallery_id || '',
+      language:entry.language === 'ko' ? 'ko' : 'en',
+      reactionEmoji:entry.reaction_emoji || '',
+      message:entry.message || '',
+      createdAt:entry.created_at || ''
+    }));
+    renderGalleryFeedbackAdminEntries();
+    if (status) status.textContent = `${galleryFeedbackAdminEntries.length} visitor reflection(s) loaded.`;
+  } catch (error) {
+    galleryFeedbackAdminEntries = [];
+    renderGalleryFeedbackAdminEntries();
+    if (status) status.textContent = `Could not load visitor reflections. Check that the gallery_feedback table and admin access are set up. ${formatSupabaseError(error)}`;
+  }
+}
+
+function renderGalleryFeedbackAdminEntries(){
+  const list = document.getElementById('gallery-feedback-admin-list');
+  if (!list) return;
+  if (!galleryFeedbackAdminEntries.length) {
+    list.innerHTML = '<div class="admin-empty">No visitor photo reflections are available.</div>';
+    return;
+  }
+  list.innerHTML = galleryFeedbackAdminEntries.map(entry => {
+    const photo = galleryItems.find(item => (item.photoStem || getGalleryStemFromUrl(item.src || '')) === entry.galleryId);
+    const photoTitle = photo ? (photo.title || photo.caption || entry.galleryId) : entry.galleryId;
+    return `<article class="admin-item" style="grid-template-columns:1fr;">
+      <div>
+        <h3>${escapeHtml(photoTitle || 'Gallery photo')}</h3>
+        <p class="admin-meta">${escapeHtml(entry.language === 'ko' ? 'Korean Site' : 'English Site')} · Photo file: ${escapeHtml(entry.galleryId)}${entry.createdAt ? ` · ${escapeHtml(new Date(entry.createdAt).toLocaleString())}` : ''}</p>
+        <div class="admin-inline-field">
+          <label for="gallery-feedback-emoji-${entry.id}">Visitor emoji</label>
+          <input type="text" id="gallery-feedback-emoji-${entry.id}" value="${escapeHtml(entry.reactionEmoji)}" maxlength="12" placeholder="Choose or type an emoji">
+          <div class="admin-emoji-row">${GALLERY_FEEDBACK_ADMIN_EMOJIS.map(emoji => `<button class="admin-emoji-chip" type="button" onclick="setGalleryFeedbackAdminEmoji('${entry.id}','${emoji}')">${emoji}</button>`).join('')}</div>
+        </div>
+        <div class="admin-inline-field">
+          <label for="gallery-feedback-message-${entry.id}">Visitor reflection</label>
+          <textarea id="gallery-feedback-message-${entry.id}" maxlength="220">${escapeHtml(String(entry.message||'').replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim())}</textarea>
+        </div>
+        <div class="admin-actions"><button class="admin-btn primary" type="button" onclick="saveGalleryFeedbackAdminEntry('${entry.id}')">Save Changes</button></div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+window.setGalleryFeedbackAdminEmoji = function(id, emoji){
+  const input = document.getElementById(`gallery-feedback-emoji-${id}`);
+  if (input) input.value = emoji || '';
+};
+
+window.saveGalleryFeedbackAdminEntry = async function(id){
+  const entry = galleryFeedbackAdminEntries.find(item => item.id === id);
+  const status = document.getElementById('gallery-feedback-admin-status');
+  if (!entry || !supabaseClient) return;
+  const reactionEmoji = document.getElementById(`gallery-feedback-emoji-${id}`).value.trim().slice(0,12);
+  const message = document.getElementById(`gallery-feedback-message-${id}`).value.replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim().slice(0,220);
+  const numericId = String(id).replace(/^gf-/, '');
+  try {
+    const { error } = await supabaseClient.rpc('admin_update_gallery_feedback', {
+      feedback_id:Number(numericId),
+      emoji_value:reactionEmoji || null,
+      message_value:message
+    });
+    if (error) throw error;
+    if (status) status.textContent = 'Visitor reflection updated.';
+    await loadGalleryFeedbackAdminEntries();
+  } catch (error) {
+    if (status) status.textContent = `Could not update visitor reflection. Check admin update access. ${formatSupabaseError(error)}`;
+  }
+};
+
+function getGalleryPublicUrl(path){
+  return `${SUPABASE_GALLERY_BUCKET_BASE}/${String(path || '').split('/').map(encodeURIComponent).join('/')}`;
+}
+
+function renderGalleryReactionIconEditor(icons){
+  const editor = document.getElementById('gallery-reaction-icons-editor');
+  if (!editor) return;
+  editor.innerHTML = (icons || DEFAULT_GALLERY_REACTION_ICONS).map((icon, index) => {
+    const number = index + 1;
+    const imageUrl = icon.imagePath ? `${getGalleryPublicUrl(icon.imagePath)}?v=${Date.now()}` : '';
+    const preview = icon.useImage && imageUrl
+      ? `<img src="${escapeAttr(imageUrl)}" alt="" style="width:44px;height:44px;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span style="display:none;font-size:30px;">${escapeHtml(icon.emoji||'✨')}</span>`
+      : `<span style="font-size:30px;line-height:1;">${escapeHtml(icon.emoji || DEFAULT_GALLERY_REACTION_ICONS[index].emoji)}</span>`;
+    return `<div class="admin-field" style="display:grid;grid-template-columns:56px minmax(120px,1fr) minmax(180px,2fr);align-items:center;gap:12px;border:1px solid #e7e4dc;border-radius:12px;padding:12px;margin:12px 0;">
+      <div id="gallery-reaction-preview-${number}" style="width:48px;height:48px;display:grid;place-items:center;">${preview}</div>
+      <div><label for="gallery-reaction-emoji-${number}">Icon ${number} emoji</label><input id="gallery-reaction-emoji-${number}" type="text" maxlength="8" value="${escapeAttr(icon.emoji || '')}" aria-label="Reaction ${number} emoji"></div>
+      <div><label for="gallery-reaction-image-${number}">Optional icon image</label><input id="gallery-reaction-image-${number}" type="file" accept="image/*" aria-label="Upload reaction ${number} icon image"><label style="display:flex;align-items:center;gap:8px;margin-top:6px;font-size:14px;"><input id="gallery-reaction-use-image-${number}" type="checkbox" ${icon.useImage && icon.imagePath ? 'checked' : ''}> Show uploaded image</label></div>
+      <input id="gallery-reaction-path-${number}" type="hidden" value="${escapeAttr(icon.imagePath || '')}">
+    </div>`;
+  }).join('');
+}
+
+async function loadGalleryReactionIcons(){
+  const status = document.getElementById('gallery-reaction-icons-status');
+  if (!supabaseClient) return;
+  try {
+    const response = await fetch(`${getGalleryPublicUrl(GALLERY_REACTION_SETTINGS_PATH)}?v=${Date.now()}`, { cache:'no-store' });
+    if (!response.ok) throw new Error('No saved icon settings were found yet.');
+    const data = await response.json();
+    const icons = Array.from({length:5}, (_, index) => ({
+      ...DEFAULT_GALLERY_REACTION_ICONS[index],
+      ...((Array.isArray(data.icons) && data.icons[index]) || {}),
+      emoji:String((data.icons && data.icons[index] && data.icons[index].emoji) || DEFAULT_GALLERY_REACTION_ICONS[index].emoji),
+      imagePath:String((data.icons && data.icons[index] && data.icons[index].imagePath) || ''),
+      useImage:Boolean(data.icons && data.icons[index] && data.icons[index].useImage)
+    }));
+    renderGalleryReactionIconEditor(icons);
+    if (status) status.textContent = 'Saved reaction icons loaded. You can replace an emoji, upload an image, or switch back to emoji.';
+  } catch (_error) {
+    renderGalleryReactionIconEditor(DEFAULT_GALLERY_REACTION_ICONS);
+    if (status) status.textContent = 'Using the default reaction icons. Save after making changes to publish your choices.';
+  }
+}
+
+function handleGalleryReactionIconEditorChange(event){
+  const input = event.target;
+  if (!input || !input.matches('input[type="file"][id^="gallery-reaction-image-"]')) return;
+  const match = input.id.match(/(\d+)$/);
+  if (!match || !input.files || !input.files[0]) return;
+  const preview = document.getElementById(`gallery-reaction-preview-${match[1]}`);
+  const useImageToggle = document.getElementById(`gallery-reaction-use-image-${match[1]}`);
+  if (useImageToggle) useImageToggle.checked = true;
+  if (!preview) return;
+  const reader = new FileReader();
+  reader.onload = () => { preview.innerHTML = `<img src="${escapeAttr(String(reader.result || ''))}" alt="Selected icon preview" style="width:44px;height:44px;object-fit:contain;">`; };
+  reader.readAsDataURL(input.files[0]);
+}
+
+async function saveGalleryReactionIcons(){
+  const status = document.getElementById('gallery-reaction-icons-status');
+  const button = document.getElementById('save-gallery-reaction-icons');
+  if (!supabaseClient) {
+    if (status) status.textContent = 'Connect to Supabase and sign in before saving icons for the website.';
+    return;
+  }
+  button.disabled = true;
+  if (status) status.textContent = 'Saving reaction icons…';
+  try {
+    const icons = [];
+    for (let index = 0; index < 5; index++) {
+      const number = index + 1;
+      const emoji = document.getElementById(`gallery-reaction-emoji-${number}`).value.trim() || DEFAULT_GALLERY_REACTION_ICONS[index].emoji;
+      const fileInput = document.getElementById(`gallery-reaction-image-${number}`);
+      const useImage = document.getElementById(`gallery-reaction-use-image-${number}`).checked;
+      let imagePath = document.getElementById(`gallery-reaction-path-${number}`).value.trim();
+      const file = fileInput.files && fileInput.files[0];
+      if (file) {
+        imagePath = `site-icons/gallery-reaction-${number}`;
+        const { error } = await supabaseClient.storage.from('gallery').upload(imagePath, file, { upsert:true, cacheControl:'0', contentType:file.type || 'application/octet-stream' });
+        if (error) throw error;
+      }
+      if (useImage && !imagePath) throw new Error(`Upload an image for icon ${number}, or turn off “Show uploaded image.”`);
+      icons.push({ emoji, imagePath, useImage });
+    }
+    const settings = { version:Date.now(), icons };
+    const { error } = await supabaseClient.storage.from('gallery').upload(GALLERY_REACTION_SETTINGS_PATH, new Blob([JSON.stringify(settings)], {type:'application/json'}), { upsert:true, cacheControl:'0', contentType:'application/json' });
+    if (error) throw error;
+    renderGalleryReactionIconEditor(icons);
+    if (status) status.textContent = 'Reaction icons saved. Refresh the public website to see the changes.';
+  } catch (error) {
+    if (status) status.textContent = `Could not save reaction icons: ${formatSupabaseError(error)}`;
+  } finally {
+    button.disabled = false;
+  }
 }
 
 async function loadGuestbookAdminEntries(){
@@ -270,7 +522,7 @@ async function loadGalleryAdminItems(){
 
     if (error) throw error;
 
-    galleryItems = normalizeGalleryItems((data || []).map(item => ({
+    const databaseItems = (data || []).map(item => ({
       id: `g-${item.id}`,
       language: item.language === 'ko' ? 'ko' : 'en',
       title: item.title || '',
@@ -278,7 +530,24 @@ async function loadGalleryAdminItems(){
       photoStem: getGalleryStemFromUrl(item.image_url || ''),
       src: item.image_url || '',
       createdAt: item.created_at || ''
-    })));
+    }));
+    const databasePhotos = new Set(databaseItems.map(item => `${item.language}:${item.photoStem}`));
+    const uploadedPhotoDefaults = [
+      { stem:'20261029_155517', en:'Ephesus: The Colonnaded Street', ko:'에베소의 기둥 거리' },
+      { stem:'20261030_105918', en:'Ephesus: The Great Theatre', ko:'에베소 대극장' },
+      { stem:'20261030_115640', en:'Ephesus: The Library of Celsus', ko:'에베소의 켈수스 도서관' }
+    ].flatMap(photo => ['en','ko']
+      .filter(language => !databasePhotos.has(`${language}:${photo.stem}`))
+      .map(language => ({
+        id:`storage-${photo.stem}-${language}`,
+        language,
+        title:language === 'ko' ? photo.ko : photo.en,
+        caption:language === 'ko' ? photo.ko : photo.en,
+        photoStem:photo.stem,
+        src:getGalleryRegularUrl(photo.stem),
+        storageOnly:true
+      })));
+    galleryItems = normalizeGalleryItems([...databaseItems, ...uploadedPhotoDefaults]);
     renderGalleryAdminList();
   } catch (_error) {
     galleryItems = normalizeGalleryItems(loadStoredItems(STORAGE_GALLERY, DEFAULT_GALLERY_ITEMS));
@@ -325,7 +594,9 @@ async function loadLivingAdminItems(){
 function normalizeGalleryItems(items){
   return (Array.isArray(items) ? items : []).map(item => ({
     ...item,
-    language: item && item.language === 'ko' ? 'ko' : 'en'
+    language: item && item.language === 'ko' ? 'ko' : 'en',
+    title: item && item.title ? String(item.title).replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim() : '',
+    caption: item && item.caption ? String(item.caption).replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim() : ''
   }));
 }
 
@@ -530,22 +801,28 @@ function handleGalleryImage(event){
 function setPreview(src){
   const wrapper = document.getElementById('gallery-preview');
   const img = document.getElementById('gallery-preview-img');
+  const status = document.getElementById('gallery-preview-status');
   galleryPreviewValid = false;
   img.onload = () => {
     galleryPreviewValid = Boolean(img.src);
+    if (status) status.textContent = '';
   };
   img.onerror = () => {
     galleryPreviewValid = false;
+    if (status) status.textContent = 'Photo unavailable. Check that the matching regular WebP file exists in Supabase Storage.';
   };
   img.src = src || '';
   wrapper.style.display = src ? 'block' : 'none';
+  if (status) status.textContent = src ? 'Loading photo…' : '';
 }
 
 function clearGalleryForm(){
   document.getElementById('gallery-edit-id').value = '';
-  document.getElementById('gallery-language').value = 'en';
   document.getElementById('gallery-photo-stem').value = '';
-  document.getElementById('gallery-caption').value = '';
+  document.getElementById('gallery-title-en').value = '';
+  document.getElementById('gallery-title-ko').value = '';
+  document.getElementById('gallery-reflection-en').value = '';
+  document.getElementById('gallery-reflection-ko').value = '';
   document.getElementById('gallery-image').value = '';
   galleryPendingImage = '';
   setPreview('');
@@ -554,15 +831,25 @@ function clearGalleryForm(){
 
 async function saveGalleryEntry(){
   const editId = document.getElementById('gallery-edit-id').value.trim();
-  const language = document.getElementById('gallery-language').value === 'ko' ? 'ko' : 'en';
   const photoStem = document.getElementById('gallery-photo-stem').value.trim();
-  const caption = document.getElementById('gallery-caption').value.trim() || 'Untitled Photo';
-  const selectedStorageUrl = getGalleryRegularUrl(photoStem);
+  const titleEn = document.getElementById('gallery-title-en').value.replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim();
+  const titleKo = document.getElementById('gallery-title-ko').value.replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim();
+  const reflectionEn = document.getElementById('gallery-reflection-en').value.replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim();
+  const reflectionKo = document.getElementById('gallery-reflection-ko').value.replace(/[*＊﹡✱✲✳✴⁎∗]/g,'').trim();
   const currentItem = editId ? galleryItems.find(item => item.id === editId) : null;
-  const nextImageUrl = selectedStorageUrl || galleryPendingImage || (currentItem && currentItem.src) || '';
+  let stem = photoStem || (currentItem && currentItem.photoStem) || '';
+  let nextImageUrl = stem ? getGalleryRegularUrl(stem) : (currentItem && currentItem.src) || '';
+  const pairStem = currentItem ? (currentItem.photoStem || getGalleryStemFromUrl(currentItem.src || '')) : stem;
+  const samePhoto = item => !item.storageOnly && (item.photoStem || getGalleryStemFromUrl(item.src || '')) === pairStem;
+  const pairItems = galleryItems.filter(samePhoto);
 
-  if (!editId && !nextImageUrl) {
-    alert('Please choose a gallery photo file or upload a photo first.');
+  if (!titleEn || !titleKo) {
+    alert('Please enter both English and Korean photo titles.');
+    return;
+  }
+
+  if (!stem || !nextImageUrl) {
+    alert('Please select the matching photo number after uploading its regular and thumbnail files to Supabase Storage.');
     return;
   }
   const hasNewLocalImage = galleryPendingImage && galleryPendingImage.startsWith('data:image/');
@@ -571,54 +858,41 @@ async function saveGalleryEntry(){
     return;
   }
 
-  if (editId) {
-    galleryItems = galleryItems.map(item => item.id === editId ? {
-      ...item,
-      language,
-      photoStem,
-      caption,
-      src: nextImageUrl || item.src
-    } : item);
-  } else {
-    galleryItems.unshift({
-      id: makeId('g'),
-      language,
-      photoStem,
-      src: nextImageUrl,
-      caption
-    });
-  }
-
+  const rowsByLanguage = {
+    en:{ language:'en', title:titleEn, caption:reflectionEn, image_url:nextImageUrl, is_visible:true },
+    ko:{ language:'ko', title:titleKo, caption:reflectionKo, image_url:nextImageUrl, is_visible:true }
+  };
   if (supabaseClient) {
-    const payload = {
-      language,
-      title: caption,
-      caption,
-      image_url: nextImageUrl,
-      is_visible: true
-    };
     try {
-      if (editId) {
-        const numericId = String(editId).startsWith('g-') ? String(editId).slice(2) : String(editId);
-        const { error } = await supabaseClient
-          .from('gallery_items')
-          .update(payload)
-          .eq('id', numericId);
-        if (error) throw error;
-      } else {
-        const { error } = await supabaseClient
-          .from('gallery_items')
-          .insert(payload);
+      const rowsToInsert = [];
+      for (const language of ['en', 'ko']) {
+        const existing = pairItems.find(item => {
+          const rawId = String(item.id || '').replace(/^g-/, '');
+          return item.language === language && /^\d+$/.test(rawId);
+        });
+        if (existing) {
+          const rawId = String(existing.id).replace(/^g-/, '');
+          const { error } = await supabaseClient.from('gallery_items').update(rowsByLanguage[language]).eq('id', rawId);
+          if (error) throw error;
+        } else rowsToInsert.push(rowsByLanguage[language]);
+      }
+      if (rowsToInsert.length) {
+        const { error } = await supabaseClient.from('gallery_items').insert(rowsToInsert);
         if (error) throw error;
       }
       clearGalleryForm();
       await loadGalleryAdminItems();
       return;
     } catch (error) {
-      alert(`Supabase could not save this Gallery item. Falling back to browser-only storage.\n\n${formatSupabaseError(error)}`);
+      alert(`Supabase could not save both language photo titles and reflections. Browser-only changes will be saved instead.\n\n${formatSupabaseError(error)}`);
     }
   }
 
+  const updatedItems = galleryItems.map(item => samePhoto(item) ? { ...item, photoStem:stem, title:item.language === 'ko' ? titleKo : titleEn, caption:item.language === 'ko' ? reflectionKo : reflectionEn, src:nextImageUrl } : item);
+  const languagesPresent = new Set(pairItems.map(item => item.language));
+  if (!languagesPresent.has('ko')) updatedItems.unshift({ id:makeId('g'), language:'ko', photoStem:stem, src:nextImageUrl, title:titleKo, caption:reflectionKo });
+  if (!languagesPresent.has('en')) updatedItems.unshift({ id:makeId('g'), language:'en', photoStem:stem, src:nextImageUrl, title:titleEn, caption:reflectionEn });
+  galleryItems = updatedItems;
   saveStoredItems(STORAGE_GALLERY, galleryItems);
   clearGalleryForm();
   renderGalleryAdminList();
@@ -640,7 +914,8 @@ function renderGalleryAdminList(){
     <article class="admin-item">
       <img class="admin-thumb" src="${escapeHtml(thumbSrc)}" data-fallback-src="${escapeHtml(fallbackSrc)}" data-photo-stem="${escapeHtml(stem)}" alt="${escapeHtml(item.caption || 'Gallery image')}" onerror="handleAdminThumbError(this)">
       <div>
-        <h3>${escapeHtml(item.caption || 'Untitled Photo')}</h3>
+        <h3>${escapeHtml(item.title || 'Untitled Photo')}</h3>
+        ${item.caption ? `<p class="admin-meta">${escapeHtml(item.caption)}</p>` : ''}
         <p class="admin-meta">${escapeHtml(item.language === 'ko' ? 'Korean Site' : 'English Site')} &middot; ${escapeHtml(stem ? `Photo file: ${stem}` : 'No photo file selected')}</p>
         <div class="admin-item-actions">
           <button class="admin-btn secondary" type="button" onclick="editGallery('${item.id}')">Edit</button>
@@ -670,16 +945,23 @@ window.handleAdminThumbError = function(img){
 window.editGallery = function(id){
   const item = galleryItems.find(entry => entry.id === id);
   if (!item) return;
+  const stem = item.photoStem || getGalleryStemFromUrl(item.src || '');
+  const pair = galleryItems.filter(entry => !entry.storageOnly && (entry.photoStem || getGalleryStemFromUrl(entry.src || '')) === stem);
+  const englishItem = pair.find(entry => entry.language !== 'ko');
+  const koreanItem = pair.find(entry => entry.language === 'ko');
   document.getElementById('gallery-edit-id').value = item.id;
-  document.getElementById('gallery-language').value = item.language === 'ko' ? 'ko' : 'en';
-  document.getElementById('gallery-photo-stem').value = item.photoStem || getGalleryStemFromUrl(item.src || '');
-  document.getElementById('gallery-caption').value = item.caption || '';
+  document.getElementById('gallery-photo-stem').value = stem;
+  document.getElementById('gallery-title-en').value = englishItem ? englishItem.title || '' : '';
+  document.getElementById('gallery-title-ko').value = koreanItem ? koreanItem.title || '' : '';
+  document.getElementById('gallery-reflection-en').value = englishItem ? englishItem.caption || '' : '';
+  document.getElementById('gallery-reflection-ko').value = koreanItem ? koreanItem.caption || '' : '';
   document.getElementById('gallery-image').value = '';
   galleryPendingImage = item.src || '';
   setPreview(item.src || '');
-  document.getElementById('gallery-save-button').textContent = 'Update Gallery Photo';
+  document.getElementById('gallery-save-button').textContent = 'Update Photo Text';
   window.scrollTo({top: 0, behavior: 'smooth'});
 };
+
 
 window.removeGallery = async function(id){
   const item = galleryItems.find(entry => entry.id === id);
