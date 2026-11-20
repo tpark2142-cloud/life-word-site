@@ -1,6 +1,6 @@
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('lifemoment-static-v179').then(cache => cache.addAll([
+    caches.open('lifemoment-static-v180').then(cache => cache.addAll([
       './',
       './index.html',
       './ko/index.html',
