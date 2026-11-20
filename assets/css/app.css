@@ -1797,3 +1797,13 @@ html[lang="ko"] #popular-search-pages .home-update-list li{font-size:15px;line-h
 .gallery-feedback-message{width:100%;min-height:62px;resize:vertical;border-radius:10px;border:1px solid rgba(222,189,116,.22);padding:9px 11px;background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:15px;line-height:1.5;box-sizing:border-box}
 .gallery-feedback-message::placeholder{color:rgba(240,223,184,.68)}
 .gallery-feedback-submit{margin-top:8px;border:0;border-radius:999px;padding:8px 16px;background:#b8935a;color:#fff;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+/* Popular page viewer: hidden until a popular link is clicked */
+.popular-page-frame{display:none;background:#fdf8ee;padding:28px 20px}
+.popular-page-frame.open{display:block}
+.popular-page-frame-inner{max-width:1120px;margin:0 auto}
+.popular-page-frame-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:14px}
+.popular-page-frame-kicker{margin:0 0 6px;color:#9b2f25;letter-spacing:.08em}
+.popular-page-frame-head h2{margin:0}
+.popular-page-close{cursor:pointer;border:1px solid rgba(155,47,37,.4);background:#fff;color:#7b2a22;border-radius:999px;padding:8px 18px}
+.popular-page-frame iframe{width:100%;height:72vh;border:1px solid rgba(0,0,0,.12);border-radius:12px;display:block;background:#fff}
+
