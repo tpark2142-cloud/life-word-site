@@ -115,7 +115,7 @@
     }
 
     switcher.style.position='fixed';
-    switcher.style.cursor='grab'; if(!wasDragged && downButton){ setSiteLanguage(downButton.getAttribute('data-lang-btn')); } downButton = null;
+    switcher.style.cursor='grab';
     switcher.style.touchAction='none';
     switcher.style.userSelect='none';
 
