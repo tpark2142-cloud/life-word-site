@@ -115,7 +115,7 @@
     }
 
     switcher.style.position='fixed';
-    switcher.style.cursor='grab';
+    switcher.style.cursor='grab'; if(!wasDragged && downButton){ setSiteLanguage(downButton.getAttribute('data-lang-btn')); } downButton = null;
     switcher.style.touchAction='none';
     switcher.style.userSelect='none';
 
@@ -132,13 +132,13 @@
     let startY=0;
     let originLeft=0;
     let originTop=0;
-    let dragged=false;
+    let dragged=false; let downButton = null;
 
     switcher.addEventListener('pointerdown', (event) => {
       if(event.button !== 0){
         return;
       }
-      pointerId=event.pointerId;
+      downButton = (event.target && event.target.closest) ? event.target.closest('[data-lang-btn]') : null; pointerId=event.pointerId;
       startX=event.clientX;
       startY=event.clientY;
       const rect=switcher.getBoundingClientRect();
@@ -166,17 +166,19 @@
     });
 
     function endDrag(event){
-      if(pointerId !== event.pointerId){
+
+
+      if(pointerId !== event.pointerId){ downButton = null;
         return;
       }
-      if(typeof switcher.releasePointerCapture === 'function'){
+      const wasDragged = dragged; if(typeof switcher.releasePointerCapture === 'function'){
         try{
           switcher.releasePointerCapture(pointerId);
         }catch(_error){}
       }
       pointerId=null;
-      switcher.style.cursor='grab';
-      if(dragged){
+      switcher.style.cursor='grab'; if(!wasDragged && downButton){ setSiteLanguage(downButton.getAttribute('data-lang-btn')); } downButton = null;
+      if(wasDragged){
         suppressClicksUntil=Date.now() + 250;
       }
     }
