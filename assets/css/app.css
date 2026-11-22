@@ -1264,7 +1264,7 @@ html[lang="ko"] .gallery-feedback-submit{
   border:1px solid rgba(184,147,90,.28);
   margin-bottom:24px;
 }
-.ai-playground-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.ai-playground-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start} @media(max-width:860px){.ai-playground-grid{grid-template-columns:1fr}}
 .ai-playground-window{border:1px solid rgba(184,147,90,.44);border-radius:16px;background:#fffdfa;box-shadow:0 14px 28px rgba(28,46,36,.06);overflow:hidden}
 .ai-playground-window>summary{list-style:none}
 .ai-playground-window>summary::-webkit-details-marker{display:none}
