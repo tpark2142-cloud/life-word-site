@@ -138,9 +138,6 @@
       if(event.button !== 0){
         return;
       }
-      if(event.pointerType === 'mouse' && event.target.closest('[data-lang-btn]')){
-        return;
-      }
       pointerId=event.pointerId;
       startX=event.clientX;
       startY=event.clientY;
